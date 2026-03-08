@@ -39,7 +39,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee
             Item.value = CalamityGlobalItem.RarityOrangeBuyPrice;
 
             Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
-            Item.damage = 25;
+            Item.damage = 22;
             Item.knockBack = 6.5f;
             Item.noUseGraphic = true;
             Item.noMelee = true;

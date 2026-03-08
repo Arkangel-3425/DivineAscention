@@ -66,7 +66,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             }
 
             // Fire 1 + N projectiles
-            int totalProjectiles = 1 + highLevelEmpowerments;
+            int totalProjectiles = Math.Min(1 + highLevelEmpowerments, 5);
 
             for (int i = 0; i < totalProjectiles; i++)
             {

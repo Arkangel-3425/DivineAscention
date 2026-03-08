@@ -62,7 +62,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro.TetherBlade
 
             if (Projectile.ai[2] == -2f)
             { // blink thrust
-                Projectile.Center = owner.Center + Vector2.UnitY.RotatedBy(Projectile.ai[0]) * (80f - Projectile.ai[1] * 2f);
+                Projectile.Center = owner.Center + Vector2.UnitY.RotatedBy(Projectile.ai[0]) * (120f - Projectile.ai[1] * 2f);
             }
             else
             { // normal thrust

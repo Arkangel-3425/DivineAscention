@@ -598,7 +598,7 @@ Items: {
 			'''
 			Releases music notes of varying colors
 			Music notes will inflict a variety of debuffs based on the notes color
-			Releases an additional music note for each unique empowerment you have at level 2 or higher
+			Releases an additional music note to a cap of 5 for each unique empowerment you have at level 2 or higher
 			[c/1FFBFF:'Once I was dispatched to find that 'order of warriors' that call themselves trackers. When I did,]
 			[c/1FFBFF:one of the things they showed me an unique instrument shaped like a music note, but with a mouth.]
 			[c/1FFBFF:While odd, I was able to turn it into a weapon that is stronger based on number of the users]
@@ -654,8 +654,17 @@ Items: {
 	}
 
 	AllSeersGlass: {
-		// DisplayName: All Seers Glass
-		// Tooltip: ""
+		// DisplayName: All Seer's Glass
+		/* Tooltip:
+			'''
+			10% increased critical strike chance
+			Increases critical strike damage
+			Increases your max number of sentries by 2
+			Grants a greater zoom passively
+			Zoom effect can disabled with accessory visability
+			Pressing the '{$Keybinds.AccessoryAbility.DisplayName}' key will freeze the camera in place
+			'I see a unbreakable fortress in your future'
+			''' */
 	}
 }
 

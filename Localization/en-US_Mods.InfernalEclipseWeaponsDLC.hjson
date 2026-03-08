@@ -520,7 +520,7 @@ Items: {
 			Throw the blade towards the cursor by Right Clicking
 			The blade will linger for a few seconds after throwing it
 			Right Click again to teleport to the blade before the blade disapears
-			After teleporting the blade will stab at all nearby enemies, dealing tripple damage
+			After teleporting the blade will stab at all nearby enemies, dealing triple damage
 			'''
 	}
 
@@ -599,7 +599,7 @@ Items: {
 			'''
 			Releases music notes of varying colors
 			Music notes will inflict a variety of debuffs based on the notes color
-			Releases an additional music note for each unique empowerment you have at level 2 or higher
+			Releases an additional music note to a cap of 5 for each unique empowerment you have at level 2 or higher
 			[c/1FFBFF:'Once I was dispatched to find that 'order of warriors' that call themselves trackers. When I did,]
 			[c/1FFBFF:one of the things they showed me an unique instrument shaped like a music note, but with a mouth.]
 			[c/1FFBFF:While odd, I was able to turn it into a weapon that is stronger based on number of the users]

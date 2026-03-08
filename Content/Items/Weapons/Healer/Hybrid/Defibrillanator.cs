@@ -17,6 +17,15 @@ using CalamityMod.Items.Materials;
 using CalamityMod.CustomRecipes;
 using Terraria.Audio;
 using CalamityMod.Items.Placeables.SunkenSea;
+using static InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic.MiniaturizedRequiemEngine;
+using System.IO;
+using CalamityMod.Rarities;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.MiniaturizedRequiemEngine;
+using Microsoft.Xna.Framework.Input;
+using Terraria.Localization;
+using ThoriumMod.PlayerLayers;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Hybrid
 {
@@ -24,6 +33,14 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Hybrid
     public class Defibrillanator : ThoriumItem
     {
         static Asset<Texture2D> inventoryTexture;
+
+        public enum UseMode
+        {
+            Damage = 0,
+            Healing = 1
+        }
+
+        private UseMode currentMode = UseMode.Damage;
 
         public override void SetStaticDefaults()
         {
@@ -86,6 +103,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Hybrid
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             var modPlayer = player.GetModPlayer<DefibrillanatorPlayer>();
+
+            if (player.altFunctionUse == 2)
+                currentMode = UseMode.Healing;
+            else
+                currentMode = UseMode.Damage;
 
             // --- Charging mode (Left-click) ---
             if (!modPlayer.fullyCharged)
@@ -154,23 +176,13 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Hybrid
 
         public override bool PreDrawInInventory(SpriteBatch spriteBatch, Vector2 position, Rectangle frame, Color drawColor, Color itemColor, Vector2 origin, float scale)
         {
-            float customScale = scale * 0.75f;
-            Main.EntitySpriteDraw(
-                inventoryTexture.Value,
-                position,
-                inventoryTexture.Value.Bounds,
-                drawColor,
-                0f,
-                inventoryTexture.Value.Bounds.Size() / 2f,
-                customScale,
-                SpriteEffects.None
-            );
+            DrawTexture(spriteBatch, position, drawColor, scale);
             return false;
         }
 
         public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
-            Main.EntitySpriteDraw(inventoryTexture.Value, Item.position, inventoryTexture.Value.Bounds, lightColor, rotation, Vector2.Zero, scale, SpriteEffects.None);
+            DrawTexture(spriteBatch, Item.position - Main.screenPosition + Item.Size * 0.5f, lightColor, scale);
             return false;
         }
 
@@ -181,6 +193,22 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Hybrid
 
             // Pass frame correctly
             DefibrillanatorDrawHelper.DrawChargeBarInInventory(spriteBatch, position, frame, modPlayer.defibrillanatorCharge, scale);
+        }
+
+        private void DrawTexture(SpriteBatch spriteBatch, Vector2 position, Color color, float scale)
+        {
+            Texture2D tex = currentMode switch
+            {
+                UseMode.Damage =>
+                    ModContent.Request<Texture2D>("InfernalEclipseWeaponsDLC/Content/Items/Weapons/Healer/Hybrid/Defibrillanator_Inventory").Value,
+                UseMode.Healing =>
+                    ModContent.Request<Texture2D>("InfernalEclipseWeaponsDLC/Content/Items/Weapons/Healer/Hybrid/Defibrillanator_Inventory_Healing").Value,
+                _ =>
+                    ModContent.Request<Texture2D>("InfernalEclipseWeaponsDLC/Content/Items/Weapons/Healer/Hybrid/Defibrillanator_Inventory").Value,
+            };
+
+            Vector2 origin = tex.Size() * 0.5f;
+            spriteBatch.Draw(tex, position, null, color, 0f, origin, ((scale / 3) * 2), SpriteEffects.None, 0f);
         }
     }
 
@@ -229,7 +257,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Hybrid
             Projectile.damage = 0;
             Projectile.friendly = false;
             Projectile.hostile = false;
-            Projectile.timeLeft = 14;
+            Projectile.timeLeft = 16;
         }
 
         public override void AI()
@@ -276,7 +304,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Hybrid
             }
 
             Vector2 arcVec;
-            float jitterScale = 10f;
+            float jitterScale = 10;
 
             if (target != null)
             {
@@ -348,7 +376,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Hybrid
             Projectile.friendly = true;
             Projectile.hostile = false;
             Projectile.penetrate = 1;
-            Projectile.timeLeft = 14;
+            Projectile.timeLeft = 16;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 30;
         }
@@ -400,7 +428,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Hybrid
                 Vector2 toTarget = target.Center - Projectile.Center;
                 float dist = toTarget.Length();
                 toTarget.Normalize();
-                arcVec = toTarget * dist * 0.15f + new Vector2(Main.rand.NextFloat(-1f, 1f), Main.rand.NextFloat(-1f, 1f)) * jitterScale;
+                arcVec = toTarget * dist * 0.2f + new Vector2(Main.rand.NextFloat(-1f, 1f), Main.rand.NextFloat(-1f, 1f)) * jitterScale;
             }
             else
             {
@@ -408,6 +436,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Hybrid
             }
 
             Vector2 start = Projectile.Center;
+
             for (int j = 0; j < 20; j++) start += arcVec / 20f;
             for (int j = 0; j < 20; j++)
             {
