@@ -656,8 +656,17 @@ Items: {
 	}
 
 	AllSeersGlass: {
-		// DisplayName: All Seers Glass
-		// Tooltip: ""
+		// DisplayName: All Seer's Glass
+		/* Tooltip:
+			'''
+			10% increased critical strike chance
+			Increases critical strike damage
+			Increases your max number of sentries by 2
+			Grants a greater zoom passively
+			Zoom effect can disabled with accessory visability
+			Pressing the '{$Keybinds.AccessoryAbility.DisplayName}' key will freeze the camera in place
+			'I see a unbreakable fortress in your future'
+			''' */
 	}
 }
 
