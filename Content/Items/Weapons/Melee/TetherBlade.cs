@@ -23,7 +23,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee
             Item.autoReuse = false;
             Item.DamageType = DamageClass.Melee;
             Item.useStyle = ItemUseStyleID.Rapier;
-            Item.damage = 42;
+            Item.damage = 50;
             Item.width = 44;
             Item.height = 44;
             Item.useTime = 8;
