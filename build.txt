@@ -1,4 +1,4 @@
-displayName = Infernal Eclipse of Ragnarok: Weapon DLC
+displayName = Infernal Arsenal Mod
 author = Infernal Eclipse of Ragnarok Team
 version = 1.4.1
 modReferences = CalamityMod, ThoriumMod

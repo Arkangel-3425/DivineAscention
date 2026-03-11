@@ -10,7 +10,6 @@ using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
 using Terraria.DataStructures;
-using CalamityMod.Items.Placeables;
 using CalamityMod.Items.Placeables.Abyss;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard

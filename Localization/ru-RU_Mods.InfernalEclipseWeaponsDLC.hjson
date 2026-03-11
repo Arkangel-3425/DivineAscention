@@ -519,7 +519,7 @@ Items: {
 			Throw the blade towards the cursor by Right Clicking
 			The blade will linger for a few seconds after throwing it
 			Right Click again to teleport to the blade before the blade disapears
-			After teleporting the blade will stab at all nearby enemies, dealing tripple damage
+			After teleporting the blade will stab at all nearby enemies, dealing triple damage
 			''' */
 	}
 

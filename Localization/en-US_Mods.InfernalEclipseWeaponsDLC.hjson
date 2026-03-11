@@ -290,7 +290,7 @@ Items: {
 	}
 
 	Defibrillanator: {
-		DisplayName: Defibrillanator
+		DisplayName: C-TSL Defibrillator
 		Tooltip:
 			'''
 			Uses consume health to generate static, reaching full charge at 5 uses

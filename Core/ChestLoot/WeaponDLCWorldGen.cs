@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CalamityMod.Tiles.Abyss;
 using InfernalEclipseWeaponsDLC.Content.Items.Materials;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard;
@@ -31,25 +28,13 @@ namespace InfernalEclipseWeaponsDLC.Core.ChestLoot
                     continue;
 
                 // === Add DeepSeaDrawl ===
-                bool hasDrawl = chest.item.Any(item => item.type == drawlType);
-                if (!hasDrawl)
+                bool hasDrawl = chest.item.Any(item => item.type == drawlType || item.type == tridentType);
+                if (!hasDrawl && Main.rand.Next(6) == 0)
                 {
                     int slot = Array.FindIndex(chest.item, i => i.IsAir);
                     if (slot != -1)
                     {
-                        chest.item[slot].SetDefaults(drawlType);
-                        chest.item[slot].stack = 1;
-                    }
-                }
-
-                // === Add DeepseaTrident ===
-                bool hasTrident = chest.item.Any(item => item.type == tridentType);
-                if (!hasTrident)
-                {
-                    int slot = Array.FindIndex(chest.item, i => i.IsAir);
-                    if (slot != -1)
-                    {
-                        chest.item[slot].SetDefaults(tridentType);
+                        chest.item[slot].SetDefaults(Main.rand.Next(2) == 0 ? drawlType : tridentType);
                         chest.item[slot].stack = 1;
                     }
                 }

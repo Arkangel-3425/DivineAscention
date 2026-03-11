@@ -14,6 +14,7 @@ using Terraria.ID;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Hybrid;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Magic;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee;
 
 namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
 {
@@ -83,7 +84,7 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalItems
                 if (item.type == ModContent.ItemType<SulphurousCrate>() || item.type == ModContent.ItemType<HydrothermalCrate>())
                 {
                     LeadingConditionRule mainRule = itemLoot.DefineConditionalDropSet(() => DownedBossSystem.downedSlimeGod || Main.hardMode);
-                    mainRule.Add(new OneFromOptionsDropRule(6, 1, ModContent.ItemType<DeepSeaDrawl>()));
+                    mainRule.Add(new OneFromOptionsDropRule(6, 1, ModContent.ItemType<DeepSeaDrawl>(), ModContent.ItemType<DeepseaTrident>()));
                 }
 
                 if (item.type == ModContent.ItemType<AquaticDepthsCrate>() || item.type == ModContent.ItemType<AbyssalCrate>())
