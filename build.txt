@@ -1,9 +1,9 @@
-displayName = Infernal Eclipse of Ragnarok: Weapon DLC
+displayName = Infernal Arsenal Mod
 author = Infernal Eclipse of Ragnarok Team
-version = 1.4.0.1
+version = 1.4.1
 modReferences = CalamityMod, ThoriumMod
 weakReferences = Luminance, Daybreak, SOTS
 hideCode = true
 hideResources = true
-homepage = https://discord.gg/RXdTXbKY
+homepage = https://discord.gg/tc5nZdRvaU
 buildIgnore = .vs\*, Properties\*, *.csproj, *.user, obj\*, bin\*, *.config, .git\*, .github\*, LICENSE, README.md, .editorconfig, .gitignore, .gitattributes

@@ -1,8 +1,8 @@
-Infernal Eclipse of Ragnarok: Weapon DLC
+Infernal Arsenal Mod
 An DLC Add-on to Infernal Eclipse of Ragnarok
 This mod can be played on its own and doesn't require the main mod to run.
 
-The Infernal Eclipse of Ragnarok: Weapon DLC is a mod that aims to fill in the weak spots of progression with new, exciting items.
+The Infernal Arsenal Mod is a mod that aims to fill in the weak spots of progression with new, exciting items.
 
 It currently adds the following:
 	- 6 Melee weapons
@@ -19,7 +19,7 @@ It is recommended to use Recipe Browser to see how to obtain the new weapons.
 
 This mod also has combatability with Consolaria & Secrets of the Shadows.
 
-If you have any other issues please report them in the discord (https://discord.gg/RXdTXbKY).
+If you have any other issues please report them in the discord (https://discord.gg/tc5nZdRvaU).
 
 Special thanks to Feldy, TacoConKvass, KainSett, and Verveine for helping develop some of this mods items, & Pil for some of the mods sprites!
 

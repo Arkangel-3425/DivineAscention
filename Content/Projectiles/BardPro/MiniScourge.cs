@@ -192,7 +192,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
             if (attachCooldown > 0) return;
             if (target == previousVictim) return;
 
-            LaunchSkulls(Main.rand.Next(3, 5), -Projectile.velocity / 2);
+            //LaunchSkulls(Main.rand.Next(3, 5), -Projectile.velocity / 2);
             Projectile.friendly = false;
             attachVictim = target;
             previousVictim = attachVictim;
@@ -226,7 +226,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
             }
 
             // spawn the "poisonous skull"
-            LaunchSkulls(1, oldVelocity / 2);
+            LaunchSkulls(4 - bounces, oldVelocity / 2);
 
             // "normals"
             if (Projectile.velocity.X != oldVelocity.X)
@@ -243,14 +243,27 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 
         private void LaunchSkulls(int count, Vector2 velocity)
         {
+            // If velocity is zero, replace it with a normalized vector * MinimumVelocity
+            if (velocity.LengthSquared() <= 0.0001f)
+                velocity = Vector2.UnitY * 1f;
 
             for (int i = 0; i < count; i++)
             {
-                var scourgeVenom = ModContent.ProjectileType<ScourgeVenomCloud>();
+                int scourgeVenom = ModContent.ProjectileType<ScourgeVenomCloud>();
 
-                var adjPos = Projectile.position - velocity;
-                var adjVel = Projectile.velocity.RotatedByRandom(MathHelper.PiOver2) * Main.rand.NextFloat(0.75f, 1.25f);
-                var skull = Projectile.NewProjectileDirect(Entity.GetSource_FromThis(), adjPos, -adjVel, scourgeVenom, 26, 5, Projectile.owner);
+                Vector2 adjPos = Projectile.position - velocity;
+                Vector2 adjVel = velocity.RotatedByRandom(MathHelper.PiOver2) * Main.rand.NextFloat(0.75f, 1.25f);
+
+                var skull = Projectile.NewProjectileDirect(
+                    Projectile.GetSource_FromThis(),
+                    adjPos,
+                    -adjVel,
+                    scourgeVenom,
+                    26,
+                    5,
+                    Projectile.owner
+                );
+
                 skull.friendly = true;
                 skull.hostile = false;
                 skull.DamageType = ModContent.GetInstance<BardDamage>();

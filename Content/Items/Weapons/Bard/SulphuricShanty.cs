@@ -20,8 +20,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
     {
         public override void SetStaticDefaults()
         {
-            Empowerments.AddInfo<CriticalStrikeChance>(3);
-            Empowerments.AddInfo<FlightTime>(2);
+            Empowerments.AddInfo<Defense>(2);
+            Empowerments.AddInfo<DamageReduction>(3);
         }
         public override BardInstrumentType InstrumentType => BardInstrumentType.String;
         public override void SetBardDefaults()
@@ -50,11 +50,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             cost = 1;
         }
 
-        public override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-        {
-            return base.BardShoot(player, source, position, velocity, type, damage, knockback);
-        }
-
         public override Vector2? HoldoutOffset()
         {
             return new Vector2(-5, 5);
@@ -70,10 +65,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Vector2 offset = new Vector2(-5, 5f) * player.Directions;
 
             player.itemLocation += offset;
-        }
-
-        public override void AddRecipes()
-        {
         }
     }
 }

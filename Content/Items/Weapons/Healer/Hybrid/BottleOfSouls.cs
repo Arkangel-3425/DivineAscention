@@ -70,7 +70,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Hybrid
         {
             Projectile.Size = new Vector2(24, 30);
             Projectile.aiStyle = -1;
-            Projectile.timeLeft = 150;
+            Projectile.timeLeft = 250;
             Projectile.friendly = true;
             Projectile.penetrate = 1;
             Projectile.tileCollide = false;
@@ -122,7 +122,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Hybrid
         {
             Projectile.Size = new Vector2(24, 30);
             Projectile.aiStyle = -1;
-            Projectile.timeLeft = 150;
+            Projectile.timeLeft = 250;
 
             Projectile.friendly = false; // won't damage NPCs
             Projectile.hostile = false;  // won't damage players
