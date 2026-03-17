@@ -656,17 +656,17 @@ Items: {
 	}
 
 	AllSeersGlass: {
-		// DisplayName: All Seer's Glass
-		/* Tooltip:
+		DisplayName: 全知魔镜
+		Tooltip:
 			'''
-			10% increased critical strike chance
-			Increases critical strike damage
-			Increases your max number of sentries by 2
-			Grants a greater zoom passively
-			Zoom effect can disabled with accessory visability
-			Pressing the '{$Keybinds.AccessoryAbility.DisplayName}' key will freeze the camera in place
-			'I see a unbreakable fortress in your future'
-			''' */
+			增加10%暴击率
+			增加暴击伤害
+			增加2个最大哨兵栏
+			被动提升缩放视野的范围
+			关闭饰品可见性禁用视野提升效果
+			按下饰品能力键将锁定镜头位置
+			“我于你的未来窥见一座坚不可摧的堡垒”
+			'''
 	}
 }
 
