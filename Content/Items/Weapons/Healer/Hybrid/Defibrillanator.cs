@@ -1,5 +1,4 @@
 ﻿using CalamityMod.Items;
-using CalamityMod;
 using CalamityMod.Projectiles.Magic;
 using InfernalEclipseWeaponsDLC.Utilities;
 using Microsoft.Xna.Framework;
@@ -17,15 +16,6 @@ using CalamityMod.Items.Materials;
 using CalamityMod.CustomRecipes;
 using Terraria.Audio;
 using CalamityMod.Items.Placeables.SunkenSea;
-using static InfernalEclipseWeaponsDLC.Content.Items.Weapons.Magic.MiniaturizedRequiemEngine;
-using System.IO;
-using CalamityMod.Rarities;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.MiniaturizedRequiemEngine;
-using Microsoft.Xna.Framework.Input;
-using Terraria.Localization;
-using ThoriumMod.PlayerLayers;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Hybrid
 {
@@ -59,7 +49,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Hybrid
             Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
             Item.noMelee = true;
             Item.mana = 3;
-            radiantLifeCost = 3;
+            radiantLifeCost = 2;
 
             Item.useTime = 16;
             Item.useAnimation = 16;
