@@ -44,6 +44,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Necrosinger
             thoriumPlayer.inspirationRegenBonus += 0.15f;
         }
 
+        public override void ArmorSetShadows(Player player)
+        {
+            player.armorEffectDrawShadow = true;
+        }
+
         public override void AddRecipes()
         {
             Mod thorium = ModLoader.GetMod("ThoriumMod");

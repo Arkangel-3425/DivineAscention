@@ -36,7 +36,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes
         {
             SetDefaultsToScythe();
 
-            Item.damage = 120;
+            Item.damage = 140;
             scytheSoulCharge = 2;
             Item.width = 70;
             Item.height = 82;

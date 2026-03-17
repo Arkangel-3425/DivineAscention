@@ -861,6 +861,8 @@ Projectiles: {
 	CatastrophicLongbladeHoldout.DisplayName: 灾难长刃
 	CatastrophicLongbladeHoldoutVoid.DisplayName: 灾难长刃
 	VoidBolt.DisplayName: 虚空雷霆
+	// EclipsePulseDark.DisplayName: Eclipse Pulse Dark
+	// EclipsePulseLight.DisplayName: Eclipse Pulse Light
 }
 
 Buffs: {

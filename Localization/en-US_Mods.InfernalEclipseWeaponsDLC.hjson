@@ -187,7 +187,7 @@ Items: {
 			'''
 			Fires a spread of bullets and a bolt of lightly homing blood
 			Right Click to consume 50 life, entering a Blood Rage for 10 seconds
-			Blood Rage increases the bloodmaker's damage by 25% and causes blood bolts to inflict burning blood on hit
+			Blood Rage increases the Bloodmaker's damage by 50% and causes blood bolts to inflict burning blood on hit
 			'''
 	}
 
@@ -318,9 +318,10 @@ Items: {
 		DisplayName: Gloom Switch
 		Tooltip:
 			'''
-			A rapid fire SMG that fires a bouncing cursed flame every 15 shots
-			Right Click to consume 200 mana, entering a Dark Rush for 10 seconds
-			Dark Rush increases movement speed by 25% and tightens shot spread while the gun is held
+			A rapid fire SMG with a wide shot spread that fires a bouncing cursed flame every 20 shots
+			Firing with more than 10 mana will consume it, granting an additional 1/3rd second of Dark Rush and firing a more precise shot
+			Dark Rush increases movement speed by 25% while Gloom Switch is held
+			This weapons damage is also reduced by Mana Sickness
 			'''
 	}
 
@@ -433,9 +434,9 @@ Items: {
 		SetBonus:
 			'''
 			Calls forth a condensed eclipse
-			The eclipse will fire light and darkness when there are enemies nearby
-			Light will home onto and heal nearby allies for the players bonus healing
-			Darkness will home onto enemies and deal radiant damage
+			The eclipse will release pulses of alternating light and dark energy
+			Pulses of light will heal nearby allies for the players bonus healing
+			Pulses of Darkness will deal radiant damage to enemies
 			'''
 	}
 
@@ -860,6 +861,8 @@ Projectiles: {
 	CatastrophicLongbladeHoldout.DisplayName: Catastrophic Longblade Holdout
 	CatastrophicLongbladeHoldoutVoid.DisplayName: Catastrophic Longblade Holdout Void
 	VoidBolt.DisplayName: Void Bolt
+	EclipsePulseDark.DisplayName: Eclipse Pulse Dark
+	EclipsePulseLight.DisplayName: Eclipse Pulse Light
 }
 
 Buffs: {

@@ -68,6 +68,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.SuperCell
             }
         }
 
+        public override void ArmorSetShadows(Player player)
+        {
+            player.armorEffectDrawShadow = true;
+        }
+
         public override void UpdateEquip(Player player)
         {
             ref StatModifier damage = ref player.GetDamage(DamageClass.Throwing);

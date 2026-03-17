@@ -31,6 +31,12 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Eclipse
             player.setBonus = this.GetLocalization("SetBonus").Format();
             var modPlayer = player.GetModPlayer<EclipsePlayer>();
             modPlayer.EclipseSet = true;
+            
+        }
+
+        public override void ArmorSetShadows(Player player)
+        {
+            player.armorEffectDrawOutlines = true;
         }
 
         public override void UpdateEquip(Player player)

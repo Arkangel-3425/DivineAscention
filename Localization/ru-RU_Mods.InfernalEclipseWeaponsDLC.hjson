@@ -859,6 +859,8 @@ Projectiles: {
 	// CatastrophicLongbladeHoldout.DisplayName: Catastrophic Longblade Holdout
 	// CatastrophicLongbladeHoldoutVoid.DisplayName: Catastrophic Longblade Holdout Void
 	// VoidBolt.DisplayName: Void Bolt
+	// EclipsePulseDark.DisplayName: Eclipse Pulse Dark
+	// EclipsePulseLight.DisplayName: Eclipse Pulse Light
 }
 
 Buffs: {
