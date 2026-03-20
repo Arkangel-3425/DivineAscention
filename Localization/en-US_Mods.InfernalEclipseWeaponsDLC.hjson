@@ -479,7 +479,7 @@ Items: {
 
 	SuperCellCirclet: {
 		DisplayName: Garuda Circlet
-		Tooltip: 5% increased rogue damage
+		Tooltip: 10% increased rogue damage
 		SetBonus:
 			'''
 			Grants rudimentary flight if not wearing any wings
@@ -492,8 +492,7 @@ Items: {
 		DisplayName: Garuda Guard
 		Tooltip:
 			'''
-			10% increased rogue damage
-			20% increased rogue weapon speed
+			15% increased rogue damage
 			30% increased rogue weapon velocity
 			increases wing flight time by 15%
 			'''
@@ -863,6 +862,7 @@ Projectiles: {
 	VoidBolt.DisplayName: Void Bolt
 	EclipsePulseDark.DisplayName: Eclipse Pulse Dark
 	EclipsePulseLight.DisplayName: Eclipse Pulse Light
+	BardPulseRiffleBoom.DisplayName: Bard Pulse Riffle Boom
 }
 
 Buffs: {

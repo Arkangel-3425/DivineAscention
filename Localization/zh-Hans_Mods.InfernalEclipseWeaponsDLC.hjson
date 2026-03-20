@@ -863,6 +863,7 @@ Projectiles: {
 	VoidBolt.DisplayName: 虚空雷霆
 	// EclipsePulseDark.DisplayName: Eclipse Pulse Dark
 	// EclipsePulseLight.DisplayName: Eclipse Pulse Light
+	// BardPulseRiffleBoom.DisplayName: Bard Pulse Riffle Boom
 }
 
 Buffs: {

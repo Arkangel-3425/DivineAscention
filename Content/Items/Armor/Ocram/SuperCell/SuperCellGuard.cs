@@ -46,8 +46,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.SuperCell
         public override void UpdateEquip(Player player)
         {
             ref StatModifier damage = ref player.GetDamage(DamageClass.Throwing);
-            damage += 0.10f;
-            player.GetAttackSpeed(DamageClass.Throwing) += 0.2f;
+            damage += 0.15f;
             player.ThrownVelocity += 0.3f;
 
             player.GetModPlayer<SuperCellPlayer>().hasSuperCellGuardEquipped = true;

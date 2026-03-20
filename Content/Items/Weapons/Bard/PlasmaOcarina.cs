@@ -1,22 +1,22 @@
 using System;
 using CalamityMod;
+using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Items;
 using CalamityMod.Items.Materials;
 using CalamityMod.Particles;
-using CalamityMod.Projectiles.BaseProjectiles;
-using CalamityMod.Projectiles.DraedonsArsenal;
 using CalamityMod.Rarities;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using Microsoft.Build.Evaluation;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
+using Terraria.GameContent;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
+using ThoriumMod.Buffs;
 using ThoriumMod.Empowerments;
 using ThoriumMod.Items;
 using ThoriumMod.Projectiles.Bard;
@@ -109,7 +109,38 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
         {
             if (channelValue > 180)
             {
-                Projectile projectile2 = Projectile.NewProjectileDirect(source, player.Center + (HoldoutOffset() ?? Vector2.Zero), Vector2.Zero, ModContent.ProjectileType<WavePounderBoom>(), (int)(damage * 3), knockback);
+                Vector2 center = player.Center;
+
+                for (int i = 0; i < 40; i++)
+                {
+                    float angle = Main.rand.NextFloat(MathHelper.TwoPi);
+                    Vector2 direction = angle.ToRotationVector2();
+
+                    Vector2 particleVelocity = direction * Main.rand.NextFloat(8f, 30f);
+
+                    float scale = Main.rand.NextFloat(0.4f, 1.2f);
+
+                    Color color = Main.rand.NextBool(3) ? Color.DarkBlue : Color.Aquamarine;
+
+                    GeneralParticleHandler.SpawnParticle(
+                        new GlowOrbParticle(
+                            center,
+                            particleVelocity,
+                            affectedByGravity: false,
+                            75, // lifetime
+                            scale,
+                            color
+                        )
+                    );
+                }
+
+                SoundEngine.PlaySound(new SoundStyle("CalamityMod/Sounds/Item/TeslaCannonFire")
+                {
+                    Volume = 0.8f,
+                    PitchVariance = 0.2f
+                }, player.Center);
+
+                Projectile projectile2 = Projectile.NewProjectileDirect(source, player.Center + (HoldoutOffset() ?? Vector2.Zero), Vector2.Zero, ModContent.ProjectileType<BardPulseRiffleBoom>(), (int)(damage * 3), knockback);
                 float j = 10;
                 projectile2.ai[1] = Main.rand.NextFloat(320f, 870f) + j * 45f;
                 projectile2.localAI[1] = Main.rand.NextFloat(0.08f, 0.25f);
@@ -119,6 +150,40 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
                 projectile2.netUpdate = true;
                 channelValue = 0;
                 return false;
+            }
+            else if (channelValue > 0)
+            {
+                Vector2 center = player.Center;
+
+                // spawn a few per tick while charging
+                for (int i = 0; i < 1; i++)
+                {
+                    float radius = Main.rand.NextFloat(30f, 60f); // how far out they spawn
+                    float angle = Main.rand.NextFloat(MathHelper.TwoPi);
+
+                    Vector2 spawnPos = center + angle.ToRotationVector2() * radius;
+
+                    // direction INTO the player
+                    Vector2 velocityToPlayer = center - spawnPos;
+                    velocityToPlayer.Normalize();
+                    velocityToPlayer *= Main.rand.NextFloat(1f, 3f);
+
+                    // scale starts big, shrinks over time
+                    float scale = Main.rand.NextFloat(0.1f, 1.0f);
+
+                    Color color = Main.rand.NextBool(3) ? Color.DarkBlue : Color.Aquamarine;
+
+                    GeneralParticleHandler.SpawnParticle(
+                        new GlowOrbParticle(
+                            spawnPos,
+                            velocityToPlayer,
+                            affectedByGravity: false,
+                            20, // lifetime
+                            scale,
+                            color
+                        )
+                    );
+                }
             }
 
             if (player.altFunctionUse != 2)
@@ -426,6 +491,107 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             {
                 GeneralParticleHandler.SpawnParticle(new SquishyLightParticle(base.Projectile.Center, (base.Projectile.velocity * 4f).RotatedByRandom(0.60000002384185791) * Main.rand.NextFloat(0.1f, 0.4f), Main.rand.NextFloat(0.2f, 0.6f), Main.rand.NextBool(3) ? Color.DarkBlue : mainColor, Main.rand.Next(30, 41), 0.25f, 2f));
             }
+        }
+    }
+
+    public class BardPulseRiffleBoom : BardProjectile, ILocalizedModType, IModType
+    {
+        public override string Texture => "CalamityMod/Particles/SmallBloomRingLayered";
+
+        public override BardInstrumentType InstrumentType => BardInstrumentType.Wind;
+
+        public float PlasmaOcarinaLifetimeCompletion => 1f - Projectile.timeLeft / 60f;
+
+        public override void SetStaticDefaults()
+        {
+            Main.projFrames[Projectile.type] = 1;
+        }
+
+        public override void SetBardDefaults()
+        {
+            Projectile.DamageType = (DamageClass)(object)ThoriumDamageBase<HealerDamage>.Instance;
+            Projectile.width = 96;
+            Projectile.height = 96;
+            Projectile.friendly = true;
+            Projectile.tileCollide = false;
+            Projectile.ignoreWater = true;
+            Projectile.penetrate = -1;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 12;
+            Projectile.timeLeft = 60;
+            Projectile.scale = 0.001f;
+        }
+
+        public override void AI()
+        {
+            if (WeaponConfig.Instance.EnableScreenEffects)
+            {
+                float lifetime = 60f;
+                float t = Projectile.timeLeft / lifetime;
+
+                float screenShakePower =
+                    (1f - t) *
+                    Utils.GetLerpValue(1300f, 0f,
+                        Projectile.Distance(Main.LocalPlayer.Center), true);
+
+                Main.LocalPlayer.Calamity().GeneralScreenShakePower = screenShakePower * 6f;
+            }
+
+            Projectile.ai[0]++;
+
+            // Initial random rotation setup
+            if (Projectile.localAI[0] == 0f)
+            {
+                Projectile.rotation = Utils.NextFloat(Main.rand, MathHelper.TwoPi);
+                Projectile.localAI[0] = Utils.ToDirectionInt(Utils.NextBool(Main.rand));
+                Projectile.netUpdate = true;
+            }
+
+            Projectile.Opacity = (1f - (float)Math.Pow(PlasmaOcarinaLifetimeCompletion, 1.56)) * 0.4f;
+            Projectile.scale = MathHelper.Lerp(0.1f, 30f, PlasmaOcarinaLifetimeCompletion);
+            Projectile.rotation += Projectile.localAI[0] * 0.012f;
+        }
+        public override Color? GetAlpha(Color lightColor)
+        {
+            Color start = Color.Aquamarine;
+            Color end = Color.DarkBlue;
+            Color blended = Color.Lerp(start, end, PlasmaOcarinaLifetimeCompletion);
+
+            return blended * Projectile.Opacity;
+        }
+
+        public override void BardOnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(ModContent.BuffType<GraniteSurge>(), 180);
+        }
+
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Texture2D texture = TextureAssets.Projectile[Projectile.type].Value;
+            Color drawColor = Projectile.GetAlpha(lightColor) * 0.33f;
+
+            for (int i = 0; i < 8; i++)
+            {
+                float rotation = Projectile.rotation;
+                Vector2 drawOffset = Utils.ToRotationVector2((float)Math.PI * 2f * i / 8f) * Projectile.scale;
+                Vector2 drawPosition = Projectile.Center - Main.screenPosition + drawOffset;
+
+                if (i % 2 == 1) rotation *= -1f;
+
+                Main.EntitySpriteDraw(
+                    texture, drawPosition, null, drawColor,
+                    rotation, Utils.Size(texture) * 0.5f,
+                    Projectile.scale, SpriteEffects.None, 0f
+                );
+            }
+            return false;
+        }
+
+        public override bool? CanHitNPC(NPC target) => !target.CountsAsACritter && !target.friendly && target.chaseable;
+
+        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
+        {
+            return CalamityUtils.CircularHitboxCollision(Projectile.Center, Projectile.scale * 48f, targetHitbox);
         }
     }
 }

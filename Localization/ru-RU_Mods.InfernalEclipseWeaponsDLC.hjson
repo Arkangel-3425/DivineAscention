@@ -432,9 +432,9 @@ Items: {
 		/* SetBonus:
 			'''
 			Calls forth a condensed eclipse
-			The eclipse will fire light and darkness when there are enemies nearby
-			Light will home onto and heal nearby allies for the players bonus healing
-			Darkness will home onto enemies and deal radiant damage
+			The eclipse will release pulses of alternating light and dark energy
+			Pulses of light will heal nearby allies for the players bonus healing
+			Pulses of Darkness will deal radiant damage to enemies
 			''' */
 	}
 
@@ -477,7 +477,7 @@ Items: {
 
 	SuperCellCirclet: {
 		// DisplayName: Garuda Circlet
-		// Tooltip: 5% increased rogue damage
+		// Tooltip: 10% increased rogue damage
 		/* SetBonus:
 			'''
 			Grants rudimentary flight if not wearing any wings
@@ -490,8 +490,7 @@ Items: {
 		// DisplayName: Garuda Guard
 		/* Tooltip:
 			'''
-			10% increased rogue damage
-			20% increased rogue weapon speed
+			15% increased rogue damage
 			30% increased rogue weapon velocity
 			increases wing flight time by 15%
 			''' */
@@ -861,6 +860,7 @@ Projectiles: {
 	// VoidBolt.DisplayName: Void Bolt
 	// EclipsePulseDark.DisplayName: Eclipse Pulse Dark
 	// EclipsePulseLight.DisplayName: Eclipse Pulse Light
+	// BardPulseRiffleBoom.DisplayName: Bard Pulse Riffle Boom
 }
 
 Buffs: {
@@ -891,12 +891,12 @@ Configs: {
 
 		AIGenedWeapons: {
 			// Label: AI Generated Weapon Concepts
-			// Tooltip: Toggles whether if the AI Generated weapon concpets from Verveine's 'Which AI Makes the Best Terraria Weapons?' are loaded
+			// Tooltip: Toggles whether if the AI Generated weapon concepts from Verveine's 'Which AI Makes the Best Terraria Weapons?' are loaded
 		}
 
 		GitGudWeapon: {
 			// Label: GitGudWO Weapon Concept
-			// Tooltip: Toggles whether if the weapon concpet made by GitGudWO from Verveine's 'Which AI Makes the Best Terraria Weapons?' is loaded
+			// Tooltip: Toggles whether if the weapon concept made by GitGudWO from Verveine's 'Which AI Makes the Best Terraria Weapons?' is loaded
 		}
 
 		EnableScreenEffects: {

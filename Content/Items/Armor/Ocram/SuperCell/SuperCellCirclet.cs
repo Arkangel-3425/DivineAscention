@@ -76,7 +76,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.SuperCell
         public override void UpdateEquip(Player player)
         {
             ref StatModifier damage = ref player.GetDamage(DamageClass.Throwing);
-            damage += 0.05f;
+            damage += 0.1f;
         }
 
         public override void AddRecipes()
