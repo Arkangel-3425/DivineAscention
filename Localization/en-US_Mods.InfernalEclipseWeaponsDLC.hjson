@@ -10,7 +10,15 @@ Items: {
 	}
 
 	TheParallel: {
-		Tooltip: ""
+		Tooltip:
+			'''
+			Summons a barrage of cosmic knives from another dimension
+			Cosmic knives will enter the ambush state on bounce
+			Knives in the ambush state will charge for some time
+			When fully charged they will attack the first enemy that comes close for triple damage
+			Only 27 knives can be in the ambush state at any given time
+			Cosmic knives that bounce past the 27 allowed will simply homing to the nearest target instead
+			'''
 		DisplayName: The Parallel
 	}
 

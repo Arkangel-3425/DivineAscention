@@ -25,9 +25,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override void SetStaticDefaults()
         {
-            Empowerments.AddInfo<InvincibilityFrames>(2);
-            Empowerments.AddInfo<FlightTime>(2);
-            Empowerments.AddInfo<MovementSpeed>(2);
+            Empowerments.AddInfo<InvincibilityFrames>(4);
+            Empowerments.AddInfo<Defense>(2);
+            Empowerments.AddInfo<DamageReduction>(2);
         }
 
         public override void SetBardDefaults()
@@ -55,30 +55,37 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override bool BardShoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            int count = 3;
-            float spread = MathHelper.ToRadians(30f); // total arc
-            Vector2 behind = player.Center - player.DirectionTo(Main.MouseWorld) * 40f;
+            int count = 3;                  // number of daggers per use
+            float maxRadius = 150f;         // max distance from player to spawn
+            float daggerSpeed = 14f;        // projectile speed
 
             for (int i = 0; i < count; i++)
             {
-                float phase = MathHelper.Lerp(0, MathHelper.TwoPi, i / (float)count);
-                float rotation = MathHelper.Lerp(-spread / 2, spread / 2, i / (float)(count - 1));
-                Vector2 shootDir = Vector2.Normalize(Main.MouseWorld - behind).RotatedBy(rotation);
+                // Random position within radius
+                float angle = Main.rand.NextFloat(MathHelper.TwoPi);
+                float distance = Main.rand.NextFloat(maxRadius);
+                Vector2 spawnPos = player.Center + angle.ToRotationVector2() * distance;
 
+                // Direction toward cursor
+                Vector2 shootDir = (Main.MouseWorld - spawnPos).SafeNormalize(Vector2.Zero);
+
+                // Spawn projectile
                 int proj = Projectile.NewProjectile(
                     source,
-                    behind,
-                    shootDir * 14f, // Use the shootSpeed you want
+                    spawnPos,
+                    shootDir * daggerSpeed,
                     type,
                     damage,
                     knockback,
                     player.whoAmI
                 );
 
+                // Optional: store phase/AI info for trails or effects
                 if (Main.projectile.IndexInRange(proj))
-                    Main.projectile[proj].ai[1] = phase; // If you want to use phase for trails or effect
+                    Main.projectile[proj].ai[1] = Main.rand.NextFloat(MathHelper.TwoPi);
             }
-            return false; // Suppress vanilla projectile spawn
+
+            return false; // suppress default projectile spawn
         }
 
         public override Vector2? HoldoutOffset()
