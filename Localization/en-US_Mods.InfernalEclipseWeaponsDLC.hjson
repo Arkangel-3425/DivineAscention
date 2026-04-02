@@ -51,8 +51,12 @@ Items: {
 	}
 
 	DeathsWhisper: {
-		Tooltip: ""
 		DisplayName: Death's Whisper
+		Tooltip:
+			'''
+			Releases faith devouring flames that mark for death
+			For every 5 flames that damage an enemy, release an inferno of homing flames
+			'''
 	}
 
 	BrimstoneHarp: {
