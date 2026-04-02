@@ -45,7 +45,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.useTime = 60;
             Item.useAnimation = 60;
             Item.knockBack = 1.5f;
-            Item.damage = 5175;
+            Item.damage = 4175;
             Item.crit = 16;
             Item.shootSpeed = 11f;
 
