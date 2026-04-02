@@ -21,7 +21,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes.GammaK
             Projectile.width = 128;
             Projectile.height = 128;
 
-            Projectile.penetrate = 5;
+            Projectile.penetrate = 15;
             Projectile.timeLeft = 20;  // lifespan of crescent
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 10;
@@ -39,7 +39,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes.GammaK
             Projectile.scale = scale;
 
             // Reduce damage over time
-            Projectile.damage = (int)(Projectile.damage * (1f - t * 0.3f));
+            Projectile.damage = (int)(Projectile.damage * (1f - t * 0.05f));
 
             // Crescent parameters
             int dustCount = 12;                  // How many dust particles in the arc

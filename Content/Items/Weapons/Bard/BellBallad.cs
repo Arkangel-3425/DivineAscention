@@ -44,7 +44,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
             Item.rare = ItemRarityID.Lime;
 
-            InspirationCost = 2;
+            InspirationCost = 1;
         }
 
         public override void BardHoldItem(Player player)

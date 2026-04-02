@@ -42,7 +42,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes.GammaK
         public const float STATE_RETURN = 2f;
 
         private int airTime;
-        public const int RETURN_AFTER_TICKS = 120;
+        public const int RETURN_AFTER_TICKS = 60;
 
         /// <summary>
         ///     The sound played when the projectile explodes.
@@ -134,6 +134,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes.GammaK
             {
                 var offset = Main.rand.NextVector2Circular(4f, 4f) * 8f;
                 var position = Projectile.Center + offset;
+                int damage = (int)(Projectile.damage * 0.75f);
 
                 Projectile.NewProjectile
                 (
@@ -141,7 +142,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes.GammaK
                     position,
                     Vector2.Zero,
                     ModContent.ProjectileType<GammaExplosionProjectile>(),
-                    (Projectile.damage / 4),
+                    damage,
                     Projectile.knockBack,
                     Projectile.owner
                 );
@@ -313,7 +314,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes.GammaK
 
             // How strongly the knife homes back
             const float returnAcceleration = 0.8f;
-            const float maxSpeed = 22f;
+            const float maxSpeed = 36f;
 
             Vector2 toPlayer = player.Center - Projectile.Center;
             float distance = toPlayer.Length();
