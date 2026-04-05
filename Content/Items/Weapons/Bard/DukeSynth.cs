@@ -26,8 +26,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override void SetStaticDefaults()
         {
+            Empowerments.AddInfo<EmpowermentProlongation>(2);
             Empowerments.AddInfo<Damage>(3);
-            Empowerments.AddInfo<CriticalStrikeChance>(2);
             Empowerments.AddInfo<FlatDamage>(2);
             //"Viral Wisdom"
         }

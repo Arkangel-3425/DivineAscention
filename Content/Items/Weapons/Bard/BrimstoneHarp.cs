@@ -28,8 +28,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override void SetStaticDefaults()
         {
-            Empowerments.AddInfo<Damage>(3);
-            Empowerments.AddInfo<CriticalStrikeChance>(3);
+            Empowerments.AddInfo<DamageReduction>(3);
+            Empowerments.AddInfo<LifeRegeneration>(3);
             Empowerments.AddInfo<Defense>(3);
         }
 
@@ -45,10 +45,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.UseSound = SoundID.Item26;
 
             // TBD
-            Item.useTime = 12;
-            Item.useAnimation = 12;
+            Item.useTime = 32;
+            Item.useAnimation = 32;
             Item.knockBack = 1.5f;
-            Item.damage = 95;
+            Item.damage = 55;
             Item.shootSpeed = 14f;
 
             ((ModItem)this).Item.useStyle = 5;

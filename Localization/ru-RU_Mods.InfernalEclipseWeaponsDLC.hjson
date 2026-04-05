@@ -43,8 +43,8 @@ Items: {
 	}
 
 	DeathsWhisper: {
-		Tooltip: ""
 		DisplayName: Шёпот смерти
+		Tooltip: ""
 	}
 
 	BrimstoneHarp: {
@@ -861,6 +861,7 @@ Projectiles: {
 	// EclipsePulseDark.DisplayName: Eclipse Pulse Dark
 	// EclipsePulseLight.DisplayName: Eclipse Pulse Light
 	// BardPulseRiffleBoom.DisplayName: Bard Pulse Riffle Boom
+	// BrimstonePetalPro.DisplayName: Brimstone Petal Pro
 }
 
 Buffs: {

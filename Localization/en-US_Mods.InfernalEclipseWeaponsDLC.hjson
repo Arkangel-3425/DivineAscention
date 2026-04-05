@@ -60,8 +60,12 @@ Items: {
 	}
 
 	BrimstoneHarp: {
-		Tooltip: ""
 		DisplayName: Brimstone Harp
+		Tooltip:
+			'''
+			Fires a fan of 3 piercing brimstone skulls
+			Skulls on bounce split into 3 brimstone petals that fire at the closest enemy
+			'''
 	}
 
 	NecroticChorus: {
@@ -270,7 +274,7 @@ Items: {
 	}
 
 	NeonRipper: {
-		DisplayName: Neon Ripper
+		DisplayName: C-PMA Ripper
 		Tooltip:
 			'''
 			Grants 3 soul essence on direct hit
@@ -289,11 +293,11 @@ Items: {
 			[c/1FFBFF:This happens to be one of them, however these weapons were never mass produced]
 			[c/1FFBFF:because the Tyrant's army couldn't play them']
 			'''
-		DisplayName: Plasma Ocarina
+		DisplayName: I-PLS Ocarina
 	}
 
 	Infrariff: {
-		DisplayName: Infrariff
+		DisplayName: I-LSR Infrariff
 		Tooltip:
 			'''
 			Creates a lightshow of infared waves that will damage enemies on contact
@@ -606,7 +610,7 @@ Items: {
 	}
 
 	PocketConcert: {
-		DisplayName: Mechamatone
+		DisplayName: I-PMA Mechamatone
 		Tooltip:
 			'''
 			Releases music notes of varying colors
@@ -620,7 +624,7 @@ Items: {
 	}
 
 	GammaKnife: {
-		DisplayName: Gamma Knife
+		DisplayName: C-GSS Gamma Knife 
 		Tooltip:
 			'''
 			Ignores 15 points of defence
@@ -875,6 +879,7 @@ Projectiles: {
 	EclipsePulseDark.DisplayName: Eclipse Pulse Dark
 	EclipsePulseLight.DisplayName: Eclipse Pulse Light
 	BardPulseRiffleBoom.DisplayName: Bard Pulse Riffle Boom
+	BrimstonePetalPro.DisplayName: Brimstone Petal Pro
 }
 
 Buffs: {
