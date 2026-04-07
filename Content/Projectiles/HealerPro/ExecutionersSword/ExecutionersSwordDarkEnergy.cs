@@ -1,14 +1,8 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Audio;
-using Terraria.DataStructures;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
-using InfernalEclipseWeaponsDLC.Content.Buffs;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSword
 {
@@ -32,6 +26,25 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
 
             // Number of ticks before this projectile can hit the same NPC again
             Projectile.localNPCHitCooldown = 20; // 10 ticks = 1/6 second
+        }
+
+        private int dustID = DustID.Shadowflame;
+        private Color dustColor = default;
+
+        public override bool PreAI()
+        {
+            if (Projectile.ai[1] == 1)
+            {
+                dustID = DustID.Smoke;
+                dustColor = Color.Black;
+            }
+            else
+            {
+                dustID = DustID.Shadowflame;
+                dustColor = default;
+            }
+
+            return base.PreAI();
         }
 
         public override void AI()
@@ -75,7 +88,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
                     Projectile.position,
                     Projectile.width,
                     Projectile.height,
-                    DustID.Smoke, // smoke dust works good for black effects
+                    dustID, // smoke dust works good for black effects
                     Projectile.velocity.X * 0.2f,
                     Projectile.velocity.Y * 0.2f,
                     0,
@@ -84,7 +97,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
                 );
 
                 Dust dust = Main.dust[dustIndex];
-                dust.color = Color.Black;
+                dust.color = dustColor;
                 dust.noGravity = true;
                 dust.fadeIn = 1.1f;
                 dust.velocity *= 0.3f;
@@ -93,18 +106,22 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
+            if (Projectile.ai[1] != 1)
+            {
+                target.AddBuff(BuffID.ShadowFlame, 3 * 60);
+            }
+
             for (int i = 0; i < 8; i++)
             {
                 Vector2 offset = Main.rand.NextVector2CircularEdge(target.width / 2f, target.height / 2f);
                 Vector2 spawnPos = target.Center + offset;
                 Vector2 vel = offset.SafeNormalize(Vector2.UnitY) * 2f;
 
-                Dust dust = Dust.NewDustPerfect(spawnPos, DustID.Smoke, vel, 150, Color.Black, 1.5f);
+                Dust dust = Dust.NewDustPerfect(spawnPos, dustID, vel, 150, dustColor, 1.5f);
                 dust.noGravity = true;
                 dust.alpha = 0; // fully opaque
             }
         }
-
 
         // Prevent default sprite draw
         public override bool PreDraw(ref Color lightColor) => false;

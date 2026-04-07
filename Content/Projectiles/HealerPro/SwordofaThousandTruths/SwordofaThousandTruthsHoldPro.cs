@@ -31,6 +31,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
             Projectile.tileCollide = false;
             Projectile.timeLeft = 9999;
             Projectile.penetrate = -1;
+            Projectile.usesIDStaticNPCImmunity = true;
+            Projectile.idStaticNPCHitCooldown = 10;
 
             Projectile.scale = 1.25f;
         }
@@ -66,7 +68,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
             }
             else
             {
-                if (stuckTarget > -1 && Main.npc[stuckTarget].active)
+                if (stuckTarget > -1 && Main.npc[stuckTarget].active && Main.npc[stuckTarget].dontTakeDamage == false)
                 {
                     // Follow the NPC with a fixed offset
                     Projectile.Center = Main.npc[stuckTarget].Center + offsetFromNPC;
@@ -111,7 +113,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
                                 projType,
                                 Projectile.damage,
                                 Projectile.knockBack,
-                                Projectile.owner
+                                Projectile.owner,
+                                ai1: 1
                             );
                         }
                     }
@@ -135,7 +138,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
                 
             Lighting.AddLight(Projectile.Center, 0f, 0f, 0.8f);
 
-            Projectile.velocity *= 0.995f;
+            Projectile.velocity *= 1.5f;
         }
 
         void HandleAim(Player player)
@@ -175,7 +178,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
         {
             Timer++;
 
-            if (Timer % 20 == 0)
+            if (Timer == 60f)
             {
                 SoundEngine.PlaySound(SoundID.Item15, Projectile.position);
             }

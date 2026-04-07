@@ -42,6 +42,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
             Projectile.usesOwnerMeleeHitCD = true;
             Projectile.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
             Projectile.aiStyle = -1; // Custom AI for swinging
+
+            Projectile.usesIDStaticNPCImmunity = true;
+            Projectile.idStaticNPCHitCooldown = 10;
         }
 
         public override void AI()

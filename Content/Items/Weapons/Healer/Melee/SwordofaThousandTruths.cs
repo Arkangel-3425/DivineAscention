@@ -1,23 +1,20 @@
-﻿using System;
-using Terraria;
+﻿using Terraria;
 using Terraria.ModLoader;
 using Terraria.ID;
-using Terraria.Audio;
 using Microsoft.Xna.Framework;
 using ThoriumMod;
 using CalamityMod.Buffs.DamageOverTime;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSword;
 using CalamityMod.Items;
 using Terraria.DataStructures;
-using ThoriumMod.Items.HealerItems;
 using ThoriumMod.Items;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityMod.NPCs.NormalNPCs;
 using CalamityMod.Items.Critters;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using Terraria.Localization;
 using CalamityMod.Rarities;
+using CalamityMod.Items.Materials;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee
 {
@@ -62,12 +59,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee
 
         public override bool CanUseItem(Player player)
         {
-            // prevent multiple swords
-            if (player.ownedProjectileCounts[ModContent.ProjectileType<SwordofaThousandTruthsPro>()] > 0 || player.ownedProjectileCounts[ModContent.ProjectileType<SwordofaThousandTruthsHoldPro>()] > 0)
-                return false;
-
             if (player.altFunctionUse == 2) // right click
             {
+                // prevent multiple swords
+                if (player.ownedProjectileCounts[ModContent.ProjectileType<SwordofaThousandTruthsHoldPro>()] > 0)
+                    return false;
 
                 // Suppress melee swing + graphic
                 Item.channel = true;
@@ -164,6 +160,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee
             CreateRecipe()
                 .AddIngredient<ExecutionersSword>()
                 .AddIngredient<PiggyItem>(7)
+                .AddIngredient<AscendantSpiritEssence>(3)
                 .AddTile(ModContent.TileType<CosmicAnvil>())
                 .Register();
         }
