@@ -4,8 +4,8 @@ Items: {
 		Tooltip:
 			'''
 			Grants 4 soul essence on direct hit
-			Left Click to deal full damage in a larger radius
-			Right Click to consume mana and summon white scythes that slash the enemy
+			<left> to deal full damage in a larger radius
+			<right> to consume mana and summon white scythes that slash the enemy
 			'''
 	}
 
@@ -25,7 +25,7 @@ Items: {
 	SuperShotgun: {
 		Tooltip:
 			'''
-			Right Click stabs with the shotgun's blade, dealing melee damage
+			<right> stabs with the shotgun's blade, dealing melee damage
 			'What? Never seen a blade on a shotgun before?'
 			'''
 		DisplayName: Triggerblade
@@ -73,7 +73,7 @@ Items: {
 		Tooltip:
 			'''
 			Summons up to 10 wisps that home onto foes
-			Right Click for an alternate blood spit attack
+			<right> for an alternate blood spit attack
 			'''
 	}
 
@@ -175,7 +175,7 @@ Items: {
 			'''
 			Summons a sharknado that throws aquatic debris at foes
 			You can only have one sharknado active at a time
-			Right Click for an alternate typhoon attack that uses 2 inspiration
+			<right> for an alternate typhoon attack that uses 2 inspiration
 			'''
 	}
 
@@ -188,8 +188,8 @@ Items: {
 		DisplayName: Exorcist's Greatblade
 		Tooltip:
 			'''
-			Left Click to swing the sword, restoring 5 life on hit
-			Right Click to throw the sword, embedding itself into the hit enemy
+			<left> to swing the sword, restoring 5 life on hit
+			<right> to throw the sword, embedding itself into the hit enemy
 			When the sword is embedded it will release light and dark energy
 			Light energy will home onto nearby allies and heal life equal to bonus healing
 			Dark energy will home onto nearby enemies, dealing damage
@@ -202,7 +202,7 @@ Items: {
 		Tooltip:
 			'''
 			Fires a spread of bullets and a bolt of lightly homing blood
-			Right Click to consume 50 life, entering a Blood Rage for 10 seconds
+			<right> to consume 50 life, entering a Blood Rage for 10 seconds
 			Blood Rage increases the Bloodmaker's damage by 50% and causes blood bolts to inflict burning blood on hit
 			'''
 	}
@@ -222,9 +222,9 @@ Items: {
 		Tooltip:
 			'''
 			Can fire 2 shots quickly before needing to reload
-			Left Click to consume inspiration and fire an AirPod that bursts into sound on hit
+			<left> to consume inspiration and fire an AirPod that bursts into sound on hit
 			AirPod damage is increased with the ammo consumed
-			Right Click to fire a buckshot of bullets from your ammo, not granting empowerments
+			<right> to fire a buckshot of bullets from your ammo, not granting empowerments
 			These bullets will scale off of bard reforges and ranged boosts
 			"Airpod shawty ima catch a body lookin real sussy"
 			'''
@@ -279,7 +279,7 @@ Items: {
 			'''
 			Grants 3 soul essence on direct hit
 			Hitting enemies will generate electrifying nanobots
-			Right Click to throw the scythe, which will curve on it's way back
+			<right> to throw the scythe, which will curve on it's way back
 			The scythe deals 30% more damage when thrown
 			'''
 	}
@@ -288,7 +288,7 @@ Items: {
 		Tooltip:
 			'''
 			Shoots a spread of 3 plasma beams 
-			Hold Right Click to charge a large damaging sound wave
+			Hold <right> to charge a large damaging sound wave
 			[c/1FFBFF:'I once tried creating instruments that had to power to deal damage.]
 			[c/1FFBFF:This happens to be one of them, however these weapons were never mass produced]
 			[c/1FFBFF:because the Tyrant's army couldn't play them']
@@ -310,8 +310,8 @@ Items: {
 		Tooltip:
 			'''
 			Uses consume health to generate static, reaching full charge at 5 uses
-			Left Clicking with full charge will fire a burst of damaging homing lightning
-			Right Clicking instead fires a burst of healing lightning
+			<left>ing with full charge will fire a burst of damaging homing lightning
+			<right>ing instead fires a burst of healing lightning
 			'Clear!'
 			'''
 	}
@@ -392,8 +392,8 @@ Items: {
 		DisplayName: Barren Garden
 		Tooltip:
 			'''
-			Left Click to fire a spread of homing, piercing and healing petals
-			Right Click to summon a large frozen lotus that will fire alternating damaging and healing energies
+			<left> to fire a spread of homing, piercing and healing petals
+			<right> to summon a large frozen lotus that will fire alternating damaging and healing energies
 			Only one frozen lotus may be active at a time and they last for 30 seconds
 			'It's so cold it feels like my lungs are bursting'
 			'''
@@ -533,9 +533,9 @@ Items: {
 		DisplayName: Tetherblade
 		Tooltip:
 			'''
-			Throw the blade towards the cursor by Right Clicking
+			Throw the blade towards the cursor by <right>ing
 			The blade will linger for a few seconds after throwing it
-			Right Click again to teleport to the blade before the blade disapears
+			<right> again to teleport to the blade before the blade disapears
 			After teleporting the blade will stab at all nearby enemies, dealing triple damage
 			'''
 	}
@@ -603,8 +603,8 @@ Items: {
 		DisplayName: Grand Amplifier
 		Tooltip:
 			'''
-			Left Click to fire a small thunderbolt that inflicts electrified
-			Right Click to summon lightning above all nearby enemies with the electrified debuff
+			<left> to fire a small thunderbolt that inflicts electrified
+			<right> to summon lightning above all nearby enemies with the electrified debuff
 			This lightning will remove the electrified debuff but deal a burst of high damage
 			'''
 	}
@@ -624,20 +624,20 @@ Items: {
 	}
 
 	GammaKnife: {
-		DisplayName: C-GSS Gamma Knife 
+		DisplayName: C-GSS Gamma Knife
 		Tooltip:
 			'''
 			Ignores 15 points of defence
-			Left Click to swing the knife directionally, firing a high intensity slash of gamma radiation
+			<left> to swing the knife directionally, firing a high intensity slash of gamma radiation
 			The slash will deal heavy damage at close range but dissipate as it travels
-			Right Click to throw the knife, which will explode and return on collision with an enemy or tile
+			<right> to throw the knife, which will explode and return on collision with an enemy or tile
 			The knife cannot be used while thrown
 			'''
 	}
 
 	MiniaturizedRequiemEngine: {
 		DisplayName: Miniaturized Requiem Engine
-		Tooltip: Has three modes of fire that can be cycled between on Right Click
+		Tooltip: Has three modes of fire that can be cycled between on <right>
 	}
 
 	MagicPurpleBouncyBalls: {
@@ -656,7 +656,7 @@ Items: {
 			'''
 			Shoots a powerful, high velocity bullet
 			Also fires a lightning bolt imbued with void energy
-			Right Click to zoom out
+			<right> to zoom out
 			'''
 	}
 
@@ -666,7 +666,7 @@ Items: {
 			'''
 			Shoots a powerful, high velocity bullet
 			Also fires a lightning bolt imbued with void energy
-			Right Click to zoom out
+			<right> to zoom out
 			'''
 	}
 
@@ -681,6 +681,19 @@ Items: {
 			Zoom effect can disabled with accessory visability
 			Pressing the '{$Keybinds.AccessoryAbility.DisplayName}' key will freeze the camera in place
 			'I see a unbreakable fortress in your future'
+			'''
+	}
+
+	SwordofaThousandTruths: {
+		DisplayName: Sword of a Thousand Truths
+		Tooltip:
+			'''
+			<left> to swing the sword, restoring 8 life on hit
+			<right> to throw the sword, embedding itself into the hit enemy
+			When the sword is embedded it will release light and dark energy
+			Light energy will home onto nearby allies and heal life equal to bonus healing
+			Dark energy will home onto nearby enemies, dealing damage
+			Only one sword can be thrown at a time
 			'''
 	}
 }
@@ -880,6 +893,9 @@ Projectiles: {
 	EclipsePulseLight.DisplayName: Eclipse Pulse Light
 	BardPulseRiffleBoom.DisplayName: Bard Pulse Riffle Boom
 	BrimstonePetalPro.DisplayName: Brimstone Petal Pro
+	SwordofaThousandTruthsSlashPro.DisplayName: Swordofa Thousand Truths Slash Pro
+	SwordofaThousandTruthsHoldPro.DisplayName: Swordofa Thousand Truths Hold Pro
+	SwordofaThousandTruthsPro.DisplayName: Swordofa Thousand Truths Pro
 }
 
 Buffs: {

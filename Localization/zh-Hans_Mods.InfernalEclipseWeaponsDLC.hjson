@@ -48,8 +48,8 @@ Items: {
 	}
 
 	BrimstoneHarp: {
-		Tooltip: ""
 		DisplayName: 硫火竖琴
+		Tooltip: ""
 	}
 
 	NecroticChorus: {
@@ -668,6 +668,19 @@ Items: {
 			“我于你的未来窥见一座坚不可摧的堡垒”
 			'''
 	}
+
+	SwordofaThousandTruths: {
+		// DisplayName: Sword of a Thousand Truths
+		/* Tooltip:
+			'''
+			<left> to swing the sword, restoring 8 life on hit
+			<right> to throw the sword, embedding itself into the hit enemy
+			When the sword is embedded it will release light and dark energy
+			Light energy will home onto nearby allies and heal life equal to bonus healing
+			Dark energy will home onto nearby enemies, dealing damage
+			Only one sword can be thrown at a time
+			''' */
+	}
 }
 
 ItemTooltip: {
@@ -865,6 +878,9 @@ Projectiles: {
 	// EclipsePulseLight.DisplayName: Eclipse Pulse Light
 	// BardPulseRiffleBoom.DisplayName: Bard Pulse Riffle Boom
 	// BrimstonePetalPro.DisplayName: Brimstone Petal Pro
+	// SwordofaThousandTruthsSlashPro.DisplayName: Swordofa Thousand Truths Slash Pro
+	// SwordofaThousandTruthsHoldPro.DisplayName: Swordofa Thousand Truths Hold Pro
+	// SwordofaThousandTruthsPro.DisplayName: Swordofa Thousand Truths Pro
 }
 
 Buffs: {

@@ -9,6 +9,7 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using InfernalEclipseWeaponsDLC.Content.Buffs;
+using ThoriumMod;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSword
 {
@@ -21,7 +22,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
             Projectile.width = 60;
             Projectile.height = 30;
             Projectile.friendly = true;
-            Projectile.DamageType = DamageClass.Melee;
+            Projectile.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
             Projectile.penetrate = 1;
             Projectile.timeLeft = 30;
             Projectile.tileCollide = false;

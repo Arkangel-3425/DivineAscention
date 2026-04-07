@@ -48,8 +48,8 @@ Items: {
 	}
 
 	BrimstoneHarp: {
-		Tooltip: ""
 		DisplayName: Серная арфа
+		Tooltip: ""
 	}
 
 	NecroticChorus: {
@@ -515,9 +515,9 @@ Items: {
 		// DisplayName: Tetherblade
 		/* Tooltip:
 			'''
-			Throw the blade towards the cursor by Right Clicking
+			Throw the blade towards the cursor by <right>ing
 			The blade will linger for a few seconds after throwing it
-			Right Click again to teleport to the blade before the blade disapears
+			<right> again to teleport to the blade before the blade disapears
 			After teleporting the blade will stab at all nearby enemies, dealing triple damage
 			''' */
 	}
@@ -585,14 +585,14 @@ Items: {
 		// DisplayName: Grand Amplifier
 		/* Tooltip:
 			'''
-			Left Click to fire a small thunderbolt that inflicts electrified
-			Right Click to summon lightning above all nearby enemies with the electrified debuff
+			<left> to fire a small thunderbolt that inflicts electrified
+			<right> to summon lightning above all nearby enemies with the electrified debuff
 			This lightning will remove the electrified debuff but deal a burst of high damage
 			''' */
 	}
 
 	PocketConcert: {
-		// DisplayName: Mechamatone
+		// DisplayName: I-PMA Mechamatone
 		/* Tooltip:
 			'''
 			Releases music notes of varying colors
@@ -606,20 +606,20 @@ Items: {
 	}
 
 	GammaKnife: {
-		// DisplayName: Gamma Knife
+		// DisplayName: C-GSS Gamma Knife
 		/* Tooltip:
 			'''
 			Ignores 15 points of defence
-			Left Click to swing the knife directionally, firing a high intensity slash of gamma radiation
+			<left> to swing the knife directionally, firing a high intensity slash of gamma radiation
 			The slash will deal heavy damage at close range but dissipate as it travels
-			Right Click to throw the knife, which will explode and return on collision with an enemy or tile
+			<right> to throw the knife, which will explode and return on collision with an enemy or tile
 			The knife cannot be used while thrown
 			''' */
 	}
 
 	MiniaturizedRequiemEngine: {
 		// DisplayName: Miniaturized Requiem Engine
-		// Tooltip: Has three modes of fire that can be cycled between on Right Click
+		// Tooltip: Has three modes of fire that can be cycled between on <right>
 	}
 
 	MagicPurpleBouncyBalls: {
@@ -638,7 +638,7 @@ Items: {
 			'''
 			Shoots a powerful, high velocity bullet
 			Also fires a lightning bolt imbued with void energy
-			Right Click to zoom out
+			<right> to zoom out
 			''' */
 	}
 
@@ -648,7 +648,7 @@ Items: {
 			'''
 			Shoots a powerful, high velocity bullet
 			Also fires a lightning bolt imbued with void energy
-			Right Click to zoom out
+			<right> to zoom out
 			''' */
 	}
 
@@ -663,6 +663,19 @@ Items: {
 			Zoom effect can disabled with accessory visability
 			Pressing the '{$Keybinds.AccessoryAbility.DisplayName}' key will freeze the camera in place
 			'I see a unbreakable fortress in your future'
+			''' */
+	}
+
+	SwordofaThousandTruths: {
+		// DisplayName: Sword of a Thousand Truths
+		/* Tooltip:
+			'''
+			<left> to swing the sword, restoring 8 life on hit
+			<right> to throw the sword, embedding itself into the hit enemy
+			When the sword is embedded it will release light and dark energy
+			Light energy will home onto nearby allies and heal life equal to bonus healing
+			Dark energy will home onto nearby enemies, dealing damage
+			Only one sword can be thrown at a time
 			''' */
 	}
 }
@@ -862,6 +875,9 @@ Projectiles: {
 	// EclipsePulseLight.DisplayName: Eclipse Pulse Light
 	// BardPulseRiffleBoom.DisplayName: Bard Pulse Riffle Boom
 	// BrimstonePetalPro.DisplayName: Brimstone Petal Pro
+	// SwordofaThousandTruthsSlashPro.DisplayName: Swordofa Thousand Truths Slash Pro
+	// SwordofaThousandTruthsHoldPro.DisplayName: Swordofa Thousand Truths Hold Pro
+	// SwordofaThousandTruthsPro.DisplayName: Swordofa Thousand Truths Pro
 }
 
 Buffs: {
