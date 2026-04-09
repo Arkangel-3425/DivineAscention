@@ -673,12 +673,14 @@ Items: {
 		// DisplayName: Sword of a Thousand Truths
 		/* Tooltip:
 			'''
-			<left> to swing the sword, restoring 8 life on hit
-			<right> to throw the sword, embedding itself into the hit enemy
+			<left> to swing the sword, restoring 7 life on hit
+			Hold <right> to charge and throw the sword, embedding itself into the hit enemy
 			When the sword is embedded it will release light and dark energy
 			Light energy will home onto nearby allies and heal life equal to bonus healing
 			Dark energy will home onto nearby enemies, dealing damage
-			Only one sword can be thrown at a time
+			If the user's bonus healing is 5 or more, the enemy will also be inflicted with a variety of debillitating debuffs
+			While a sword is out it cannot be used
+			'Sorry piggies but that's a necessary sacrifice'
 			''' */
 	}
 }

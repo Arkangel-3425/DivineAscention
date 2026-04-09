@@ -95,7 +95,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee
                     player.Center,
                     Vector2.Zero,
                     ModContent.ProjectileType<SwordofaThousandTruthsHoldPro>(),
-                    damage,
+                    damage / 4,
                     knockback,
                     player.whoAmI
                 );
@@ -134,11 +134,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee
             return 1f;
         }
 
-        public override void OnHitNPC(Player player, NPC target, NPC.HitInfo hit, int damageDone)
-        {
-            target.AddBuff(ModContent.BuffType<HolyFlames>(), 300);
-        }
-
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             if (Main.keyState.IsKeyDown(Keys.LeftShift))
@@ -163,6 +158,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee
                 .AddIngredient<AscendantSpiritEssence>(3)
                 .AddTile(ModContent.TileType<CosmicAnvil>())
                 .Register();
+        }
+
+        public override bool MeleePrefix()
+        {
+            return true;
         }
     }
 }

@@ -148,5 +148,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee
                 .AddTile(TileID.LunarCraftingStation)
                 .Register();
         }
+
+        public override bool MeleePrefix()
+        {
+            return true;
+        }
     }
 }

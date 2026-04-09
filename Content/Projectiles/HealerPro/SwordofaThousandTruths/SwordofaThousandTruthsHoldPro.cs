@@ -8,6 +8,7 @@ using Terraria.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using InfernalEclipseWeaponsDLC.Content.Buffs;
 using ReLogic.Content;
+using CalamityMod.Buffs.StatDebuffs;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSword
 {
@@ -20,6 +21,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
 
         public ref float State => ref Projectile.ai[0];
         public ref float Timer => ref Projectile.ai[1];
+        public ref float StuckTimer => ref Projectile.ai[2];
 
         public override string Texture => "InfernalEclipseWeaponsDLC/Content/Items/Weapons/Healer/Melee/SwordofaThousandTruths";
 
@@ -29,7 +31,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
             Projectile.height = 36;
             Projectile.friendly = false;
             Projectile.tileCollide = false;
-            Projectile.timeLeft = 9999;
+            Projectile.timeLeft = 180;
             Projectile.penetrate = -1;
             Projectile.usesIDStaticNPCImmunity = true;
             Projectile.idStaticNPCHitCooldown = 10;
@@ -40,6 +42,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
         public override void AI()
         {
             Player player = Main.player[Projectile.owner];
+            Projectile.scale = player.GetAdjustedItemScale(player.HeldItem);
 
             if (!stuck)
             {
@@ -76,10 +79,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
                     Projectile.tileCollide = false;
 
                     // --- Alternate projectile spawn logic ---
-                    Projectile.ai[0]++; // timer
-                    if (Projectile.ai[0] >= 10) // half second
+                    Projectile.ai[2]++; // timer
+                    if (Projectile.ai[2] >= 10) // half second
                     {
-                        Projectile.ai[0] = 0;
+                        Projectile.ai[2] = 0;
 
                         if (Projectile.owner == Main.myPlayer)
                         {
@@ -138,7 +141,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
                 
             Lighting.AddLight(Projectile.Center, 0f, 0f, 0.8f);
 
-            Projectile.velocity *= 1.5f;
+            //Projectile.velocity *= 0.95f;
         }
 
         void HandleAim(Player player)
@@ -178,9 +181,49 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
         {
             Timer++;
 
+            Projectile.timeLeft = 180;
+
+            if (Timer == 20f)
+            {
+                SoundEngine.PlaySound(SoundID.Item15, Projectile.position);
+
+                for (int i = 0; i < 10; i++)
+                {
+                    Vector2 offset = Main.rand.NextVector2CircularEdge(Projectile.width / 2f, Projectile.height / 2f);
+                    Vector2 spawnPos = Projectile.Center;
+                    Vector2 vel = offset.SafeNormalize(Vector2.UnitY) * 6f;
+
+                    Dust dust = Dust.NewDustPerfect(spawnPos, DustID.BlueTorch, vel, 150, Color.White, 1.5f);
+                    dust.noGravity = true;
+                }
+            }
+            if (Timer == 40f)
+            {
+                SoundEngine.PlaySound(SoundID.Item15, Projectile.position);
+
+                for (int i = 0; i < 20; i++)
+                {
+                    Vector2 offset = Main.rand.NextVector2CircularEdge(Projectile.width / 2f, Projectile.height / 2f);
+                    Vector2 spawnPos = Projectile.Center;
+                    Vector2 vel = offset.SafeNormalize(Vector2.UnitY) * 6f;
+
+                    Dust dust = Dust.NewDustPerfect(spawnPos, DustID.BlueTorch, vel, 150, Color.White, 1.5f);
+                    dust.noGravity = true;
+                }
+            }
             if (Timer == 60f)
             {
                 SoundEngine.PlaySound(SoundID.Item15, Projectile.position);
+
+                for (int i = 0; i < 30; i++)
+                {
+                    Vector2 offset = Main.rand.NextVector2CircularEdge(Projectile.width / 2f, Projectile.height / 2f);
+                    Vector2 spawnPos = Projectile.Center;
+                    Vector2 vel = offset.SafeNormalize(Vector2.UnitY) * 6f;
+
+                    Dust dust = Dust.NewDustPerfect(spawnPos, DustID.BlueTorch, vel, 150, Color.White, 1.5f);
+                    dust.noGravity = true;
+                }
             }
         }
 
@@ -190,8 +233,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
 
             float chargeMult = MathHelper.Clamp(Timer / 60f, 0.5f, 2f);
 
-            Projectile.velocity = dir * (20f * chargeMult);
-            Projectile.damage = (int)(Projectile.damage * chargeMult);
+            Projectile.velocity = dir * (50f * chargeMult);
             Projectile.friendly = true;
             Projectile.tileCollide = true;
 
@@ -218,9 +260,21 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
                 stuckTarget = target.whoAmI;
                 Projectile.velocity = Vector2.Zero;
                 Projectile.netUpdate = true;
-                target.AddBuff(ModContent.BuffType<SwordStuckBuff>(), 360);
-                Projectile.timeLeft = 360;
-                target.AddBuff(ModContent.BuffType<Voidfrost>(), 360);
+                target.AddBuff(ModContent.BuffType<SwordStuckBuff>(), 720);
+                Projectile.timeLeft = 720;
+                target.AddBuff(ModContent.BuffType<Voidfrost>(), 720);
+
+                Player owner = Main.player[Projectile.owner];
+                Player healer = owner;
+
+                if (healer.GetModPlayer<ThoriumPlayer>().healBonus >= 5)
+                {
+                    target.AddBuff(ModContent.BuffType<ArmorCrunch>(), 720);
+                    target.AddBuff(ModContent.BuffType<WhisperingDeath>(), 720);
+                    target.AddBuff(ModContent.BuffType<MarkedforDeath>(), 720);
+                    target.AddBuff(BuffID.BetsysCurse, 720);
+                    target.AddBuff(BuffID.Ichor, 720);
+                }
 
                 SoundEngine.PlaySound(SoundID.Item71, Projectile.position);
 

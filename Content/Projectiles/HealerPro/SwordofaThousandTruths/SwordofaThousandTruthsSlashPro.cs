@@ -77,7 +77,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
             Projectile.Center = player.RotatedRelativePoint(player.MountedCenter, false, true);
 
             // Dynamic scale
-            Projectile.scale = 1.25f + progress * 0.3f;
+            Projectile.scale = (player.GetAdjustedItemScale(player.HeldItem)) + progress * 0.3f;
 
             // Dust along swing (BigBertha style)
             if (Main.rand.NextFloat() < Projectile.Opacity * 0.5f)
@@ -161,7 +161,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
 
             if (!hasHealedThisSwing)
             {
-                int healAmount = 8;
+                int healAmount = 7;
                 player.statLife += healAmount;
                 if (player.statLife > player.statLifeMax2)
                     player.statLife = player.statLifeMax2;
@@ -261,7 +261,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
             Texture2D tipTexture = TextureAssets.Extra[98].Value;
 
             float progress = 1f - (player.itemAnimation / (float)player.itemAnimationMax);
-            float scale = Projectile.scale;
+            float scale = (player.GetAdjustedItemScale(player.HeldItem)) + progress * 0.3f;
 
             Vector2 drawPos = Projectile.Center - Main.screenPosition;
 
