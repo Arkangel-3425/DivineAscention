@@ -8,6 +8,7 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.Graphics.CameraModifiers;
 using Terraria.ID;
+using Terraria.ModLoader.IO;
 using Terraria.ModLoader;
 using ReLogic.Content;
 using CalamityMod;
@@ -323,7 +324,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.GrandAmplifier
             if (!spawnedByAmplifier)
                 return;
 
-            target.GetGlobalNPC<AmplifierNoElectrifiedGlobalNPC>().electrifiedBlockTimer = 6;
+            var gNPC = target.GetGlobalNPC<AmplifierNoElectrifiedGlobalNPC>();
+            gNPC.electrifiedBlockTimer = 6;
+
+            target.netUpdate = true;
         }
 
         public class AmplifierNoElectrifiedGlobalNPC : GlobalNPC
@@ -331,6 +335,17 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.GrandAmplifier
             public override bool InstancePerEntity => true;
 
             public int electrifiedBlockTimer;
+
+            // === SYNC THE TIMER ===
+            public override void SendExtraAI(NPC npc, BitWriter bitWriter, BinaryWriter binaryWriter)
+            {
+                binaryWriter.Write(electrifiedBlockTimer);
+            }
+
+            public override void ReceiveExtraAI(NPC npc, BitReader bitReader, BinaryReader binaryReader)
+            {
+                electrifiedBlockTimer = binaryReader.ReadInt32();
+            }
 
             public override void ResetEffects(NPC npc)
             {
@@ -343,12 +358,34 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro.GrandAmplifier
                 if (electrifiedBlockTimer <= 0)
                     return;
 
+                // ONLY RUN ON SERVER
+                if (Main.netMode == NetmodeID.MultiplayerClient)
+                    return;
+
+                bool changed = false;
+
+                // Remove vanilla Electrified
                 int index = npc.FindBuffIndex(BuffID.Electrified);
                 if (index != -1)
+                {
                     npc.DelBuff(index);
+                    changed = true;
+                }
 
+                // Remove Calamity Electrified
                 if (ModLoader.TryGetMod("CalamityMod", out _))
-                    npc.Calamity().electrified = false;
+                {
+                    var calNPC = npc.Calamity();
+                    if (calNPC.electrified)
+                    {
+                        calNPC.electrified = false;
+                        changed = true;
+                    }
+                }
+
+                // FORCE SYNC IF ANYTHING CHANGED
+                if (changed)
+                    npc.netUpdate = true;
             }
         }
     }

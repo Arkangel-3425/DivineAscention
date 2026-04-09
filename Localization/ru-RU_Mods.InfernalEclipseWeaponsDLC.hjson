@@ -300,8 +300,8 @@ Items: {
 	}
 
 	ArckaneStaff: {
-		Tooltip: Создаёт перегруженный заряд нестабильных элементов
 		DisplayName: Чародейский посох
+		Tooltip: Создаёт перегруженный заряд нестабильных элементов
 	}
 
 	MystickStaff: {
@@ -585,9 +585,9 @@ Items: {
 		// DisplayName: Grand Amplifier
 		/* Tooltip:
 			'''
-			<left> to fire a small thunderbolt that inflicts electrified
-			<right> to summon lightning above all nearby enemies with the electrified debuff
-			This lightning will remove the electrified debuff but deal a burst of high damage
+			<left> to fire a small thunderbolt that inflicts [rbuff:Electrified]
+			<right> to summon lightning above all nearby enemies with the [rbuff:Electrified] debuff
+			This lightning will remove the [rbuff:Electrified] debuff but deal a burst of high damage
 			''' */
 	}
 
@@ -676,7 +676,7 @@ Items: {
 			Light energy will home onto nearby allies and heal life equal to bonus healing
 			Dark energy will home onto nearby enemies, dealing damage
 			If the user's bonus healing is 5 or more, the enemy will also be inflicted with a variety of debillitating debuffs
-			While a sword is out it cannot be used
+			Only one sword can be thrown at a time
 			'Sorry piggies but that's a necessary sacrifice'
 			''' */
 	}

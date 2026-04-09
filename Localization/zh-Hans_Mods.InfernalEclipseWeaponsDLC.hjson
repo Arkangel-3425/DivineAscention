@@ -303,8 +303,8 @@ Items: {
 	}
 
 	ArckaneStaff: {
-		Tooltip: 释放一枚过载的元素能量弹
 		DisplayName: 奥谬法杖
+		Tooltip: 释放一枚过载的元素能量弹
 	}
 
 	MystickStaff: {
@@ -679,7 +679,7 @@ Items: {
 			Light energy will home onto nearby allies and heal life equal to bonus healing
 			Dark energy will home onto nearby enemies, dealing damage
 			If the user's bonus healing is 5 or more, the enemy will also be inflicted with a variety of debillitating debuffs
-			While a sword is out it cannot be used
+			Only one sword can be thrown at a time
 			'Sorry piggies but that's a necessary sacrifice'
 			''' */
 	}

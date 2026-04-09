@@ -54,7 +54,7 @@ Items: {
 		DisplayName: Death's Whisper
 		Tooltip:
 			'''
-			Releases faith devouring flames that mark for death
+			Releases faith devouring flames that inflict [cbuff:CalamityMod/MarkedforDeath] and [cbuff:CalamityMod/GodSlayerInferno]
 			For every 5 flames that damage an enemy, release an inferno of homing flames
 			'''
 	}
@@ -73,7 +73,8 @@ Items: {
 		Tooltip:
 			'''
 			Summons up to 10 wisps that home onto foes
-			<right> for an alternate blood spit attack
+			<right> for an alternate blood spit attack 
+			Blood spit inflicts [cbuff:CalamityMod/ArmorCrunch] and [cbuff:CalamityMod/BurningBlood]
 			'''
 	}
 
@@ -114,7 +115,7 @@ Items: {
 		Tooltip:
 			'''
 			3 summon tag damage
-			Electrifies foes on hit
+			Inflicts [rbuff:Electrified] on hit
 			'''
 		DisplayName: Grand Thunder Whip
 	}
@@ -203,7 +204,7 @@ Items: {
 			'''
 			Fires a spread of bullets and a bolt of lightly homing blood
 			<right> to consume 50 life, entering a Blood Rage for 10 seconds
-			Blood Rage increases the Bloodmaker's damage by 50% and causes blood bolts to inflict burning blood on hit
+			Blood Rage increases the Bloodmaker's damage by 50% and causes blood bolts to inflict [cbuff:CalamityMod/BurningBlood] on hit
 			'''
 	}
 
@@ -231,7 +232,7 @@ Items: {
 	}
 
 	AcidBelcher: {
-		DisplayName: Acid Belcher
+		DisplayName: Sulphur Spitter
 		Tooltip: ""
 	}
 
@@ -245,7 +246,7 @@ Items: {
 		Tooltip:
 			'''
 			Releases souls of night and light from the jar
-			Souls of night home into enemies and deal damage, inflicting shadowflame
+			Souls of night home into enemies and deal damage, inflicting [rbuff:ShadowFlame]
 			Souls of light home in and heal teammates equal to bonus healing
 			'''
 	}
@@ -317,8 +318,17 @@ Items: {
 	}
 
 	ArckaneStaff: {
-		Tooltip: Creates an overloaded bolt of fluctuating elements
 		DisplayName: Arckane Staff
+		Tooltip:
+			'''
+			Creates an overloaded bolt of fluctuating elements
+			Steals 5 life and Inflicts the following debuffs:
+			[iabuff:Ichor], [iabuff:Confused], [iabuff:OnFire], [iabuff:Frostburn],
+			[iabuff:Poisoned], [iabuff:ShadowFlame], [iabuff:CursedInferno],
+			[iabuff:CalamityMod/Crumbling], [iabuff:CalamityMod/CrushDepth], [iabuff:CalamityMod/AstralInfectionDebuff],
+			[iabuff:CalamityMod/Plague], [iabuff:CalamityMod/BrimstoneFlames], [iabuff:ThoriumMod/MagickStaffDebuff],
+			[iabuff:ThoriumMod/Stunned] and [iabuff:ThoriumMod/Charmed]
+			'''
 	}
 
 	MystickStaff: {
@@ -326,6 +336,15 @@ Items: {
 		Tooltip:
 			'''
 			Creates an supercharged bolt of every known element
+			Steals 10 life and Inflicts the following debuffs:
+			[iabuff:CalamityMod/Voidfrost], [iabuff:CalamityMod/Dragonfire], [iabuff:CalamityMod/GodSlayerInferno],
+			[iabuff:CalamityMod/HolyFlames], [iabuff:CalamityMod/ElementalMix], [iabuff:CalamityMod/Laceration],
+			[iabuff:CalamityMod/MarkedforDeath], [iabuff:CalamityMod/WhisperingDeath], [iabuff:CalamityMod/VulnerabilityHex],
+			[iabuff:CalamityMod/MiracleBlight], [iabuff:Confused], [iabuff:OnFire], [iabuff:Frostburn],
+			[iabuff:Poisoned], [iabuff:ShadowFlame], [iabuff:CursedInferno],
+			[iabuff:CalamityMod/Crumbling], [iabuff:CalamityMod/CrushDepth], [iabuff:CalamityMod/AstralInfectionDebuff],
+			[iabuff:CalamityMod/Plague], [iabuff:CalamityMod/BrimstoneFlames], [iabuff:ThoriumMod/MagickStaffDebuff],
+			[iabuff:Ichor], [iabuff:ThoriumMod/Stunned] and [iabuff:ThoriumMod/Charmed]
 			'How much more do you need!?'
 			'''
 	}
@@ -334,7 +353,7 @@ Items: {
 		DisplayName: Gloom Switch
 		Tooltip:
 			'''
-			A rapid fire SMG with a wide shot spread that fires a bouncing cursed flame every 20 shots
+			A rapid fire SMG with a wide shot spread that fires a bouncing ball that inflicts [rbuff:CursedInferno] every 20 shots
 			Firing with more than 10 mana will consume it, granting an additional 1/3rd second of Dark Rush and firing a more precise shot
 			Dark Rush increases movement speed by 25% while Gloom Switch is held
 			This weapons damage is also reduced by Mana Sickness
@@ -603,9 +622,9 @@ Items: {
 		DisplayName: Grand Amplifier
 		Tooltip:
 			'''
-			<left> to fire a small thunderbolt that inflicts electrified
-			<right> to summon lightning above all nearby enemies with the electrified debuff
-			This lightning will remove the electrified debuff but deal a burst of high damage
+			<left> to fire a small thunderbolt that inflicts [rbuff:Electrified]
+			<right> to summon lightning above all nearby enemies with the [rbuff:Electrified] debuff
+			This lightning will remove the [rbuff:Electrified] debuff but deal a burst of high damage
 			'''
 	}
 

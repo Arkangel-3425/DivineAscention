@@ -41,28 +41,17 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            //Magick Staff Debuffs
-            target.AddBuff(BuffID.Ichor, 120, false);
-            target.AddBuff(BuffID.Confused, 90, false);
-            target.AddBuff(BuffID.OnFire, 300, false);
-            target.AddBuff(BuffID.Frostburn, 300, false);
-            target.AddBuff(BuffID.Poisoned, 300, false);
-            
-            if (ModLoader.TryGetMod("ThoriumMod", out Mod thor))
-            {
-                if (!target.boss) target.AddBuff(thor.Find<ModBuff>("Stunned").Type, 30, false);
-                target.AddBuff(thor.Find<ModBuff>("Charmed").Type, 180, false);
-                target.AddBuff(thor.Find<ModBuff>("MagickStaffDebuff").Type, 300, false);
-            }
-
-            if (target.IsHostile())
-            {
-                Player player = Main.player[Projectile.owner];
-                player.statLife += 10;
-                if (player.statLife > player.statLifeMax2)
-                    player.statLife = player.statLifeMax2;
-                player.HealEffect(10, true);
-            }
+            //Mystick Staff Debuffs
+            target.AddBuff(ModContent.BuffType<Voidfrost>(), 300, false);
+            target.AddBuff(ModContent.BuffType<Dragonfire>(), 300, false);
+            target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 300, false);
+            target.AddBuff(ModContent.BuffType<HolyFlames>(), 300, false);
+            target.AddBuff(ModContent.BuffType<ElementalMix>(), 300, false);
+            target.AddBuff(ModContent.BuffType<Laceration>(), 180, false);
+            target.AddBuff(ModContent.BuffType<MarkedforDeath>(), 120, false);
+            target.AddBuff(ModContent.BuffType<WhisperingDeath>(), 120, false);
+            target.AddBuff(ModContent.BuffType<VulnerabilityHex>(), 120, false);
+            target.AddBuff(ModContent.BuffType<MiracleBlight>(), 120, false);
 
             //Arckane Staff Debuffs
             target.AddBuff(BuffID.CursedInferno, 300, false);
@@ -74,16 +63,28 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.MagicPro
             target.AddBuff(BuffID.ShadowFlame, 300, false);
             target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 300, false);
 
-            //Mystick Staff Debuffs
-            target.AddBuff(ModContent.BuffType<Nightwither>(), 300, false);
-            target.AddBuff(ModContent.BuffType<Dragonfire>(), 300, false);
-            target.AddBuff(ModContent.BuffType<GodSlayerInferno>(), 300, false);
-            target.AddBuff(ModContent.BuffType<HolyFlames>(), 300, false);
-            target.AddBuff(ModContent.BuffType<ElementalMix>(), 300, false);
-            target.AddBuff(ModContent.BuffType<Laceration>(), 180, false);
-            target.AddBuff(ModContent.BuffType<MarkedforDeath>(), 120, false);
-            target.AddBuff(ModContent.BuffType<WhisperingDeath>(), 120, false);
-            target.AddBuff(ModContent.BuffType<VulnerabilityHex>(), 120, false);
+            //Magick Staff Debuffs
+            if (ModLoader.TryGetMod("ThoriumMod", out Mod thor))
+            {
+                if (!target.boss) target.AddBuff(thor.Find<ModBuff>("Stunned").Type, 30, false);
+                target.AddBuff(thor.Find<ModBuff>("MagickStaffDebuff").Type, 300, false);
+                target.AddBuff(thor.Find<ModBuff>("Charmed").Type, 180, false);
+            }
+
+            target.AddBuff(BuffID.Ichor, 120, false);
+            target.AddBuff(BuffID.Confused, 90, false);
+            target.AddBuff(BuffID.OnFire, 300, false);
+            target.AddBuff(BuffID.Frostburn, 300, false);
+            target.AddBuff(BuffID.Poisoned, 300, false);
+
+            if (target.IsHostile())
+            {
+                Player player = Main.player[Projectile.owner];
+                player.statLife += 10;
+                if (player.statLife > player.statLifeMax2)
+                    player.statLife = player.statLifeMax2;
+                player.HealEffect(10, true);
+            }
         }
 
         public override void AI()
