@@ -717,6 +717,17 @@ Items: {
 			'Sorry piggies but that's a necessary sacrifice'
 			'''
 	}
+
+	AbsoluteTVRemote: {
+		DisplayName: Absolute TV Remote
+		Tooltip:
+			'''
+			<left> to generate an aura around you that slows down projectiles in radius on a 2 minute cooldown
+			<right> to generate an aura that instead speeds up projectiles in radius, also on a 2 minute cooldown
+			Pressing {0} will fire a projectile that pauses enemies in their tracks, usable on a 5 minute cooldown
+			'TV NEVER DIES!'
+			'''
+	}
 }
 
 ItemTooltip: {
@@ -917,6 +928,7 @@ Projectiles: {
 	SwordofaThousandTruthsSlashPro.DisplayName: Swordofa Thousand Truths Slash Pro
 	SwordofaThousandTruthsHoldPro.DisplayName: Swordofa Thousand Truths Hold Pro
 	SwordofaThousandTruthsPro.DisplayName: Swordofa Thousand Truths Pro
+	AbsoluteTVRemotePausePro.DisplayName: Absolute T V Remote Pause Pro
 }
 
 Buffs: {
@@ -933,6 +945,11 @@ Buffs: {
 	BloodRageBuff: {
 		DisplayName: Blood Rage
 		Description: Increases bloodmaker damage by 25% and couses blood bolts to inflict burning blood on hit
+	}
+
+	TVRemotePaused: {
+		DisplayName: T V Remote Paused
+		Description: Mods.InfernalEclipseWeaponsDLC.Buffs.TVRemotePaused.Description
 	}
 }
 
@@ -966,3 +983,5 @@ Configs: {
 		}
 	}
 }
+
+"Keybinds.Absolute TV Remote Pause.DisplayName": Absolute TV Remote Pause
