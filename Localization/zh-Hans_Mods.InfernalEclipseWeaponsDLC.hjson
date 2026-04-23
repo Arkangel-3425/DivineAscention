@@ -915,7 +915,12 @@ Buffs: {
 
 	TVRemotePaused: {
 		// DisplayName: T V Remote Paused
-		// Description: Mods.InfernalEclipseWeaponsDLC.Buffs.TVRemotePaused.Description
+		// Description: Frozen in time
+	}
+
+	TVRemotePlayerPaused: {
+		// DisplayName: Paused
+		// Description: Frozen in time
 	}
 }
 

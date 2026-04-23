@@ -7,17 +7,29 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.ModLoader;
+using Terraria.ID;
+using Terraria.DataStructures;
 
 namespace InfernalEclipseWeaponsDLC.Content.Buffs
 {
     public class TVRemotePaused : ModBuff
     {
-        public override string Texture => "InfernalEclipseWeaponsDLC/Assets/Textures/Empty";
+        public override string Texture => "InfernalEclipseWeaponsDLC/Content/Projectiles/OtherPro/AbsoluteTVRemotePauseIcon";
         public override void SetStaticDefaults()
         {
             Main.debuff[Type] = true;
-            Main.buffNoSave[Type] = true;
+            Main.buffNoSave[Type] = false;
             Main.buffNoTimeDisplay[Type] = false;
+
+            for (int i = 0; i < NPCID.Count; i++)
+            {
+                NPCID.Sets.ImmuneToAllBuffs[i] = false;
+            }
+        }
+
+        public override void Update(NPC npc, ref int buffIndex)
+        {
+            npc.GetGlobalNPC<PausedGlobalNPC>().TimeFrozen = true;
         }
     }
 
@@ -25,34 +37,134 @@ namespace InfernalEclipseWeaponsDLC.Content.Buffs
     {
         public override bool InstancePerEntity => true;
 
-        private Vector2 storedVelocity;
+        public bool TimeFrozen;
 
-        public override void AI(NPC npc)
+        private float storedRotation;
+private bool rotationStored;
+
+        public override void ResetEffects(NPC npc)
         {
-            if (npc.HasBuff(ModContent.BuffType<TVRemotePaused>()))
+            TimeFrozen = false;
+        }
+
+        public override void UpdateLifeRegen(NPC npc, ref int damage)
+        {
+            if (TimeFrozen && npc.life <= 1)
             {
-                // Store velocity once
-                if (storedVelocity == Vector2.Zero)
-                    storedVelocity = npc.velocity;
+                npc.lifeRegen = 0;
+            }
+        }
 
-                // Freeze movement
+        public override bool CanHitPlayer(NPC npc, Player target, ref int cooldownSlot)
+        {
+            if (TimeFrozen && npc.life <= 1) return false;
+            return true;
+        }
+
+        public override bool? CanBeHitByItem(NPC npc, Player player, Item item)
+        {
+            if (TimeFrozen && npc.life <= 1) return false;
+            return null;
+        }
+
+        public override bool? CanBeHitByProjectile(NPC npc, Projectile projectile)
+        {
+            if (TimeFrozen && npc.life <= 1) return false;
+            return null;
+        }
+
+        public override bool CheckDead(NPC npc)
+        {
+            if (TimeFrozen && npc.life <= 1)
+            {
+                npc.life = 1;
+                return false;
+            }
+            return true;
+        }
+
+        public override bool PreAI(NPC npc)
+        {
+            bool retval = base.PreAI(npc);
+
+            if (TimeFrozen)
+            {
+                if (!rotationStored)
+                {
+                    storedRotation = npc.rotation;
+                    rotationStored = true;
+                }
+
+                npc.position = npc.oldPosition;
                 npc.velocity = Vector2.Zero;
+                npc.frameCounter = 0;
 
-                // Stop AI
-                npc.ai[0] = 0f;
-                npc.ai[1] = 0f;
-                npc.ai[2] = 0f;
-                npc.ai[3] = 0f;
-                npc.knockBackResist = 0f;
-
-                // Optional: stop rotation/animation
-                npc.rotation = 0f;
-
-                return;
+                retval = false;
             }
             else
             {
-                storedVelocity = Vector2.Zero;
+                rotationStored = false;
+            }
+
+            return retval;
+        }
+
+        public override void PostAI(NPC npc)
+        {
+            if (TimeFrozen)
+            {
+                npc.position = npc.oldPosition;
+                npc.velocity = Vector2.Zero;
+
+                npc.frameCounter = 0;
+                npc.rotation = storedRotation;
+            }
+        }
+    }
+
+    public class TVRemotePlayerPaused : ModBuff
+    {
+        public override string Texture => "InfernalEclipseWeaponsDLC/Content/Projectiles/OtherPro/AbsoluteTVRemotePauseIcon";
+
+        public override void SetStaticDefaults()
+        {
+            Main.debuff[Type] = true;
+            Main.buffNoSave[Type] = false;
+            Main.buffNoTimeDisplay[Type] = false;
+        }
+
+        public override void Update(Player player, ref int buffIndex)
+        {
+            player.GetModPlayer<PausedPlayer>().TimeFrozen = true;
+        }
+    }
+
+    public class PausedPlayer : ModPlayer
+    {
+        public bool TimeFrozen;
+
+        public override void ResetEffects()
+        {
+            TimeFrozen = false;
+        }
+
+        public override void PreUpdateMovement()
+        {
+            if (TimeFrozen)
+            {
+                Player.velocity = Vector2.Zero;
+                Player.position = Player.oldPosition;
+            }
+        }
+
+        public override void ProcessTriggers(Terraria.GameInput.TriggersSet triggersSet)
+        {
+            if (TimeFrozen)
+            {
+                Player.controlLeft = false;
+                Player.controlRight = false;
+                Player.controlJump = false;
+                Player.controlUseItem = false;
             }
         }
     }

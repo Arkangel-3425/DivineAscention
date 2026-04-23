@@ -23,20 +23,34 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.OtherPro
 
         public override void AI()
         {
-            if (Main.myPlayer != Projectile.owner)
-                return;
-
             foreach (NPC npc in Main.npc)
             {
-                if (!npc.CanBeChasedBy())
+                if (!npc.active || npc.friendly)
                     continue;
 
                 if (Projectile.Hitbox.Intersects(npc.Hitbox))
                 {
                     npc.AddBuff(ModContent.BuffType<TVRemotePaused>(), 600);
 
+                    Projectile.netUpdate = true;
                     Projectile.Kill();
-                    break;
+                }
+            }
+
+            foreach (Player player in Main.player)
+            {
+                if (!player.active || player.dead)
+                    continue;
+
+                if (Projectile.Hitbox.Intersects(player.Hitbox))
+                {
+                    if (player.whoAmI == Projectile.owner)
+                        continue;
+
+                    player.AddBuff(ModContent.BuffType<TVRemotePlayerPaused>(), 600);
+
+                    Projectile.netUpdate = true;
+                    Projectile.Kill();
                 }
             }
         }
