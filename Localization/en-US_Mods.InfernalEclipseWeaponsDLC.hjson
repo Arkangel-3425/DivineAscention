@@ -793,6 +793,12 @@ ItemTooltip: {
 		cat: StarlightCat
 		Goldsock: Goldsockz2
 	}
+
+	Cooldowns: {
+		Pause: TV Remote pause is on cooldown
+		FastForward: TV Remote fast forward is on cooldown
+		Slowdown: TV Remote slowdown is on cooldown
+	}
 }
 
 Projectiles: {
