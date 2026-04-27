@@ -1,25 +1,17 @@
-﻿using CalamityMod.Buffs.Potions;
-using CalamityMod.Buffs.DamageOverTime;
+﻿using CalamityMod.Buffs.DamageOverTime;
 using CalamityMod.Buffs.StatDebuffs;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Graphics.PackedVector;
 using System;
 using Terraria;
-using Terraria.Audio;
-using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
-using ThoriumMod.Items.Donate;
 using ThoriumMod.Projectiles.Bard;
-using ThoriumMod.Items;
-using ThoriumMod.Sounds;
 using CalamityMod.Graphics.Primitives;
 using Terraria.Graphics.Shaders;
 using CalamityMod.Enums;
 using CalamityMod;
-using System.Linq;
 using CalamityMod.Particles;
 using ReLogic.Content;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard;
@@ -38,15 +30,15 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
             ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
         }
 
-        public bool isAHomingFireball
+        public bool IsAHomingFireball
         {
             get
             {
-                return ((ModProjectile)this).Projectile.ai[0] == 2f;
+                return Projectile.ai[0] == 2f;
             }
             set
             {
-                ((ModProjectile)this).Projectile.ai[0] = Utils.ToInt(value);
+                Projectile.ai[0] = Utils.ToInt(value);
             }
         }
 
@@ -118,7 +110,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
                 }
             }
 
-            if (Main.player[Projectile.owner].GetModPlayer<ThoriumPlayer>().accWindHoming && !isAHomingFireball)
+            if (Main.player[Projectile.owner].GetModPlayer<ThoriumPlayer>().accWindHoming && !IsAHomingFireball)
             {
                 for (int i = 0; i < Main.maxNPCs; i++)
                 {
@@ -137,7 +129,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
                 }
             }
 
-            if (isAHomingFireball && Projectile.localAI[0] > 30f)
+            if (IsAHomingFireball && Projectile.localAI[0] > 30f)
             {
                 NPC target = null;
                 float maxDist = 1200f;
@@ -211,7 +203,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
         {
             GameShaders.Misc["CalamityMod:ImpFlameTrail"].SetShaderTexture(ModContent.Request<Texture2D>("CalamityMod/ExtraTextures/Trails/ScarletDevilStreak", (AssetRequestMode)2));
             PrimitiveRenderer.RenderTrail(((ModProjectile)this).Projectile.oldPos, new PrimitiveSettings(FireWidthFunction, FireColorFunction, (float _, Vector2 _) => ((Entity)((ModProjectile)this).Projectile).Size * 0.5f + Utils.SafeNormalize(((Entity)((ModProjectile)this).Projectile).velocity, Vector2.Zero) * 24f, smoothen: true, pixelate: true, GameShaders.Misc["CalamityMod:ImpFlameTrail"]), ((ModProjectile)this).Projectile.oldPos.Length + 12);
-            int coreLength = (isAHomingFireball ? 6 : 7);
+            int coreLength = (IsAHomingFireball ? 6 : 7);
             GameShaders.Misc["CalamityMod:ImpFlameTrail"].SetShaderTexture(ModContent.Request<Texture2D>("CalamityMod/ExtraTextures/Trails/SylvestaffStreak", (AssetRequestMode)2));
             PrimitiveRenderer.RenderTrail(((ModProjectile)this).Projectile.oldPos[..coreLength], new PrimitiveSettings(FireCoreWidthFunction, FireCoreColorFunction, (float _, Vector2 _) => ((Entity)((ModProjectile)this).Projectile).Size * 0.5f + Utils.SafeNormalize(((Entity)((ModProjectile)this).Projectile).velocity, Vector2.Zero) * 24f, smoothen: true, pixelate: true, GameShaders.Misc["CalamityMod:ImpFlameTrail"]), coreLength + 8);
         }
@@ -228,14 +220,14 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 
         public Color FireColorFunction(float completion, Vector2 vertexPos)
         {
-            Color val = (isAHomingFireball ? Color.Cyan : (Color.Purple * 1.3f));
+            Color val = (IsAHomingFireball ? (Color.Purple * 1.3f) : Color.Cyan);
             Color endColor = Color.Lerp(val, Color.Transparent, Utils.GetLerpValue(0.8f, 1f, completion, true));
             return Color.Lerp(val, endColor, completion);
         }
 
         public float FireCoreWidthFunction(float completion, Vector2 vertexPos)
         {
-            float maxBodyWidth = ((ModProjectile)this).Projectile.scale * (isAHomingFireball ? 24f : 64f);
+            float maxBodyWidth = ((ModProjectile)this).Projectile.scale * (IsAHomingFireball ? 24f : 64f);
             float curveRatio = 0.25f;
             if (completion < curveRatio)
             {
@@ -246,7 +238,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 
         public Color FireCoreColorFunction(float completion, Vector2 vertexPos)
         {
-            Color val = (isAHomingFireball ? Color.SkyBlue : Color.Fuchsia);
+            Color val = (IsAHomingFireball ? Color.Fuchsia : Color.SkyBlue);
             Color tipColor = Color.Lerp(val, Color.Transparent, Utils.GetLerpValue(0.8f, 1f, completion, true));
             return Color.Lerp(Color.Lerp(val, tipColor, completion), Color.White, 0.175f);
         }
@@ -276,7 +268,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 
                 var player = Main.player[Projectile.owner].GetModPlayer<DeathsWhisperPlayer>();
 
-                if (!isAHomingFireball)
+                if (!IsAHomingFireball)
                 {
                     player.IncrementHitCounter();
                 }

@@ -728,6 +728,22 @@ Items: {
 			'TV NEVER DIES!'
 			'''
 	}
+
+	PlanetShaper: {
+		DisplayName: Planet Shaper
+		Tooltip:
+			'''
+			This scythe is swung directionally instead of spun
+			Has a three-swing combo:
+			    Every first swing, the scythe shoots one homing fireball and 2 cosmic beams
+			    Every second swing, the scythe shoots one cosmic beam and two homing fireballs
+			    Every third swing, the scythe is spun around
+			    While spun, emits up to six homing fireballs and cosmic beams
+			The scythe and fireballs ignore 125 points of defense and inflict [iabuff:CalamityMod/Dragonfire]
+			The cosmic beams ignore 75 points of defense and inflict both [iabuff:CalamityMod/ElementalMix] and [iabuff:CatalystMod/AstralBlight]
+			'LADIES AND GENTLEMAN... LET IT ROCK LET IT ROCK LET IT ROCK!!!'
+			'''
+	}
 }
 
 ItemTooltip: {
@@ -935,6 +951,9 @@ Projectiles: {
 	SwordofaThousandTruthsHoldPro.DisplayName: Swordofa Thousand Truths Hold Pro
 	SwordofaThousandTruthsPro.DisplayName: Swordofa Thousand Truths Pro
 	AbsoluteTVRemotePausePro.DisplayName: Absolute T V Remote Pause Pro
+	PlanetShaperFireball.DisplayName: Planet Shaper Fireball
+	PlanetShaperPro.DisplayName: Planet Shaper
+	PlanetShaperStar.DisplayName: Planet Shaper Star
 }
 
 Buffs: {
