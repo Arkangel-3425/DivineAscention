@@ -41,7 +41,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
             Item.shoot = ModContent.ProjectileType<DeathsWhisperPro>();
             Item.UseSound = ThoriumSounds.Clarinet_Sound;
 
-            // TBD
             Item.useTime = 60;
             Item.useAnimation = 60;
             Item.knockBack = 1.5f;
@@ -54,10 +53,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
             InspirationCost = 2;
 
-            ((ModItem)this).Item.useStyle = 5;
             if (!ModLoader.HasMod("Look"))
             {
-                ((ModItem)this).Item.holdStyle = 3;
+                Item.holdStyle = 3;
             }
         }
 
@@ -100,6 +98,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
         public override bool BardShoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source,Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             var modPlayer = player.GetModPlayer<DeathsWhisperPlayer>();
+
+            SoundEngine.PlaySound(new("CalamityMod/Sounds/Custom/DoGFireball"), new Vector2?(player.position));
 
             if (modPlayer.whisperHitCounter >= 5)
             {

@@ -25,6 +25,7 @@ using CalamityMod.NPCs.CalClone;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.OtherPro;
 using CalamityMod.Cooldowns;
 using Terraria.Localization;
+using Microsoft.Xna.Framework.Input;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Other
 {
@@ -306,6 +307,19 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Other
                 {
                     line.Text = string.Format(line.Text, key);
                 }
+            }
+
+            if (Main.keyState.IsKeyDown(Keys.LeftShift))
+            {
+                TooltipLine line5 = new(Mod, "DedicatedItem", $"{Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.DedTo", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Dedicated.Puzzles"))}\n{Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Contributor")}");
+                line5.OverrideColor = new(50, 205, 50);
+                tooltips.Add(line5);
+            }
+            else
+            {
+                TooltipLine line5 = new(Mod, "DedicatedItem", Language.GetTextValue("Mods.InfernalEclipseAPI.ItemTooltip.Contributor"));
+                line5.OverrideColor = new(50, 205, 50);
+                tooltips.Add(line5);
             }
         }
 
