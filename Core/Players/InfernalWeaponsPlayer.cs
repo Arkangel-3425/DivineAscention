@@ -14,6 +14,7 @@ using Microsoft.Xna.Framework;
 using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee.Void;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro.Void;
 using Terraria.ID;
+using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro;
 
 namespace InfernalEclipseWeaponsDLC.Core.NewFolder
 {
@@ -22,6 +23,7 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
         public bool spearSearing;
         public bool spearArctic;
         public bool minionCrits;
+        public bool godsPitch;
 
         const int shard2chance = 20;
 
@@ -33,6 +35,7 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
             spearSearing = false;
             spearArctic = false;
             minionCrits = false;
+            godsPitch = false;
         }
 
         public override void CatchFish(FishingAttempt attempt, ref int itemDrop, ref int npcSpawn, ref AdvancedPopupRequest sonar, ref Vector2 sonarPosition)
@@ -48,6 +51,23 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
             if (!randomChanceSuccess || !goodEnoughLevel) return;
 
             itemDrop = ModContent.ItemType<DeepSeaDrawlShard2>();
+        }
+
+        public override void OnHitNPCWithProj(Projectile proj, NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            object result = ModLoader.GetMod("ThoriumMod").Call("IsBardProjectile", proj);
+
+            if (result is ValueTuple<bool, byte> valueTuple && valueTuple.Item1)
+            {
+                if (godsPitch)
+                {
+                    int metalPipe = ModContent.ProjectileType<MetalPipe>();
+                    if (metalPipe != proj.type && Main.myPlayer == Player.whoAmI)
+                    {
+                        NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, Projectile.NewProjectile(proj.GetSource_OnHit(target), target.Center, new Vector2(target.position.X - target.oldPosition.X, -16f), metalPipe, (hit.Damage + damageDone) / 3, proj.knockBack, proj.owner, target.whoAmI, 0.0f, 0.0f), 0.0f, 0.0f, 0.0f, 0, 0, 0);
+                    }
+                }
+            }
         }
 
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)

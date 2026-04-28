@@ -744,6 +744,20 @@ Items: {
 			'LADIES AND GENTLEMAN... LET IT ROCK LET IT ROCK LET IT ROCK!!!'
 			'''
 	}
+
+	GodsPitch: {
+		DisplayName: God's Pitch
+		Tooltip:
+			'''
+			Increases maximum inspiration by 5
+			25% increased symphonic damage and 10% increased symphonic playing speed
+			Increases the duration of your symphonic empowerments by 3 seconds
+			Increases the level of empowerments you apply to yourself and others by 2
+			Increases empowerment range
+			Instrument attacks launch pipes upward that eventually fall down
+			'Your ears are not worthy to hear this...'
+			'''
+	}
 }
 
 ItemTooltip: {
@@ -954,6 +968,7 @@ Projectiles: {
 	PlanetShaperFireball.DisplayName: Planet Shaper Fireball
 	PlanetShaperPro.DisplayName: Planet Shaper
 	PlanetShaperStar.DisplayName: Planet Shaper Star
+	MetalPipe.DisplayName: Metal Pipe
 }
 
 Buffs: {
