@@ -178,26 +178,31 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Other
 
         public override bool CanUseItem(Player player)
         {
-            // Always allow using right-click
-            if (player.altFunctionUse == 2)
+            if (!usingPause)
             {
-                // Right-click: no shooting projectile
-                Item.useStyle = ItemUseStyleID.HoldUp;
-                Item.shoot = ModContent.ProjectileType<AbsoluteTVRemotePausePro>();
+                // Always allow using right-click
+                if (player.altFunctionUse == 2)
+                {
+                    // Right-click: no shooting projectile
+                    Item.useStyle = ItemUseStyleID.HoldUp;
+                    Item.shoot = ModContent.ProjectileType<AbsoluteTVRemoteFastForwardPro>();
 
-                if (player.Calamity().cooldowns.ContainsKey(RemoteFastForwardCooldown.ID))
-                    return false;
-                player.AddCooldown(RemoteFastForwardCooldown.ID, 7200);
-            }
-            else
-            {
-                // Left-click: normal shooting
-                Item.useStyle = ItemUseStyleID.HoldUp;
-                Item.shoot = ModContent.ProjectileType<AbsoluteTVRemotePausePro>();
+                    if (player.Calamity().cooldowns.ContainsKey(RemoteFastForwardCooldown.ID))
+                        return false;
+                    player.AddCooldown(RemoteFastForwardCooldown.ID, 7200);
+                    //player.AddCooldown(RemoteFastForwardCooldown.ID, 180);
+                }
+                else
+                {
+                    // Left-click: normal shooting
+                    Item.useStyle = ItemUseStyleID.HoldUp;
+                    Item.shoot = ModContent.ProjectileType<AbsoluteTVRemoteRewindPro>();
 
-                if (player.Calamity().cooldowns.ContainsKey(RemoteSlowdownCooldown.ID))
-                    return false;
-                player.AddCooldown(RemoteSlowdownCooldown.ID, 7200);
+                    if (player.Calamity().cooldowns.ContainsKey(RemoteSlowdownCooldown.ID))
+                        return false;
+                    player.AddCooldown(RemoteSlowdownCooldown.ID, 7200);
+                    //player.AddCooldown(RemoteSlowdownCooldown.ID, 180);
+                }
             }
 
             return true;
@@ -226,6 +231,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Other
             if (player.Calamity().cooldowns.ContainsKey(RemotePauseCooldown.ID))
                 return;
             player.AddCooldown(RemotePauseCooldown.ID, 18000);
+            //player.AddCooldown(RemotePauseCooldown.ID, 180);
 
             Item.useStyle = ItemUseStyleID.Shoot;
 
