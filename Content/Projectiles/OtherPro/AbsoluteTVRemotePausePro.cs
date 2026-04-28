@@ -6,6 +6,8 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using InfernalEclipseWeaponsDLC.Content.Buffs;
+using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.OtherPro
 {
@@ -53,6 +55,38 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.OtherPro
                     Projectile.Kill();
                 }
             }
+        }
+
+        public override bool PreDraw(ref Color lightColor)
+        {
+            Texture2D aura = ModContent.Request<Texture2D>(Texture).Value;
+
+            Texture2D overlay = ModContent.Request<Texture2D>(
+                "InfernalEclipseWeaponsDLC/Content/Projectiles/OtherPro/AbsoluteTVRemotePausePro"
+            ).Value;
+
+            Vector2 basePos = Projectile.Center - Main.screenPosition;
+
+            Vector2 auraOrigin = aura.Size() / 2f;
+            Vector2 overlayOrigin = overlay.Size() / 2f;
+
+            // --- AURA (your current effect) ---
+            Vector2 jitter = Main.rand.NextVector2Circular(2f, 2f);
+            float flicker = 0.85f + Main.rand.NextFloat(0.15f);
+
+            Main.EntitySpriteDraw(
+                aura,
+                basePos + jitter,
+                null,
+                Color.White * flicker,
+                0f,
+                auraOrigin,
+                Projectile.scale,
+                SpriteEffects.None,
+                0f
+            );
+
+            return false;
         }
     }
 }

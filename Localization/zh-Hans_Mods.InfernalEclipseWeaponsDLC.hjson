@@ -935,6 +935,8 @@ Projectiles: {
 	// PlanetShaperPro.DisplayName: Planet Shaper
 	// PlanetShaperStar.DisplayName: Planet Shaper Star
 	// MetalPipe.DisplayName: Metal Pipe
+	// AbsoluteTVRemoteFastForwardPro.DisplayName: Absolute T V Remote Fast Forward Pro
+	// AbsoluteTVRemoteRewindPro.DisplayName: Absolute T V Remote Rewind Pro
 }
 
 Buffs: {

@@ -169,7 +169,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Other
             Item.rare = ModContent.RarityType<HotPink>();
             Item.autoReuse = true;
             Item.UseSound = SoundID.Item43;
-            Item.shoot = ModContent.ProjectileType<AbsoluteTVRemotePausePro>();
+            Item.shoot = ModContent.ProjectileType<AbsoluteTVRemoteFastForwardPro>();
             Item.shootSpeed = 16f;
         }
 
@@ -192,6 +192,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Other
                         return false;
                     player.AddCooldown(RemoteFastForwardCooldown.ID, 7200);
                     //player.AddCooldown(RemoteFastForwardCooldown.ID, 180);
+
+                    usingPause = false;
                 }
                 else
                 {
@@ -203,6 +205,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Other
                         return false;
                     player.AddCooldown(RemoteSlowdownCooldown.ID, 7200);
                     //player.AddCooldown(RemoteSlowdownCooldown.ID, 180);
+
+                    usingPause = false;
                 }
             }
 
@@ -246,41 +250,20 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Other
 
         public override bool? UseItem(Player player)
         {
-            if (player.altFunctionUse == 2) // right-click
-            {
-                // spawn invisible projectile to do the effect
-                if (Main.myPlayer == player.whoAmI)
-                {
-                    Projectile.NewProjectile(
-                        player.GetSource_ItemUse(Item),
-                        player.Center,
-                        Vector2.Zero,
-                        ModContent.ProjectileType<AbsoluteTVRemotePausePro>(),
-                        Item.damage,
-                        0f,
-                        player.whoAmI
-                    );
-                }
-
-                return true; // counts as using the item
-            }
-
             return base.UseItem(player); // left-click normal
         }
 
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source,
     Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-            // Right click still handled normally
-            if (player.altFunctionUse == 2)
-                return false;
-
             int projType = type;
 
             if (usingPause)
             {
                 projType = ModContent.ProjectileType<AbsoluteTVRemotePausePro>();
             }
+
+            KillOppositeProjectiles(player, projType);
 
             Projectile.NewProjectile(
                 source,
@@ -293,6 +276,27 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Other
             );
 
             return false; // we handled spawning ourselves
+        }
+
+        private void KillOppositeProjectiles(Player player, int newType)
+        {
+            for (int i = 0; i < Main.maxProjectiles; i++)
+            {
+                Projectile p = Main.projectile[i];
+
+                if (!p.active || p.owner != player.whoAmI)
+                    continue;
+
+                bool isLeft = p.type == ModContent.ProjectileType<AbsoluteTVRemoteRewindPro>();
+                bool isRight = p.type == ModContent.ProjectileType<AbsoluteTVRemoteFastForwardPro>();
+
+                // If we're switching modes, kill opposite ones
+                if (newType == ModContent.ProjectileType<AbsoluteTVRemoteRewindPro>() && isRight)
+                    p.Kill();
+
+                if (newType == ModContent.ProjectileType<AbsoluteTVRemoteFastForwardPro>() && isLeft)
+                    p.Kill();
+            }
         }
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)

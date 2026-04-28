@@ -120,6 +120,49 @@ private bool rotationStored;
                 npc.rotation = storedRotation;
             }
         }
+
+        public override void PostDraw(NPC npc, SpriteBatch spriteBatch, Vector2 screenPos, Color drawColor)
+        {
+            if (!TimeFrozen)
+                return;
+
+            // =========================
+            // PAUSE ICON ABOVE HEAD
+            // =========================
+
+            Texture2D pauseIcon = ModContent.Request<Texture2D>(
+                "InfernalEclipseWeaponsDLC/Content/Projectiles/OtherPro/AbsoluteTVRemotePauseIcon"
+            ).Value;
+
+            Vector2 iconOrigin = pauseIcon.Size() / 2f;
+
+            float time = Main.GlobalTimeWrappedHourly;
+
+            // smooth floating motion
+            float hover = (float)Math.Sin(time * 3f) * 3f;
+
+            // subtle rotation (TV pause vibe)
+            float rotation =
+                (float)Math.Sin(time * 2f) * 0.06f +
+                Main.rand.NextFloat(-0.01f, 0.01f);
+
+            // position above NPC head
+            Vector2 iconPos = npc.Top - screenPos + new Vector2(0f, -30f + hover);
+
+            float alpha = 0.9f + Main.rand.NextFloat(0.1f);
+
+            spriteBatch.Draw(
+                pauseIcon,
+                iconPos,
+                null,
+                Color.White * alpha,
+                rotation,
+                iconOrigin,
+                0.8f,
+                SpriteEffects.None,
+                0f
+            );
+        }
     }
 
     public class TVRemotePlayerPaused : ModBuff
