@@ -66,9 +66,23 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
         {
             object result = ModLoader.GetMod("ThoriumMod").Call("IsBardProjectile", proj);
 
+            bool concus = false;
+
+            if (ModLoader.TryGetMod("ThoriumRework", out Mod helheim))
+            {
+                if (proj.ModProjectile != null && proj.ModProjectile.Mod.Name == "ThoriumRework" && proj.ModProjectile.Name == "ConcussiveInstrument")
+                {
+                    concus = true;
+                }
+            }
+            else
+            {
+                concus = false;
+            }
+
             if (result is ValueTuple<bool, byte> valueTuple && valueTuple.Item1)
             {
-                if (godsPitch)
+                if (godsPitch && !concus)
                 {
                     int metalPipe = ModContent.ProjectileType<MetalPipe>();
                     if (metalPipe != proj.type && Main.myPlayer == Player.whoAmI)
@@ -101,7 +115,7 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
                     {
                         CombatText.NewText(Player.Hitbox, Color.Lerp(Color.Cyan, Color.Magenta, 0.5f), Main.rand.NextBool() ? "It's not over yet!" : "Did that hurt?", true);
                         SoundEngine.PlaySound(new("CalamityMod/Sounds/Custom/DoGFireball"), new Vector2?(Player.position));
-                        Projectile.NewProjectile(Player.GetSource_ItemUse(Player.HeldItem), Player.Center, Player.velocity, ModContent.ProjectileType<CosmicPunch>(), Player.HeldItem.damage * 30, Player.HeldItem.knockBack, Player.whoAmI, ai1: 6, ai2: 10);
+                        Projectile.NewProjectile(Player.GetSource_ItemUse(Player.HeldItem), Player.Center, Player.velocity, ModContent.ProjectileType<CosmicPunch>(), Player.HeldItem.damage * 20, Player.HeldItem.knockBack, Player.whoAmI, ai1: 6, ai2: 10);
                         annihilationBonusShotTimeLeft = 0;
                         annihilationBonusShotCooldown = 120;
                     }
@@ -115,7 +129,7 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
                     {
                         CombatText.NewText(Player.Hitbox, Color.Lerp(Color.Cyan, Color.Magenta, 0.5f), Main.rand.NextBool() ? "It's not over yet!" : "Did that hurt?", true);
                         SoundEngine.PlaySound(new("CalamityMod/Sounds/Custom/DoGFireball"), new Vector2?(Player.position));
-                        Projectile.NewProjectile(Player.GetSource_ItemUse(Player.HeldItem), Player.Center, Player.velocity, ModContent.ProjectileType<CosmicPunch>(), Player.HeldItem.damage * 25, Player.HeldItem.knockBack, Player.whoAmI, ai1: 6, ai2: 10);
+                        Projectile.NewProjectile(Player.GetSource_ItemUse(Player.HeldItem), Player.Center, Player.velocity, ModContent.ProjectileType<CosmicPunch>(), Player.HeldItem.damage * 15, Player.HeldItem.knockBack, Player.whoAmI, ai1: 6, ai2: 10);
                         annihilationBonusShotTimeLeft = 0;
                         annihilationBonusShotCooldown = 120;
                     }

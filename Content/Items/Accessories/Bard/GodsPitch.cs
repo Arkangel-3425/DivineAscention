@@ -37,8 +37,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Bard
         {
             ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
 
-            player.GetDamage(ThoriumDamageBase<BardDamage>.Instance) += 0.25f;
-            player.GetAttackSpeed(ThoriumDamageBase<BardDamage>.Instance) += 0.1f;
+            player.GetDamage(ThoriumDamageBase<BardDamage>.Instance) += 0.15f;
+            //player.GetAttackSpeed(ThoriumDamageBase<BardDamage>.Instance) += 0.1f;
 
             thoriumPlayer.bardResourceMax2 += 5;
             thoriumPlayer.bardBuffDuration += 60 * 3;
