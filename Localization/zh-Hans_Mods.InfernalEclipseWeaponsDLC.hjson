@@ -725,6 +725,32 @@ Items: {
 			'Your ears are not worthy to hear this...'
 			''' */
 	}
+
+	GauntletofAnnihilationVoid: {
+		// DisplayName: Gauntlet of Annihilation
+		/* Tooltip:
+			'''
+			<left> will unlease a flurry of 4 cosmic gauntlets that inflict [cbuff:CalamityMod/GodSlayerInferno]
+			<right> will release rapid cosmic punches and lunge you in the direction of the mouse
+			Lunging only consumes half the void cost and on collision during the lunge, you are knocked back
+			Pressing <left> 3 frames after being knocked back will release a God Slaying Gauntlet
+			The God Slaying Gauntlet always crits and also inflicts [cbuff:CalamityMod/WhisperingDeath]
+			Provides a light source while favorited in the inventory
+			''' */
+	}
+
+	GauntletofAnnihilation: {
+		// DisplayName: Gauntlet of Annihilation
+		/* Tooltip:
+			'''
+			<left> will unlease a flurry of 4 cosmic gauntlets that inflict [cbuff:CalamityMod/GodSlayerInferno]
+			<right> will release rapid cosmic punches and lunge you in the direction of the mouse
+			On collision during the lunge, you are knocked back
+			Pressing <left> 3 frames after being knocked back will release a God Slaying Gauntlet
+			The God Slaying Gauntlet always crits and also inflicts [cbuff:CalamityMod/WhisperingDeath]
+			Provides a light source while favorited in the inventory
+			''' */
+	}
 }
 
 ItemTooltip: {
@@ -938,6 +964,8 @@ Projectiles: {
 	// MetalPipe.DisplayName: Auric Pipe
 	// AbsoluteTVRemoteFastForwardPro.DisplayName: Fast Forward Aura
 	// AbsoluteTVRemoteRewindPro.DisplayName: Rewind Aura
+	// CosmicPunch.DisplayName: Cosmic Gauntlet
+	// Melee.GauntletofAnnihilationPunches.DisplayName: Cosmic Punches
 }
 
 Buffs: {

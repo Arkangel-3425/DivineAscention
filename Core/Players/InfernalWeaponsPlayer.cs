@@ -15,6 +15,7 @@ using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee.Void;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro.Void;
 using Terraria.ID;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro;
+using Terraria.Audio;
 
 namespace InfernalEclipseWeaponsDLC.Core.NewFolder
 {
@@ -29,6 +30,8 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
 
         public int missileIndex = 10;
         public int CataclysmFistShotCount = 0;
+        public int annihilationBonusShotTimeLeft = 0;
+        public int annihilationBonusShotCooldown = 0;
 
         public override void ResetEffects()
         {
@@ -36,6 +39,12 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
             spearArctic = false;
             minionCrits = false;
             godsPitch = false;
+
+            if (annihilationBonusShotTimeLeft > 0)
+                annihilationBonusShotTimeLeft--;
+
+            if (annihilationBonusShotCooldown > 0)
+                annihilationBonusShotCooldown--;
         }
 
         public override void CatchFish(FishingAttempt attempt, ref int itemDrop, ref int npcSpawn, ref AdvancedPopupRequest sonar, ref Vector2 sonarPosition)
@@ -84,6 +93,35 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
 
         public override void PostUpdateMiscEffects()
         {
+            if (ModLoader.HasMod("SOTS"))
+            {
+                if (Player.controlUseItem && Player.HeldItem.type == Mod.Find<ModItem>("GauntletofAnnihilationVoid").Type)
+                {
+                    if (annihilationBonusShotTimeLeft > 0 && annihilationBonusShotCooldown == 0)
+                    {
+                        CombatText.NewText(Player.Hitbox, Color.Lerp(Color.Cyan, Color.Magenta, 0.5f), Main.rand.NextBool() ? "It's not over yet!" : "Did that hurt?", true);
+                        SoundEngine.PlaySound(new("CalamityMod/Sounds/Custom/DoGFireball"), new Vector2?(Player.position));
+                        Projectile.NewProjectile(Player.GetSource_ItemUse(Player.HeldItem), Player.Center, Player.velocity, ModContent.ProjectileType<CosmicPunch>(), Player.HeldItem.damage * 30, Player.HeldItem.knockBack, Player.whoAmI, ai1: 6, ai2: 10);
+                        annihilationBonusShotTimeLeft = 0;
+                        annihilationBonusShotCooldown = 120;
+                    }
+                }
+            }
+            else
+            {
+                if (Player.controlUseItem && Player.HeldItem.type == ModContent.ItemType<GauntletofAnnihilation>())
+                {
+                    if (annihilationBonusShotTimeLeft > 0 && annihilationBonusShotCooldown == 0)
+                    {
+                        CombatText.NewText(Player.Hitbox, Color.Lerp(Color.Cyan, Color.Magenta, 0.5f), Main.rand.NextBool() ? "It's not over yet!" : "Did that hurt?", true);
+                        SoundEngine.PlaySound(new("CalamityMod/Sounds/Custom/DoGFireball"), new Vector2?(Player.position));
+                        Projectile.NewProjectile(Player.GetSource_ItemUse(Player.HeldItem), Player.Center, Player.velocity, ModContent.ProjectileType<CosmicPunch>(), Player.HeldItem.damage * 25, Player.HeldItem.knockBack, Player.whoAmI, ai1: 6, ai2: 10);
+                        annihilationBonusShotTimeLeft = 0;
+                        annihilationBonusShotCooldown = 120;
+                    }
+                }
+            }
+
             MiscEffects();
         }
 
@@ -93,9 +131,10 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
             {
                 
                 if (Player.HeldItem.type == Mod.Find<ModItem>("CataclysmicGauntletVoid").Type) //we have to do it this way since the item doesn't load without SOTS.
-                {
                     SupremeCataclysmFist.GenerateDustOnOwnerHand(Player);
-                }
+
+                if (Player.HeldItem.type == Mod.Find<ModItem>("GauntletofAnnihilationVoid").Type)
+                    GauntletofAnnihilationPunches.GenerateDustOnOwnerHand(Player);
             }
             else
             {
