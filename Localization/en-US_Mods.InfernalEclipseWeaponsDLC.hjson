@@ -45,8 +45,8 @@ Items: {
 		DisplayName: Deep Sea Drawl
 		Tooltip:
 			'''
-			A husk of it's former strength, it's parts scattered throughout the world
-			For just a moment, you swear you see a glimmer in the acidic bubbles that surround you
+			'A husk of it's former strength, it's parts scattered throughout the world'
+			[c/010057:For just a moment, you swear you see a glimmer in the acidic bubbles that surround you]
 			'''
 	}
 
@@ -139,9 +139,9 @@ Items: {
 		DisplayName: Mouthpiece Shard
 		Tooltip:
 			'''
-			The Mouthpiece of the Restored Drawl
-			Permafrost once told stories of his encounters with the Lizhard tribe
-			Perhaps he may know something
+			'The mouthpiece of the Restored Deep Sea Drawl'
+			[c/010057:Permafrost once told stories of his encounters with the Lizhard tribe]
+			[c/010057:Perhaps he may know something...]
 			'''
 	}
 
@@ -149,9 +149,9 @@ Items: {
 		DisplayName: Bell Shard
 		Tooltip:
 			'''
-			The Bell of the Restored Drawl
-			In an attempt to keep others from this power, the mouthpiece was sealed in the dungeon
-			It is heard that the key was tossed to the blue depths below
+			'The bell of the Restored Deep Sea Drawl'
+			[c/010057:In an attempt to keep others from this power, the mouthpiece was sealed in the dungeon]
+			[c/010057:It is heard that the key was tossed to the blue depths below]
 			'''
 	}
 
@@ -159,9 +159,9 @@ Items: {
 		DisplayName: Body Shard
 		Tooltip:
 			'''
-			The Body of the Restored Drawl
-			A grand forge of soul will be the finishing touch to restore it's power
-			Make haste, the waves will soon crash at your call
+			'The body of the Restored Deep Sea Drawl'
+			[c/010057:A grand forge of soul will be the finishing touch to restore it's power]
+			[c/010057:Make haste, the waves will soon crash at your call]
 			'''
 	}
 
@@ -755,6 +755,7 @@ Items: {
 			Increases the level of empowerments you apply to yourself and others by 2
 			Increases empowerment range
 			Instrument attacks launch pipes upward that eventually fall down
+			[c/FF232C:The pipes sound effects are loud and may be startling or otherwise bad for some]
 			'Your ears are not worthy to hear this...'
 			'''
 	}
@@ -825,9 +826,9 @@ ItemTooltip: {
 	}
 
 	Cooldowns: {
-		Pause: TV Remote pause is on cooldown
-		FastForward: TV Remote fast forward is on cooldown
-		Slowdown: TV Remote slowdown is on cooldown
+		Pause: TV Remote Pause is on cooldown!
+		FastForward: TV Remote Fast Forward is on cooldown!
+		Slowdown: TV Remote Rewind is on cooldown!
 	}
 }
 
@@ -837,18 +838,18 @@ Projectiles: {
 
 	Magic: {
 		WhiteScythe.DisplayName: White Scythe
-		HealingLightningArc.DisplayName: Healing Lightning Arc
-		DamagingLightningArc.DisplayName: Damaging Lightning Arc
+		HealingLightningArc.DisplayName: Lightning Arc
+		DamagingLightningArc.DisplayName: Lightning Arc
 	}
 
 	TwoPathsPro2.DisplayName: Two Paths
 	TheParallellPro.DisplayName: The Parallell
-	BellBalladEleum.DisplayName: Ballad of Bells Eleum
-	BellBalladHavoc.DisplayName: Ballad of Bells Havoc
-	BellBalladSunlight.DisplayName: Ballad of Bells Sunlight
-	BellBalladSunlightLaser.DisplayName: Ballad of Bells Laser
-	BellBalladEleumBolt.DisplayName: Ballad of Bells Frost Bolt
-	BellBalladHavocSlash.DisplayName: Ballad of Bells Brimstone Slash
+	BellBalladEleum.DisplayName: Eleum Bell
+	BellBalladHavoc.DisplayName: Havoc Bell
+	BellBalladSunlight.DisplayName: Sunlight Bell
+	BellBalladSunlightLaser.DisplayName: Ballad Laser
+	BellBalladEleumBolt.DisplayName: Ballad Frost Bolt
+	BellBalladHavocSlash.DisplayName: Ballad Brimstone Slash
 	SulfurSpirit.DisplayName: Sulfur Spirit
 	DeepSeaDrawlPro.DisplayName: Deep Sea Drawl
 	HomingPlankton.DisplayName: Homing Plankton
@@ -856,121 +857,121 @@ Projectiles: {
 	BrimstoneHarpPro.DisplayName: Brimstone Harp Skull
 	BirbSaxophonePro.DisplayName: Red Lightning Feather
 	NecroticChorusPro.DisplayName: Necrotic Chorus
-	NecroticChorusWisp.DisplayName: Necrotic Chorus Wisp
-	DeusFlutePro.DisplayName: Deus Flute Pro
+	NecroticChorusWisp.DisplayName: Chorus Wisp
+	DeusFlutePro.DisplayName: Deus Flute
 	DeusFluteStar.DisplayName: Deus Flute Star
 	CorrodedCanePro.DisplayName: Corroded Cane
 	CorrodedCaneShark.DisplayName: Sulphurous Sharkron
-	OcramKnifeProSickle.DisplayName: Ocram Knife Pro Sickle
-	OcramKnifeProBolt.DisplayName: Ocram Knife Pro Bolt
-	OcramKnifePro.DisplayName: Ocram Knife Pro
-	TheBlightProSickle.DisplayName: The Blight Pro Sickle
-	TheBlightProServantLaser.DisplayName: The Blight Pro Servant Laser
-	TheBlightProServant.DisplayName: The Blight Pro Servant
-	TheBlightProScythe.DisplayName: The Blight Pro Scythe
-	GrandThunderWhipProjectile.DisplayName: Grand Thunder Whip Projectile
-	SulfurExplosionPro.DisplayName: Sulfur Explosion Pro
-	HydrogenSulfideProj.DisplayName: Hydrogen Sulfide Proj
-	LegacyProBolt.DisplayName: Legacy Pro Bolt
-	LegacyProSickle.DisplayName: Legacy Pro Sickle
+	OcramKnifeProSickle.DisplayName: Ocram Knife Sickle
+	OcramKnifeProBolt.DisplayName: Ocram Knife Bolt
+	OcramKnifePro.DisplayName: Ocram Knife
+	TheBlightProSickle.DisplayName: Blight Sickle
+	TheBlightProServantLaser.DisplayName: Blight Servant Laser
+	TheBlightProServant.DisplayName: Blight Servant
+	TheBlightProScythe.DisplayName: The Blight
+	GrandThunderWhipProjectile.DisplayName: Grand Thunder Whip
+	SulfurExplosionPro.DisplayName: Sulfur Explosion
+	HydrogenSulfideProj.DisplayName: Hydrogen Sulfide
+	LegacyProBolt.DisplayName: Legacy Bolt
+	LegacyProSickle.DisplayName: Legacy Sickle
 	MiniScourge.DisplayName: Mini Scourge
-	DrawlEel.DisplayName: Drawl Eel
-	DrawlIsopod.DisplayName: Drawl Isopod
-	DrawlStarfish.DisplayName: Drawl Starfish
-	DrawlStarfishShard.DisplayName: Drawl Starfish Shard
-	OurSharknado.DisplayName: Our Sharknado
-	DarkEnergyProj.DisplayName: Dark Energy Proj
-	ExecutionersSwordPro.DisplayName: Executioners Sword Pro
-	LightEnergyProj.DisplayName: Light Energy Proj
-	LightSlashPro.DisplayName: Light Slash Pro
+	DrawlEel.DisplayName: Eel
+	DrawlIsopod.DisplayName: Isopod
+	DrawlStarfish.DisplayName: Starfish
+	DrawlStarfishShard.DisplayName: Starfish Shard
+	OurSharknado.DisplayName: Sharknado
+	DarkEnergyProj.DisplayName: Dark Energy
+	ExecutionersSwordPro.DisplayName: Executioners Sword
+	LightEnergyProj.DisplayName: Light Energy
+	LightSlashPro.DisplayName: Light Slash
 	CryonicSpearTip.DisplayName: Cryonic Spear Tip
 	SuperShotgunStab.DisplayName: Super Shotgun Stab
-	ExecutionersSwordSlashPro.DisplayName: Executioners Sword Slash Pro
-	ExecutionersSwordLightEnergy.DisplayName: Executioners Sword Light Energy
-	ExecutionersSwordDarkEnergy.DisplayName: Executioners Sword Dark Energy
-	BloodShotFriendly.DisplayName: Blood Shot Friendly
-	NukePro.DisplayName: Nuke Pro
+	ExecutionersSwordSlashPro.DisplayName: Executioners Sword
+	ExecutionersSwordLightEnergy.DisplayName: Light Energy
+	ExecutionersSwordDarkEnergy.DisplayName: Dark Energy
+	BloodShotFriendly.DisplayName: Blood Shot
+	NukePro.DisplayName: Nuke
 	NukeMissile.DisplayName: Nuke Missile
-	ListoftheDamnedSoul_Orange.DisplayName: List of the Damned Soul Orange
-	ListoftheDamnedSoul_Cyan.DisplayName: List of the Damned Soul Cyan
+	ListoftheDamnedSoul_Orange.DisplayName: Damned Soul
+	ListoftheDamnedSoul_Cyan.DisplayName: Damned Soul
 	AirPod.DisplayName: AirPod
 	AirPodNote.DisplayName: AirPod Note
 	BouncingHungry.DisplayName: Bouncing Hungry
 	HealingSoul.DisplayName: Healing Soul
 	DamagingSoul.DisplayName: Damaging Soul
-	ForeverHungryBlood.DisplayName: Forever Hungry Blood
-	AcidBelcherPro.DisplayName: Acid Belcher Pro
-	SandSlasherSandnado.DisplayName: Sand Slasher Sandnado
-	SandSlasher_Projectile.DisplayName: Sand Slasher Projectile
-	DeepseaTrident_Projectile.DisplayName: Deepsea Trident Projectile
+	ForeverHungryBlood.DisplayName: Blood
+	AcidBelcherPro.DisplayName: Acid Belcher
+	SandSlasherSandnado.DisplayName: Sandnado
+	SandSlasher_Projectile.DisplayName: Sand Slasher
+	DeepseaTrident_Projectile.DisplayName: Deepsea Trident
 	Nanodroid.DisplayName: Nanodroid
-	NeonRipperPro.DisplayName: Neon Ripper Pro
-	InfrariffProjectile.DisplayName: Infrariff Projectile
+	NeonRipperPro.DisplayName: Neon Ripper
+	InfrariffProjectile.DisplayName: Infrariff
 	InfrariffLaser.DisplayName: Infrariff Laser
-	ColoredExplosion.DisplayName: Colored Explosion
-	Misc.BardPulseRiffleShot.DisplayName: Bard Pulse Riffle Shot
+	ColoredExplosion.DisplayName: Explosion
+	Misc.BardPulseRiffleShot.DisplayName: Pulse Riffle Shot
 	Staff_Projectile.DisplayName: Staff_ Projectile
-	ArckaneStaffPro.DisplayName: Arckane Staff Pro
-	MystickStaffPro.DisplayName: Mystick Staff Pro
-	HealerBrimstoneBarrage.DisplayName: Healer Brimstone Barrage
+	ArckaneStaffPro.DisplayName: Arckane Bolt
+	MystickStaffPro.DisplayName: Mystick Energy
+	HealerBrimstoneBarrage.DisplayName: Brimstone Barrage
 	SupremeCataclysmFist.DisplayName: Supreme Cataclysm Fist
 	SupremeCatastropheSlash.DisplayName: Supreme Catastrophe Slash
-	SharknadoBolt.DisplayName: Sharknado Bolt
-	BarrenGardenHealingPro.DisplayName: Barren Garden Healing Pro
-	BarrenGardenLotus.DisplayName: Barren Garden Lotus
-	BarrenGardenPro.DisplayName: Barren Garden Pro
-	BarrenGardenProHoming.DisplayName: Barren Garden Pro Homing
-	MothwingDaggerPro.DisplayName: Mothwing Dagger Pro
+	SharknadoBolt.DisplayName: Sharknado
+	BarrenGardenHealingPro.DisplayName: Barren Garden
+	BarrenGardenLotus.DisplayName: Garden Lotus
+	BarrenGardenPro.DisplayName: Barren Garden
+	BarrenGardenProHoming.DisplayName: Barren Garden
+	MothwingDaggerPro.DisplayName: Mothwing Dagger
 	IlluminantBolt.DisplayName: Illuminant Bolt
 	FroststeelPulse.DisplayName: Froststeel Pulse
-	LightChainProjectile.DisplayName: Light Chain Projectile
-	StarScepterBolt.DisplayName: Star Scepter Bolt
-	StarScepterStar.DisplayName: Star Scepter Star
-	ObsidianSickleProjectile.DisplayName: Obsidian Sickle Projectile
+	LightChainProjectile.DisplayName: Light Chain
+	StarScepterBolt.DisplayName: Scepter Bolt
+	StarScepterStar.DisplayName: Scepter Star
+	ObsidianSickleProjectile.DisplayName: Obsidian Sickle
 	ShadowflameAxeBolt.DisplayName: Shadowflame Axe Bolt
-	ShadowflameAxeProjectile.DisplayName: Shadowflame Axe Projectile
-	TetherBladeProjectile.DisplayName: Tether Blade Projectile
-	TetherBladeProjectileBlink.DisplayName: Tether Blade Projectile Blink
-	StormCrossbowArrow.DisplayName: Storm Crossbow Arrow
-	IlluminantCrossPro.DisplayName: Illuminant Cross Pro
-	GlowstringBiwaPro.DisplayName: Glowstring Biwa Pro
+	ShadowflameAxeProjectile.DisplayName: Shadowflame Axe
+	TetherBladeProjectile.DisplayName: Tether Blade
+	TetherBladeProjectileBlink.DisplayName: Blink
+	StormCrossbowArrow.DisplayName: Storm Arrow
+	IlluminantCrossPro.DisplayName: Illuminant Cross
+	GlowstringBiwaPro.DisplayName: Glowstring Biwa
 	GlowstringBeam.DisplayName: Glowstring Beam
-	StormTalonPro.DisplayName: Storm Talon Pro
-	StormCarverPro.DisplayName: Storm Carver Pro
-	GrandAmplifierPro.DisplayName: Grand Amplifier Pro
-	GrandAmplifierPro2.DisplayName: Grand Amplifier Pro2
-	MusicalNoteProjectile.DisplayName: Musical Note Projectile
-	GammaExplosionProjectile.DisplayName: Gamma Explosion Projectile
-	GammaKnifeProjectile.DisplayName: Gamma Knife Projectile
-	GammaKnifeThrownProjectile.DisplayName: Gamma Knife Thrown Projectile
-	GammaSlashProjectile.DisplayName: Gamma Slash Projectile
-	GrandAmplifierLightning.DisplayName: Grand Amplifier Lightning
-	MiniaturizedRequiemEngineGatlingPro.DisplayName: Miniaturized Requiem Engine Gatling Pro
-	MiniaturizedRequiemEngineLaserPro.DisplayName: Miniaturized Requiem Engine Laser Pro
-	MiniaturizedRequiemEngineTheBigOnePro.DisplayName: Miniaturized Requiem Engine The Big One Pro
-	MiniaturizedRequiemEngineLaserPro2.DisplayName: Miniaturized Requiem Engine Laser Pro2
-	MiniaturizedRequiemEngineTheBigOnePro2.DisplayName: Miniaturized Requiem Engine The Big One Pro2
-	MiniaturizedRequiemEngineTheBigOnePro3.DisplayName: Miniaturized Requiem Engine The Big One Pro3
+	StormTalonPro.DisplayName: Storm Talon
+	StormCarverPro.DisplayName: Storm Carver
+	GrandAmplifierPro.DisplayName: Amplifier
+	GrandAmplifierPro2.DisplayName: Amplifier
+	MusicalNoteProjectile.DisplayName: Musical Note
+	GammaExplosionProjectile.DisplayName: Gamma Explosion
+	GammaKnifeProjectile.DisplayName: Gamma Knife
+	GammaKnifeThrownProjectile.DisplayName: Gamma Knife
+	GammaSlashProjectile.DisplayName: Gamma Slash
+	GrandAmplifierLightning.DisplayName: Lightning
+	MiniaturizedRequiemEngineGatlingPro.DisplayName: Engiine Gatliing laster
+	MiniaturizedRequiemEngineLaserPro.DisplayName: Engine Laser
+	MiniaturizedRequiemEngineTheBigOnePro.DisplayName: The Big One
+	MiniaturizedRequiemEngineLaserPro2.DisplayName: Engine Laser
+	MiniaturizedRequiemEngineTheBigOnePro2.DisplayName: The Big One
+	MiniaturizedRequiemEngineTheBigOnePro3.DisplayName: The Big One
 	NecrosingerNote.DisplayName: Necrosinger Note
 	MagicPurpleBouncyBall.DisplayName: Magic Purple Bouncy Ball
-	EclipseEclipse.DisplayName: Eclipse Eclipse
-	CatastrophicLongbladeHoldout.DisplayName: Catastrophic Longblade Holdout
-	CatastrophicLongbladeHoldoutVoid.DisplayName: Catastrophic Longblade Holdout Void
+	EclipseEclipse.DisplayName: Eclipse
+	CatastrophicLongbladeHoldout.DisplayName: Catastrophic Longblade
+	CatastrophicLongbladeHoldoutVoid.DisplayName: Catastrophic Longblade
 	VoidBolt.DisplayName: Void Bolt
-	EclipsePulseDark.DisplayName: Eclipse Pulse Dark
-	EclipsePulseLight.DisplayName: Eclipse Pulse Light
-	BardPulseRiffleBoom.DisplayName: Bard Pulse Riffle Boom
-	BrimstonePetalPro.DisplayName: Brimstone Petal Pro
-	SwordofaThousandTruthsSlashPro.DisplayName: Swordofa Thousand Truths Slash Pro
-	SwordofaThousandTruthsHoldPro.DisplayName: Swordofa Thousand Truths Hold Pro
-	SwordofaThousandTruthsPro.DisplayName: Swordofa Thousand Truths Pro
-	AbsoluteTVRemotePausePro.DisplayName: Absolute T V Remote Pause Pro
+	EclipsePulseDark.DisplayName: Dark Pulse
+	EclipsePulseLight.DisplayName: Holy Pulse
+	BardPulseRiffleBoom.DisplayName: Pulse Riffle Boom
+	BrimstonePetalPro.DisplayName: Brimstone Petal
+	SwordofaThousandTruthsSlashPro.DisplayName: Sword of a Thousand Truths
+	SwordofaThousandTruthsHoldPro.DisplayName: Sword of a Thousand Truths
+	SwordofaThousandTruthsPro.DisplayName: Sword of a Thousand Truths
+	AbsoluteTVRemotePausePro.DisplayName: Pause
 	PlanetShaperFireball.DisplayName: Planet Shaper Fireball
 	PlanetShaperPro.DisplayName: Planet Shaper
 	PlanetShaperStar.DisplayName: Planet Shaper Star
-	MetalPipe.DisplayName: Metal Pipe
-	AbsoluteTVRemoteFastForwardPro.DisplayName: Absolute TV Remote Fast Forward Pro
-	AbsoluteTVRemoteRewindPro.DisplayName: Absolute TV Remote Rewind Pro
+	MetalPipe.DisplayName: Auric Pipe
+	AbsoluteTVRemoteFastForwardPro.DisplayName: Fast Forward Aura
+	AbsoluteTVRemoteRewindPro.DisplayName: Rewind Aura
 }
 
 Buffs: {
@@ -990,13 +991,13 @@ Buffs: {
 	}
 
 	TVRemotePaused: {
-		DisplayName: T V Remote Paused
-		Description: Frozen in time
+		DisplayName: Paused
+		Description: Frozen in time!
 	}
 
 	TVRemotePlayerPaused: {
 		DisplayName: Paused
-		Description: Frozen in time
+		Description: Frozen in time!
 	}
 }
 

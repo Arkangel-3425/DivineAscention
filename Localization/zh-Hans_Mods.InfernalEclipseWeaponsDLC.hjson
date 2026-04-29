@@ -721,6 +721,7 @@ Items: {
 			Increases the level of empowerments you apply to yourself and others by 2
 			Increases empowerment range
 			Instrument attacks launch pipes upward that eventually fall down
+			[c/FF232C:The pipes sound effects are loud and may be startling or otherwise bad for some]
 			'Your ears are not worthy to hear this...'
 			''' */
 	}
@@ -791,9 +792,9 @@ ItemTooltip: {
 	}
 
 	Cooldowns: {
-		// Pause: TV Remote pause is on cooldown
-		// FastForward: TV Remote fast forward is on cooldown
-		// Slowdown: TV Remote slowdown is on cooldown
+		// Pause: TV Remote Pause is on cooldown!
+		// FastForward: TV Remote Fast Forward is on cooldown!
+		// Slowdown: TV Remote Rewind is on cooldown!
 	}
 }
 
@@ -923,20 +924,20 @@ Projectiles: {
 	CatastrophicLongbladeHoldout.DisplayName: 灾难长刃
 	CatastrophicLongbladeHoldoutVoid.DisplayName: 灾难长刃
 	VoidBolt.DisplayName: 虚空雷霆
-	// EclipsePulseDark.DisplayName: Eclipse Pulse Dark
-	// EclipsePulseLight.DisplayName: Eclipse Pulse Light
-	// BardPulseRiffleBoom.DisplayName: Bard Pulse Riffle Boom
-	// BrimstonePetalPro.DisplayName: Brimstone Petal Pro
-	// SwordofaThousandTruthsSlashPro.DisplayName: Swordofa Thousand Truths Slash Pro
-	// SwordofaThousandTruthsHoldPro.DisplayName: Swordofa Thousand Truths Hold Pro
-	// SwordofaThousandTruthsPro.DisplayName: Swordofa Thousand Truths Pro
-	// AbsoluteTVRemotePausePro.DisplayName: Absolute T V Remote Pause Pro
+	// EclipsePulseDark.DisplayName: Dark Pulse
+	// EclipsePulseLight.DisplayName: Holy Pulse
+	// BardPulseRiffleBoom.DisplayName: Pulse Riffle Boom
+	// BrimstonePetalPro.DisplayName: Brimstone Petal
+	// SwordofaThousandTruthsSlashPro.DisplayName: Sword of a Thousand Truths
+	// SwordofaThousandTruthsHoldPro.DisplayName: Sword of a Thousand Truths
+	// SwordofaThousandTruthsPro.DisplayName: Sword of a Thousand Truths
+	// AbsoluteTVRemotePausePro.DisplayName: Pause
 	// PlanetShaperFireball.DisplayName: Planet Shaper Fireball
 	// PlanetShaperPro.DisplayName: Planet Shaper
 	// PlanetShaperStar.DisplayName: Planet Shaper Star
-	// MetalPipe.DisplayName: Metal Pipe
-	// AbsoluteTVRemoteFastForwardPro.DisplayName: Absolute T V Remote Fast Forward Pro
-	// AbsoluteTVRemoteRewindPro.DisplayName: Absolute T V Remote Rewind Pro
+	// MetalPipe.DisplayName: Auric Pipe
+	// AbsoluteTVRemoteFastForwardPro.DisplayName: Fast Forward Aura
+	// AbsoluteTVRemoteRewindPro.DisplayName: Rewind Aura
 }
 
 Buffs: {
@@ -956,13 +957,13 @@ Buffs: {
 	}
 
 	TVRemotePaused: {
-		// DisplayName: T V Remote Paused
-		// Description: Frozen in time
+		// DisplayName: Paused
+		// Description: Frozen in time!
 	}
 
 	TVRemotePlayerPaused: {
 		// DisplayName: Paused
-		// Description: Frozen in time
+		// Description: Frozen in time!
 	}
 }
 

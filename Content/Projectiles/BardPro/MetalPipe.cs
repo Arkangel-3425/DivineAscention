@@ -8,12 +8,13 @@ using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Projectiles.Bard;
 using CalamityMod.Buffs.DamageOverTime;
+using Terraria.DataStructures;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
 {
     public class MetalPipe : BardProjectile
     {
-        public override string Texture => "ThoriumRework/Items/ConcussiveInstrument";
+        //public override string Texture => "ThoriumRework/Items/ConcussiveInstrument";
 
         public override BardInstrumentType InstrumentType => BardInstrumentType.Percussion;
 
@@ -21,12 +22,13 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
         {
             ProjectileID.Sets.TrailCacheLength[Type] = 5;
             ProjectileID.Sets.TrailingMode[Type] = 2;
+            Main.projFrames[Type] = 11;
         }
 
         public override void SetBardDefaults()
         {
-            Projectile.width = 28;
-            Projectile.height = 28;
+            Projectile.width = 62;
+            Projectile.height = 14;
             Projectile.aiStyle = -1;
             Projectile.friendly = true;
             Projectile.timeLeft = 300;
@@ -34,8 +36,26 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
             Projectile.DamageType = ThoriumDamageBase<BardDamage>.Instance;
         }
 
+        public override void OnSpawn(IEntitySource source)
+        {
+            if (Projectile.ai[0] < 0.0)
+                return;
+
+            SoundEngine.PlaySound(new SoundStyle("CalamityMod/Sounds/Custom/ExoMechs/TeslaShoot1"), Main.npc[(int)Projectile.ai[0]].Center);
+        }
+
         public override void AI()
         {
+            Projectile.frameCounter++;
+            if (Projectile.frameCounter >= 2)
+            {
+                Projectile.frameCounter = 0;
+                Projectile.frame++;
+
+                if (Projectile.frame >= Main.projFrames[Type])
+                    Projectile.frame = 0;
+            }
+
             if (Projectile.alpha == byte.MaxValue)
                 Projectile.velocity.X += float.Epsilon * Main.player[Projectile.owner].direction;
             Projectile.velocity.Y += 0.34f;
