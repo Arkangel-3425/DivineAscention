@@ -138,8 +138,8 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
 
                 if (npc.type == console.Find<ModNPC>("Ocram").Type)
                 {
-                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<OcramKnife>(), 4));
-                    npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<TheBlight>(), 4));
+                    //npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<OcramKnife>(), 4));
+                    //npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<TheBlight>(), 4));
                     npcLoot.Add(ItemDropRule.ByCondition(new Conditions.NotExpert(), ModContent.ItemType<Legacy>(), 4));
                 }
             }

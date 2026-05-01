@@ -6,6 +6,8 @@ using ThoriumMod.Utilities;
 using CalamityMod.Items;
 using CalamityMod.Items.Potions;
 using InfernalEclipseWeaponsDLC.Core;
+using System.Collections.Generic;
+using SOTS.Void;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Eclipse
 {
@@ -18,11 +20,20 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Eclipse
             Item.height = 18;
             Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
             Item.rare = ItemRarityID.Lime;
-            Item.defense = 15;
+
+            if (!ModLoader.HasMod("SOTS"))
+            {
+                Item.vanity = true;
+            }
+            else
+            {
+                Item.defense = 19;
+            }
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
+            if (!ModLoader.HasMod("SOTS")) return false;
             return body.type == ModContent.ItemType<EclipseBreastplate>() && legs.type == ModContent.ItemType<EclipseGreaves>();
         }
 
@@ -31,7 +42,28 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Eclipse
             player.setBonus = this.GetLocalization("SetBonus").Format();
             var modPlayer = player.GetModPlayer<EclipsePlayer>();
             modPlayer.EclipseSet = true;
-            
+
+            bool hasExtraSetBonus = false;
+            if (ModLoader.TryGetMod("InfernalEclipseAPI", out Mod ieor))
+            {
+                player.buffImmune[ieor.Find<ModBuff>("BrokenOath").Type] = true;
+
+                if (!hasExtraSetBonus) 
+                {
+                    player.setBonus += "\n" + this.GetLocalization("SetBonusExtra").Format();
+                    hasExtraSetBonus = true;
+                }
+            }
+            if (ModLoader.TryGetMod("WHummusMultiModBalancing", out Mod hummus))
+            {
+                player.buffImmune[hummus.Find<ModBuff>("BrokenOath").Type] = true;
+
+                if (!hasExtraSetBonus)
+                {
+                    player.setBonus += "\n" + this.GetLocalization("SetBonusExtra").Format();
+                    hasExtraSetBonus = true;
+                }
+            }
         }
 
         public override void ArmorSetShadows(Player player)
@@ -41,14 +73,24 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Eclipse
 
         public override void UpdateEquip(Player player)
         {
+            if (!ModLoader.TryGetMod("SOTS", out Mod sots)) return;
+
             ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
-            ref StatModifier damage = ref player.GetDamage(DamageClass.Generic);
-            damage -= 0.16f;
-            ref StatModifier damage2 = ref player.GetDamage((DamageClass)(object)ThoriumDamageBase<HealerDamage>.Instance);
-            damage2 += 0.32f;
+
+            player.GetDamage((DamageClass)(object)ThoriumDamageBase<HealerDamage>.Instance) += 0.08f;
+            player.GetDamage(DamageClass.Magic) += 0.08f;
+            player.GetDamage(sots.Find<DamageClass>("VoidGeneric")) += 0.08f;
+
+            SOTSBonuses.IncreseVoidRegenAndMaxVoid(player, 2f, 50);
+
             player.lifeRegenTime += 10f;
-            player.GetCritChance((DamageClass)(object)ThoriumDamageBase<HealerDamage>.Instance) += 3f;
-            thoriumPlayer.healBonus += 2;
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            if (ModLoader.HasMod("SOTS")) return;
+
+            tooltips.RemoveAll(t => t.Name.Contains("Tooltip"));
         }
 
         public override void AddRecipes()
@@ -57,7 +99,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Eclipse
 
             Recipe recipe = CreateRecipe();
 
-            recipe.AddIngredient(thorium.Find<ModItem>("HallowedCowl").Type, 1);
+            recipe.AddIngredient(ItemID.HallowedBar, 12);
             recipe.AddRecipeGroup(RecipeGroups.Titanium, 12);
             recipe.AddIngredient(ItemID.SoulofLight, 10);
 
@@ -76,6 +118,24 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Eclipse
 
             recipe.AddTile(TileID.MythrilAnvil);
             recipe.Register();
+        }
+    }
+
+    [JITWhenModsEnabled("SOTS")]
+    [ExtendsFromMod("SOTS")]
+    public static class SOTSBonuses
+    {
+        public static void IncraseVoidGenericDamage(Player player, float ammount)
+        {
+            player.GetDamage<VoidGeneric>() += ammount;
+        }
+
+        public static void IncreseVoidRegenAndMaxVoid(Player player, float voidRegen = 0, int voidMax = 0)
+        {
+            VoidPlayer vp = VoidPlayer.ModPlayer(player);
+
+            vp.bonusVoidGain += voidRegen;
+            vp.voidMeterMax2 += voidMax;
         }
     }
 }

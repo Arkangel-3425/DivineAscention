@@ -28,7 +28,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.ArmorPro
 
         public override void SetDefaults()
         {
-            Projectile.DamageType = (DamageClass)(object)ThoriumDamageBase<HealerDamage>.Instance;
+            Projectile.DamageType = DamageClass.Generic;
             Projectile.width = 96;
             Projectile.height = 96;
             Projectile.friendly = true;

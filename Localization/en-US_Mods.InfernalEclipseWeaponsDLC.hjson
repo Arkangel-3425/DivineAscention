@@ -434,10 +434,9 @@ Items: {
 		DisplayName: Eclipse Breastplate
 		Tooltip:
 			'''
-			20% decreased non-radiant damage
-			20% increased radiant damage
-			8% increased radiant critical strike chance
-			5% increased healing and radiant cast speed
+			12% increased magic and radiant damage
+			8% increased magic and radiant critical strike chance
+			5% increased magic, healing, and radiant cast speed
 			15% increased damage reduction
 			Healing spells will heal an additional 3 life
 			'''
@@ -447,12 +446,11 @@ Items: {
 		DisplayName: Eclipse Greaves
 		Tooltip:
 			'''
-			16% decreased non-radiant damage
-			16% increased radiant damage
-			4% increased radiant critical strike chance
+			8% increased magic and radiant damage
+			4% increased magic and radiant critical strike chance
+			Increases void gain by 1 and max void by 50
 			15% decreased mana cost
-			20% increased movement speed
-			Healing spells will heal an additional 3 life
+			25% increased movement speed
 			'''
 	}
 
@@ -460,11 +458,9 @@ Items: {
 		DisplayName: Eclipse Helm
 		Tooltip:
 			'''
-			16% decreased non-radiant damage
-			16% increased radiant damage
-			3% increased radiant critical strike chance
-			life regeneration begins faster
-			Healing spells will heal an additional 2 life
+			8% increased magic, radiant, and void damage
+			Increases void gain by 2 and max void by 50
+			Life regeneration begins faster
 			'''
 		SetBonus:
 			'''
@@ -473,6 +469,7 @@ Items: {
 			Pulses of light will heal nearby allies for the players bonus healing
 			Pulses of Darkness will deal radiant damage to enemies
 			'''
+		SetBonusExtra: Immunity to Broken Oath
 	}
 
 	NecrosingerAnkles: {

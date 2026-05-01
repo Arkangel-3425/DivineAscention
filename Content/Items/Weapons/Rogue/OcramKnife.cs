@@ -6,6 +6,7 @@ using CalamityMod.Items.Weapons.Rogue;
 using CalamityMod.Projectiles.Rogue;
 using CalamityMod.Rarities;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.RoguePro;
+using InfernalEclipseWeaponsDLC.Core;
 using Microsoft.Xna.Framework;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,7 @@ using ThoriumMod;
 using ThoriumMod.Items.BardItems;
 using ThoriumMod.Items.BossThePrimordials.Dream;
 using ThoriumMod.Items.HealerItems;
+using ThoriumMod.Items.ThrownItems;
 using ThoriumMod.Tiles;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Rogue
@@ -63,23 +65,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Rogue
 
         public override void AddRecipes()
         {
-            if (!ModLoader.TryGetMod("Consolaria", out Mod _))
+            if (!ModLoader.TryGetMod("Consolaria", out Mod consolaria))
             {
                 CreateRecipe()
+                    .AddIngredient<Carnwennan>()
                     .AddIngredient<AureusCell>(10)
-                    .AddIngredient<GildedDagger>(1)
-                    .AddIngredient(ItemID.SoulofSight, 5)
-                    .AddIngredient(ItemID.SoulofMight, 5)
-                    .AddIngredient(ItemID.SoulofFright, 5)
-                    .AddIngredient(ItemID.SoulofNight, 8)
-                    .AddIngredient(ItemID.Bone, 12)
-                    .AddIngredient(ItemID.CursedFlame, 8)
-                    .AddTile(ModContent.TileType<SoulForgeNew>())
-                    .Register();
-
-                CreateRecipe()
-                    .AddIngredient<AureusCell>(10)
-                    .AddIngredient<GleamingDagger>(1)
                     .AddIngredient(ItemID.SoulofSight, 5)
                     .AddIngredient(ItemID.SoulofMight, 5)
                     .AddIngredient(ItemID.SoulofFright, 5)
@@ -89,7 +79,15 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Rogue
                     .AddTile(ModContent.TileType<SoulForgeNew>())
                     .Register();
             }
+            else
+            {
+                CreateRecipe()
+                    .AddIngredient<Carnwennan>()
+                    .AddRecipeGroup(RecipeGroups.Titanium, 10)
+                    .AddIngredient(consolaria.Find<ModItem>("SoulofBlight").Type, 15)
+                    .AddTile(TileID.MythrilAnvil)
+                    .Register();
+            }
         }
-
     }
 }
