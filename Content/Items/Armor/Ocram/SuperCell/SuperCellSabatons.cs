@@ -3,7 +3,9 @@ using Terraria.ModLoader;
 using Terraria;
 using CalamityMod.Items;
 using CalamityMod.Items.Potions;
-using InfernalEclipseWeaponsDLC.Core;
+using InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Eclipse;
+using CalamityMod.Items.Materials;
+using System.Collections.Generic;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.SuperCell
 {
@@ -14,17 +16,33 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.SuperCell
         {
             Item.width = 18;
             Item.height = 18;
-            Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
-            Item.rare = 7;
-            Item.defense = 12;
+            Item.value = CalamityGlobalItem.RarityPurpleBuyPrice;
+            Item.rare = ItemRarityID.Purple;
+
+            if (ModLoader.HasMod("SOTS"))
+                Item.defense = 12;
+            else
+                Item.vanity = true;
         }
 
         public override void UpdateEquip(Player player)
         {
-            ref StatModifier damage = ref player.GetDamage(DamageClass.Throwing);
-            damage += 0.05f;
-            player.GetCritChance(DamageClass.Throwing) += 10f;
+            if (!ModLoader.HasMod("SOTS")) return;
+
+            player.GetCritChance(DamageClass.Throwing) += 25f;
+            player.GetCritChance(DamageClass.Ranged) += 25f;
+
+            SOTSBonuses.IncreaseVoidGenericCrit(player, 15f);
             player.moveSpeed += 0.3f;
+
+            SOTSBonuses.IncreseVoidRegenAndMaxVoid(player, 3f, 75);
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            if (ModLoader.HasMod("SOTS")) return;
+
+            tooltips.RemoveAll(t => t.Name.Contains("Tooltip"));
         }
 
         public override void AddRecipes()
@@ -32,8 +50,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.SuperCell
             Recipe recipe = CreateRecipe();
 
             recipe.AddIngredient(ItemID.HallowedGreaves);
-            recipe.AddRecipeGroup(RecipeGroups.Titanium, 12);
-            recipe.AddIngredient(ItemID.SoulofFlight, 10);
+            if (ModLoader.TryGetMod("SOTS", out Mod sots))
+                recipe.AddIngredient(sots.Find<ModItem>("SanguiteBar").Type, 10);
+            else
+                recipe.AddIngredient(ItemID.LunarBar, 10);
+            recipe.AddIngredient<EffulgentFeather>(7);
 
             if (ModLoader.TryGetMod("Consolaria", out Mod consolariaMod))
             {

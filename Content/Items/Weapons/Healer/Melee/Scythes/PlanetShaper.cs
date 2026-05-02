@@ -37,8 +37,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes
             SetDefaultsToScythe();
             Item.damage = 500;
             scytheSoulCharge = 5;
-            Item.width = 68;
-            Item.height = 116;
+            Item.width = 75;
+            Item.height = 110;
             Item.rare = catalyst != null ? catalyst.Find<ModRarity>("SuperbossMasterRarity").Type : ModContent.RarityType<BurnishedAuric>();
             Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
             Item.shoot = ModContent.ProjectileType<PlanetShaperPro>();
@@ -60,7 +60,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes
                 float num = player.itemAnimationMax > 0 ? (player.itemAnimationMax > player.itemTimeMax ? player.itemTimeMax : player.itemAnimationMax) : Item.useAnimation;
                 int index = Projectile.NewProjectile(source, position, Vector2.Normalize(Main.MouseWorld - player.MountedCenter), type, damage, knockback, player.whoAmI, num, num, player.GetAdjustedItemScale(Item));
                 Main.projectile[index].direction = swingDirection;
-                NetMessage.SendData(MessageID.SyncProjectile);
+                NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, index);
             }
             swingDirection = -swingDirection;
             if (++spin > 3)
@@ -80,7 +80,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes
 
         public override void HoldStyle(Player player, Rectangle heldItemFrame)
         {
-            player.itemLocation += new Vector2(-10f, 12f) * player.Directions;
+            player.itemLocation += new Vector2(-15f, 12f) * player.Directions;
         }
 
         public override void UseStyle(Player player, Rectangle itemFrame)

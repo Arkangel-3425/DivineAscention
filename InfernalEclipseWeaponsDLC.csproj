@@ -17,6 +17,9 @@
 	  <Reference Include="CalamityMod">
 	    <HintPath>..\ModAssemblies\CalamityMod_v2.1.dll</HintPath>
 	  </Reference>
+	  <Reference Include="CatalystMod">
+	    <HintPath>..\ModAssemblies\CatalystMod_v1.1.5.dll</HintPath>
+	  </Reference>
 	  <Reference Include="Daybreak">
 	    <HintPath>..\ModAssemblies\Daybreak_v2.3.0.dll</HintPath>
 	  </Reference>

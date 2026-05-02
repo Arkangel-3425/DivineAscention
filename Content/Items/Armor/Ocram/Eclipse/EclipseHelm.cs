@@ -33,15 +33,17 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Eclipse
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
-            if (!ModLoader.HasMod("SOTS")) return false;
             return body.type == ModContent.ItemType<EclipseBreastplate>() && legs.type == ModContent.ItemType<EclipseGreaves>();
         }
 
         public override void UpdateArmorSet(Player player)
         {
-            player.setBonus = this.GetLocalization("SetBonus").Format();
             var modPlayer = player.GetModPlayer<EclipsePlayer>();
             modPlayer.EclipseSet = true;
+
+            if (!ModLoader.HasMod("SOTS")) return;
+
+            player.setBonus = this.GetLocalization("SetBonus").Format();
 
             bool hasExtraSetBonus = false;
             if (ModLoader.TryGetMod("InfernalEclipseAPI", out Mod ieor))
@@ -130,12 +132,24 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Eclipse
             player.GetDamage<VoidGeneric>() += ammount;
         }
 
+        public static void IncreaseVoidGenericCrit(Player player, float ammount)
+        {
+            player.GetCritChance<VoidGeneric>() += ammount;
+        }
+
         public static void IncreseVoidRegenAndMaxVoid(Player player, float voidRegen = 0, int voidMax = 0)
         {
             VoidPlayer vp = VoidPlayer.ModPlayer(player);
 
             vp.bonusVoidGain += voidRegen;
             vp.voidMeterMax2 += voidMax;
+        }
+
+        public static void RegainVoid(Player player, float regen)
+        {
+            VoidPlayer vp = VoidPlayer.ModPlayer(player);
+            vp.voidMeter += regen;
+            VoidPlayer.VoidEffect(player, (int)regen);
         }
     }
 }

@@ -1,55 +1,53 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Terraria.Audio;
-using Terraria.DataStructures;
-using Terraria.ID;
+﻿using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria;
-using ThoriumMod.Empowerments;
-using ThoriumMod;
-using ThoriumMod.Items;
-using ThoriumMod.Items.BardItems;
-using ThoriumMod.Utilities;
-using Microsoft.Xna.Framework;
-using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro.NukePros;
-using InfernalEclipseWeaponsDLC.Core.NewFolder;
-using ThoriumMod.Sounds;
 using CalamityMod.Items;
-using CalamityMod.Rarities;
-using CalamityMod.NPCs.Leviathan;
-using CalamityMod.Buffs.StatDebuffs;
-using CalamityMod.Items.Accessories;
-using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro;
-using CalamityMod.Tiles.Furniture.CraftingStations;
-using CalamityMod.Items.Materials;
 using CalamityMod.Items.Potions;
 using InfernalEclipseWeaponsDLC.Core;
 using InfernalEclipseWeaponsDLC.Content.Items.Accessories.Vanity;
+using InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Eclipse;
+using CalamityMod.Items.Materials;
+using System.Collections.Generic;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.SuperCell
 {
     [AutoloadEquip(EquipType.Body)]
     public class SuperCellGuard : ModItem
     {
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<GarudaWings>();
+        }
+
         public override void SetDefaults()
         {
             Item.width = 18;
             Item.height = 18;
-            Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
-            Item.rare = 7;
-            Item.defense = 14;
+            Item.value = CalamityGlobalItem.RarityPurpleBuyPrice;
+            Item.rare = ItemRarityID.Purple;
+
+            if (ModLoader.HasMod("SOTS"))
+                Item.defense = 14;
+            else
+                Item.vanity = true;
         }
 
         public override void UpdateEquip(Player player)
         {
-            ref StatModifier damage = ref player.GetDamage(DamageClass.Throwing);
-            damage += 0.15f;
+            if (!ModLoader.HasMod("SOTS")) return;
+
             player.ThrownVelocity += 0.3f;
 
             player.GetModPlayer<SuperCellPlayer>().hasSuperCellGuardEquipped = true;
+
+            SOTSBonuses.IncreseVoidRegenAndMaxVoid(player, 3f, 75);
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            if (ModLoader.HasMod("SOTS")) return;
+
+            tooltips.RemoveAll(t => t.Name.Contains("Tooltip"));
         }
 
         public override void AddRecipes()
@@ -57,8 +55,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.SuperCell
             Recipe recipe = CreateRecipe();
 
             recipe.AddIngredient(ItemID.HallowedPlateMail);
-            recipe.AddRecipeGroup(RecipeGroups.Titanium, 12);
-            recipe.AddIngredient(ItemID.SoulofFlight, 15);
+            if (ModLoader.TryGetMod("SOTS", out Mod sots))
+                recipe.AddIngredient(sots.Find<ModItem>("SanguiteBar").Type, 20);
+            else
+                recipe.AddIngredient(ItemID.LunarBar, 20);
+            recipe.AddIngredient<EffulgentFeather>(10);
 
             if (ModLoader.TryGetMod("Consolaria", out Mod consolariaMod))
             {

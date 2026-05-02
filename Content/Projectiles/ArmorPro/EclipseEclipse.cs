@@ -1,6 +1,4 @@
-﻿using System;
-using InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Eclipse;
-using InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSword;
+﻿using InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Eclipse;
 using InfernalEclipseWeaponsDLC.Core.Effects;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -41,72 +39,74 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.ArmorPro
         public override bool? CanDamage() => false;
 
         public override void AI()
-{
-    Player player = Main.player[Projectile.owner];
-    if (!player.active || player.dead)
-    {
-        Projectile.Kill();
-        return;
-    }
+        {
+            Player player = Main.player[Projectile.owner];
+            if (!player.active || player.dead)
+            {
+                Projectile.Kill();
+                return;
+            }
 
-    var mp = player.GetModPlayer<EclipsePlayer>();
-    if (!mp.EclipseSet)
-    {
-        Projectile.Kill();
-        return;
-    }
+            var mp = player.GetModPlayer<EclipsePlayer>();
+            if (!mp.EclipseSet)
+            {
+                Projectile.Kill();
+                return;
+            }
 
-    Projectile.timeLeft = 2;
+            Projectile.timeLeft = 2;
 
             float above = player.height * 0.725f;
             Projectile.Center = player.Top - new Vector2(0f, above);
             Projectile.velocity = Vector2.Zero;
 
-    FireTimer++;
-    if (FireTimer >= FireCooldown && Main.myPlayer == Projectile.owner)
-    {
-        int best = -1;
-        float bestDist = FireRange;
-        for (int i = 0; i < Main.maxNPCs; i++)
-        {
-            NPC n = Main.npc[i];
-            if (!n.active || n.friendly || !n.CanBeChasedBy()) continue;
+            if (!ModLoader.HasMod("SOTS")) return;
 
-            float d = Vector2.Distance(n.Center, player.Center);
-            if (d <= bestDist && Collision.CanHitLine(Projectile.Center, 1, 1, n.Center, 1, 1))
+            FireTimer++;
+            if (FireTimer >= FireCooldown && Main.myPlayer == Projectile.owner)
             {
-                best = i;
-                bestDist = d;
+                int best = -1;
+                float bestDist = FireRange;
+                for (int i = 0; i < Main.maxNPCs; i++)
+                {
+                    NPC n = Main.npc[i];
+                    if (!n.active || n.friendly || !n.CanBeChasedBy()) continue;
+
+                    float d = Vector2.Distance(n.Center, player.Center);
+                    if (d <= bestDist && Collision.CanHitLine(Projectile.Center, 1, 1, n.Center, 1, 1))
+                    {
+                        best = i;
+                        bestDist = d;
+                    }
+                }
+
+                if (best != -1)
+                {
+                    int projToFire = fireDarkNext ? ModContent.ProjectileType<EclipsePulseDark>() : ModContent.ProjectileType<EclipsePulseLight>();
+
+                    int dmg = fireDarkNext ? 150 : 0;
+
+                    int newProj = Projectile.NewProjectile(
+                        Projectile.GetSource_FromThis(),
+                        Projectile.Center,
+                        Vector2.Zero,
+                        projToFire,
+                        dmg,
+                        2f,
+                        Projectile.owner
+                    );
+
+                    if (fireDarkNext && Main.projectile.IndexInRange(newProj))
+                        Main.projectile[newProj].tileCollide = true;
+
+                    // Toggle for next shot
+                    fireDarkNext = !fireDarkNext;
+
+                    SoundEngine.PlaySound(SoundID.Item8, Projectile.Center);
+                    FireTimer = 0;
+                }
             }
         }
-
-        if (best != -1)
-        {
-            int projToFire = fireDarkNext ? ModContent.ProjectileType<EclipsePulseDark>() : ModContent.ProjectileType<EclipsePulseLight>();
-
-            int dmg = fireDarkNext ? 150 : 0;
-
-            int newProj = Projectile.NewProjectile(
-                Projectile.GetSource_FromThis(),
-                Projectile.Center,
-                Vector2.Zero,
-                projToFire,
-                dmg,
-                2f,
-                Projectile.owner
-            );
-
-            if (fireDarkNext && Main.projectile.IndexInRange(newProj))
-                Main.projectile[newProj].tileCollide = true;
-
-            // Toggle for next shot
-            fireDarkNext = !fireDarkNext;
-
-            SoundEngine.PlaySound(SoundID.Item8, Projectile.Center);
-            FireTimer = 0;
-        }
-    }
-}
 
         public override bool PreDraw(ref Color lightColor)
         {

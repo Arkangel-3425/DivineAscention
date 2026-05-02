@@ -20,8 +20,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes
 
         public override void SafeSetDefaults()
         {
-            Projectile.width = 68;
-            Projectile.height = 126;
+            Projectile.width = 75;
+            Projectile.height = 98;
             Projectile.idStaticNPCHitCooldown = 4;
             Projectile.ArmorPenetration = 125;
             Projectile.alpha = byte.MaxValue;
@@ -210,12 +210,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes
                 if (blurOpacity < 0f)
                     blurOpacity = 0f;
 
-                SpriteEffects blurEffects = SpriteEffects.FlipVertically;
+                SpriteEffects blurEffects = SpriteEffects.FlipHorizontally | SpriteEffects.FlipVertically;
 
-                if (Projectile.spriteDirection > 0)
-                    blurEffects |= SpriteEffects.FlipHorizontally;
-
-                Color blurColor = Color.Lerp(Color.HotPink, Color.Yellow, blurOpacity) * 0.8f;
+                Color blurColor = Color.Lerp(Color.Purple, Color.PaleVioletRed, blurOpacity) * 0.8f;
                 blurColor.A = 0;
 
                 Vector2 blurPosition =

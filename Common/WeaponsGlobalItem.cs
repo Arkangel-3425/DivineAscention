@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.SuperCell;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.SpearTipPro;
 using InfernalEclipseWeaponsDLC.Core.NewFolder;
 using Microsoft.Xna.Framework;
@@ -35,6 +36,12 @@ namespace InfernalEclipseWeaponsDLC.Common
                 }
             }
             return true;
+        }
+
+        public override void ModifyShootStats(Item item, Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
+        {
+            if (player.GetModPlayer<SuperCellPlayer>().hasSuperCellGuardEquipped && item.CountsAsClass<RangedDamageClass>())
+                velocity *= 1.3f;
         }
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)

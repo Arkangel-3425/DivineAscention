@@ -1,26 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using CalamityMod.Items.Materials;
 using CalamityMod.Items;
-using InfernalEclipseWeaponsDLC.Core.NewFolder;
 using Terraria;
 using Terraria.DataStructures;
-using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
-using ThoriumMod.Items.BasicAccessories;
-using ThoriumMod.Items;
 using InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.SuperCell;
+using CalamityMod;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Vanity
 {
     [AutoloadEquip(EquipType.Wings)]
     public class GarudaWings : ModItem
     {
-        private int supercellWingTime = 170;
+        public const int supercellWingTime = 180;
+
+        public override void SetStaticDefaults()
+        {
+            ItemID.Sets.ShimmerTransformToItem[Type] = ModContent.ItemType<SuperCellGuard>();
+        }
 
         public override void SetDefaults()
         {
@@ -33,34 +32,61 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Vanity
 
         public override void UpdateEquip(Player player)
         {
-            const int supercellWingTime = 170;
             if (player.wings <= 0 || player.wingTimeMax < supercellWingTime)
             {
                 player.wings = SuperCellCirclet.wingsSlot;
-                player.wingsLogic = ArmorIDs.Wing.BeetleWings;
+                player.wingsLogic = ArmorIDs.Wing.SolarWings;
                 player.wingTimeMax = supercellWingTime;
                 player.noFallDmg = true;
             }
         }
-    }
 
-    public class GarudaWingsShimmer : GlobalItem
-    {
-        public override bool AppliesToEntity(Item entity, bool lateInstantiation)
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
-            return entity.type == ModContent.ItemType<GarudaWings>() ||
-                   entity.type == ModContent.ItemType<SuperCellGuard>();
-        }
+            void ApplyTooltipEdits(IList<TooltipLine> lines, Func<Item, TooltipLine, bool> predicate, Action<TooltipLine> action)
+            {
+                foreach (TooltipLine line in lines)
+                    if (predicate.Invoke(Item, line))
+                        action.Invoke(line);
+            }
+            Func<Item, TooltipLine, bool> LineNum(int n) => (Item i, TooltipLine l) => l.Mod == "Terraria" && l.Name == $"Tooltip{n}";
+            void EditTooltipByNum(int lineNum, Action<TooltipLine> action) => ApplyTooltipEdits(tooltips, LineNum(lineNum), action);
+            void AddWingStats(int slot, float fall, float rise, float rMax, float tMax, float asc, string extraKey = null) => EditTooltipByNum(0, (line) => line.Text += WingStatsTooltip(ArmorIDs.Wing.Sets.Stats[slot], fall, rise, rMax, tMax, asc, extraKey));
 
-        public override void SetStaticDefaults()
-        {
-            // Garuda Wings -> SuperCell Guard
-            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<GarudaWings>()] =
-                ModContent.ItemType<SuperCellGuard>();
+            AddWingStats(ArmorIDs.Wing.SolarWings, 00.85f, 0.15f, 1f, 3f, 0.135f);
 
-            // SuperCell Guard -> Garuda Wings
-            ItemID.Sets.ShimmerTransformToItem[ModContent.ItemType<SuperCellGuard>()] =
-                ModContent.ItemType<GarudaWings>();
+            string WingStatsTooltip(WingStats stats, float fall, float rise, float rMax, float tMax, float asc, string extraKey = null)
+            {
+                int time = supercellWingTime;
+                float run = stats.AccRunSpeedOverride;
+                float rAcc = stats.AccRunAccelerationMult * 0.08f;
+                bool hover = stats.HasDownHoverStats;
+                float hSpeed = stats.DownHoverSpeedOverride;
+                float hAcc = stats.DownHoverAccelerationMult * 0.08f;
+                float baseJumpSpeed = (CalamityServerConfig.Instance.FasterJumpSpeed ? 5.71f : 5.01f) + 1f;
+                StringBuilder sb = new StringBuilder(512);
+                sb.Append('\n');
+                sb.Append(CalamityUtils.GetText($"Common.WingStats").Format(time.FramesToSeconds(), run.ToMph(), (tMax * baseJumpSpeed).ToMph()));
+                sb.Append('\n');
+                if (Main.keyState.PressingShift())
+                {
+                    sb.Append(CalamityUtils.GetText($"Common.WingStatsAcceleration").Format(rAcc.ToMphps(), asc.ToMphps(), (asc + rise).ToMphps(), (rMax * baseJumpSpeed).ToMph(), (asc + fall).ToMphps()));
+                    if (hover)
+                    {
+                        sb.Append('\n');
+                        sb.Append(CalamityUtils.GetText($"Common.WingStatsHover").Format(hSpeed.ToMph(), hAcc.ToMphps()));
+                    }
+                }
+                else
+                    sb.Append($"[c/B8B8B8:{CalamityUtils.GetTextValue("UI.HoldShiftTooltipExtensionIndicator")}]");
+
+                if (extraKey != null)
+                {
+                    sb.Append('\n');
+                    sb.Append(CalamityUtils.GetTextValue($"Vanilla.Wings.{extraKey}"));
+                }
+                return sb.ToString();
+            }
         }
     }
 }

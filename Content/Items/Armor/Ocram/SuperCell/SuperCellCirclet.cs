@@ -6,16 +6,23 @@ using CalamityMod.Items;
 using CalamityMod.Items.Potions;
 using CalamityMod.CalPlayer;
 using CalamityMod;
-using InfernalEclipseWeaponsDLC.Core;
 using System;
 using ReLogic.Content;
 using Microsoft.Xna.Framework.Graphics;
+using InfernalEclipseWeaponsDLC.Content.Items.Accessories.Vanity;
+using System.Collections.Generic;
+using System.Text;
+using Terraria.DataStructures;
+using InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Eclipse;
+using CalamityMod.Items.Materials;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.SuperCell
 {
     [AutoloadEquip(EquipType.Head)]
     public class SuperCellCirclet : ModItem
     {
+        private bool displayWingsTooltips;
+
         public static int wingsSlot = -1;
         public static Lazy<Asset<Texture2D>> wingAsset;
 
@@ -38,34 +45,88 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.SuperCell
         {
             Item.width = 18;
             Item.height = 18;
-            Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
-            Item.rare = ItemRarityID.Lime;
-            Item.defense = 10;
+            Item.value = CalamityGlobalItem.RarityPurpleBuyPrice;
+            Item.rare = ItemRarityID.Purple;
+
+            if (ModLoader.HasMod("SOTS"))
+                Item.defense = 10;
+            else
+                Item.vanity = true;
         }
 
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
-            return body.type == ModContent.ItemType<SuperCellGuard>() && legs.type == ModContent.ItemType<SuperCellSabatons>();
+            if (body.type == ModContent.ItemType<SuperCellGuard>() && legs.type == ModContent.ItemType<SuperCellSabatons>() && ModLoader.HasMod("SOTS"))
+            {
+                displayWingsTooltips = true;
+                return true;
+            }
+            displayWingsTooltips = false;
+            return false;
         }
 
         public override void UpdateArmorSet(Player player)
         {
             CalamityPlayer calamityPlayer = player.Calamity();
 
-            calamityPlayer.rogueStealthMax += 1.1f;
             player.setBonus = this.GetLocalizedValue("SetBonus");
-            player.GetThoriumPlayer().techPointsMax += 2;
+
+            player.shroomiteStealth = true;
             player.Calamity().wearingRogueArmor = true;
+            calamityPlayer.rogueStealthMax += 1.15f;
 
-            const int supercellWingTime = 170;
-
-            if (player.wings <= 0 || player.wingTimeMax < supercellWingTime)
+            if (player.wings <= 0 || player.wingTimeMax < GarudaWings.supercellWingTime)
             {
                 player.wings = wingsSlot;
-                player.wingsLogic = ArmorIDs.Wing.BeetleWings;
-                player.wingTimeMax = supercellWingTime;
+                player.wingsLogic = ArmorIDs.Wing.SolarWings;
+                player.wingTimeMax = GarudaWings.supercellWingTime;
                 player.noFallDmg = true;
             }
+
+            if (displayWingsTooltips)
+            {
+                player.setBonus += WingStatsTooltip(ArmorIDs.Wing.Sets.Stats[ArmorIDs.Wing.SolarWings], 0.85f, 0.15f, 1f, 3f, 0.135f);
+            }
+        }
+
+        private static string WingStatsTooltip(WingStats stats, float fall, float rise, float rMax, float tMax, float asc, string extraKey = null)
+        {
+            int time = GarudaWings.supercellWingTime;
+            float run = stats.AccRunSpeedOverride;
+            float rAcc = stats.AccRunAccelerationMult * 0.08f;
+            bool hover = stats.HasDownHoverStats;
+            float hSpeed = stats.DownHoverSpeedOverride;
+            float hAcc = stats.DownHoverAccelerationMult * 0.08f;
+            float baseJumpSpeed = (CalamityServerConfig.Instance.FasterJumpSpeed ? 5.71f : 5.01f) + 1f;
+
+            StringBuilder sb = new StringBuilder(512);
+            sb.Append('\n');
+            sb.Append(CalamityUtils.GetText($"Common.WingStats").Format(time.FramesToSeconds(), run.ToMph(), (tMax * baseJumpSpeed).ToMph()));
+            sb.Append('\n');
+
+            if (Main.keyState.PressingShift())
+            {
+                sb.Append(CalamityUtils.GetText($"Common.WingStatsAcceleration")
+                    .Format(rAcc.ToMphps(), asc.ToMphps(), (asc + rise).ToMphps(), (rMax * baseJumpSpeed).ToMph(), (asc + fall).ToMphps()));
+
+                if (hover)
+                {
+                    sb.Append('\n');
+                    sb.Append(CalamityUtils.GetText($"Common.WingStatsHover").Format(hSpeed.ToMph(), hAcc.ToMphps()));
+                }
+            }
+            else
+            {
+                sb.Append($"[c/B8B8B8:{CalamityUtils.GetTextValue("UI.HoldShiftTooltipExtensionIndicator")}]");
+            }
+
+            if (extraKey != null)
+            {
+                sb.Append('\n');
+                sb.Append(CalamityUtils.GetTextValue($"Vanilla.Wings.{extraKey}"));
+            }
+
+            return sb.ToString();
         }
 
         public override void ArmorSetShadows(Player player)
@@ -75,19 +136,35 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.SuperCell
 
         public override void UpdateEquip(Player player)
         {
-            ref StatModifier damage = ref player.GetDamage(DamageClass.Throwing);
-            damage += 0.1f;
+            if (!ModLoader.HasMod("SOTS")) return;
+
+            player.GetDamage(DamageClass.Throwing) += 0.25f;
+            player.GetDamage(DamageClass.Ranged) += 0.25f;
+
+            SOTSBonuses.IncraseVoidGenericDamage(player, 0.15f);
+            player.GetThoriumPlayer().techPointsMax += 2;
+
+            SOTSBonuses.IncreseVoidRegenAndMaxVoid(player, 4f, 75);
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            if (ModLoader.HasMod("SOTS")) return;
+
+            tooltips.RemoveAll(t => t.Name.Contains("Tooltip"));
         }
 
         public override void AddRecipes()
         {
-            Mod thorium = ModLoader.GetMod("ThoriumMod");
-
             Recipe recipe = CreateRecipe();
 
-            recipe.AddIngredient(thorium.Find<ModItem>("HallowedGuise").Type, 1);
-            recipe.AddRecipeGroup(RecipeGroups.Titanium, 12);
-            recipe.AddIngredient(ItemID.SoulofFlight, 10);
+            recipe.AddIngredient(ItemID.HallowedBar, 12);
+
+            if (ModLoader.TryGetMod("SOTS", out Mod sots))
+                recipe.AddIngredient(sots.Find<ModItem>("SanguiteBar").Type, 15);
+            else
+                recipe.AddIngredient(ItemID.LunarBar, 15);
+            recipe.AddIngredient<EffulgentFeather>(5);
 
             if (ModLoader.TryGetMod("Consolaria", out Mod consolariaMod))
             {

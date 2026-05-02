@@ -478,6 +478,7 @@ Items: {
 			音符将环绕你盘旋，每个音符可抵挡一次射弹后碎裂
 			音符碎裂后，5秒将再次生成
 			'''
+		// SetBonusExtra: Using a non-bard weapon will retain empowerments
 	}
 
 	SuperCellCirclet: {
@@ -750,6 +751,19 @@ Items: {
 			Pressing <left> 3 frames after being knocked back will release a God Slaying Gauntlet
 			The God Slaying Gauntlet always crits and also inflicts [cbuff:CalamityMod/WhisperingDeath]
 			Provides a light source while favorited in the inventory
+			''' */
+	}
+
+	BlightedBadge: {
+		// DisplayName: Blighted Badge
+		/* Tooltip:
+			'''
+			True melee strikes drops astral stars from the sky
+			Attackers are shocked, dealing immense damage
+			Taking damage will massively increase melee speed and critical strike chance briefly
+			Also releases an explosion and temporarily increases true melee damage by 30% when damaged
+			Boost duration scales with the amount of damage you took, up to 10 seconds
+			Nullifies the Astral Infection debuff
 			''' */
 	}
 }

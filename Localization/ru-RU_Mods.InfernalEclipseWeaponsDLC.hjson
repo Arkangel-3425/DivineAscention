@@ -436,50 +436,61 @@ Items: {
 	}
 
 	NecrosingerAnkles: {
-		// DisplayName: Posthumous Ankles
+		// DisplayName: Necrosinger Ankles
 		/* Tooltip:
 			'''
-			10% increased symphonic damage
-			5% increased symphonic critical strike chance
-			20% increased movement speed
+			20% increased summon damage, whip range, and movement speed
+			20% increased symphonic critical strike chance
+			Increases void gain by 3 and max void by 100
+			Increases max sentries by 3
 			''' */
 	}
 
 	NecrosingerRibs: {
-		// DisplayName: Posthumous Ribs
+		// DisplayName: Necrosinger Ribs
 		/* Tooltip:
 			'''
-			14% increased symphonic damage
-			5% increased symphonic critical strike chance
+			20% increased summon and symphonic damage
+			+2.5 HP/s life regen
 			Increases the chance for inspiration notes to drop by 10%
 			Increases the duration of your symphonic empowerments by 3 seconds
 			''' */
 	}
 
 	NecrosingerSkull: {
-		// DisplayName: Posthumous Skull
+		// DisplayName: Necrosinger Skull
 		/* Tooltip:
 			'''
-			5% increased symphonic damage
-			10% increased symphonic playing speed
-			5% increased symphonic critical strike chance
+			20% increased summon, symphonic, and void damage
+			10% increased whip speed & symphonic playing speed
+			Increases void gain by 4 and max void by 125
 			Increased inspiration regeneration rate by 15%
+			Increases max minions by 3
 			''' */
 		/* SetBonus:
 			'''
-			Music notes will orbit you, each blocking one projectile before breaking
-			When broken, the ring of notes will refresh after 5 seconds
+			Summons 3 phantom notes to circle you
+			These notes can deal summon damage inflicting [iabuff:Tuned] or block an incoming projectile
+			This effect has a 5 second cooldown
 			''' */
+		// SetBonusExtra: Using a non-bard weapon will retain empowerments
 	}
 
 	SuperCellCirclet: {
 		// DisplayName: Garuda Circlet
-		// Tooltip: 10% increased rogue damage
+		/* Tooltip:
+			'''
+			25% increased ranged and rogue damage
+			15% increased void damage
+			Increases your maximum technique points by 2
+			Increases void gain by 4 and max void by 75
+			''' */
 		/* SetBonus:
 			'''
+			+115 maximum rogue stealth
+			Not moving puts you ranged stealth,
+			increasing ranged ability and reducing chance for enemies to target you
 			Grants rudimentary flight if not wearing any wings
-			Increases your maximum technique points by 2
-			+110 maximum stealth
 			''' */
 	}
 
@@ -487,9 +498,10 @@ Items: {
 		// DisplayName: Garuda Guard
 		/* Tooltip:
 			'''
-			15% increased rogue damage
-			30% increased rogue weapon velocity
-			increases wing flight time by 15%
+			30% increased ranged and rogue velocity
+			When consuming stealth, 15% of the stealth consumed is converted into void
+			Increases wing flight time by 15%
+			Increases void gain by 3 and max void by 75
 			''' */
 	}
 
@@ -497,9 +509,9 @@ Items: {
 		// DisplayName: Garuda Sabatons
 		/* Tooltip:
 			'''
-			5% increased rogue damage
-			10% increased rogue weapon critical strike chance
-			30% increased movement speed
+			25% increased ranged and rogue critical strike chance
+			Increases void critical strike chance by 15% and movement speed by 30%
+			Increases void gain by 3 and max void by 75
 			''' */
 	}
 
@@ -743,6 +755,19 @@ Items: {
 			Pressing <left> 3 frames after being knocked back will release a God Slaying Gauntlet
 			The God Slaying Gauntlet always crits and also inflicts [cbuff:CalamityMod/WhisperingDeath]
 			Provides a light source while favorited in the inventory
+			''' */
+	}
+
+	BlightedBadge: {
+		// DisplayName: Blighted Badge
+		/* Tooltip:
+			'''
+			True melee strikes drops astral stars from the sky
+			Attackers are shocked, dealing immense damage
+			Taking damage will massively increase melee speed and critical strike chance briefly
+			Also releases an explosion and temporarily increases true melee damage by 30% when damaged
+			Boost duration scales with the amount of damage you took, up to 10 seconds
+			Nullifies the Astral Infection debuff
 			''' */
 	}
 }

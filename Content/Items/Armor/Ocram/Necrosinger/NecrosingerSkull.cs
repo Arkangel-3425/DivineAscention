@@ -5,25 +5,34 @@ using ThoriumMod;
 using ThoriumMod.Utilities;
 using CalamityMod.Items;
 using CalamityMod.Items.Potions;
-using InfernalEclipseWeaponsDLC.Core;
+using CalamityMod.Rarities;
+using InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Eclipse;
+using System.Collections.Generic;
+using CalamityMod.Items.Materials;
+using ThoriumMod.Items;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Necrosinger
 {
     [JITWhenModsEnabled("ThoriumMod")]
     [ExtendsFromMod("ThoriumMod")]
     [AutoloadEquip(EquipType.Head)]
-    public class NecrosingerSkull : ModItem
+    public class NecrosingerSkull : BardItem
     {
-        public override void SetDefaults()
+        public override void SetBardDefaults()
         {
             Item.width = 18;
             Item.height = 18;
-            Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
-            Item.rare = ItemRarityID.Lime;
-            Item.defense = 12;
+            Item.value = CalamityGlobalItem.RarityPureGreenBuyPrice;
+            Item.rare = ModContent.RarityType<PureGreen>();
+
+            if (ModLoader.HasMod("SOTS"))
+                Item.defense = 20;
+            else
+                Item.vanity = true;
         }
         public override bool IsArmorSet(Item head, Item body, Item legs)
         {
+            if (!ModLoader.HasMod("SOTS")) return false;
             return body.type == ModContent.ItemType<NecrosingerRibs>() && legs.type == ModContent.ItemType<NecrosingerAnkles>();
         }
 
@@ -36,12 +45,21 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Necrosinger
 
         public override void UpdateEquip(Player player)
         {
+            if (!ModLoader.HasMod("SOTS")) return;
+
             ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
-            ref StatModifier damage = ref player.GetDamage((DamageClass)(object)ThoriumDamageBase<BardDamage>.Instance);
-            damage += 0.05f;
+            player.GetDamage((DamageClass)(object)ThoriumDamageBase<BardDamage>.Instance) += 0.2f;
+            player.GetDamage(DamageClass.Summon) += 0.2f;
+            SOTSBonuses.IncraseVoidGenericDamage(player, 0.2f);
+
             player.GetAttackSpeed((DamageClass)(object)ThoriumDamageBase<BardDamage>.Instance) += 0.1f;
-            player.GetCritChance((DamageClass)(object)ThoriumDamageBase<BardDamage>.Instance) += 5f;
+            player.GetAttackSpeed(DamageClass.SummonMeleeSpeed) += 0.1f;
+
+            SOTSBonuses.IncreseVoidRegenAndMaxVoid(player, 4f, 125);
+
             thoriumPlayer.inspirationRegenBonus += 0.15f;
+
+            player.maxMinions += 3;
         }
 
         public override void ArmorSetShadows(Player player)
@@ -49,15 +67,20 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Necrosinger
             player.armorEffectDrawShadow = true;
         }
 
+        public override void BardModifyTooltips(List<TooltipLine> tooltips)
+        {
+            if (ModLoader.HasMod("SOTS")) return;
+
+            tooltips.RemoveAll(t => t.Name.Contains("Tooltip"));
+        }
+
         public override void AddRecipes()
         {
-            Mod thorium = ModLoader.GetMod("ThoriumMod");
-
             Recipe recipe = CreateRecipe();
 
-            recipe.AddIngredient(thorium.Find<ModItem>("HallowedChapeau").Type, 1);
-            recipe.AddRecipeGroup(RecipeGroups.Titanium, 12);
-            recipe.AddIngredient(thorium.Find<ModItem>("SoulofPlight").Type, 10);
+            recipe.AddIngredient(ItemID.HallowedBar, 12);
+            recipe.AddIngredient<Lumenyl>(12);
+            recipe.AddIngredient<RuinousSoul>(2);
 
             if (ModLoader.TryGetMod("Consolaria", out Mod consolariaMod))
             {

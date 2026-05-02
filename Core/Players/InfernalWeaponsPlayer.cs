@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Channels;
-using System.Threading.Tasks;
 using CalamityMod.BiomeManagers;
-using CalamityMod;
 using InfernalEclipseWeaponsDLC.Content.Items.Materials;
 using Terraria.DataStructures;
 using Terraria;
@@ -16,6 +10,11 @@ using InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro.Void;
 using Terraria.ID;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro;
 using Terraria.Audio;
+using CalamityMod.Items.Accessories;
+using CalamityMod.Projectiles.Typeless;
+using CalamityMod;
+using Mono.Cecil;
+using InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee;
 
 namespace InfernalEclipseWeaponsDLC.Core.NewFolder
 {
@@ -25,6 +24,7 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
         public bool spearArctic;
         public bool minionCrits;
         public bool godsPitch;
+        public bool blightedBadge;
 
         const int shard2chance = 20;
 
@@ -102,6 +102,17 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
             {
                 if (Main.rand.Next(100) < ActualClassCrit(Player, DamageClass.Summon))
                     modifiers.SetCrit();
+            }
+        }
+
+        public override void OnHitByNPC(NPC npc, Player.HurtInfo hurtInfo)
+        {
+            if (blightedBadge && !npc.dontTakeDamage)
+            {
+                int onHitDamage = (int)Player.GetBestClassDamage().ApplyTo(BlightedBadge.ThornsDamage);
+
+                Projectile bolt = Projectile.NewProjectileDirect(Player.GetSource_OnHurt(hurtInfo.DamageSource), npc.Center, Vector2.Zero, ModContent.ProjectileType<FlashBolt>(), onHitDamage, 0f, Player.whoAmI, npc.whoAmI);
+                bolt.DamageType = Player.GetBestClass();
             }
         }
 
