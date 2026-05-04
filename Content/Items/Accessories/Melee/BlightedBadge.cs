@@ -5,6 +5,7 @@ using CalamityMod.Items.Accessories;
 using CalamityMod.Items.Materials;
 using CalamityMod.Rarities;
 using CatalystMod.Items;
+using InfernalEclipseWeaponsDLC.Content.Items.Accessories.Donor;
 using InfernalEclipseWeaponsDLC.Core.NewFolder;
 using Terraria;
 using Terraria.ID;
@@ -73,7 +74,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee
     {
         public override bool AppliesToEntity(Item entity, bool lateInstantiation)
         {
-            return entity.type == ModContent.ItemType<BlightedBadge>();
+            return entity.type == ModContent.ItemType<BlightedBadge>() || entity.type == ModContent.ItemType<ImagiknightHeraldry>();
         }
 
         public override void SetDefaults(Item entity)

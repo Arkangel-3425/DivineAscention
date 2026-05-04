@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CalamityMod.Items.Accessories;
 using InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.SuperCell;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.SpearTipPro;
 using InfernalEclipseWeaponsDLC.Core.NewFolder;
@@ -17,6 +18,12 @@ namespace InfernalEclipseWeaponsDLC.Common
         public bool verveineItem = false;
 
         public override bool InstancePerEntity => true;
+
+        public override void UpdateAccessory(Item item, Player player, bool hideVisual)
+        {
+            if (item.type == ModContent.ItemType<WarbanneroftheRighteous>())
+                player.GetModPlayer<InfernalWeaponsPlayer>().hasWarbanner = true;
+        }
 
         public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {

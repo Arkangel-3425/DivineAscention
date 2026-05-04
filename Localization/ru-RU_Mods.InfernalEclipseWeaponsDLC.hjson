@@ -1,3 +1,5 @@
+// UI.Cooldowns.ImagiknightHeraldryBuff: Imagiknight Strength
+
 Items: {
 	TwoPaths: {
 		DisplayName: Два пути
@@ -770,6 +772,21 @@ Items: {
 			Nullifies the Astral Infection debuff
 			''' */
 	}
+
+	ImagiknightHeraldry: {
+		// DisplayName: Imagiknight Heraldry
+		/* Tooltip:
+			'''
+			Multiplies all damage based on how close you are to teammates, with a maximum damage boost of 20%
+			Emit a blazing aura that also boosts the damage of teammates
+			Teammates gain increasing multiplicative damage the closer they are to you
+			These multipliers do not stack with the [i:CalamityMod/WarbanneroftheRighteous] Warbanner of the Righteous multiplier, and the higher bonus of the two will be used
+			Effects are transparent and silent if visibility is disabled
+			Gives all teammates +{0} HP/s life regen, +{1}% max life, {2}% damage reduction, {3} defense and {4}% increased damage
+			'An idea is a mere particle, one that exponentially accelerates the more minds it travels through. 
+			When you put enough minds together, they can make said idea truly unstoppable.' -Imagiknight_Girus
+			''' */
+	}
 }
 
 ItemTooltip: {
@@ -834,6 +851,7 @@ ItemTooltip: {
 		// Puzzles: Mr. Puzzles
 		// cat: StarlightCat
 		// Goldsock: Goldsockz2
+		// paradox: Imagiknight_Parad0xical
 	}
 
 	Cooldowns: {

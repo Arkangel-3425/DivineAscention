@@ -14,9 +14,9 @@ using ThoriumMod.Utilities;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Bard
 {
+    [AutoloadEquip(EquipType.Face)]
     public class GodsPitch : BardItem
     {
-
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;
