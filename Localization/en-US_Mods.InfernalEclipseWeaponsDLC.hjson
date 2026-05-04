@@ -469,7 +469,7 @@ Items: {
 			Calls forth a condensed eclipse
 			The eclipse will release pulses of alternating light and dark energy
 			Pulses of light will heal nearby allies for the players bonus healing
-			Pulses of Darkness will deal radiant damage to enemies
+			Pulses of Darkness will deal true damage to enemies
 			'''
 		SetBonusExtra: Immunity to Broken Oath
 	}
