@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CalamityMod.Items.Materials;
+﻿using CalamityMod.Items.Materials;
 using CalamityMod.Items;
 using InfernalEclipseWeaponsDLC.Core.NewFolder;
 using Terraria.ID;
@@ -15,19 +10,20 @@ using ThoriumMod.Items;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee.SpearTips
 {
+    [JITWhenModsEnabled("ThoriumMod")]
     [ExtendsFromMod("ThoriumMod")]
     public class ArcticSpearTip : ThoriumItem
     {
         public override bool IsLoadingEnabled(Mod mod)
         {
-            return ModLoader.TryGetMod("ThoriumMod", out _);
+            return ModLoader.HasMod("ThoriumMod");
         }
 
         public override void SetDefaults()
         {
             accDamage = Language.GetTextValue("Mods.InfernalEclipseWeaponsDLC.ItemTooltip.ArcticSpearTip");
-            Item.width = 28;
-            Item.height = 28;
+            Item.width = 32;
+            Item.height = 32;
             Item.value = CalamityGlobalItem.RarityLightPurpleBuyPrice;
             Item.rare = ItemRarityID.LightPurple;
             Item.accessory = true;
