@@ -1,5 +1,7 @@
 ﻿using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
+using InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard;
+using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro;
 using Microsoft.CodeAnalysis.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -19,6 +21,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
     {
         public override BardInstrumentType InstrumentType => BardInstrumentType.String;
 
+        public int TileBounces = 0;
+
         public override void SetStaticDefaults()
         {
             Main.projFrames[Projectile.type] = 4;
@@ -32,11 +36,14 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
             Projectile.height = 20;
             Projectile.friendly = true;
             Projectile.ignoreWater = true;
-            Projectile.tileCollide = false;
+            Projectile.tileCollide = true;
             Projectile.penetrate = -1;
             Projectile.timeLeft = 1200;
             ProjectileID.Sets.TrailCacheLength[Projectile.type] = 15;
             ProjectileID.Sets.TrailingMode[Projectile.type] = 3;
+
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.localNPCHitCooldown = 40;
         }
 
         public override void AI()
@@ -78,6 +85,70 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro
                         break;
                     }
                 }
+            }
+        }
+
+        public override bool OnTileCollide(Vector2 oldVelocity)
+        {
+            TileBounces--;
+
+            // Reflect velocity (basic bounce)
+            if (Projectile.velocity.X != oldVelocity.X)
+                Projectile.velocity.X = -oldVelocity.X;
+
+            if (Projectile.velocity.Y != oldVelocity.Y)
+                Projectile.velocity.Y = -oldVelocity.Y;
+
+            SpawnFanProjectiles();
+
+            return TileBounces < 0;
+        }
+
+        private NPC FindNearestNPC(float maxDistance = 600f)
+        {
+            NPC target = null;
+            float distance = (maxDistance + 200);
+
+            foreach (NPC npc in Main.npc)
+            {
+                if (npc.CanBeChasedBy())
+                {
+                    float d = Vector2.Distance(npc.Center, Projectile.Center);
+                    if (d < distance)
+                    {
+                        distance = d;
+                        target = npc;
+                    }
+                }
+            }
+            return target;
+        }
+
+        private void SpawnFanProjectiles()
+        {
+            NPC target = FindNearestNPC();
+            if (target == null)
+                return;
+
+            Vector2 direction = (target.Center - Projectile.Center).SafeNormalize(Vector2.UnitY);
+
+            float spread = MathHelper.ToRadians(20f); // fan angle
+            int count = 3;
+
+            for (int i = 0; i < count; i++)
+            {
+                float offset = MathHelper.Lerp(-spread, spread, i / (float)(count - 1));
+                Vector2 velocity = direction.RotatedBy(offset) * 8f;
+
+                Projectile.NewProjectile(
+                    Projectile.GetSource_FromThis(),
+                    Projectile.Center,
+                    velocity,
+                    ModContent.ProjectileType<BrimstonePetalPro>(),
+                    Projectile.damage / 2,
+                    0f,
+                    Main.myPlayer
+                );
             }
         }
 

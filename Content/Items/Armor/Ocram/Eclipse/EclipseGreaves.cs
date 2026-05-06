@@ -6,37 +6,53 @@ using ThoriumMod.Utilities;
 using CalamityMod.Items;
 using CalamityMod.Items.Potions;
 using InfernalEclipseWeaponsDLC.Core;
+using System.Collections.Generic;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Eclipse
 {
     [AutoloadEquip(EquipType.Legs)]
     public class EclipseGreaves : ModItem
     {
-        public override bool IsLoadingEnabled(Mod mod)
-        {
-            return true;
-            return WeaponConfig.Instance.UnfinishedContent;
-        }
         public override void SetDefaults()
         {
             Item.width = 18;
             Item.height = 18;
             Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
             Item.rare = ItemRarityID.Lime;
-            Item.defense = 19;
+
+            if (!ModLoader.HasMod("SOTS"))
+            {
+                Item.vanity = true;
+            }
+            else
+            {
+                Item.defense = 19;
+            }
         }
 
         public override void UpdateEquip(Player player)
         {
+            if (!ModLoader.TryGetMod("SOTS", out Mod sots)) return;
+
             ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
-            ref StatModifier damage = ref player.GetDamage(DamageClass.Generic);
-            damage -= 0.16f;
-            ref StatModifier damage2 = ref player.GetDamage((DamageClass)(object)ThoriumDamageBase<HealerDamage>.Instance);
-            damage2 += 0.32f;
+
+            player.GetDamage((DamageClass)(object)ThoriumDamageBase<HealerDamage>.Instance) += 0.08f;
+            player.GetDamage(DamageClass.Magic) += 0.08f;
+
+            player.GetCritChance((DamageClass)(object)ThoriumDamageBase<HealerDamage>.Instance) += 4f;
+            player.GetCritChance(DamageClass.Magic) += 4f;
+
+            SOTSBonuses.IncreseVoidRegenAndMaxVoid(player, 1f, 50);
+
             player.manaCost -= 0.15f;
             player.moveSpeed += 0.25f;
-            thoriumPlayer.healBonus += 3;
-            player.GetCritChance((DamageClass)(object)ThoriumDamageBase<HealerDamage>.Instance) += 4f;
+        }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            if (ModLoader.HasMod("SOTS")) return;
+
+            tooltips.RemoveAll(t => t.Name.Contains("Tooltip"));
         }
 
         public override void AddRecipes()

@@ -28,7 +28,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes
             SetDefaultsToScythe();
             Item.shoot = ModContent.ProjectileType<NeonRipperPro>();
             scytheSoulCharge = 3;
-            Item.damage = 35;
+            Item.damage = 60;
             Item.value = CalamityGlobalItem.RarityYellowBuyPrice;
             Item.rare = ItemRarityID.Yellow;
 
@@ -157,7 +157,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes
                 Vector2 orbit = Vector2.UnitX.RotatedBy(attackTime * MathHelper.TwoPi, default);
 
                 // Stretch orbit based on velocity magnitude and ai[0] factor
-                orbit *= new Vector2(Projectile.velocity.Length(), Projectile.velocity.Length() * Projectile.ai[0] * Projectile.spriteDirection);
+                orbit *= new Vector2(Projectile.velocity.Length(), Projectile.velocity.Length() * ((Projectile.ai[0] / 4) * 3) * Projectile.spriteDirection);
 
                 // Rotate orbit to match aim
                 orbit = orbit.RotatedBy(Projectile.velocity.ToRotation(), default);
@@ -245,10 +245,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes
         public override void SetDefaults()
         {
             Projectile.Size = new Vector2(16, 10);
-            Projectile.timeLeft = 1000;
+            Projectile.timeLeft = 600;
             Projectile.aiStyle = -1;
             Projectile.friendly = true;
-            Projectile.penetrate = 6;
+            Projectile.penetrate = 4;
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 30; // Can only attack 60 / value times a second
             Projectile.ignoreWater = true;

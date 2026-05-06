@@ -1,3 +1,5 @@
+// UI.Cooldowns.ImagiknightHeraldryBuff: Imagiknight Strength
+
 Items: {
 	TwoPaths: {
 		DisplayName: Два пути
@@ -43,13 +45,13 @@ Items: {
 	}
 
 	DeathsWhisper: {
-		Tooltip: ""
 		DisplayName: Шёпот смерти
+		Tooltip: ""
 	}
 
 	BrimstoneHarp: {
-		Tooltip: ""
 		DisplayName: Серная арфа
+		Tooltip: ""
 	}
 
 	NecroticChorus: {
@@ -300,8 +302,8 @@ Items: {
 	}
 
 	ArckaneStaff: {
-		Tooltip: Создаёт перегруженный заряд нестабильных элементов
 		DisplayName: Чародейский посох
+		Tooltip: Создаёт перегруженный заряд нестабильных элементов
 	}
 
 	MystickStaff: {
@@ -397,10 +399,9 @@ Items: {
 		// DisplayName: Eclipse Breastplate
 		/* Tooltip:
 			'''
-			20% decreased non-radiant damage
-			20% increased radiant damage
-			8% increased radiant critical strike chance
-			5% increased healing and radiant cast speed
+			12% increased magic and radiant damage
+			8% increased magic and radiant critical strike chance
+			5% increased magic, healing, and radiant cast speed
 			15% increased damage reduction
 			Healing spells will heal an additional 3 life
 			''' */
@@ -410,12 +411,11 @@ Items: {
 		// DisplayName: Eclipse Greaves
 		/* Tooltip:
 			'''
-			16% decreased non-radiant damage
-			16% increased radiant damage
-			4% increased radiant critical strike chance
+			8% increased magic and radiant damage
+			4% increased magic and radiant critical strike chance
+			Increases void gain by 1 and max void by 50
 			15% decreased mana cost
-			20% increased movement speed
-			Healing spells will heal an additional 3 life
+			25% increased movement speed
 			''' */
 	}
 
@@ -423,66 +423,76 @@ Items: {
 		// DisplayName: Eclipse Helm
 		/* Tooltip:
 			'''
-			16% decreased non-radiant damage
-			16% increased radiant damage
-			3% increased radiant critical strike chance
-			life regeneration begins faster
-			Healing spells will heal an additional 2 life
+			8% increased magic, radiant, and void damage
+			Increases void gain by 2 and max void by 50
+			Life regeneration begins faster
 			''' */
 		/* SetBonus:
 			'''
 			Calls forth a condensed eclipse
-			The eclipse will fire light and darkness when there are enemies nearby
-			Light will home onto and heal nearby allies for the players bonus healing
-			Darkness will home onto enemies and deal radiant damage
+			The eclipse will release pulses of alternating light and dark energy
+			Pulses of light will heal nearby allies for the players bonus healing
+			Pulses of Darkness will deal true damage to enemies
 			''' */
+		// SetBonusExtra: Immunity to Broken Oath
 	}
 
 	NecrosingerAnkles: {
-		// DisplayName: Posthumous Ankles
+		// DisplayName: Necrosinger Ankles
 		/* Tooltip:
 			'''
-			10% increased symphonic damage
-			5% increased symphonic critical strike chance
-			20% increased movement speed
+			20% increased summon damage, whip range, and movement speed
+			20% increased symphonic critical strike chance
+			Increases void gain by 3 and max void by 100
+			Increases max sentries by 3
 			''' */
 	}
 
 	NecrosingerRibs: {
-		// DisplayName: Posthumous Ribs
+		// DisplayName: Necrosinger Ribs
 		/* Tooltip:
 			'''
-			14% increased symphonic damage
-			5% increased symphonic critical strike chance
+			20% increased summon and symphonic damage
+			+2.5 HP/s life regen
 			Increases the chance for inspiration notes to drop by 10%
 			Increases the duration of your symphonic empowerments by 3 seconds
 			''' */
 	}
 
 	NecrosingerSkull: {
-		// DisplayName: Posthumous Skull
+		// DisplayName: Necrosinger Skull
 		/* Tooltip:
 			'''
-			5% increased symphonic damage
-			10% increased symphonic playing speed
-			5% increased symphonic critical strike chance
+			20% increased summon, symphonic, and void damage
+			10% increased whip speed & symphonic playing speed
+			Increases void gain by 4 and max void by 125
 			Increased inspiration regeneration rate by 15%
+			Increases max minions by 3
 			''' */
 		/* SetBonus:
 			'''
-			Music notes will orbit you, each blocking one projectile before breaking
-			When broken, the ring of notes will refresh after 5 seconds
+			Summons 3 phantom notes to circle you
+			These notes can deal summon damage inflicting [iabuff:Tuned] or block an incoming projectile
+			This effect has a 5 second cooldown
 			''' */
+		// SetBonusExtra: Using a non-bard weapon will retain empowerments
 	}
 
 	SuperCellCirclet: {
 		// DisplayName: Garuda Circlet
-		// Tooltip: 5% increased rogue damage
+		/* Tooltip:
+			'''
+			25% increased ranged and rogue damage
+			15% increased void damage
+			Increases your maximum technique points by 2
+			Increases void gain by 4 and max void by 75
+			''' */
 		/* SetBonus:
 			'''
+			+115 maximum rogue stealth
+			Not moving puts you ranged stealth,
+			increasing ranged ability and reducing chance for enemies to target you
 			Grants rudimentary flight if not wearing any wings
-			Increases your maximum technique points by 2
-			+110 maximum stealth
 			''' */
 	}
 
@@ -490,10 +500,10 @@ Items: {
 		// DisplayName: Garuda Guard
 		/* Tooltip:
 			'''
-			10% increased rogue damage
-			20% increased rogue weapon speed
-			30% increased rogue weapon velocity
-			increases wing flight time by 15%
+			30% increased ranged and rogue velocity
+			When consuming stealth, 15% of the stealth consumed is converted into void
+			Increases wing flight time by 15%
+			Increases void gain by 3 and max void by 75
 			''' */
 	}
 
@@ -501,9 +511,9 @@ Items: {
 		// DisplayName: Garuda Sabatons
 		/* Tooltip:
 			'''
-			5% increased rogue damage
-			10% increased rogue weapon critical strike chance
-			30% increased movement speed
+			25% increased ranged and rogue critical strike chance
+			Increases void critical strike chance by 15% and movement speed by 30%
+			Increases void gain by 3 and max void by 75
 			''' */
 	}
 
@@ -516,9 +526,9 @@ Items: {
 		// DisplayName: Tetherblade
 		/* Tooltip:
 			'''
-			Throw the blade towards the cursor by Right Clicking
+			Throw the blade towards the cursor by <right>ing
 			The blade will linger for a few seconds after throwing it
-			Right Click again to teleport to the blade before the blade disapears
+			<right> again to teleport to the blade before the blade disapears
 			After teleporting the blade will stab at all nearby enemies, dealing triple damage
 			''' */
 	}
@@ -586,14 +596,14 @@ Items: {
 		// DisplayName: Grand Amplifier
 		/* Tooltip:
 			'''
-			Left Click to fire a small thunderbolt that inflicts electrified
-			Right Click to summon lightning above all nearby enemies with the electrified debuff
-			This lightning will remove the electrified debuff but deal a burst of high damage
+			<left> to fire a small thunderbolt that inflicts [rbuff:Electrified]
+			<right> to summon lightning above all nearby enemies with the [rbuff:Electrified] debuff
+			This lightning will remove the [rbuff:Electrified] debuff but deal a burst of high damage
 			''' */
 	}
 
 	PocketConcert: {
-		// DisplayName: Mechamatone
+		// DisplayName: I-PMA Mechamatone
 		/* Tooltip:
 			'''
 			Releases music notes of varying colors
@@ -607,20 +617,20 @@ Items: {
 	}
 
 	GammaKnife: {
-		// DisplayName: Gamma Knife
+		// DisplayName: C-GSS Gamma Knife
 		/* Tooltip:
 			'''
 			Ignores 15 points of defence
-			Left Click to swing the knife directionally, firing a high intensity slash of gamma radiation
+			<left> to swing the knife directionally, firing a high intensity slash of gamma radiation
 			The slash will deal heavy damage at close range but dissipate as it travels
-			Right Click to throw the knife, which will explode and return on collision with an enemy or tile
+			<right> to throw the knife, which will explode and return on collision with an enemy or tile
 			The knife cannot be used while thrown
 			''' */
 	}
 
 	MiniaturizedRequiemEngine: {
 		// DisplayName: Miniaturized Requiem Engine
-		// Tooltip: Has three modes of fire that can be cycled between on Right Click
+		// Tooltip: Has three modes of fire that can be cycled between on <right>
 	}
 
 	MagicPurpleBouncyBalls: {
@@ -639,7 +649,7 @@ Items: {
 			'''
 			Shoots a powerful, high velocity bullet
 			Also fires a lightning bolt imbued with void energy
-			Right Click to zoom out
+			<right> to zoom out
 			''' */
 	}
 
@@ -649,7 +659,7 @@ Items: {
 			'''
 			Shoots a powerful, high velocity bullet
 			Also fires a lightning bolt imbued with void energy
-			Right Click to zoom out
+			<right> to zoom out
 			''' */
 	}
 
@@ -664,6 +674,117 @@ Items: {
 			Zoom effect can disabled with accessory visability
 			Pressing the '{$Keybinds.AccessoryAbility.DisplayName}' key will freeze the camera in place
 			'I see a unbreakable fortress in your future'
+			''' */
+	}
+
+	SwordofaThousandTruths: {
+		// DisplayName: Sword of a Thousand Truths
+		/* Tooltip:
+			'''
+			<left> to swing the sword, restoring 7 life on hit
+			Hold <right> to charge and throw the sword, embedding itself into the hit enemy
+			When the sword is embedded it will release light and dark energy
+			Light energy will home onto nearby allies and heal life equal to bonus healing
+			Dark energy will home onto nearby enemies, dealing damage
+			If the user's bonus healing is 5 or more, the enemy will also be inflicted with a variety of debillitating debuffs
+			Only one sword can be thrown at a time
+			'Sorry piggies but that's a necessary sacrifice'
+			''' */
+	}
+
+	AbsoluteTVRemote: {
+		// DisplayName: Absolute TV Remote
+		/* Tooltip:
+			'''
+			<left> to generate an aura around you that slows down projectiles in radius on a 2 minute cooldown
+			<right> to generate an aura that instead speeds up projectiles in radius, also on a 2 minute cooldown
+			Pressing {0} will fire a projectile that pauses enemies in their tracks, usable on a 5 minute cooldown
+			'TV NEVER DIES!'
+			''' */
+	}
+
+	PlanetShaper: {
+		// DisplayName: Planet Shaper
+		/* Tooltip:
+			'''
+			This scythe is swung directionally instead of spun
+			Has a three-swing combo:
+			    Every first swing, the scythe shoots one homing fireball and 2 cosmic beams
+			    Every second swing, the scythe shoots one cosmic beam and two homing fireballs
+			    Every third swing, the scythe is spun around
+			    While spun, emits up to six homing fireballs and cosmic beams
+			The scythe and fireballs ignore 125 points of defense and inflict [iabuff:CalamityMod/Dragonfire]
+			The cosmic beams ignore 75 points of defense and inflict both [iabuff:CalamityMod/ElementalMix] and [iabuff:CatalystMod/AstralBlight]
+			'LADIES AND GENTLEMAN... LET IT ROCK LET IT ROCK LET IT ROCK!!!'
+			''' */
+	}
+
+	GodsPitch: {
+		// DisplayName: God's Pitch
+		/* Tooltip:
+			'''
+			Increases maximum inspiration by 5
+			15% increased symphonic damage
+			Increases the duration of your symphonic empowerments by 3 seconds
+			Increases the level of empowerments you apply to yourself and others by 2
+			Increases empowerment range
+			Instrument attacks launch pipes upward that eventually fall down
+			[c/FF232C:The pipes sound effects are loud and may be startling or otherwise bad for some]
+			'Your ears are not worthy to hear this...'
+			''' */
+	}
+
+	GauntletofAnnihilationVoid: {
+		// DisplayName: Gauntlet of Annihilation
+		/* Tooltip:
+			'''
+			<left> will unlease a flurry of 4 cosmic gauntlets that inflict [cbuff:CalamityMod/GodSlayerInferno]
+			<right> will release rapid cosmic punches and lunge you in the direction of the mouse
+			Lunging only consumes half the void cost and on collision during the lunge, you are knocked back
+			Pressing <left> 3 frames after being knocked back will release a God Slaying Gauntlet
+			The God Slaying Gauntlet always crits and also inflicts [cbuff:CalamityMod/WhisperingDeath]
+			Provides a light source while favorited in the inventory
+			''' */
+	}
+
+	GauntletofAnnihilation: {
+		// DisplayName: Gauntlet of Annihilation
+		/* Tooltip:
+			'''
+			<left> will unlease a flurry of 4 cosmic gauntlets that inflict [cbuff:CalamityMod/GodSlayerInferno]
+			<right> will release rapid cosmic punches and lunge you in the direction of the mouse
+			On collision during the lunge, you are knocked back
+			Pressing <left> 3 frames after being knocked back will release a God Slaying Gauntlet
+			The God Slaying Gauntlet always crits and also inflicts [cbuff:CalamityMod/WhisperingDeath]
+			Provides a light source while favorited in the inventory
+			''' */
+	}
+
+	BlightedBadge: {
+		// DisplayName: Blighted Badge
+		/* Tooltip:
+			'''
+			True melee strikes drops astral stars from the sky
+			Attackers are shocked, dealing immense damage
+			Taking damage will massively increase melee speed and critical strike chance briefly
+			Also releases an explosion and temporarily increases true melee damage by 30% when damaged
+			Boost duration scales with the amount of damage you took, up to 10 seconds
+			Nullifies the Astral Infection debuff
+			''' */
+	}
+
+	ImagiknightHeraldry: {
+		// DisplayName: Imagiknight Heraldry
+		/* Tooltip:
+			'''
+			Multiplies all damage based on how close you are to teammates, with a maximum damage boost of 20%
+			Emit a blazing aura that also boosts the damage of teammates
+			Teammates gain increasing multiplicative damage the closer they are to you
+			These multipliers do not stack with the [i:CalamityMod/WarbanneroftheRighteous] Warbanner of the Righteous multiplier, and the higher bonus of the two will be used
+			Effects are transparent and silent if visibility is disabled
+			Gives all teammates +{0} HP/s life regen, +{1}% max life, {2}% damage reduction, {3} defense and {4}% increased damage
+			'An idea is a mere particle, one that exponentially accelerates the more minds it travels through. 
+			When you put enough minds together, they can make said idea truly unstoppable.' -Imagiknight_Girus
 			''' */
 	}
 }
@@ -730,6 +851,13 @@ ItemTooltip: {
 		// Puzzles: Mr. Puzzles
 		// cat: StarlightCat
 		// Goldsock: Goldsockz2
+		// paradox: Imagiknight_Parad0xical
+	}
+
+	Cooldowns: {
+		// Pause: TV Remote Pause is on cooldown!
+		// FastForward: TV Remote Fast Forward is on cooldown!
+		// Slowdown: TV Remote Rewind is on cooldown!
 	}
 }
 
@@ -740,7 +868,7 @@ Projectiles: {
 	Magic: {
 		WhiteScythe.DisplayName: Белая коса
 		HealingLightningArc.DisplayName: Целебная дуга молнии
-		// DamagingLightningArc.DisplayName: Damaging Lightning Arc
+		// DamagingLightningArc.DisplayName: Lightning Arc
 	}
 
 	TwoPathsPro2.DisplayName: "{$Items.TwoPaths.DisplayName}"
@@ -825,40 +953,56 @@ Projectiles: {
 	MothwingDaggerPro.DisplayName: Кинжал Мотылькового Крыла Про
 	IlluminantBolt.DisplayName: Светящийся Снаряд
 	// FroststeelPulse.DisplayName: Froststeel Pulse
-	// LightChainProjectile.DisplayName: Light Chain Projectile
-	// StarScepterBolt.DisplayName: Star Scepter Bolt
-	// StarScepterStar.DisplayName: Star Scepter Star
-	// ObsidianSickleProjectile.DisplayName: Obsidian Sickle Projectile
+	// LightChainProjectile.DisplayName: Light Chain
+	// StarScepterBolt.DisplayName: Scepter Bolt
+	// StarScepterStar.DisplayName: Scepter Star
+	// ObsidianSickleProjectile.DisplayName: Obsidian Sickle
 	// ShadowflameAxeBolt.DisplayName: Shadowflame Axe Bolt
-	// ShadowflameAxeProjectile.DisplayName: Shadowflame Axe Projectile
-	// TetherBladeProjectile.DisplayName: Tether Blade Projectile
-	// TetherBladeProjectileBlink.DisplayName: Tether Blade Projectile Blink
-	// StormCrossbowArrow.DisplayName: Storm Crossbow Arrow
-	// IlluminantCrossPro.DisplayName: Illuminant Cross Pro
-	// GlowstringBiwaPro.DisplayName: Glowstring Biwa Pro
+	// ShadowflameAxeProjectile.DisplayName: Shadowflame Axe
+	// TetherBladeProjectile.DisplayName: Tether Blade
+	// TetherBladeProjectileBlink.DisplayName: Blink
+	// StormCrossbowArrow.DisplayName: Storm Arrow
+	// IlluminantCrossPro.DisplayName: Illuminant Cross
+	// GlowstringBiwaPro.DisplayName: Glowstring Biwa
 	// GlowstringBeam.DisplayName: Glowstring Beam
-	// StormTalonPro.DisplayName: Storm Talon Pro
-	// StormCarverPro.DisplayName: Storm Carver Pro
-	// GrandAmplifierPro.DisplayName: Grand Amplifier Pro
-	// GrandAmplifierPro2.DisplayName: Grand Amplifier Pro2
-	// MusicalNoteProjectile.DisplayName: Musical Note Projectile
-	// GammaExplosionProjectile.DisplayName: Gamma Explosion Projectile
-	// GammaKnifeProjectile.DisplayName: Gamma Knife Projectile
-	// GammaKnifeThrownProjectile.DisplayName: Gamma Knife Thrown Projectile
-	// GammaSlashProjectile.DisplayName: Gamma Slash Projectile
-	// GrandAmplifierLightning.DisplayName: Grand Amplifier Lightning
-	// MiniaturizedRequiemEngineGatlingPro.DisplayName: Miniaturized Requiem Engine Gatling Pro
-	// MiniaturizedRequiemEngineLaserPro.DisplayName: Miniaturized Requiem Engine Laser Pro
-	// MiniaturizedRequiemEngineTheBigOnePro.DisplayName: Miniaturized Requiem Engine The Big One Pro
-	// MiniaturizedRequiemEngineLaserPro2.DisplayName: Miniaturized Requiem Engine Laser Pro2
-	// MiniaturizedRequiemEngineTheBigOnePro2.DisplayName: Miniaturized Requiem Engine The Big One Pro2
-	// MiniaturizedRequiemEngineTheBigOnePro3.DisplayName: Miniaturized Requiem Engine The Big One Pro3
+	// StormTalonPro.DisplayName: Storm Talon
+	// StormCarverPro.DisplayName: Storm Carver
+	// GrandAmplifierPro.DisplayName: Amplifier
+	// GrandAmplifierPro2.DisplayName: Amplifier
+	// MusicalNoteProjectile.DisplayName: Musical Note
+	// GammaExplosionProjectile.DisplayName: Gamma Explosion
+	// GammaKnifeProjectile.DisplayName: Gamma Knife
+	// GammaKnifeThrownProjectile.DisplayName: Gamma Knife
+	// GammaSlashProjectile.DisplayName: Gamma Slash
+	// GrandAmplifierLightning.DisplayName: Lightning
+	// MiniaturizedRequiemEngineGatlingPro.DisplayName: Engiine Gatliing laster
+	// MiniaturizedRequiemEngineLaserPro.DisplayName: Engine Laser
+	// MiniaturizedRequiemEngineTheBigOnePro.DisplayName: The Big One
+	// MiniaturizedRequiemEngineLaserPro2.DisplayName: Engine Laser
+	// MiniaturizedRequiemEngineTheBigOnePro2.DisplayName: The Big One
+	// MiniaturizedRequiemEngineTheBigOnePro3.DisplayName: The Big One
 	// NecrosingerNote.DisplayName: Necrosinger Note
 	// MagicPurpleBouncyBall.DisplayName: Magic Purple Bouncy Ball
-	// EclipseEclipse.DisplayName: Eclipse Eclipse
-	// CatastrophicLongbladeHoldout.DisplayName: Catastrophic Longblade Holdout
-	// CatastrophicLongbladeHoldoutVoid.DisplayName: Catastrophic Longblade Holdout Void
+	// EclipseEclipse.DisplayName: Eclipse
+	// CatastrophicLongbladeHoldout.DisplayName: Catastrophic Longblade
+	// CatastrophicLongbladeHoldoutVoid.DisplayName: Catastrophic Longblade
 	// VoidBolt.DisplayName: Void Bolt
+	// EclipsePulseDark.DisplayName: Dark Pulse
+	// EclipsePulseLight.DisplayName: Holy Pulse
+	// BardPulseRiffleBoom.DisplayName: Pulse Riffle Boom
+	// BrimstonePetalPro.DisplayName: Brimstone Petal
+	// SwordofaThousandTruthsSlashPro.DisplayName: Sword of a Thousand Truths
+	// SwordofaThousandTruthsHoldPro.DisplayName: Sword of a Thousand Truths
+	// SwordofaThousandTruthsPro.DisplayName: Sword of a Thousand Truths
+	// AbsoluteTVRemotePausePro.DisplayName: Pause
+	// PlanetShaperFireball.DisplayName: Planet Shaper Fireball
+	// PlanetShaperPro.DisplayName: Planet Shaper
+	// PlanetShaperStar.DisplayName: Planet Shaper Star
+	// MetalPipe.DisplayName: Auric Pipe
+	// AbsoluteTVRemoteFastForwardPro.DisplayName: Fast Forward Aura
+	// AbsoluteTVRemoteRewindPro.DisplayName: Rewind Aura
+	// CosmicPunch.DisplayName: Cosmic Gauntlet
+	// Melee.GauntletofAnnihilationPunches.DisplayName: Cosmic Punches
 }
 
 Buffs: {
@@ -876,6 +1020,16 @@ Buffs: {
 		DisplayName: Кровавая ярость
 		Description: Урон кроводела увеличен на 25%, а кровавые стрелы накладывают дебафф [cbuff:CalamityMod/BurningBlood]
 	}
+
+	TVRemotePaused: {
+		// DisplayName: Paused
+		// Description: Frozen in time!
+	}
+
+	TVRemotePlayerPaused: {
+		// DisplayName: Paused
+		// Description: Frozen in time!
+	}
 }
 
 Configs: {
@@ -889,12 +1043,12 @@ Configs: {
 
 		AIGenedWeapons: {
 			// Label: AI Generated Weapon Concepts
-			// Tooltip: Toggles whether if the AI Generated weapon concpets from Verveine's 'Which AI Makes the Best Terraria Weapons?' are loaded
+			// Tooltip: Toggles whether if the AI Generated weapon concepts from Verveine's 'Which AI Makes the Best Terraria Weapons?' are loaded
 		}
 
 		GitGudWeapon: {
 			// Label: GitGudWO Weapon Concept
-			// Tooltip: Toggles whether if the weapon concpet made by GitGudWO from Verveine's 'Which AI Makes the Best Terraria Weapons?' is loaded
+			// Tooltip: Toggles whether if the weapon concept made by GitGudWO from Verveine's 'Which AI Makes the Best Terraria Weapons?' is loaded
 		}
 
 		EnableScreenEffects: {
@@ -908,3 +1062,5 @@ Configs: {
 		}
 	}
 }
+
+// "Keybinds.Absolute TV Remote Pause.DisplayName": Absolute TV Remote Pause

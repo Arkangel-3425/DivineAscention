@@ -19,14 +19,14 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged
         {
             Item.damage = 4;
             Item.DamageType = DamageClass.Ranged;
-            Item.useTime = 6; // Fast SMG feel
+            Item.useTime = 6;
             Item.useAnimation = 6;
             Item.useStyle = ItemUseStyleID.Shoot;
             Item.noMelee = true;
             Item.knockBack = 1.5f;
             Item.value = CalamityGlobalItem.RarityGreenBuyPrice;
             Item.rare = ItemRarityID.Green;
-            Item.UseSound = SoundID.Item11; // SMG-like sound
+            Item.UseSound = SoundID.Item11;
             Item.autoReuse = true;
             Item.shoot = ProjectileID.Bullet;
             Item.shootSpeed = 12f;
@@ -35,42 +35,40 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged
             Item.width = 15;
             Item.height = 11;
 
-            Item.scale = 0.66f; // permanent small sprite
+            Item.scale = 0.66f;
         }
 
-        public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source,
-                           Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        public override void ModifyWeaponDamage(Player player, ref StatModifier damage)
+        {
+            int buffIndex = player.FindBuffIndex(BuffID.ManaSickness);
+            if (buffIndex != -1)
+            {
+                int remaining = player.buffTime[buffIndex]; // in ticks
+                float reductionMultiplier = 0.25f * (remaining / 300f);
+
+                damage *= 1f - reductionMultiplier;
+            }
+        }
+
+        public override bool Shoot(Player player, Terraria.DataStructures.EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             var modPlayer = player.GetModPlayer<GloomSwitchPlayer>();
             var rushPlayer = player.GetModPlayer<DarkRushPlayer>();
 
             modPlayer.shotCounter++;
 
-            // --- Shot spread ---
-            float maxSpread = rushPlayer.OverclockActive ? 5f : 25f;
+            // Adjust spread based on whether Overclock is active
+            float maxSpread = modPlayer.lastShotConsumedMana ? 5f : 25f;
             Vector2 perturbedVelocity = velocity.RotatedByRandom(MathHelper.ToRadians(maxSpread));
 
-            // --- Build a stable muzzle position that follows aim AND keeps an "above" offset ---
-            // Normalize aim
+            // Spawn position calculations
             Vector2 aimDir = velocity.SafeNormalize(Vector2.UnitX);
-
-            // Base forward muzzle offset
             float muzzleLength = 30f;
-
-            // Adjust forward length if facing left (compensates for sprite shift)
-            if (player.direction == -1)
-                muzzleLength += 6f;  // tweak until the muzzle lines up with your sprite
-
+            if (player.direction == -1) muzzleLength += 6f;
             Vector2 muzzleOffset = aimDir * muzzleLength;
-
-            // Perpendicular offset (keeps “above” the barrel)
             Vector2 perp = aimDir.RotatedBy(MathHelper.PiOver2);
-            if (perp.Y * player.gravDir >= 0f)
-                perp = -perp;
-
+            if (perp.Y * player.gravDir >= 0f) perp = -perp;
             Vector2 verticalOffset = perp * 4f;
-
-            // Final spawn position
             Vector2 spawnPos = player.MountedCenter + muzzleOffset + verticalOffset;
 
             if (modPlayer.shotCounter >= 15)
@@ -92,85 +90,59 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged
                     proj.penetrate = 2;
                 }
 
-                // Cursed flame dust: spawn at muzzle, spread within cone of aim
-                int dustCount = 15;
-                for (int i = 0; i < dustCount; i++)
+                // Dust effect
+                for (int i = 0; i < 20; i++)
                 {
                     float angle = Main.rand.NextFloat(-MathHelper.ToRadians(maxSpread), MathHelper.ToRadians(maxSpread));
                     Vector2 dustDir = aimDir.RotatedBy(angle);
-                    Vector2 dustVel = dustDir * Main.rand.NextFloat(1.0f, 4.0f);
-
-                    int dustIndex = Dust.NewDust(spawnPos, 0, 0, 75, dustVel.X * 2.5f, dustVel.Y * 2.5f, 0, default, Main.rand.NextFloat(2.0f, 3.0f));
+                    Vector2 dustVel = dustDir * Main.rand.NextFloat(1f, 4f);
+                    int dustIndex = Dust.NewDust(spawnPos, 0, 0, DustID.CorruptTorch, dustVel.X * 2.5f, dustVel.Y * 2.5f, 0, default, Main.rand.NextFloat(2f, 3f));
                     Main.dust[dustIndex].noGravity = true;
-                    Main.dust[dustIndex].fadeIn = 0f;
                 }
 
                 modPlayer.shotCounter = 0;
             }
             else
             {
-                // Normal bullet (use perturbedVelocity to fire)
                 Projectile.NewProjectile(source, spawnPos, perturbedVelocity, type, damage, knockback, player.whoAmI);
 
-                // small blood dust from muzzle, cone-shaped
-                int dustCount = 5;
-                for (int i = 0; i < dustCount; i++)
+                for (int i = 0; i < 5; i++)
                 {
                     float angle = Main.rand.NextFloat(-MathHelper.ToRadians(maxSpread), MathHelper.ToRadians(maxSpread));
                     Vector2 dustDir = aimDir.RotatedBy(angle);
-                    Vector2 dustVel = dustDir * Main.rand.NextFloat(1.0f, 2.5f);
-
-                    int dustIndex = Dust.NewDust(spawnPos, 0, 0, 18, dustVel.X, dustVel.Y, 0, default, Main.rand.NextFloat(0.5f, 1.0f));
+                    Vector2 dustVel = dustDir * Main.rand.NextFloat(1f, 2.5f);
+                    int dustIndex = Dust.NewDust(spawnPos, 0, 0, DustID.Blood, dustVel.X, dustVel.Y, 0, default, Main.rand.NextFloat(0.5f, 1f));
                     Main.dust[dustIndex].noGravity = true;
-                    Main.dust[dustIndex].fadeIn = 0f;
                 }
             }
 
-            return false;
+            return false; // prevent default shooting
         }
 
         public override bool AltFunctionUse(Player player)
         {
-            return true; // enables right-click functionality
+            return false;
         }
 
         public override bool CanUseItem(Player player)
         {
-            if (player.altFunctionUse == 2) // right-click
+            // Check if player has enough mana for the "rush" effect
+            var rushPlayer = player.GetModPlayer<DarkRushPlayer>();
+            var modPlayer = player.GetModPlayer<GloomSwitchPlayer>();
+            if (player.statMana >= 10)
             {
-                var mp = player.GetModPlayer<DarkRushPlayer>();
+                // Consume 10 mana
+                player.statMana -= 10;
+                player.ManaEffect(10);
 
-                if (player.statMana >= 200 && !mp.OverclockActive)
-                {
-                    // Consume 200 mana
-                    player.statMana -= 200;
-                    player.ManaEffect(200);
+                rushPlayer.ActivateRush(20);
+                modPlayer.lastShotConsumedMana = true;
 
-                    // Play sound
-                    SoundEngine.PlaySound(SoundID.Item113, player.position);
-
-                    // Activate for 12s (720 ticks)
-                    mp.ActivateRush(720);
-
-                    // Visual dust burst
-                    for (int i = 0; i < 30; i++)
-                    {
-                        float angle = Main.rand.NextFloat(MathHelper.TwoPi);
-                        Vector2 dir = angle.ToRotationVector2();
-                        Vector2 spawnPos = player.Center + dir * Main.rand.NextFloat(0f, 20f);
-                        Vector2 velocity = dir * Main.rand.NextFloat(2f, 5f);
-
-                        int dust = Dust.NewDust(spawnPos, 0, 0, DustID.CorruptTorch, velocity.X, velocity.Y, 0, default, 1.8f);
-                        Main.dust[dust].noGravity = true;
-                    }
-
-                    return false; // stop firing on right-click
-                }
-
-                return false; // can't right-click if not enough mana
+                player.manaRegenDelay = 60;
+                player.manaRegen = 0;
             }
 
-            return base.CanUseItem(player); // left-click normal shooting
+            return base.CanUseItem(player); // normal left-click use
         }
 
         public override Vector2? HoldoutOffset()
@@ -191,10 +163,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged
     public class GloomSwitchPlayer : ModPlayer
     {
         public int shotCounter;
+        public bool lastShotConsumedMana;
 
         public override void ResetEffects()
         {
-            // Nothing persistent, so we don’t reset here
+            lastShotConsumedMana = false;
         }
     }
 

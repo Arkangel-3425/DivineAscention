@@ -35,7 +35,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Hybrid
 
         public override void SetDefaults()
         {
-            Item.damage = 475;
+            Item.damage = 300;
             Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
             Item.noMelee = true;
             Item.mana = 15;

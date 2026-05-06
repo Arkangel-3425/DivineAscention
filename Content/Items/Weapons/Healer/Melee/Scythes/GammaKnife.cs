@@ -60,7 +60,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes
 
             // default to swing projectile
             Item.shoot = swingProj;
-            Item.shootSpeed = 6f;
+            Item.shootSpeed = 8f;
 
             Item.DamageType = ThoriumDamageBase<HealerDamage>.Instance;
 
@@ -73,12 +73,12 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes
         public override float UseTimeMultiplier(Player player)
         {
             // Stab is faster
-            return player.altFunctionUse == 2 ? 0.5f : 1f;
+            return player.altFunctionUse == 2 ? 1f : 1f;
         }
 
         public override float UseAnimationMultiplier(Player player)
         {
-            return player.altFunctionUse == 2 ? 0.5f : 1f;
+            return player.altFunctionUse == 2 ? 1f : 1f;
         }
 
         public override bool CanUseItem(Player player)

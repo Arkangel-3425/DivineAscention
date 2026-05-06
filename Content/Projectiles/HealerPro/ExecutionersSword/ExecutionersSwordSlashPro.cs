@@ -74,7 +74,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
             Projectile.Center = player.RotatedRelativePoint(player.MountedCenter, false, true);
 
             // Dynamic scale
-            Projectile.scale = 1.25f + progress * 0.3f;
+            Projectile.scale = (player.GetAdjustedItemScale(player.HeldItem)) + progress * 0.3f;
 
             // Dust along swing (BigBertha style)
             if (Main.rand.NextFloat() < Projectile.Opacity * 0.5f)

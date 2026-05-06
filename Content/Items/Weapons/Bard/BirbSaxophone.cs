@@ -18,9 +18,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override void SetStaticDefaults()
         {
-            Empowerments.AddInfo<LifeRegeneration>(2);
-            Empowerments.AddInfo<MovementSpeed>(3);
-            Empowerments.AddInfo<FlightTime>(3);
+            Empowerments.AddInfo<ResourceConsumptionChance>(3);
+            Empowerments.AddInfo<ResourceRegen>(3);
+            Empowerments.AddInfo<LifeRegeneration>(2); 
         }
 
         public override void SetBardDefaults()

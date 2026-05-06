@@ -34,9 +34,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
             Projectile.localNPCHitCooldown = 20; // 10 ticks = 1/6 second
         }
 
-
         public override void AI()
         {
+            Player player = Main.player[Projectile.owner];
+            Projectile.scale = player.GetAdjustedItemScale(player.HeldItem);
+
             Lighting.AddLight(Projectile.Center, 1f, 0.9f, 0.2f);
 
             if (!stuck)

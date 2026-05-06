@@ -29,7 +29,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Buffs
 
         public void ActivateRush(int duration)
         {
-            overclockTimer = duration;
+            overclockTimer += duration;
         }
 
         public override void PostUpdate()

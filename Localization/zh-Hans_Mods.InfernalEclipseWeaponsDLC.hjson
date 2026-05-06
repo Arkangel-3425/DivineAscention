@@ -1,3 +1,5 @@
+// UI.Cooldowns.ImagiknightHeraldryBuff: Imagiknight Strength
+
 Items: {
 	TwoPaths: {
 		DisplayName: 神冥歧径
@@ -43,13 +45,13 @@ Items: {
 	}
 
 	DeathsWhisper: {
-		Tooltip: ""
 		DisplayName: 殁亡笛语
+		Tooltip: ""
 	}
 
 	BrimstoneHarp: {
-		Tooltip: ""
 		DisplayName: 硫火竖琴
+		Tooltip: ""
 	}
 
 	NecroticChorus: {
@@ -303,8 +305,8 @@ Items: {
 	}
 
 	ArckaneStaff: {
-		Tooltip: 释放一枚过载的元素能量弹
 		DisplayName: 奥谬法杖
+		Tooltip: 释放一枚过载的元素能量弹
 	}
 
 	MystickStaff: {
@@ -440,6 +442,7 @@ Items: {
 			暗粒子会追踪并对敌怪造成伤害
 
 			'''
+		// SetBonusExtra: Immunity to Broken Oath
 	}
 
 	NecrosingerAnkles: {
@@ -477,6 +480,7 @@ Items: {
 			音符将环绕你盘旋，每个音符可抵挡一次射弹后碎裂
 			音符碎裂后，5秒将再次生成
 			'''
+		// SetBonusExtra: Using a non-bard weapon will retain empowerments
 	}
 
 	SuperCellCirclet: {
@@ -668,6 +672,117 @@ Items: {
 			“我于你的未来窥见一座坚不可摧的堡垒”
 			'''
 	}
+
+	SwordofaThousandTruths: {
+		// DisplayName: Sword of a Thousand Truths
+		/* Tooltip:
+			'''
+			<left> to swing the sword, restoring 7 life on hit
+			Hold <right> to charge and throw the sword, embedding itself into the hit enemy
+			When the sword is embedded it will release light and dark energy
+			Light energy will home onto nearby allies and heal life equal to bonus healing
+			Dark energy will home onto nearby enemies, dealing damage
+			If the user's bonus healing is 5 or more, the enemy will also be inflicted with a variety of debillitating debuffs
+			Only one sword can be thrown at a time
+			'Sorry piggies but that's a necessary sacrifice'
+			''' */
+	}
+
+	AbsoluteTVRemote: {
+		// DisplayName: Absolute TV Remote
+		/* Tooltip:
+			'''
+			<left> to generate an aura around you that slows down projectiles in radius on a 2 minute cooldown
+			<right> to generate an aura that instead speeds up projectiles in radius, also on a 2 minute cooldown
+			Pressing {0} will fire a projectile that pauses enemies in their tracks, usable on a 5 minute cooldown
+			'TV NEVER DIES!'
+			''' */
+	}
+
+	PlanetShaper: {
+		// DisplayName: Planet Shaper
+		/* Tooltip:
+			'''
+			This scythe is swung directionally instead of spun
+			Has a three-swing combo:
+			    Every first swing, the scythe shoots one homing fireball and 2 cosmic beams
+			    Every second swing, the scythe shoots one cosmic beam and two homing fireballs
+			    Every third swing, the scythe is spun around
+			    While spun, emits up to six homing fireballs and cosmic beams
+			The scythe and fireballs ignore 125 points of defense and inflict [iabuff:CalamityMod/Dragonfire]
+			The cosmic beams ignore 75 points of defense and inflict both [iabuff:CalamityMod/ElementalMix] and [iabuff:CatalystMod/AstralBlight]
+			'LADIES AND GENTLEMAN... LET IT ROCK LET IT ROCK LET IT ROCK!!!'
+			''' */
+	}
+
+	GodsPitch: {
+		// DisplayName: God's Pitch
+		/* Tooltip:
+			'''
+			Increases maximum inspiration by 5
+			15% increased symphonic damage
+			Increases the duration of your symphonic empowerments by 3 seconds
+			Increases the level of empowerments you apply to yourself and others by 2
+			Increases empowerment range
+			Instrument attacks launch pipes upward that eventually fall down
+			[c/FF232C:The pipes sound effects are loud and may be startling or otherwise bad for some]
+			'Your ears are not worthy to hear this...'
+			''' */
+	}
+
+	GauntletofAnnihilationVoid: {
+		// DisplayName: Gauntlet of Annihilation
+		/* Tooltip:
+			'''
+			<left> will unlease a flurry of 4 cosmic gauntlets that inflict [cbuff:CalamityMod/GodSlayerInferno]
+			<right> will release rapid cosmic punches and lunge you in the direction of the mouse
+			Lunging only consumes half the void cost and on collision during the lunge, you are knocked back
+			Pressing <left> 3 frames after being knocked back will release a God Slaying Gauntlet
+			The God Slaying Gauntlet always crits and also inflicts [cbuff:CalamityMod/WhisperingDeath]
+			Provides a light source while favorited in the inventory
+			''' */
+	}
+
+	GauntletofAnnihilation: {
+		// DisplayName: Gauntlet of Annihilation
+		/* Tooltip:
+			'''
+			<left> will unlease a flurry of 4 cosmic gauntlets that inflict [cbuff:CalamityMod/GodSlayerInferno]
+			<right> will release rapid cosmic punches and lunge you in the direction of the mouse
+			On collision during the lunge, you are knocked back
+			Pressing <left> 3 frames after being knocked back will release a God Slaying Gauntlet
+			The God Slaying Gauntlet always crits and also inflicts [cbuff:CalamityMod/WhisperingDeath]
+			Provides a light source while favorited in the inventory
+			''' */
+	}
+
+	BlightedBadge: {
+		// DisplayName: Blighted Badge
+		/* Tooltip:
+			'''
+			True melee strikes drops astral stars from the sky
+			Attackers are shocked, dealing immense damage
+			Taking damage will massively increase melee speed and critical strike chance briefly
+			Also releases an explosion and temporarily increases true melee damage by 30% when damaged
+			Boost duration scales with the amount of damage you took, up to 10 seconds
+			Nullifies the Astral Infection debuff
+			''' */
+	}
+
+	ImagiknightHeraldry: {
+		// DisplayName: Imagiknight Heraldry
+		/* Tooltip:
+			'''
+			Multiplies all damage based on how close you are to teammates, with a maximum damage boost of 20%
+			Emit a blazing aura that also boosts the damage of teammates
+			Teammates gain increasing multiplicative damage the closer they are to you
+			These multipliers do not stack with the [i:CalamityMod/WarbanneroftheRighteous] Warbanner of the Righteous multiplier, and the higher bonus of the two will be used
+			Effects are transparent and silent if visibility is disabled
+			Gives all teammates +{0} HP/s life regen, +{1}% max life, {2}% damage reduction, {3} defense and {4}% increased damage
+			'An idea is a mere particle, one that exponentially accelerates the more minds it travels through. 
+			When you put enough minds together, they can make said idea truly unstoppable.' -Imagiknight_Girus
+			''' */
+	}
 }
 
 ItemTooltip: {
@@ -732,6 +847,13 @@ ItemTooltip: {
 		Puzzles: Mr. Puzzles
 		cat: StarlightCat
 		Goldsock: Goldsockz2
+		// paradox: Imagiknight_Parad0xical
+	}
+
+	Cooldowns: {
+		// Pause: TV Remote Pause is on cooldown!
+		// FastForward: TV Remote Fast Forward is on cooldown!
+		// Slowdown: TV Remote Rewind is on cooldown!
 	}
 }
 
@@ -861,6 +983,22 @@ Projectiles: {
 	CatastrophicLongbladeHoldout.DisplayName: 灾难长刃
 	CatastrophicLongbladeHoldoutVoid.DisplayName: 灾难长刃
 	VoidBolt.DisplayName: 虚空雷霆
+	// EclipsePulseDark.DisplayName: Dark Pulse
+	// EclipsePulseLight.DisplayName: Holy Pulse
+	// BardPulseRiffleBoom.DisplayName: Pulse Riffle Boom
+	// BrimstonePetalPro.DisplayName: Brimstone Petal
+	// SwordofaThousandTruthsSlashPro.DisplayName: Sword of a Thousand Truths
+	// SwordofaThousandTruthsHoldPro.DisplayName: Sword of a Thousand Truths
+	// SwordofaThousandTruthsPro.DisplayName: Sword of a Thousand Truths
+	// AbsoluteTVRemotePausePro.DisplayName: Pause
+	// PlanetShaperFireball.DisplayName: Planet Shaper Fireball
+	// PlanetShaperPro.DisplayName: Planet Shaper
+	// PlanetShaperStar.DisplayName: Planet Shaper Star
+	// MetalPipe.DisplayName: Auric Pipe
+	// AbsoluteTVRemoteFastForwardPro.DisplayName: Fast Forward Aura
+	// AbsoluteTVRemoteRewindPro.DisplayName: Rewind Aura
+	// CosmicPunch.DisplayName: Cosmic Gauntlet
+	// Melee.GauntletofAnnihilationPunches.DisplayName: Cosmic Punches
 }
 
 Buffs: {
@@ -877,6 +1015,16 @@ Buffs: {
 	BloodRageBuff: {
 		DisplayName: 血怒
 		Description: 血铸武器伤害提高25%，血弹命中时附加血液沸腾减益
+	}
+
+	TVRemotePaused: {
+		// DisplayName: Paused
+		// Description: Frozen in time!
+	}
+
+	TVRemotePlayerPaused: {
+		// DisplayName: Paused
+		// Description: Frozen in time!
 	}
 }
 
@@ -910,3 +1058,5 @@ Configs: {
 		}
 	}
 }
+
+// "Keybinds.Absolute TV Remote Pause.DisplayName": Absolute TV Remote Pause

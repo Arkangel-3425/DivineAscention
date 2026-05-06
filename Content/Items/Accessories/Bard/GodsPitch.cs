@@ -1,0 +1,88 @@
+﻿using CalamityMod.Items;
+using CalamityMod.Items.Materials;
+using CalamityMod.Rarities;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using InfernalEclipseWeaponsDLC.Core.NewFolder;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.ID;
+using Terraria.ModLoader;
+using ThoriumMod;
+using ThoriumMod.Items;
+using ThoriumMod.Items.BardItems;
+using ThoriumMod.Utilities;
+
+namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Bard
+{
+    [AutoloadEquip(EquipType.Face)]
+    public class GodsPitch : BardItem
+    {
+        public override void SetStaticDefaults()
+        {
+            Item.ResearchUnlockCount = 1;
+        }
+
+        public override void SetBardDefaults()
+        {
+            accessoryType = AccessoryType.SoundDevice;
+
+            Item.width = 36;
+            Item.height = 38;
+            Item.accessory = true;
+            Item.rare = ModContent.RarityType<BurnishedAuric>();
+            Item.value = CalamityGlobalItem.RarityVioletBuyPrice;
+        }
+
+        public override void UpdateAccessory(Player player, bool hideVisual)
+        {
+            ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
+
+            player.GetDamage(ThoriumDamageBase<BardDamage>.Instance) += 0.15f;
+            //player.GetAttackSpeed(ThoriumDamageBase<BardDamage>.Instance) += 0.1f;
+
+            thoriumPlayer.bardResourceMax2 += 5;
+            thoriumPlayer.bardBuffDuration += 60 * 3;
+            thoriumPlayer.bardRangeBoost += 250;
+
+            if (!hideVisual)
+                SpawnNoteEffect(player);
+
+            player.GetThoriumPlayer().musicPlayerShared[BardInstrumentType.Brass] = true;
+            player.GetThoriumPlayer().musicPlayerShared[BardInstrumentType.String] = true;
+            player.GetThoriumPlayer().musicPlayerShared[BardInstrumentType.Wind] = true;
+            player.GetThoriumPlayer().musicPlayerShared[BardInstrumentType.Percussion] = true;
+
+            player.GetThoriumPlayer().musicPlayerLevels[BardInstrumentType.Brass] = 2;
+            player.GetThoriumPlayer().musicPlayerLevels[BardInstrumentType.String] = 2;
+            player.GetThoriumPlayer().musicPlayerLevels[BardInstrumentType.Wind] = 2;
+            player.GetThoriumPlayer().musicPlayerLevels[BardInstrumentType.Percussion] = 2;
+
+            player.GetModPlayer<InfernalWeaponsPlayer>().godsPitch = true;
+        }
+        protected void SpawnNoteEffect(Player player)
+        {
+            if (Main.netMode == NetmodeID.Server || !Utils.NextBool(Main.rand, 50))
+                return;
+            Gore.NewGoreDirect(player.GetSource_Accessory(Item), player.Center, Vector2.Zero, ModLoader.GetMod("ThoriumMod").Find<ModGore>("NoteEffect").Type, 0.5f).velocity = new Vector2(Utils.NextFloat(Main.rand, -1.5f, 1.5f), -2f);
+        }
+
+        public override void AddRecipes()
+        {
+            Recipe recipe = CreateRecipe()
+                .AddIngredient<Headset>()
+                .AddIngredient<TunePlayerDamage>()
+                .AddIngredient<TunePlayerDamageReduction>()
+                .AddIngredient<TunePlayerLifeRegen>()
+                .AddIngredient<TunePlayerMovementSpeed>()
+                .AddTile<CosmicAnvil>()
+                .Register();
+
+            if (ModLoader.TryGetMod("ThoriumRework", out Mod helheim))
+            {
+                recipe.AddIngredient(helheim.Find<ModItem>("ConcussiveInstrument").Type);
+            }
+
+            recipe.AddIngredient<AuricBar>(5);
+        }
+    }
+}

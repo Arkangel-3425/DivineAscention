@@ -27,6 +27,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.SpearTipPro
             Projectile.tileCollide = true;
             Projectile.timeLeft = 600;
             Projectile.light = 0.2f;
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.usesIDStaticNPCImmunity = false;
+            Projectile.localNPCHitCooldown = 60;
         }
 
         public override void AI()

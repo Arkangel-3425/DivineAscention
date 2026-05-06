@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using CalamityMod.Items.Accessories;
+using InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.SuperCell;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.SpearTipPro;
 using InfernalEclipseWeaponsDLC.Core.NewFolder;
 using Microsoft.Xna.Framework;
@@ -17,6 +19,12 @@ namespace InfernalEclipseWeaponsDLC.Common
 
         public override bool InstancePerEntity => true;
 
+        public override void UpdateAccessory(Item item, Player player, bool hideVisual)
+        {
+            if (item.type == ModContent.ItemType<WarbanneroftheRighteous>())
+                player.GetModPlayer<InfernalWeaponsPlayer>().hasWarbanner = true;
+        }
+
         public override bool Shoot(Item item, Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             Vector2 direction = velocity;
@@ -26,7 +34,7 @@ namespace InfernalEclipseWeaponsDLC.Common
             {
                 if (weaponPlayer.spearSearing)
                 {
-                    Projectile.NewProjectile(source, position, direction * 2.5f, ModContent.ProjectileType<HydrogenSulfideProj>(), (int)(damage * 1.5), knockback, player.whoAmI, 0.0f, 0.0f, 0.0f);
+                    Projectile.NewProjectile(source, position, direction * 2f, ModContent.ProjectileType<HydrogenSulfideProj>(), (int)(damage * 1.5), knockback, player.whoAmI, 0.0f, 0.0f, 0.0f);
                 }
 
                 if (weaponPlayer.spearArctic)
@@ -35,6 +43,12 @@ namespace InfernalEclipseWeaponsDLC.Common
                 }
             }
             return true;
+        }
+
+        public override void ModifyShootStats(Item item, Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
+        {
+            if (player.GetModPlayer<SuperCellPlayer>().hasSuperCellGuardEquipped && item.CountsAsClass<RangedDamageClass>())
+                velocity *= 1.3f;
         }
 
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)

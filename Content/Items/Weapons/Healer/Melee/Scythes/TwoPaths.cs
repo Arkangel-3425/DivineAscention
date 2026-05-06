@@ -54,12 +54,12 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes
 
             if (IEWeaponDLC.ragnarok != null && IEWeaponDLC.calamitybardhealer != null)
             {
-                recipe.AddIngredient(IEWeaponDLC.ragnarok.Find<ModItem>("ExecutionerMark05").Type, 1);
+                recipe.AddIngredient(IEWeaponDLC.ragnarok.Find<ModItem>("AuricGreatscythe").Type, 1);
                 recipe.AddIngredient(IEWeaponDLC.calamitybardhealer.Find<ModItem>("Disaster").Type, 1);
             }
             else if (IEWeaponDLC.ragnarok != null)
             {
-                recipe.AddIngredient(IEWeaponDLC.ragnarok.Find<ModItem>("ExecutionerMark05").Type, 1);
+                recipe.AddIngredient(IEWeaponDLC.ragnarok.Find<ModItem>("AuricGreatscythe").Type, 1);
                 recipe.AddIngredient(ModContent.ItemType<AshesofAnnihilation>(), 10);
             }
             else if (IEWeaponDLC.calamitybardhealer != null)

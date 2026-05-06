@@ -22,9 +22,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override void SetStaticDefaults()
         {
-            Empowerments.AddInfo<Damage>(2);
+            Empowerments.AddInfo<ResourceConsumptionChance>(2);
             Empowerments.AddInfo<Defense>(3);
-            Empowerments.AddInfo<CriticalStrikeChance>(3);
+            Empowerments.AddInfo<ResourceRegen>(3);
         }
 
         public override void SetBardDefaults()

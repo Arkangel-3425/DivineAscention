@@ -1,0 +1,102 @@
+﻿using CalamityMod.Items;
+using CalamityMod.Items.Materials;
+using CalamityMod.Items.Weapons.Melee;
+using CalamityMod.Rarities;
+using CalamityMod.Tiles.Furniture.CraftingStations;
+using InfernalEclipseWeaponsDLC.Content.Projectiles.MeleePro.Void;
+using InfernalEclipseWeaponsDLC.Core.NewFolder;
+using InfernalEclipseWeaponsDLC.Utilities._Extensions;
+using Microsoft.Xna.Framework;
+using Terraria;
+using Terraria.DataStructures;
+using Terraria.ID;
+using Terraria.ModLoader;
+
+namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee.Void
+{
+    public class GauntletofAnnihilation : ModItem
+    {
+        public override bool IsLoadingEnabled(Mod mod)
+        {
+            return !ModLoader.HasMod("SOTS");
+        }
+        public override void SetStaticDefaults() => this.SetResearchCost(1);
+
+        public override void SetDefaults()
+        {
+            Item.damage = 150;
+            Item.DamageType = DamageClass.Melee;
+            Item.width = 28;
+            Item.height = 26;
+            Item.useTime = 7;
+            Item.useAnimation = 28;
+            Item.useStyle = ItemUseStyleID.Shoot;
+            Item.knockBack = 10f;
+            Item.rare = ModContent.RarityType<CosmicPurple>();
+            Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
+            Item.UseSound = SoundID.Item19;
+            Item.autoReuse = true;
+            Item.shoot = ModContent.ProjectileType<CosmicPunch>();
+            Item.shootSpeed = 11f;
+            Item.noMelee = true;
+            Item.noUseGraphic = true;
+            Item.crit = 16;
+
+            ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
+        }
+
+        public override bool AltFunctionUse(Player player) => true;
+
+        public override bool CanUseItem(Player player)
+        {
+            if (player.altFunctionUse == 2)
+            {
+                Item.useAnimation = Item.useTime = 40;
+                Item.shootSpeed = 1f;
+                Item.useStyle = ItemUseStyleID.Swing;
+                Item.crit = 20;
+                return player.ownedProjectileCounts[0] <= 0;
+            }
+            else
+            {
+                Item.useTime = player.GetModPlayer<InfernalWeaponsPlayer>().annihilationBonusShotTimeLeft > 0 ? 28 : 7;
+                Item.useAnimation = 28;
+                Item.shootSpeed = 11f;
+                Item.useStyle = ItemUseStyleID.Shoot;
+            }
+
+            return base.CanUseItem(player);
+        }
+
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            if (player.altFunctionUse == 2)
+            {
+                Projectile.NewProjectile(source, position, velocity, ModContent.ProjectileType<GauntletofAnnihilationPunches>(), damage * 35, knockback, player.whoAmI);
+            }
+            else
+            {
+                Vector2 direction = Utils.RotatedBy(velocity, MathHelper.ToRadians(Utils.NextFloat(Main.rand, -15, 15f)), new Vector2());
+                Projectile.NewProjectile(source, position.X, position.Y, direction.X, direction.Y, type, damage, knockback, player.whoAmI);
+            }
+
+            return false;
+        }
+
+        public override void UpdateInventory(Player player)
+        {
+            if (!Item.favorited) return;
+            Lighting.AddLight(player.Center, 1.1f, 0.9f, 1f);
+        }
+
+        public override void AddRecipes()
+        {
+            CreateRecipe()
+                .AddIngredient(ItemID.NebulaBlaze)
+                .AddIngredient<PhosphorescentGauntlet>()
+                .AddIngredient<CosmiliteBar>(10)
+                .AddTile<CosmicAnvil>()
+                .Register();
+        }
+    }
+}

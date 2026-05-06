@@ -5,43 +5,60 @@ using ThoriumMod;
 using ThoriumMod.Utilities;
 using CalamityMod.Items;
 using CalamityMod.Items.Potions;
-using InfernalEclipseWeaponsDLC.Core;
+using CalamityMod.Rarities;
+using System.Collections.Generic;
+using CalamityMod.Items.Materials;
+using ThoriumMod.Items;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Necrosinger
 {
     [JITWhenModsEnabled("ThoriumMod")]
     [ExtendsFromMod("ThoriumMod")]
     [AutoloadEquip(EquipType.Body)]
-    public class NecrosingerRibs : ModItem
+    public class NecrosingerRibs : BardItem
     {
-        public override void SetDefaults()
+        public override void SetBardDefaults()
         {
             Item.width = 18;
             Item.height = 18;
-            Item.value = CalamityGlobalItem.RarityLimeBuyPrice;
-            Item.rare = ItemRarityID.Lime;
-            Item.defense = 16;
+            Item.value = CalamityGlobalItem.RarityPureGreenBuyPrice;
+            Item.rare = ModContent.RarityType<PureGreen>();
+
+            if (ModLoader.HasMod("SOTS"))
+                Item.defense = 22;
+            else
+                Item.vanity = true;
         }
 
         public override void UpdateEquip(Player player)
         {
+            if (!ModLoader.HasMod("SOTS")) return;
+
             ThoriumPlayer thoriumPlayer = player.GetThoriumPlayer();
-            ref StatModifier damage = ref player.GetDamage((DamageClass)(object)ThoriumDamageBase<BardDamage>.Instance);
-            damage += 0.14f;
-            player.GetCritChance((DamageClass)(object)ThoriumDamageBase<BardDamage>.Instance) += 5f;
+
+            player.GetDamage((DamageClass)(object)ThoriumDamageBase<BardDamage>.Instance) += 0.2f;
+            player.GetDamage(DamageClass.Summon) += 0.2f;
+
+            player.lifeRegen += 5;
+
             thoriumPlayer.bardBuffDuration += 180;
             thoriumPlayer.bardResourceDropBoost += 0.1f;
         }
 
+        public override void BardModifyTooltips(List<TooltipLine> tooltips)
+        {
+            if (ModLoader.HasMod("SOTS")) return;
+
+            tooltips.RemoveAll(t => t.Name.Contains("Tooltip"));
+        }
+
         public override void AddRecipes()
         {
-            Mod thorium = ModLoader.GetMod("ThoriumMod");
-
             Recipe recipe = CreateRecipe();
 
             recipe.AddIngredient(ItemID.HallowedPlateMail);
-            recipe.AddRecipeGroup(RecipeGroups.Titanium, 12);
-            recipe.AddIngredient(thorium.Find<ModItem>("SoulofPlight").Type, 15);
+            recipe.AddIngredient<Lumenyl>(12);
+            recipe.AddIngredient<RuinousSoul>(4);
 
             if (ModLoader.TryGetMod("Consolaria", out Mod consolariaMod))
             {

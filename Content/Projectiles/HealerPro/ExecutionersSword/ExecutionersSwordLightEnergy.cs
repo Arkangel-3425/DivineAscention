@@ -1,13 +1,9 @@
-﻿using System;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using ThoriumMod;
 using ThoriumMod.Buffs.Healer;
-using CalamityMod.Items;
 using InfernalEclipseWeaponsDLC.Utilities;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSword
@@ -27,6 +23,22 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
             Projectile.timeLeft = 180;
             Projectile.penetrate = -1;
             Projectile.DamageType = DamageClass.Default; // not a damaging projectile
+        }
+
+        private int dustID = DustID.Enchanted_Gold;
+
+        public override bool PreAI()
+        {
+            if (Projectile.ai[1] == 1)
+            {
+                dustID = DustID.IceTorch;
+            }
+            else
+            {
+                dustID = DustID.Enchanted_Gold;
+            }
+
+            return base.PreAI();
         }
 
         public override void AI()
@@ -91,11 +103,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
                     Projectile.position,
                     Projectile.width,
                     Projectile.height,
-                    DustID.Enchanted_Gold,
+                    dustID,
                     Projectile.velocity.X * 0.2f,
                     Projectile.velocity.Y * 0.2f,
                     150,
-                    Color.White,
+                    default,
                     1.2f
                 );
                 Main.dust[dustIndex].noGravity = true;
@@ -125,7 +137,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.ExecutionersSw
                     Vector2 spawnPos = target.Center + offset;
                     Vector2 vel = offset.SafeNormalize(Vector2.UnitY) * 2f;
 
-                    Dust dust = Dust.NewDustPerfect(spawnPos, DustID.Enchanted_Gold, vel, 150, Color.White, 1.5f);
+                    Dust dust = Dust.NewDustPerfect(spawnPos, dustID, vel, 150, default, 1.5f);
                     dust.noGravity = true;
                 }
 

@@ -1,25 +1,12 @@
-﻿using CalamityMod;
-using CalamityMod.Items;
-using CalamityMod.Items.Materials;
+﻿using CalamityMod.Items;
 using CalamityMod.Items.Potions;
-using CalamityMod.Items.Weapons.Rogue;
-using CalamityMod.Rarities;
-using InfernalEclipseWeaponsDLC.Content.Projectiles;
-using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.HealerPro.Scythes;
+using InfernalEclipseWeaponsDLC.Core;
 using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Terraria;
 using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using ThoriumMod;
-using ThoriumMod.Items.BossThePrimordials.Dream;
 using ThoriumMod.Items.HealerItems;
 using ThoriumMod.Tiles;
 
@@ -36,7 +23,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes
         {
             SetDefaultsToScythe();
 
-            Item.damage = 120;
+            Item.damage = 140;
             scytheSoulCharge = 2;
             Item.width = 70;
             Item.height = 82;
@@ -92,11 +79,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes
 
         public override void AddRecipes()
         {
-            if (!ModLoader.TryGetMod("Consolaria", out Mod _))
+            if (!ModLoader.TryGetMod("Consolaria", out Mod consolaria))
             {
                 var recipe = CreateRecipe()
                     .AddIngredient<AureusCell>(10)
-                    .AddIngredient<IceShaver>(1)
+                    .AddIngredient<HallowedScythe>()
                     .AddIngredient(ItemID.SoulofSight, 5)
                     .AddIngredient(ItemID.SoulofMight, 5)
                     .AddIngredient(ItemID.SoulofFright, 5)
@@ -106,6 +93,15 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Healer.Melee.Scythes
 
                 recipe.AddTile(ModContent.TileType<SoulForgeNew>())
                       .Register();
+            }
+            else
+            {
+                CreateRecipe()
+                    .AddIngredient<HallowedScythe>()
+                    .AddRecipeGroup(RecipeGroups.Titanium, 10)
+                    .AddIngredient(consolaria.Find<ModItem>("SoulofBlight").Type, 15)
+                    .AddTile(TileID.MythrilAnvil)
+                    .Register();
             }
         }
 

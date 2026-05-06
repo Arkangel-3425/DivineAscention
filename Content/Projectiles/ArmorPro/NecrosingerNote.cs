@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Terraria.GameContent;
 using System.Collections.Generic;
 using InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Necrosinger;
+using ThoriumMod.Buffs;
 
 namespace InfernalEclipseWeaponsDLC.Content.Projectiles.ArmorPro
 {
@@ -41,13 +42,26 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.ArmorPro
             Projectile.tileCollide = false;
             Projectile.ignoreWater = true;
 
+            Projectile.DamageType = DamageClass.Summon;
+
             Projectile.timeLeft = 2;
         }
 
-        public override bool? CanDamage() => false;
+        public override bool? CanDamage() => true;
 
         public override void AI()
         {
+            if (Projectile.localAI[0] == 1f)
+            {
+                Projectile.alpha += 60; // fade speed (tune this)
+
+                if (Projectile.alpha >= 255)
+                {
+                    Projectile.Kill();
+                    return;
+                }
+            }
+
             Player player = Main.player[Projectile.owner];
             if (!player.active || player.dead)
             {
@@ -87,7 +101,13 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.ArmorPro
             TryBlockHostileProjectile(player, mp);
         }
 
-
+        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
+        {
+            target.AddBuff(ModContent.BuffType<Tuned>(), 3 * 60);
+            Main.player[Projectile.owner].GetModPlayer<NecrosingerPlayer>().StartRecharge();
+            SoundEngine.PlaySound(SoundID.Item27, Projectile.Center);
+            Projectile.Kill();
+        }
 
         private void TryBlockHostileProjectile(Player player, NecrosingerPlayer mp)
         {

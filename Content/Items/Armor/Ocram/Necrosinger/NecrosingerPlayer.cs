@@ -66,17 +66,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Necrosinger
             int ownedNotes = Player.ownedProjectileCounts[noteType];
 
             // Kill all existing notes
-            for (int i = 0; i < Main.maxProjectiles; i++)
-            {
-                Projectile proj = Main.projectile[i];
-
-                if (proj.active &&
-                    proj.owner == Player.whoAmI &&
-                    proj.type == noteType)
-                {
-                    proj.Kill();
-                }
-            }
+            KillAllNotes();
 
             // Spawn all 3 fresh notes
             for (int i = 0; i < 3; i++)
@@ -86,7 +76,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Necrosinger
                     Player.Center,
                     Vector2.Zero,
                     noteType,
-                    0,
+                    (int)Player.GetDamage(DamageClass.Summon).ApplyTo(1500),
                     0f,
                     Player.whoAmI,
                     ai0: i,
@@ -110,7 +100,14 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Necrosinger
                     proj.owner == Player.whoAmI &&
                     proj.type == noteType)
                 {
-                    proj.Kill();
+                    // Flag fade-out (use ai or localAI slot)
+                    proj.localAI[0] = 1f;
+
+                    // Stop interaction
+                    proj.tileCollide = false;
+                    proj.friendly = false;
+
+                    proj.netUpdate = true;
                 }
             }
         }

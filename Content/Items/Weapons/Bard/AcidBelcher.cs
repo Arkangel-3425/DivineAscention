@@ -1,5 +1,4 @@
 using Microsoft.Xna.Framework;
-using CalamityMod.Projectiles.Rogue;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -8,11 +7,9 @@ using ThoriumMod.Empowerments;
 using ThoriumMod.Items;
 using ThoriumMod.Sounds;
 using Terraria.DataStructures;
-using InfernalEclipseWeaponsDLC;
 using ThoriumMod.Items.BardItems;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.BardPro;
 using CalamityMod.Items.Materials;
-using CalamityMod.Items.Placeables;
 using CalamityMod.Items;
 
 

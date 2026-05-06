@@ -20,9 +20,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Bard
 
         public override void SetStaticDefaults()
         {
-            Empowerments.AddInfo<Defense>(3);
+            Empowerments.AddInfo<CriticalStrikeChance>(3);
             Empowerments.AddInfo<Damage>(2);
-            Empowerments.AddInfo<LifeRegeneration>(2);
+            Empowerments.AddInfo<AttackSpeed>(2);
             ItemID.Sets.ItemsThatAllowRepeatedRightClick[Type] = true;
         }
 

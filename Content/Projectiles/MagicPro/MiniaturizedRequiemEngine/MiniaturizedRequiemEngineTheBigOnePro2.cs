@@ -5,6 +5,7 @@ using System;
 using Terraria.GameContent;
 using Terraria.ModLoader;
 using Terraria;
+using InfernalEclipseWeaponsDLC;
 
 public class MiniaturizedRequiemEngineTheBigOnePro2 : ModProjectile
 {
@@ -36,7 +37,20 @@ public class MiniaturizedRequiemEngineTheBigOnePro2 : ModProjectile
 
     public override void AI()
 {
-    Projectile.ai[0]++;
+        if (WeaponConfig.Instance.EnableScreenEffects)
+        {
+            float lifetime = 60f;
+            float t = Projectile.timeLeft / lifetime;
+
+            float screenShakePower =
+                (1f - t) *
+                Utils.GetLerpValue(1300f, 0f,
+                    Projectile.Distance(Main.LocalPlayer.Center), true);
+
+            Main.LocalPlayer.Calamity().GeneralScreenShakePower = screenShakePower * 10f;
+        }
+
+        Projectile.ai[0]++;
 
     // Initial random rotation setup
     if (Projectile.localAI[0] == 0f)

@@ -16,8 +16,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.SpearTipPro
         public override string Texture => "InfernalEclipseWeaponsDLC/Assets/Textures/Empty";
         public override void SetDefaults()
         {
-            Projectile.width = 2;
-            Projectile.height = 2;
+            Projectile.width = 24;
+            Projectile.height = 24;
             Projectile.aiStyle = 0;
             Projectile.friendly = true;
             Projectile.penetrate = 1;
@@ -26,6 +26,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.SpearTipPro
             Projectile.tileCollide = false;
             Projectile.DamageType = DamageClass.Melee;
             Projectile.alpha = 255; // fully invisible
+            Projectile.usesLocalNPCImmunity = true;
+            Projectile.usesIDStaticNPCImmunity = false;
+            Projectile.localNPCHitCooldown = 60;
         }
 
         public override void AI()
@@ -39,7 +42,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.SpearTipPro
 
             // Homing
             float homingRange = 320f;
-            float lerpAmount = 0.13f;
+            float lerpAmount = 0.15f;
             NPC closest = null;
             float dist = homingRange;
 
@@ -64,7 +67,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.SpearTipPro
             }
 
             // Faintly shrink over time for wispiness
-            Projectile.scale *= 0.98f;
+            //Projectile.scale *= 0.98f;
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)

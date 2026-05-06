@@ -91,7 +91,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Ranged
             // Apply Blood Rage bonus only if this weapon's buff is active
             if (player.GetModPlayer<BloodRagePlayer>().BloodRageActive)
             {
-                damage = (int)(damage * 1.25f); // +25% damage
+                damage = (int)(damage * 1.5f); // +50% damage
             }
 
             // Define the muzzle offset (distance in front of the gun)
