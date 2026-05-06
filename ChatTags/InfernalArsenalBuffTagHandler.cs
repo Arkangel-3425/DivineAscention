@@ -139,8 +139,14 @@ namespace InfernalEclipseWeaponsDLC.ChatTags
             {
                 bool hasAltHintAlready = false;
                 for (int i = 0; i < tooltips.Count; i++)
+                {
                     if (tooltips[i].Name.StartsWith("RagnarokMod:AltHint") || tooltips[i].Name.StartsWith("CalamityMod:AltHint"))
+                    {
                         hasAltHintAlready = true;
+                        break;
+                    }
+                }
+
 
                 if (!hasAltHintAlready)
                 {
