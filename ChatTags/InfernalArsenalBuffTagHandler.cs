@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using CalamityMod.ChatTags;
 using CalamityMod;
-using InfernalEclipseWeaponsDLC.Content.Projectiles.SpearTipPro;
-using InfernalEclipseWeaponsDLC.Core.NewFolder;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using ReLogic.Graphics;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.GameContent;
 using Terraria.ID;
 using Terraria.Localization;
@@ -18,7 +14,6 @@ using ThoriumMod.Buffs;
 using ThoriumMod.Buffs.Healer;
 using Terraria.GameInput;
 using System.Linq;
-using ThoriumMod.NPCs;
 
 namespace InfernalEclipseWeaponsDLC.ChatTags
 {
@@ -95,8 +90,6 @@ namespace InfernalEclipseWeaponsDLC.ChatTags
 
     public class TweakToolTips : GlobalItem
     {
-        private static Mod calamity = ModLoader.GetMod("CalamityMod");
-
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             int lastTooltipIndex = -1;
@@ -139,16 +132,24 @@ namespace InfernalEclipseWeaponsDLC.ChatTags
                 }
 
                 tooltips.Add(
-                    new TooltipLine(Mod, "RagnarokMod:AltExpand" + buffId, $"[rbuff:{buffId}]\n{Language.GetTextValue(tooltipKey)}"));
+                    new TooltipLine(Mod, "IEoR:AltExpand" + buffId, $"[iabuff:{buffId}]\n{Language.GetTextValue(tooltipKey)}"));
             }
 
             if (showHint)
             {
-                var key = PlayerInput.CurrentProfile.InputModes[InputMode.Keyboard]
-                    .KeyStatus["SmartCursor"].First().ToString();
-                var hint = new TooltipLine(Mod, "RagnarokMod:AltHint", $"Hold {key} to see buff information");
-                hint.OverrideColor = new Color(170, 170, 170);
-                tooltips.Add(hint);
+                bool hasAltHintAlready = false;
+                for (int i = 0; i < tooltips.Count; i++)
+                    if (tooltips[i].Name.StartsWith("RagnarokMod:AltHint") || tooltips[i].Name.StartsWith("CalamityMod:AltHint"))
+                        hasAltHintAlready = true;
+
+                if (!hasAltHintAlready)
+                {
+                    var key = PlayerInput.CurrentProfile.InputModes[InputMode.Keyboard]
+                        .KeyStatus["SmartCursor"].First().ToString();
+                    var hint = new TooltipLine(Mod, "IEoR:AltHint", $"Hold {key} to see buff information");
+                    hint.OverrideColor = new Color(170, 170, 170);
+                    tooltips.Add(hint);
+                }
             }
             else if (foundDebuff)
             {
