@@ -787,6 +787,11 @@ Items: {
 			When you put enough minds together, they can make said idea truly unstoppable.' -Imagiknight_Girus
 			''' */
 	}
+
+	VibrantShield: {
+		// DisplayName: Vibrant Shield
+		// Tooltip: ""
+	}
 }
 
 ItemTooltip: {

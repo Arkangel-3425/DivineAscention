@@ -824,6 +824,15 @@ Items: {
 			When you put enough minds together, they can make said idea truly unstoppable.' -Imagiknight_Girus
 			'''
 	}
+
+	VibrantShield: {
+		DisplayName: Vibrant Shield
+		Tooltip:
+			'''
+			Increases max void by 25
+			You constantly generate a 15 life shield
+			'''
+	}
 }
 
 ItemTooltip: {

@@ -8,6 +8,7 @@ using InfernalEclipseWeaponsDLC.Content.Items.Accessories.Vanity;
 using InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Eclipse;
 using CalamityMod.Items.Materials;
 using System.Collections.Generic;
+using CalamityMod.CalPlayer;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.SuperCell
 {
@@ -36,7 +37,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.SuperCell
         {
             if (!ModLoader.HasMod("SOTS")) return;
 
-            player.ThrownVelocity += 0.3f;
+            player.GetModPlayer<CalamityPlayer>().rogueVelocity += 0.3f;
 
             player.GetModPlayer<SuperCellPlayer>().hasSuperCellGuardEquipped = true;
 
