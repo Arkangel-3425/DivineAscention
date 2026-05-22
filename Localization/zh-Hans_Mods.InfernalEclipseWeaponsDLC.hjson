@@ -1,4 +1,4 @@
-// UI.Cooldowns.ImagiknightHeraldryBuff: Imagiknight Strength
+UI.Cooldowns.ImagiknightHeraldryBuff: 幻想骑士之力
 
 Items: {
 	TwoPaths: {
@@ -12,7 +12,15 @@ Items: {
 	}
 
 	TheParallel: {
-		Tooltip: ""
+		Tooltip:
+			'''
+			从异次元召唤一阵宇宙飞刀
+			宇宙飞刀在反弹后会进入伏击状态
+			处于伏击状态的飞刀会蓄力一段时间
+			蓄力完成后，它们会攻击第一个靠近的敌人并造成三倍伤害
+			同时最多只能有27把飞刀处于伏击状态
+			超过27把上限后，反弹的宇宙飞刀会直接追踪最近的目标
+			'''
 		DisplayName: 平行音律
 	}
 
@@ -39,27 +47,36 @@ Items: {
 		DisplayName: 深水腔调
 		Tooltip:
 			'''
-			往日力量的残躯，如今零散于世间各处
-			在那环绕你的酸液气泡中，你仿佛一瞬间看见了微光
+			“往日力量的残躯，如今零散于世间各处”
+			[c/010057:在那环绕你的酸液气泡中，你仿佛一瞬间看见了光]
 			'''
 	}
 
 	DeathsWhisper: {
 		DisplayName: 殁亡笛语
-		Tooltip: ""
+		Tooltip:
+			'''
+			释放吞噬信仰的火焰，造成[cbuff:CalamityMod/MarkedforDeath]和[cbuff:CalamityMod/GodSlayerInferno]减益
+			每有5道火焰命中敌人，释放一阵追踪的炽焰
+			'''
 	}
 
 	BrimstoneHarp: {
 		DisplayName: 硫火竖琴
-		Tooltip: ""
+		Tooltip:
+			'''
+			扇形散射3颗穿透的硫火骷髅
+			骷髅反弹时会分裂成3片硫火花瓣，射向最近的敌人
+			'''
 	}
 
 	NecroticChorus: {
 		DisplayName: 死灵合唱团
 		Tooltip:
 			'''
-			召唤追踪的幽光
-			右键发动血液喷射攻击
+			召唤最多10团追踪的鬼火
+			右键施放另一种血液喷吐攻击
+			血液喷吐会造成[cbuff:CalamityMod/ArmorCrunch]和[cbuff:CalamityMod/BurningBlood]减益
 			'''
 	}
 
@@ -93,14 +110,14 @@ Items: {
 
 	TheBlight: {
 		DisplayName: 枯萎之镰
-		Tooltip: 直接命中会获得1层灵魂精华
+		Tooltip: ""
 	}
 
 	GrandThunderWhip: {
 		Tooltip:
 			'''
 			3点召唤标记伤害
-			命中敌人时造成带电减益
+			命中敌人时造成[rbuff:Electrified]减益
 			'''
 		DisplayName: 惊雷鞭
 	}
@@ -124,9 +141,9 @@ Items: {
 		DisplayName: 吹嘴残片
 		Tooltip:
 			'''
-			原版腔调的吹口
-			永冻曾经讲述过他与蜥蜴人部族的邂逅
-			或许他知道些什么
+			“原版腔调的吹口”
+			[c/010057:永冻曾经讲述过他与蜥蜴人部族的邂逅]
+			[c/010057:或许他知道些什么……]
 			获取方式：打开地牢中的渊海箱获得
 			'''
 	}
@@ -135,9 +152,9 @@ Items: {
 		DisplayName: 管口残片
 		Tooltip:
 			'''
-			原版腔调的管口
-			为了防止他人获取这股力量，吹口被封印在地牢之中
-			据说开启它的钥匙被抛入了幽蓝的深渊
+			“原版腔调的管口”
+			[c/010057:为了防止他人获取这股力量，吹口被封印在地牢之中]
+			[c/010057:据说开启它的钥匙被抛入了幽蓝的深渊]
 			获取方式：至少拥有45点渔力的情况下在硫磺海钓鱼
 			'''
 	}
@@ -146,9 +163,9 @@ Items: {
 		DisplayName: 管体残片
 		Tooltip:
 			'''
-			原版腔调的管体
-			一座宏伟的灵魂熔炉将成为恢复其力量的最后一笔
-			快些吧，潮汐即将因你的召唤而汹涌
+			“原版腔调的管体”
+			[c/010057:一座宏伟的灵魂熔炉将成为恢复其力量的最后一笔]
+			[c/010057:快些吧，潮汐即将因你的召唤而汹涌]
 			获取方式：击败石巨人后，由大法师出售
 			'''
 	}
@@ -183,8 +200,6 @@ Items: {
 			光辉能量会追踪附近的友方，并治疗等同于额外治疗量的生命值
 			暗影能量会追踪附近的敌人，造成伤害
 			一次只能投掷一把长剑
-			授权执行死刑
-			“没收...并处以极刑！”
 			'''
 	}
 
@@ -194,7 +209,7 @@ Items: {
 			'''
 			发射散射子弹与一枚带轻微追踪效果的血弹
 			右键消耗50点生命，进入持续10秒的血怒状态
-			血怒状态下血铸枪伤害提高25%，且血弹命中时会施加血液沸腾减益
+			血怒状态下血铸枪伤害提高50%，且血弹命中时会施加[cbuff:CalamityMod/BurningBlood]减益
 			'''
 	}
 
@@ -236,7 +251,7 @@ Items: {
 		Tooltip:
 			'''
 			释放瓶中的暗影之魂与光明之魂
-			暗影之魂会追击敌人并造成伤害，施加暗影焰
+			暗影之魂会追击敌人并造成伤害，施加[rbuff:ShadowFlame]
 			光明之魂会追击队友并进行治疗，治疗量等于你的额外治疗值
 			'''
 	}
@@ -265,12 +280,13 @@ Items: {
 	}
 
 	NeonRipper: {
-		DisplayName: 霓虹裂镰
+		DisplayName: C-PMA：霓虹裂镰
 		Tooltip:
 			'''
 			直接击中会获得3层灵魂精华
 			攻击敌人会释放带电的纳米机器人
 			右键投掷镰刀，它会以弧线轨迹返回
+			镰刀在投掷时多造成30%伤害
 			'''
 	}
 
@@ -283,11 +299,11 @@ Items: {
 			[c/1FFBFF:这正是其中之一，然而这些武器从未量产]
 			[c/1FFBFF:因为暴君的军队根本不会演奏它们]
 			'''
-		DisplayName: 等离子陶笛
+		DisplayName: I-PLS：等离子陶笛
 	}
 
 	Infrariff: {
-		DisplayName: 红外电吉他
+		DisplayName: I-LSR：红外电吉他
 		Tooltip:
 			'''
 			演奏时释放红外灯效，触碰敌人造成伤害
@@ -296,25 +312,45 @@ Items: {
 	}
 
 	Defibrillanator: {
-		DisplayName: 雷击除颤器
+		DisplayName: C-TSL：雷击除颤器
 		Tooltip:
 			'''
-			向前发射过载的追踪闪电弹
-			右键消耗法力值发射治疗电击弹
+			使用时消耗生命值来生成静电，5次使用后达到满充能
+			满充能时左键会释放一束具有伤害性的追踪闪电
+			右键则会发射一阵治疗闪电
+			“除颤！”
 			'''
 	}
 
 	ArckaneStaff: {
 		DisplayName: 奥谬法杖
-		Tooltip: 释放一枚过载的元素能量弹
+		Tooltip: 
+			'''
+			释放一枚过载的元素能量弹
+			汲取5点生命值，并施加以下减益：
+			[iabuff:Ichor]、[iabuff:Confused]、[iabuff:OnFire]、[iabuff:Frostburn]、
+			[iabuff:Poisoned]、[iabuff:ShadowFlame]、[iabuff:CursedInferno]、
+			[iabuff:CalamityMod/Crumbling]、[iabuff:CalamityMod/CrushDepth]、[iabuff:CalamityMod/AstralInfectionDebuff]、
+			[iabuff:CalamityMod/Plague]、[iabuff:CalamityMod/BrimstoneFlames]、[iabuff:ThoriumMod/MagickStaffDebuff]、
+			[iabuff:ThoriumMod/Stunned]和[iabuff:ThoriumMod/Charmed]
+			'''
 	}
 
 	MystickStaff: {
 		DisplayName: 神异法杖
 		Tooltip:
 			'''
-			释放一枚汇聚所有已知元素的超能能量弹
-			“你还想要多少啊！？”
+			创造一枚由所有已知元素汇聚而成的超充能飞弹
+			汲取10点生命值，并施加以下减益：
+			[iabuff:CalamityMod/Voidfrost]、[iabuff:CalamityMod/Dragonfire]、[iabuff:CalamityMod/GodSlayerInferno]、
+			[iabuff:CalamityMod/HolyFlames]、[iabuff:CalamityMod/ElementalMix]、[iabuff:CalamityMod/Laceration]、
+			[iabuff:CalamityMod/MarkedforDeath]、[iabuff:CalamityMod/WhisperingDeath]、[iabuff:CalamityMod/VulnerabilityHex]、
+			[iabuff:CalamityMod/MiracleBlight]、[iabuff:Confused]、[iabuff:OnFire]、[iabuff:Frostburn]、
+			[iabuff:Poisoned]、[iabuff:ShadowFlame]、[iabuff:CursedInferno]、
+			[iabuff:CalamityMod/Crumbling]、[iabuff:CalamityMod/CrushDepth]、[iabuff:CalamityMod/AstralInfectionDebuff]、
+			[iabuff:CalamityMod/Plague]、[iabuff:CalamityMod/BrimstoneFlames]、[iabuff:ThoriumMod/MagickStaffDebuff]、
+			[iabuff:Ichor]、[iabuff:ThoriumMod/Stunned]和[iabuff:ThoriumMod/Charmed]
+			“你还想要多少啊？”
 			'''
 	}
 
@@ -325,6 +361,7 @@ Items: {
 			一把速射冲锋枪，每15发会射出一簇弹跳的诅咒焰
 			右键消耗200法力，进入10秒的暗影冲击
 			暗影冲击期间移动速度提高25%，且持枪时射击散布减小
+			此武器的伤害也会受到魔力病影响
 			'''
 	}
 
@@ -379,7 +416,7 @@ Items: {
 		DisplayName: 霜莲寒苑
 		Tooltip:
 			'''
-			左键发射追踪且穿透的花瓣散射，花瓣有治愈效果
+			左键发射追踪且穿透的花瓣散射，花瓣有治疗效果
 			右键召唤一朵巨大的冰莲，交替释放造成伤害与治疗的能量
 			同一时间只能存在一朵冰莲，持续时间为30秒
 			“冷彻心肺，如坠冰渊”
@@ -402,10 +439,9 @@ Items: {
 		DisplayName: 蚀日胸甲
 		Tooltip:
 			'''
-			降低20%非光辉伤害
-			增加20%光辉伤害
-			增加8%光辉暴击率
-			增加5%的治疗量和光辉施法速度
+			增加12%魔法和光辉伤害
+			增加8%魔法和光辉暴击率
+			增加5%魔法、治疗和光辉施法速度
 			增加15%伤害减免
 			治疗法术会额外治疗3点生命值
 			'''
@@ -415,12 +451,11 @@ Items: {
 		DisplayName: 蚀日护腿
 		Tooltip:
 			'''
-			降低16%非光辉伤害
-			增加16%光辉伤害
-			增加4%光辉暴击率
+			增加8%魔法和光辉伤害
+			增加4%魔法和光辉暴击率
+			虚空值获取量提高1，最大虚空值提高50
 			减少15%魔力消耗
-			增加20%移动速度
-			治疗法术会额外治疗3点生命值
+			增加25%移动速度
 			'''
 	}
 
@@ -428,30 +463,28 @@ Items: {
 		DisplayName: 蚀日头盔
 		Tooltip:
 			'''
-			降低16%非光辉伤害
-			增加16%光辉伤害
-			增加3%光辉暴击率
+			增加8%魔法、光辉和虚空伤害
+			虚空值获取量提高2，最大虚空值提高50
 			生命再生会更快开始
-			治疗法术会额外治疗2点生命值
 			'''
 		SetBonus:
 			'''
 			召唤一轮日食为你而战
-			当附近有敌怪时，日食会发射光暗粒子攻击
+			日食会发射光暗粒子攻击
 			光粒子会追踪并按额外治疗量治疗附近的队友
-			暗粒子会追踪并对敌怪造成伤害
-
+			暗粒子会对敌怪造成真实伤害
 			'''
-		// SetBonusExtra: Immunity to Broken Oath
+		SetBonusExtra: 免疫破碎之誓
 	}
 
 	NecrosingerAnkles: {
 		DisplayName: 骸语缠踝
 		Tooltip:
 			'''
-			增加10%音波伤害
-			增加5%音波暴击率
-			增加20%移动速度
+			增加20%召唤伤害、鞭子范围和移动速度
+			增加20%音波暴击率
+			虚空值获取量提高3，最大虚空值提高100
+			哨兵数量上限增加3
 			'''
 	}
 
@@ -459,10 +492,10 @@ Items: {
 		DisplayName: 骸语嵌肋
 		Tooltip:
 			'''
-			增加14%音波伤害
-			增加5%音波暴击率
+			增加20%召唤和音波伤害
+			+2.5HP/s生命再生
 			增加10%灵感音符掉落概率
-			增加3秒音波咒音增幅持续时间
+			增加3秒咒音增幅持续时间
 			'''
 	}
 
@@ -470,27 +503,36 @@ Items: {
 		DisplayName: 骸语颅冠
 		Tooltip:
 			'''
-			增加5%音波伤害
-			增加10%音波演奏速度
-			增加5%音波暴击率
+			增加20%召唤、音波和虚空伤害
+			增加10%鞭子攻击速度和音波演奏速度
+			虚空值获取量提高4，最大虚空值提高125
 			增加15%灵感值再生速率
+			哨兵数量上限增加3
 			'''
 		SetBonus:
 			'''
-			音符将环绕你盘旋，每个音符可抵挡一次射弹后碎裂
-			音符碎裂后，5秒将再次生成
+			召唤3枚幻影音符环绕你
+			这些音符可造成召唤伤害并施加[iabuff:Tuned]，或阻挡来袭弹幕
+			此效果有5秒冷却
 			'''
-		// SetBonusExtra: Using a non-bard weapon will retain empowerments
+		SetBonusExtra: 使用非吟游诗人武器时会保留咒音增幅效果
 	}
 
 	SuperCellCirclet: {
 		DisplayName: 迦楼罗金箍
-		Tooltip: 增加5%盗贼伤害
+		Tooltip:
+			'''
+			增加25%远程和盗贼伤害
+			增加15%虚空伤害
+			最大技巧值增加2
+			虚空获取量提高4，最大虚空值提高75
+			'''
 		SetBonus:
 			'''
-			未装备翅膀时获得基础飞行能力
-			最大技巧值增加2
-			+110点最大潜行值
+			增加115点盗贼潜伏值上限
+			静止不动时进入远程潜伏状态，
+			提高远程能力，并降低敌人以你为目标的几率
+			未装备任何翅膀时获得基础飞行能力
 			'''
 	}
 
@@ -498,10 +540,10 @@ Items: {
 		DisplayName: 迦楼罗护胄
 		Tooltip:
 			'''
-			增加10%盗贼伤害
-			增加20%盗贼攻速
-			提高30%盗贼弹幕速度
+			提高30%远程和盗贼弹幕速度
+			消耗潜伏值时，会将所消耗潜伏值的15%转化为虚空值
 			增加15%飞行时间
+			虚空值获取量提高3，最大虚空值提高100
 			'''
 	}
 
@@ -509,9 +551,9 @@ Items: {
 		DisplayName: 迦楼罗胫靴
 		Tooltip:
 			'''
-			增加5%盗贼伤害
-			增加10%盗贼暴击率
-			增加30%移动速度
+			增加25%远程和盗贼暴击率
+			虚空暴击率提高15%，移动速度提高30%
+			虚空获取量提高3，最大虚空值提高75
 			'''
 	}
 
@@ -601,12 +643,12 @@ Items: {
 	}
 
 	PocketConcert: {
-		DisplayName: 机械增强电音蝌蚪
+		DisplayName: I-PMA：机械增强电音蝌蚪
 		Tooltip:
 			'''
 			释放多种不同颜色的音符
 			音符将根据其颜色造成不同的减益
-			每拥有一种2级或以上的咒音增幅效果，会额外释放一枚音符
+			每拥有一种2级或以上的咒音增幅效果，会额外释放一枚音符，最多额外释放五枚
 			[c/1FFBFF:我曾被派去寻找那个自称“追猎者”的战士团体]
 			[c/1FFBFF:他们向我展示了一件奇怪的乐器，形如音符，却长着一张嘴]
 			[c/1FFBFF:尽管这东西十分怪异，我仍设法将其改造成了一件武器，其威力会随着使用者所拥有的其他强化数量而增强]
@@ -615,7 +657,7 @@ Items: {
 	}
 
 	GammaKnife: {
-		DisplayName: 伽马镰刃
+		DisplayName: C-GSS：伽马镰刃
 		Tooltip:
 			'''
 			无视15点防御力
@@ -628,7 +670,7 @@ Items: {
 
 	MiniaturizedRequiemEngine: {
 		DisplayName: 微型安魂引擎
-		Tooltip: 右键可切换三种不同的射击模式
+		Tooltip: 右键可在三种不同的射击模式间切换
 	}
 
 	MagicPurpleBouncyBalls: {
@@ -645,7 +687,8 @@ Items: {
 		DisplayName: 雷霆战术狙击步枪
 		Tooltip:
 			'''
-			射出一束蕴含虚空能量的闪电
+			发射一枚强力高速子弹
+			同时射出一束蕴含虚空能量的闪电
 			右键缩放视野
 			'''
 	}
@@ -654,7 +697,8 @@ Items: {
 		DisplayName: 雷霆战术狙击步枪
 		Tooltip:
 			'''
-			射出一束蕴含虚空能量的闪电
+			发射一枚强力高速子弹
+			同时射出一束蕴含虚空能量的闪电
 			右键缩放视野
 			'''
 	}
@@ -674,114 +718,114 @@ Items: {
 	}
 
 	SwordofaThousandTruths: {
-		// DisplayName: Sword of a Thousand Truths
-		/* Tooltip:
+		DisplayName: 万千箴言之剑
+		Tooltip:
 			'''
-			<left> to swing the sword, restoring 7 life on hit
-			Hold <right> to charge and throw the sword, embedding itself into the hit enemy
-			When the sword is embedded it will release light and dark energy
-			Light energy will home onto nearby allies and heal life equal to bonus healing
-			Dark energy will home onto nearby enemies, dealing damage
-			If the user's bonus healing is 5 or more, the enemy will also be inflicted with a variety of debillitating debuffs
-			Only one sword can be thrown at a time
-			'Sorry piggies but that's a necessary sacrifice'
-			''' */
+			左键挥动长剑，命中时回复7点生命值
+			按住右键蓄力投掷长剑，将其嵌入敌人之中
+			长剑处于嵌入状态时会释放出光暗能量
+			光辉能量会追踪附近的友方，并治疗等同于额外治疗量的生命值
+			暗影能量会追踪附近的敌人，造成伤害
+			若使用者的额外治疗量大于等于5，敌人还会被施加多种削弱性减益
+			一次只能投掷一把长剑
+			“抱歉了小猪猪，但这是必要的牺牲”
+			'''
 	}
 
 	AbsoluteTVRemote: {
-		// DisplayName: Absolute TV Remote
-		/* Tooltip:
+		DisplayName: 绝对电视遥控器
+		Tooltip:
 			'''
-			<left> to generate an aura around you that slows down projectiles in radius on a 2 minute cooldown
-			<right> to generate an aura that instead speeds up projectiles in radius, also on a 2 minute cooldown
-			Pressing {0} will fire a projectile that pauses enemies in their tracks, usable on a 5 minute cooldown
-			'TV NEVER DIES!'
-			''' */
+			左键生成一片环绕你的光环，使范围内的弹幕减速，冷却2分钟
+			右键改为生成一片使范围内弹幕加速的光环，同样冷却2分钟
+			按下{0}会发射一枚弹幕，使敌人暂停在原地，冷却5分钟
+			“TV永不消亡！”
+			'''
 	}
 
 	PlanetShaper: {
-		// DisplayName: Planet Shaper
-		/* Tooltip:
+		DisplayName: 行星塑形者
+		Tooltip:
 			'''
-			This scythe is swung directionally instead of spun
-			Has a three-swing combo:
-			    Every first swing, the scythe shoots one homing fireball and 2 cosmic beams
-			    Every second swing, the scythe shoots one cosmic beam and two homing fireballs
-			    Every third swing, the scythe is spun around
-			    While spun, emits up to six homing fireballs and cosmic beams
-			The scythe and fireballs ignore 125 points of defense and inflict [iabuff:CalamityMod/Dragonfire]
-			The cosmic beams ignore 75 points of defense and inflict both [iabuff:CalamityMod/ElementalMix] and [iabuff:CatalystMod/AstralBlight]
-			'LADIES AND GENTLEMAN... LET IT ROCK LET IT ROCK LET IT ROCK!!!'
-			''' */
+			这把镰刀是定向挥舞而不是旋转
+			拥有三段连击：
+				第一段挥击会发射一枚追踪火球和2道宇宙光束
+				第二段挥击会发射一道宇宙光束和2枚追踪火球
+				第三段挥击会旋转镰刀
+				旋转期间，最多会发射6枚追踪火球和宇宙光束
+			镰刀和火球无视125点防御，并造成[iabuff:CalamityMod/Dragonfire]
+			宇宙光束无视75点防御，并造成[iabuff:CalamityMod/ElementalMix]和[iabuff:CatalystMod/AstralBlight]
+			“女士们先生们……摇起来摇起来摇起来！！！”
+			'''
 	}
 
 	GodsPitch: {
-		// DisplayName: God's Pitch
-		/* Tooltip:
+		DisplayName: 神域音场
+		Tooltip:
 			'''
-			Increases maximum inspiration by 5
-			15% increased symphonic damage
-			Increases the duration of your symphonic empowerments by 3 seconds
-			Increases the level of empowerments you apply to yourself and others by 2
-			Increases empowerment range
-			Instrument attacks launch pipes upward that eventually fall down
-			[c/FF232C:The pipes sound effects are loud and may be startling or otherwise bad for some]
-			'Your ears are not worthy to hear this...'
-			''' */
+			最大灵感值提高5
+			音波伤害提高15%
+			你的咒音增幅持续时间延长3秒
+			你施加的咒音增幅等级提高2
+			提高咒音增幅范围
+			乐器攻击会向上发射钢管，随后坠落
+			[c/FF232C:钢管音效很响，可能会让部分玩家受惊或感到不适]
+			“你的耳朵还不配聆听此音……”
+			'''
 	}
 
 	GauntletofAnnihilationVoid: {
-		// DisplayName: Gauntlet of Annihilation
-		/* Tooltip:
+		DisplayName: 湮灭拳骨
+		Tooltip:
 			'''
-			<left> will unlease a flurry of 4 cosmic gauntlets that inflict [cbuff:CalamityMod/GodSlayerInferno]
-			<right> will release rapid cosmic punches and lunge you in the direction of the mouse
-			Lunging only consumes half the void cost and on collision during the lunge, you are knocked back
-			Pressing <left> 3 frames after being knocked back will release a God Slaying Gauntlet
-			The God Slaying Gauntlet always crits and also inflicts [cbuff:CalamityMod/WhisperingDeath]
-			Provides a light source while favorited in the inventory
-			''' */
+			左键释放四只宇宙拳套连打，造成[cbuff:CalamityMod/GodSlayerInferno]
+			右键释放高速宇宙拳击，并使你朝鼠标方向突进
+			突进只消耗面板虚空值消耗量的一半，且突进期间发生碰撞时，你会被击退
+			被击退后3帧内按下左键会释放弑神拳骨
+			弑神拳骨必定暴击，并且还会造成[cbuff:CalamityMod/WhisperingDeath]
+			在物品栏内收藏时会提供光照
+			'''
 	}
 
 	GauntletofAnnihilation: {
-		// DisplayName: Gauntlet of Annihilation
-		/* Tooltip:
+		DisplayName: Gauntlet of Annihilation
+		Tooltip:
 			'''
-			<left> will unlease a flurry of 4 cosmic gauntlets that inflict [cbuff:CalamityMod/GodSlayerInferno]
-			<right> will release rapid cosmic punches and lunge you in the direction of the mouse
-			On collision during the lunge, you are knocked back
-			Pressing <left> 3 frames after being knocked back will release a God Slaying Gauntlet
-			The God Slaying Gauntlet always crits and also inflicts [cbuff:CalamityMod/WhisperingDeath]
-			Provides a light source while favorited in the inventory
-			''' */
+			左键释放四只宇宙拳套连打，造成[cbuff:CalamityMod/GodSlayerInferno]
+			右键释放高速宇宙拳击，并使你朝鼠标方向突进
+			突进期间发生碰撞时，你会被击退
+			被击退后3帧内按下左键会释放弑神拳骨
+			弑神拳骨必定暴击，并且还会造成[cbuff:CalamityMod/WhisperingDeath]
+			在物品栏内收藏时会提供光照
+			'''
 	}
 
 	BlightedBadge: {
-		// DisplayName: Blighted Badge
-		/* Tooltip:
+		DisplayName: 凋星之证
+		Tooltip:
 			'''
-			True melee strikes drops astral stars from the sky
-			Attackers are shocked, dealing immense damage
-			Taking damage will massively increase melee speed and critical strike chance briefly
-			Also releases an explosion and temporarily increases true melee damage by 30% when damaged
-			Boost duration scales with the amount of damage you took, up to 10 seconds
-			Nullifies the Astral Infection debuff
-			''' */
+			使用真近战武器击中敌人时会令许多幻星从天而降
+			攻击你的敌人会遭到电击，受到巨额伤害
+			受到伤害会短暂内大幅增加近战攻速和暴击率
+			受到伤害后释放爆炸并暂时增加30%真近战伤害
+			增幅的持续时间基于你受到的伤害值，至多持续10秒
+			幻星感染减益对你无效
+			'''
 	}
 
 	ImagiknightHeraldry: {
-		// DisplayName: Imagiknight Heraldry
-		/* Tooltip:
+		DisplayName: 幻想骑士纹章
+		Tooltip:
 			'''
-			Multiplies all damage based on how close you are to teammates, with a maximum damage boost of 20%
-			Emit a blazing aura that also boosts the damage of teammates
-			Teammates gain increasing multiplicative damage the closer they are to you
-			These multipliers do not stack with the [i:CalamityMod/WarbanneroftheRighteous] Warbanner of the Righteous multiplier, and the higher bonus of the two will be used
-			Effects are transparent and silent if visibility is disabled
-			Gives all teammates +{0} HP/s life regen, +{1}% max life, {2}% damage reduction, {3} defense and {4}% increased damage
-			'An idea is a mere particle, one that exponentially accelerates the more minds it travels through. 
-			When you put enough minds together, they can make said idea truly unstoppable.' -Imagiknight_Girus
-			''' */
+			基于你离队友的距离提供乘算伤害加成，最高提高20%
+			迸发炽烈的光环，同时为队友提高伤害
+			队友距离你越近，接近时间越长，受到的伤害加成越高
+			这些倍率不会与[i:CalamityMod/WarbanneroftheRighteous]正义战旗的倍率叠加，只会取两者中较高的加成
+			如果关闭饰品可见性，饰品效果会变得透明且安静
+			为所有队友增加{0}HP/s生命再生、{1}%最大生命值、{2}%伤害减免、{3}点防御和{4}%伤害
+			“思想始于微尘，却会在人心之间层层回响
+			当万众同声，它便化作无人可挡的洪流”——Imagiknight_Girus
+			'''
 	}
 }
 
@@ -847,13 +891,13 @@ ItemTooltip: {
 		Puzzles: Mr. Puzzles
 		cat: StarlightCat
 		Goldsock: Goldsockz2
-		// paradox: Imagiknight_Parad0xical
+		paradox: Imagiknight_Parad0xical
 	}
 
 	Cooldowns: {
-		// Pause: TV Remote Pause is on cooldown!
-		// FastForward: TV Remote Fast Forward is on cooldown!
-		// Slowdown: TV Remote Rewind is on cooldown!
+		Pause: 电视遥控器暂停键正在冷却中！
+		FastForward: 电视遥控器快进键正在冷却中！
+		Slowdown: 电视遥控器倒带键正在冷却中！
 	}
 }
 
@@ -983,22 +1027,22 @@ Projectiles: {
 	CatastrophicLongbladeHoldout.DisplayName: 灾难长刃
 	CatastrophicLongbladeHoldoutVoid.DisplayName: 灾难长刃
 	VoidBolt.DisplayName: 虚空雷霆
-	// EclipsePulseDark.DisplayName: Dark Pulse
-	// EclipsePulseLight.DisplayName: Holy Pulse
-	// BardPulseRiffleBoom.DisplayName: Pulse Riffle Boom
-	// BrimstonePetalPro.DisplayName: Brimstone Petal
-	// SwordofaThousandTruthsSlashPro.DisplayName: Sword of a Thousand Truths
-	// SwordofaThousandTruthsHoldPro.DisplayName: Sword of a Thousand Truths
-	// SwordofaThousandTruthsPro.DisplayName: Sword of a Thousand Truths
-	// AbsoluteTVRemotePausePro.DisplayName: Pause
-	// PlanetShaperFireball.DisplayName: Planet Shaper Fireball
-	// PlanetShaperPro.DisplayName: Planet Shaper
-	// PlanetShaperStar.DisplayName: Planet Shaper Star
-	// MetalPipe.DisplayName: Auric Pipe
-	// AbsoluteTVRemoteFastForwardPro.DisplayName: Fast Forward Aura
-	// AbsoluteTVRemoteRewindPro.DisplayName: Rewind Aura
-	// CosmicPunch.DisplayName: Cosmic Gauntlet
-	// Melee.GauntletofAnnihilationPunches.DisplayName: Cosmic Punches
+	EclipsePulseDark.DisplayName: 黑暗脉冲
+	EclipsePulseLight.DisplayName: 神圣脉冲
+	BardPulseRiffleBoom.DisplayName: 脉冲震爆
+	BrimstonePetalPro.DisplayName: 硫火花瓣
+	SwordofaThousandTruthsSlashPro.DisplayName: 万千箴言之剑
+	SwordofaThousandTruthsHoldPro.DisplayName: 万千箴言之剑
+	SwordofaThousandTruthsPro.DisplayName: 万千箴言之剑
+	AbsoluteTVRemotePausePro.DisplayName: 暂停
+	PlanetShaperFireball.DisplayName: 行星塑形者火球
+	PlanetShaperPro.DisplayName: 行星塑形者
+	PlanetShaperStar.DisplayName: 行星塑形者星辰
+	MetalPipe.DisplayName: 金源钢管
+	AbsoluteTVRemoteFastForwardPro.DisplayName: 快进光环
+	AbsoluteTVRemoteRewindPro.DisplayName: 倒带光环
+	CosmicPunch.DisplayName: 宇宙拳套
+	Melee.GauntletofAnnihilationPunches.DisplayName: 宇宙重拳
 }
 
 Buffs: {
@@ -1018,13 +1062,13 @@ Buffs: {
 	}
 
 	TVRemotePaused: {
-		// DisplayName: Paused
-		// Description: Frozen in time!
+		DisplayName: 暂停
+		Description: 时间停止！
 	}
 
 	TVRemotePlayerPaused: {
-		// DisplayName: Paused
-		// Description: Frozen in time!
+		DisplayName: 暂停
+		Description: 时间停止！
 	}
 }
 
@@ -1059,4 +1103,4 @@ Configs: {
 	}
 }
 
-// "Keybinds.Absolute TV Remote Pause.DisplayName": Absolute TV Remote Pause
+"Keybinds.Absolute TV Remote Pause.DisplayName": 绝对电视遥控器暂停
