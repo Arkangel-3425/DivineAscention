@@ -33,7 +33,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.LifeShields
             ThoriumPlayer thoriumPlayer = player.GetModPlayer<ThoriumPlayer>();
 
             voidPlayer.voidMeterMax2 += 25;
-            thoriumPlayer.shieldHealth += 15;
+            thoriumPlayer.MetalShieldMax += 15;
         }
         public override void AddRecipes()
         {
