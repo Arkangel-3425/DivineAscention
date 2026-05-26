@@ -13,6 +13,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.LifeShields
     [ExtendsFromMod("SOTS")]
     public class VibrantShield : ModItem
     {
+        public override bool IsLoadingEnabled(Mod mod) => WeaponConfig.Instance.LifeShields;
+
         public override void SetStaticDefaults()
         {
             Item.ResearchUnlockCount = 1;

@@ -833,6 +833,17 @@ Items: {
 			You constantly generate a 15 life shield
 			'''
 	}
+
+	DivineAxe: {
+		DisplayName: Divine Axe
+		Tooltip:
+			'''
+			Swings a slow and heavy axe that is infused with [cbuff:CalamityMod/HolyFlames]
+			On a direct hit with the axe, it summons a star shaped explosion which inflicts [cbuff:Daybreak]
+			<right>ing summons a sun above you and while holding <right> you will stab at it, causing it to release large explosions
+			These explosions inflict [cbuff:Daybreak]
+			'''
+	}
 }
 
 ItemTooltip: {
@@ -898,6 +909,7 @@ ItemTooltip: {
 		cat: StarlightCat
 		Goldsock: Goldsockz2
 		paradox: Imagiknight_Parad0xical
+		Arkangel: Arkangel
 	}
 
 	Cooldowns: {
@@ -1049,6 +1061,10 @@ Projectiles: {
 	AbsoluteTVRemoteRewindPro.DisplayName: Rewind Aura
 	CosmicPunch.DisplayName: Cosmic Gauntlet
 	Melee.GauntletofAnnihilationPunches.DisplayName: Cosmic Punches
+	DivineAxeHoldout.DisplayName: Divine Axe
+	DivineExplosion.DisplayName: Divine Explosion
+	DivineSunAura.DisplayName: Divine Aura
+	DivineAxeSunAura.DisplayName: Divine Axe Sun Aura
 }
 
 Buffs: {
@@ -1085,6 +1101,7 @@ Configs: {
 		Headers: {
 			VerveineWeapons: Verveine Weapons
 			General: General
+			SoltansCut: Soltan's Cut
 		}
 
 		AIGenedWeapons: {
@@ -1104,6 +1121,11 @@ Configs: {
 
 		UnfinishedContent: {
 			Label: Unfinished Content
+			Tooltip: ""
+		}
+
+		LifeShields: {
+			Label: Life Shields
 			Tooltip: ""
 		}
 	}

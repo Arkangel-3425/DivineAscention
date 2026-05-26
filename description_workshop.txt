@@ -6,7 +6,7 @@ The Infernal Arsenal Mod is a mod that aims to fill in the weak spots of progres
 
 It currently adds the following:
 [list]
-	[*] 7 Melee weapons
+	[*] 8 Melee weapons
 	[*] 5 Ranged weapons
 	[*] 7 Mage weapons
 	[*] 1 Summoner weapon
