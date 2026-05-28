@@ -807,6 +807,31 @@ Items: {
 			These explosions inflict [cbuff:Daybreak]
 			''' */
 	}
+
+	DoubleFlail: {
+		// DisplayName: Double Flail
+		/* Tooltip:
+			'''
+			75% basic damage
+			Gives you 2 flail cores that apply a unique buff or debuff depending on which one is spawned
+			The Brimstone spike ball applies [cbuff:CalamityMod/BrimstoneFlames] to enemies and rarely grants the [iabuff:InfernalEclipseWeaponsDLC/HotFlailDmg] buff
+			The Blizzard spike ball applies [iabuff:Frostburn2] to enemies and rarely grants the [iabuff:InfernalEclipseWeaponsDLC/ColdFlailDefense] buff
+			'Calamitas and Permafrost always had great teamwork as student and teacher when she was still a child'
+			''' */
+	}
+
+	PerfectPurple: {
+		// DisplayName: Cosmic Perfection Flail Core
+		/* Tooltip:
+			'''
+			150% basic damage
+			Attacks have a chance to create perfect flail cores that rarely grant the [iabuff:InfernalEclipseWeaponsDLC/PerfectFlailBuff] buff and inflict [cbuff:CalamityMod/GodSlayerInferno]
+			'... Yet, it wasn't perfect.'
+			'Teamwork can only take one so far. After all, you are your own best friend.'
+			'Two of one, could do so much more because...'
+			'You are perfect with yourself.'
+			''' */
+	}
 }
 
 ItemTooltip: {
@@ -1028,6 +1053,9 @@ Projectiles: {
 	// DivineExplosion.DisplayName: Divine Explosion
 	// DivineSunAura.DisplayName: Divine Aura
 	// DivineAxeSunAura.DisplayName: Divine Axe Sun Aura
+	// ColdFlailCorePro.DisplayName: Cold Flail Core Pro
+	// HotFlailCorePro.DisplayName: Hot Flail Core Pro
+	// PerfectFlailCorePro.DisplayName: Perfect Flail Core Pro
 }
 
 Buffs: {
@@ -1054,6 +1082,24 @@ Buffs: {
 	TVRemotePlayerPaused: {
 		// DisplayName: Paused
 		// Description: Frozen in time!
+	}
+
+	ColdFlailDefense: {
+		// Description: You're nullified by the freezing blue
+		// DisplayName: Nullification Blue
+		// ItemTooltip: Increased defence by 15 and damage resistance by 10%
+	}
+
+	HotFlailDmg: {
+		// Description: You're amplified by the burning red
+		// DisplayName: Amplification Red
+		// ItemTooltip: Increased damage by 15% and critical strike chance increased by 10%
+	}
+
+	PerfectFlailBuff: {
+		// DisplayName: Perfect Purple
+		// Description: You are Perfect.
+		// ItemTooltip: Increased damage by 20%, critical strike chance by 15%, defence by 20, damage resistance by 15% and movement speed by 20%
 	}
 }
 

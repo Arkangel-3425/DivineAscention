@@ -14,6 +14,7 @@ using ThoriumMod.Buffs;
 using ThoriumMod.Buffs.Healer;
 using Terraria.GameInput;
 using System.Linq;
+using InfernalEclipseWeaponsDLC.Content.Buffs;
 
 namespace InfernalEclipseWeaponsDLC.ChatTags
 {
@@ -36,6 +37,11 @@ namespace InfernalEclipseWeaponsDLC.ChatTags
                 [ModContent.BuffType<MagickStaffDebuff>()] = Color.Thistle,
                 [ModContent.BuffType<Stunned>()] = Color.White,
                 [ModContent.BuffType<Charmed>()] = Color.White,
+                [ModContent.BuffType<Charmed>()] = Color.White,
+
+                [ModContent.BuffType<HotFlailDmg>()] = Color.Red,
+                [ModContent.BuffType<ColdFlailDefense>()] = Color.Cyan,
+                [ModContent.BuffType<PerfectFlailBuff>()] = Color.Purple,
             };
 
             public override bool UniqueDraw(bool justCheckingString, out Vector2 size, SpriteBatch spriteBatch, Vector2 position = new Vector2(), Color color = new Color(), float scale = 1)

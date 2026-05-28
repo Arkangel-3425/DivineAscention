@@ -18,7 +18,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Buffs
         {
             player.GetDamage(DamageClass.Generic) += 0.15f;
             player.GetCritChance(DamageClass.Generic) += 10;
-            player.GetAttackSpeed(DamageClass.Generic) += 0.1f;
+            //player.GetAttackSpeed(DamageClass.Generic) += 0.1f;
         }
     }
 }
