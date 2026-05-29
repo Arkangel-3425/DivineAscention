@@ -10,7 +10,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.LifeShields
 {
     [JITWhenModsEnabled("SOTS")]
     [ExtendsFromMod("SOTS")]
-    //[AutoloadEquip(EquipType.Shield)]
+    [AutoloadEquip(EquipType.Shield)]
     public class AncientSteelShield : ModItem
     {
         public override bool IsLoadingEnabled(Mod mod) => WeaponConfig.Instance.LifeShields;
@@ -22,8 +22,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.LifeShields
 
         public override void SetDefaults()
         {
-            Item.width = 19;
-            Item.height = 20;
+            Item.width = 54;
+            Item.height = 54;
             Item.rare = ItemRarityID.Blue;
             Item.value = CalamityGlobalItem.RarityBlueBuyPrice;
             Item.accessory = true;

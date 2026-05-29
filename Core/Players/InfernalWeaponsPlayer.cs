@@ -21,6 +21,10 @@ using System.Collections.Generic;
 using CalamityMod.Projectiles.BaseProjectiles;
 using ThoriumMod.Projectiles;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.FlailPro;
+using CalamityMod.CalPlayer.Dashes;
+using ThoriumMod;
+using ThoriumMod.Utilities;
+using InfernalEclipseWeaponsDLC.Core.Players.Dashes;
 
 namespace InfernalEclipseWeaponsDLC.Core.NewFolder
 {
@@ -34,12 +38,12 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
         public bool godsPitch;
         public bool blightedBadge;
         public bool imagiknightHeraldry;
-        
+        public bool doubleFlailAcc;
+        public bool perfectPurple;
+        public bool perennialShield;
+
         public bool hideHeraldryVisual;
         public bool hasWarbanner;
-
-        public bool DoubleFlailAcc;
-        public bool PerfectPurple;
 
         public int missileIndex = 10;
         public int CataclysmFistShotCount = 0;
@@ -57,6 +61,10 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
             spearArctic = false;
             minionCrits = false;
             godsPitch = false;
+            blightedBadge = false;
+            doubleFlailAcc = false;
+            perfectPurple = false;
+            perennialShield = false;
 
             if (!imagiknightHeraldry && heraldyBuffFromOther <= 0f)
                 Player.Calamity().cooldowns.Remove(ImagiknightHeraldryBuff.ID);
@@ -65,7 +73,6 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
                 Player.Calamity().cooldowns.Remove(WarbanneroftheRighteousBuff.ID);
 
             imagiknightHeraldry = false;
-
             hasWarbanner = false;
 
             if (annihilationBonusShotTimeLeft > 0)
@@ -156,12 +163,12 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
                     vector.Normalize();
                     vector *= 6f;
                 }
-                if (DoubleFlailAcc && Utils.NextBool(Main.rand, 6))
+                if (doubleFlailAcc && Utils.NextBool(Main.rand, 6))
                 {
                     SoundEngine.PlaySound(SoundID.Item1, proj.Center);
                     Projectile.NewProjectile(proj.GetSource_OnHit(target), proj.Center, vector, ModContent.ProjectileType<HotFlailCorePro>(), (int)(proj.damage * 0.75), proj.knockBack, proj.owner);
                 }
-                if (DoubleFlailAcc && Utils.NextBool(Main.rand, 6))
+                if (doubleFlailAcc && Utils.NextBool(Main.rand, 6))
                 {
                     SoundEngine.PlaySound(SoundID.Item1, proj.Center);
                     Projectile.NewProjectile(proj.GetSource_OnHit(target), proj.Center, vector, ModContent.ProjectileType<ColdFlailCorePro>(), (int)(proj.damage * 0.75), proj.knockBack, proj.owner);
@@ -174,7 +181,7 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
                     vector.Normalize();
                     vector *= 6f;
                 }
-                if (PerfectPurple && Utils.NextBool(Main.rand, 4))
+                if (perfectPurple && Utils.NextBool(Main.rand, 4))
                 {
                     SoundEngine.PlaySound(SoundID.Item1, proj.Center);
                     Projectile.NewProjectile(proj.GetSource_OnHit(target), proj.Center, vector, ModContent.ProjectileType<PerfectFlailCorePro>(), (int)(proj.damage * 1.5), proj.knockBack, proj.owner);
@@ -277,6 +284,32 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
                         Player.AddCooldown(ImagiknightHeraldryBuff.ID, maxValue);
 
                     modPlayer.warbannerDamageMult = Math.Max(modPlayer.warbannerDamageMult, bestBonus);
+                }
+            }
+        }
+
+        public override void PostUpdateEquips()
+        {
+            CalamityPlayer calamityPlayer = Player.Calamity();
+            ThoriumPlayer thoriumPlayer = Player.GetThoriumPlayer();
+
+            if (perennialShield)
+            {
+                if (calamityPlayer.reaverSpeed)
+                {
+                    Player.moveSpeed += 0.1f;
+                    calamityPlayer.DashID = PerennialShieldDash.ID;
+                    Player.dashType = 0;
+                }
+                else if (calamityPlayer.reaverDefense)
+                {
+                    Player.endurance += 0.1f;
+                    thoriumPlayer.MetalShieldMax += 20;
+
+                }
+                else if (calamityPlayer.reaverExplore)
+                {
+                    Player.jumpSpeedBoost += 1f;
                 }
             }
         }

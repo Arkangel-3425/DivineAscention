@@ -22,8 +22,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.LifeShields
 
         public override void SetDefaults()
         {
-            Item.width = 19;
-            Item.height = 20;
+            Item.width = 38;
+            Item.height = 40;
             Item.rare = ItemRarityID.Blue;
             Item.accessory = true;
             Item.defense = 2;

@@ -23,7 +23,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee.Flails
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<InfernalWeaponsPlayer>().PerfectPurple = true;
+            player.GetModPlayer<InfernalWeaponsPlayer>().perfectPurple = true;
         }
         public override void AddRecipes()
         {

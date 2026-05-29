@@ -872,11 +872,23 @@ Items: {
 		Tooltip:
 			'''
 			150% basic damage
-			Attacks have a chance to create perfect flail cores that rarely grant the [iabuff:InfernalEclipseWeaponsDLC/PerfectFlailBuff] buff and inflict [cbuff:CalamityMod/GodSlayerInferno]
+			Attacks have a chance to create perfect flail cores that inflict [cbuff:CalamityMod/GodSlayerInferno] and rarely grant the [iabuff:InfernalEclipseWeaponsDLC/PerfectFlailBuff] buff
 			'... Yet, it wasn't perfect.'
 			'Teamwork can only take one so far. After all, you are your own best friend.'
 			'Two of one, could do so much more because...'
 			'You are perfect with yourself.'
+			'''
+	}
+
+	PerennialShield: {
+		DisplayName: Perennial Shield
+		Tooltip:
+			'''
+			You constantly generate a 50 life shield
+			Gains extra effects depending on what Reaver Armor set bonus you have
+			    [i:CalamityMod/ReaverHeadTank]: Increases life shield to 70 and reduces damage taken by 10%
+			    [i:CalamityMod/ReaverHeadMobility]: 10% increased movement speed and allows the ability to ram dash
+			    [i:CalamityMod/ReaverHeadExplore]: 20% increased jump speed
 			'''
 	}
 }
@@ -1182,6 +1194,11 @@ Configs: {
 
 		LifeShields: {
 			Label: Life Shields
+			Tooltip: ""
+		}
+
+		FlailCores: {
+			Label: Flail Cores
 			Tooltip: ""
 		}
 	}
