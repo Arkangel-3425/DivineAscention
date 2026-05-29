@@ -847,6 +847,11 @@ Items: {
 			These explosions inflict [cbuff:Daybreak]
 			''' */
 	}
+
+	AncientSteelShield: {
+		// DisplayName: Ancient Steel Shield
+		// Tooltip: ""
+	}
 }
 
 ItemTooltip: {

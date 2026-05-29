@@ -844,6 +844,16 @@ Items: {
 			These explosions inflict [cbuff:Daybreak]
 			'''
 	}
+
+	AncientSteelShield: {
+		DisplayName: Ancient Steel Shield
+		Tooltip:
+			'''
+			You constantly generate a 30 life shield
+			Attackers have a chance to be afflicted with a stacking, permanent bleed for 5 damage per second
+			This chance increases with your critical strike chance
+			'''
+	}
 }
 
 ItemTooltip: {
