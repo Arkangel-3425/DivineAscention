@@ -127,7 +127,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.SummonerPro.WhipPro
                 Projectile.damage = 1;
 
             target.AddBuff(BuffID.Electrified, 60);
-            target.AddBuff(ModContent.BuffType<DefaultSummonTag>(), 300);
+            target.AddBuff(ModContent.BuffType<GrandThunderWhipTag>(), 240);
 
             Main.player[Projectile.owner].MinionAttackTargetNPC = target.whoAmI;
 
