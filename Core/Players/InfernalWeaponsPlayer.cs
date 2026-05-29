@@ -17,7 +17,10 @@ using InfernalEclipseWeaponsDLC.Core.Cooldowns;
 using CalamityMod.Cooldowns;
 using CalamityMod.CalPlayer;
 using InfernalEclipseWeaponsDLC.Content.Items.Accessories.Donor;
-using System.Security.Policy;
+using System.Collections.Generic;
+using CalamityMod.Projectiles.BaseProjectiles;
+using ThoriumMod.Projectiles;
+using InfernalEclipseWeaponsDLC.Content.Projectiles.FlailPro;
 
 namespace InfernalEclipseWeaponsDLC.Core.NewFolder
 {
@@ -35,6 +38,9 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
         public bool hideHeraldryVisual;
         public bool hasWarbanner;
 
+        public bool DoubleFlailAcc;
+        public bool PerfectPurple;
+
         public int missileIndex = 10;
         public int CataclysmFistShotCount = 0;
         public int annihilationBonusShotTimeLeft = 0;
@@ -42,6 +48,8 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
 
         public float heraldryDamageMult = 0f;
         public float heraldyBuffFromOther = 0f;
+
+        private static readonly HashSet<int> ManualFlails = new();
 
         public override void ResetEffects()
         {
@@ -69,6 +77,24 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
             Player.Calamity().warbannerDamageMult = 0f;
             heraldryDamageMult = 0f;
             heraldyBuffFromOther = 0f;
+        }
+
+        public override void Load()
+        {
+            ManualFlails.Clear();
+
+            AddManualFlailProjectile("CalamityMod", "ClamCrusherFlail");
+            AddManualFlailProjectile("CalamityMod", "CrescentMoonFlail");
+            AddManualFlailProjectile("CalamityMod", "DragonPowFlail");
+            AddManualFlailProjectile("CalamityMod", "PulseDragonProjectile");
+
+            AddManualFlailProjectile("Clamity", "ClamitasCrusherProjectile");
+
+            AddManualFlailProjectile("SOTS", "Shattershine");
+            AddManualFlailProjectile("SOTS", "AtenProj");
+            AddManualFlailProjectile("SOTS", "NorthStar");
+
+            ManualFlails.Add(ProjectileID.Flairon);
         }
 
         public override void CatchFish(FishingAttempt attempt, ref int itemDrop, ref int npcSpawn, ref AdvancedPopupRequest sonar, ref Vector2 sonarPosition)
@@ -113,6 +139,45 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
                     {
                         NetMessage.SendData(MessageID.SyncProjectile, -1, -1, null, Projectile.NewProjectile(proj.GetSource_OnHit(target), target.Center, new Vector2(target.position.X - target.oldPosition.X, -16f), metalPipe, (hit.Damage + damageDone) / 3, proj.knockBack, proj.owner, target.whoAmI, 0.0f, 0.0f), 0.0f, 0.0f, 0.0f, 0, 0, 0);
                     }
+                }
+            }
+
+            //Flails
+            bool isFlail = proj.ModProjectile is FlailProBase || proj.ModProjectile is BaseMaceFlailProjectile || proj.aiStyle == ProjAIStyleID.Flail || ManualFlails.Contains(proj.type);
+
+            if (isFlail == true)
+            {
+                Vector2 vector = proj.velocity * 0.5f;
+
+                //DoubleFlailCore
+                if (vector == Vector2.Zero)
+                {
+                    vector = Main.MouseWorld - Player.Center;
+                    vector.Normalize();
+                    vector *= 6f;
+                }
+                if (DoubleFlailAcc && Utils.NextBool(Main.rand, 6))
+                {
+                    SoundEngine.PlaySound(SoundID.Item1, proj.Center);
+                    Projectile.NewProjectile(proj.GetSource_OnHit(target), proj.Center, vector, ModContent.ProjectileType<HotFlailCorePro>(), (int)(proj.damage * 0.75), proj.knockBack, proj.owner);
+                }
+                if (DoubleFlailAcc && Utils.NextBool(Main.rand, 6))
+                {
+                    SoundEngine.PlaySound(SoundID.Item1, proj.Center);
+                    Projectile.NewProjectile(proj.GetSource_OnHit(target), proj.Center, vector, ModContent.ProjectileType<ColdFlailCorePro>(), (int)(proj.damage * 0.75), proj.knockBack, proj.owner);
+                }
+
+                //PerfectFlailCore
+                if (vector == Vector2.Zero)
+                {
+                    vector = Main.MouseWorld - Player.Center;
+                    vector.Normalize();
+                    vector *= 6f;
+                }
+                if (PerfectPurple && Utils.NextBool(Main.rand, 4))
+                {
+                    SoundEngine.PlaySound(SoundID.Item1, proj.Center);
+                    Projectile.NewProjectile(proj.GetSource_OnHit(target), proj.Center, vector, ModContent.ProjectileType<PerfectFlailCorePro>(), (int)(proj.damage * 1.5), proj.knockBack, proj.owner);
                 }
             }
         }
@@ -288,5 +353,16 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
             => (damageClass == DamageClass.Summon || damageClass == DamageClass.SummonMeleeSpeed) && !(minionCrits)
             ? 0
             : player.GetTotalCritChance(damageClass);
+
+        private static void AddManualFlailProjectile(string modName, string projectileName)
+        {
+            if (!ModLoader.TryGetMod(modName, out Mod mod))
+                return;
+
+            if (mod.TryFind(projectileName, out ModProjectile projectile))
+            {
+                ManualFlails.Add(projectile.Type);
+            }
+        }
     }
 }

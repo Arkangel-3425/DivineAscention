@@ -33,5 +33,8 @@ namespace InfernalEclipseWeaponsDLC
         [DefaultValue(true)]
         [ReloadRequired]
         public bool LifeShields;
+
+        [DefaultValue(true)]
+        public bool FlailCores;
     }
 }

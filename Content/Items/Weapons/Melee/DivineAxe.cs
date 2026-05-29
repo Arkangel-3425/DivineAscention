@@ -21,7 +21,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Weapons.Melee
 
         public override void SetDefaults()
         {
-            Item.damage = 1500;
+            Item.damage = 1850;
             Item.DamageType = ModContent.GetInstance<TrueMeleeDamageClass>();
             Item.width = 112;
             Item.height = 122;
