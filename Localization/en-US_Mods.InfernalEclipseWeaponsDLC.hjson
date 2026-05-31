@@ -880,6 +880,17 @@ Items: {
 			'''
 	}
 
+	BlackHoleFlail: {
+		DisplayName: Black Hole Flail Core
+		Tooltip:
+			'''
+			75% basic damage
+			Attacks have a chance to create blackhole flail cores which homes into enemies and sucks enemies into itself. They also rarely inflict [cbuff:CalamityMod/WitherDebuff]
+			"This shouldn't work you know? A blackhole this size can absolutely destory the earth...
+			I guess we shouldn't question it."
+			'''
+	}
+
 	PerennialShield: {
 		DisplayName: Perennial Shield
 		Tooltip:
@@ -1115,6 +1126,7 @@ Projectiles: {
 	ColdFlailCorePro.DisplayName: Cold Flail Core Pro
 	HotFlailCorePro.DisplayName: Hot Flail Core Pro
 	PerfectFlailCorePro.DisplayName: Perfect Flail Core Pro
+	BlackHoleFlailCorePro.DisplayName: Black Hole Flail Core Pro
 }
 
 Buffs: {

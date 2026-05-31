@@ -25,8 +25,11 @@ using CalamityMod.CalPlayer.Dashes;
 using ThoriumMod;
 using ThoriumMod.Utilities;
 using InfernalEclipseWeaponsDLC.Core.Players.Dashes;
+using InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee.Flails;
 
+#pragma warning disable IDE0130 // Namespace does not match folder structure
 namespace InfernalEclipseWeaponsDLC.Core.NewFolder
+#pragma warning restore IDE0130 // Namespace does not match folder structure
 {
     public class InfernalWeaponsPlayer : ModPlayer
     {
@@ -40,6 +43,7 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
         public bool imagiknightHeraldry;
         public bool doubleFlailAcc;
         public bool perfectPurple;
+        public bool blackholeFlail;
         public bool perennialShield;
 
         public bool hideHeraldryVisual;
@@ -64,6 +68,7 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
             blightedBadge = false;
             doubleFlailAcc = false;
             perfectPurple = false;
+            blackholeFlail = false;
             perennialShield = false;
 
             if (!imagiknightHeraldry && heraldyBuffFromOther <= 0f)
@@ -185,6 +190,11 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
                 {
                     SoundEngine.PlaySound(SoundID.Item1, proj.Center);
                     Projectile.NewProjectile(proj.GetSource_OnHit(target), proj.Center, vector, ModContent.ProjectileType<PerfectFlailCorePro>(), (int)(proj.damage * 1.5), proj.knockBack, proj.owner);
+                }
+                if (blackholeFlail && Utils.NextBool(Main.rand, 4))
+                {
+                    SoundEngine.PlaySound(SoundID.Item1, proj.Center);
+                    Projectile.NewProjectile(proj.GetSource_OnHit(target), proj.Center, vector, ModContent.ProjectileType<BlackHoleFlailCorePro>(), (int)(proj.damage * 0.5), proj.knockBack, proj.owner);
                 }
             }
         }

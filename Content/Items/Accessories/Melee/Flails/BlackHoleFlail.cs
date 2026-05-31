@@ -9,7 +9,7 @@ using CalamityMod.Rarities;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee.Flails
 {
-    public class PerfectPurple : ModItem
+    public class BlackHoleFlail : ModItem
     {
         public override bool IsLoadingEnabled(Mod mod) => WeaponConfig.Instance.FlailCores;
 
@@ -18,19 +18,20 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee.Flails
             Item.width = 24;
             Item.height = 24;
             Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
-            Item.rare = ModContent.RarityType<CosmicPurple>();
+            Item.rare = ModContent.RarityType<HotPink>();
             Item.accessory = true;
         }
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<InfernalWeaponsPlayer>().perfectPurple = true;
+            player.GetModPlayer<InfernalWeaponsPlayer>().blackholeFlail = true;
         }
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient(ModContent.ItemType<DoubleFlail>())
-                .AddIngredient(ModContent.ItemType<CosmiliteBar>(), 15)
-                .AddTile(ModContent.TileType<CosmicAnvil>())
+                .AddIngredient<IronFlailCore>(10)
+                .AddIngredient(ModContent.ItemType<ShadowspecBar>(), 10)
+                .AddIngredient(ModContent.ItemType<DarkPlasma>(), 15)
+                .AddTile(ModContent.TileType<DraedonsForge>())
                 .Register();
         }
     }
