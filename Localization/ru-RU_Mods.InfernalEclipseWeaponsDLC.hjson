@@ -819,7 +819,7 @@ Items: {
 	}
 
 	DoubleFlail: {
-		// DisplayName: Double Flail
+		// DisplayName: Double Flail-Core
 		/* Tooltip:
 			'''
 			75% basic damage
@@ -827,31 +827,25 @@ Items: {
 			The Brimstone spike ball applies [cbuff:CalamityMod/BrimstoneFlames] to enemies and rarely grants the [iabuff:InfernalEclipseWeaponsDLC/HotFlailDmg] buff
 			The Blizzard spike ball applies [iabuff:Frostburn2] to enemies and rarely grants the [iabuff:InfernalEclipseWeaponsDLC/ColdFlailDefense] buff
 			'Calamitas and Permafrost always had great teamwork as student and teacher when she was still a child'
-			'These two Flails could be applying the same techniques to combine ice and fire in disasterous ways for your foes'
 			''' */
 	}
 
 	PerfectPurple: {
-		// DisplayName: Cosmic Perfection Flail Core
+		// DisplayName: Cosmic Perfection Flail-Core
 		/* Tooltip:
 			'''
 			150% basic damage
 			Attacks have a chance to create perfect flail cores that inflict [cbuff:CalamityMod/GodSlayerInferno] and rarely grant the [iabuff:InfernalEclipseWeaponsDLC/PerfectFlailBuff] buff
-			'... Yet, it wasn't perfect.'
-			'Teamwork can only take one so far. After all, you are your own best friend.'
-			'Two of one, could do so much more because...'
-			'You are perfect with yourself.'
 			''' */
 	}
 
 	BlackHoleFlail: {
-		// DisplayName: Black Hole Flail Core
+		// DisplayName: Black Hole Flail-Core
 		/* Tooltip:
 			'''
 			75% basic damage
-			Attacks have a chance to create blackhole flail cores which homes into enemies and sucks enemies into itself. They also rarely inflict [cbuff:CalamityMod/WitherDebuff]
-			"This shouldn't work you know? A blackhole this size can absolutely destory the earth...
-			I guess we shouldn't question it."
+			Attacks have a chance to create blackhole flail cores which homes into enemies, pulls enemies towards itself, and rarely inflicts [cbuff:CalamityMod/WitherDebuff]
+			'This shouldn't work you know? A blackhole this size can absolutely destory the earth... I guess we shouldn't question it.'
 			''' */
 	}
 
@@ -864,15 +858,6 @@ Items: {
 			    [i:CalamityMod/ReaverHeadTank]: Increases life shield to 70 and reduces damage taken by 10%
 			    [i:CalamityMod/ReaverHeadMobility]: 10% increased movement speed and allows the ability to ram dash
 			    [i:CalamityMod/ReaverHeadExplore]: 20% increased jump speed
-			''' */
-	}
-
-	HolyFlail: {
-		// DisplayName: Profaned Flail
-		/* Tooltip:
-			'''
-			125% basic damage
-			Attacks have a chance to create Profaned flail cores that inflict [cbuff:CalamityMod/HolyFlames] and sometimes create holy flames
 			''' */
 	}
 }
@@ -890,6 +875,14 @@ ItemTooltip: {
 	NeonRipperLore1: После поражения Голиафа Эрелиан решил переработать часть броневых пластин, что тот носил.
 	NeonRipperLore2: Так он создал два оружия: первым стала коса, способная поглощать ауру, подобно способности Ками.
 	PBGBardALore2: Так он создал два оружия: вторым стала гитара, стреляющая цветными микроволнами.
+	// DoubleFlailLore: Calamitas and Permafrost always had great teamwork as student and teacher when she was still a child.
+	/* PerfectPurpleLore:
+		'''
+		Yet, it wasn't perfect.
+		Teamwork can only take one so far. After all, you are your own best friend.
+		Two of one, could do so much more because...
+		You are perfect with yourself.
+		''' */
 	SearingSpearTip: 150% базового урона
 	ArcticSpearTip: 115% базового урона
 	// VerveineItem: "'An item from the orchid's blessing...'"
@@ -1100,8 +1093,6 @@ Projectiles: {
 	// HotFlailCorePro.DisplayName: Hot Flail Core Pro
 	// PerfectFlailCorePro.DisplayName: Perfect Flail Core Pro
 	// BlackHoleFlailCorePro.DisplayName: Black Hole Flail Core Pro
-	// HolyFlailCorePro.DisplayName: Holy Flail Core Pro
-	// HolyFlailFire.DisplayName: Holy Flail Fire
 }
 
 Buffs: {
@@ -1146,6 +1137,11 @@ Buffs: {
 		// DisplayName: Perfect Purple
 		// Description: You are Perfect.
 		// ItemTooltip: Increased damage by 20%, critical strike chance by 15%, defence by 20, damage resistance by 15% and movement speed by 20%
+	}
+
+	GrandThunderWhipTag: {
+		// DisplayName: Grand Thunder Whip Tag
+		// Description: Mods.InfernalEclipseWeaponsDLC.Buffs.GrandThunderWhipTag.Description
 	}
 }
 

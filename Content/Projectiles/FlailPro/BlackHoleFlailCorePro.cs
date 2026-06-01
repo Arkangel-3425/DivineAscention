@@ -24,6 +24,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.FlailPro
             Projectile.usesLocalNPCImmunity = true;
             Projectile.localNPCHitCooldown = 30;
         }
+
         public override void OnKill(int timeLeft)
         {
             for (int i = 0; i < 5; i++)
@@ -31,17 +32,20 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.FlailPro
                 Dust.NewDust(Projectile.position + Projectile.velocity, Projectile.width, Projectile.height, DustID.Asphalt, Projectile.oldVelocity.X * 0.5f, Projectile.oldVelocity.Y * 0.8f, 0, default, 1f);
             }
         }
+
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             if (Main.rand.NextFloat(1) < 0.05)
                 target.AddBuff(ModContent.BuffType<WitherDebuff>(), 300, false);
         }
+
         public override void AI()
         {
             if (Projectile.timeLeft < 250)
             {
                 CalamityUtils.HomeInOnNPC(Projectile, Projectile.tileCollide, 500f, 15f, 15f);
             }
+
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.ToRadians(45f);
             //Enemy sucktion code down
                 float projX = Projectile.Center.X;

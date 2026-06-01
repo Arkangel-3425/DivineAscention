@@ -21,10 +21,12 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee.Flails
             Item.rare = ModContent.RarityType<HotPink>();
             Item.accessory = true;
         }
+
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.GetModPlayer<InfernalWeaponsPlayer>().blackholeFlail = true;
         }
+
         public override void AddRecipes()
         {
             CreateRecipe()

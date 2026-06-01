@@ -5,7 +5,7 @@ This mod can be played on its own and doesn't require the main mod to run.
 The Infernal Arsenal Mod is a mod that aims to fill in the weak spots of progression with new, exciting items.
 
 It currently adds the following:
-	- 8 Melee weapons
+	- 9 Melee weapons
 	- 5 Ranged weapons
 	- 7 Mage weapons
 	- 1 Summoner weapon
@@ -14,7 +14,7 @@ It currently adds the following:
 	- 16 Healer weapons
 	- 2 Multi-class weapoons
 	- 3 armor sets
-	- 7 accessories
+	- 11 accessories
 
 It is recommended to use Recipe Browser to see how to obtain the new weapons.
 
