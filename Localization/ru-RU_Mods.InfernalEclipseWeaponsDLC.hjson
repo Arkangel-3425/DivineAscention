@@ -854,6 +854,11 @@ Items: {
 			    [i:CalamityMod/ReaverHeadExplore]: 20% increased jump speed
 			''' */
 	}
+
+	TerraSheath: {
+		// DisplayName: Terra Sheath
+		// Tooltip: ""
+	}
 }
 
 ItemTooltip: {
@@ -1078,6 +1083,7 @@ Projectiles: {
 	// ColdFlailCorePro.DisplayName: Cold Flail Core Pro
 	// HotFlailCorePro.DisplayName: Hot Flail Core Pro
 	// PerfectFlailCorePro.DisplayName: Perfect Flail Core Pro
+	// TerraOrb.DisplayName: Terra Orb
 }
 
 Buffs: {
@@ -1122,6 +1128,11 @@ Buffs: {
 		// DisplayName: Perfect Purple
 		// Description: You are Perfect.
 		// ItemTooltip: Increased damage by 20%, critical strike chance by 15%, defence by 20, damage resistance by 15% and movement speed by 20%
+	}
+
+	GrandThunderWhipTag: {
+		// DisplayName: Grand Thunder Whip Tag
+		// Description: Mods.InfernalEclipseWeaponsDLC.Buffs.GrandThunderWhipTag.Description
 	}
 }
 
