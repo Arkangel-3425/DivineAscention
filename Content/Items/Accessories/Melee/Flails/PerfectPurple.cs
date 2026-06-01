@@ -40,7 +40,6 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee.Flails
         {
             CreateRecipe()
                 .AddIngredient(ModContent.ItemType<DoubleFlail>())
-                .AddIngredient(ModContent.ItemType<IronFlailCore>())
                 .AddIngredient(ModContent.ItemType<CosmiliteBar>(), 15)
                 .AddTile(ModContent.TileType<CosmicAnvil>())
                 .Register();

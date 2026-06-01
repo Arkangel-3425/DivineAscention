@@ -875,6 +875,16 @@ Items: {
 			'''
 	}
 
+	BlackHoleFlail: {
+		DisplayName: Black Hole Flail-Core
+		Tooltip:
+			'''
+			75% basic damage
+			Attacks have a chance to create blackhole flail cores which homes into enemies, pulls enemies towards itself, and rarely inflicts [cbuff:CalamityMod/WitherDebuff]
+			'This shouldn't work you know? A blackhole this size can absolutely destory the earth... I guess we shouldn't question it.'
+			'''
+	}
+
 	PerennialShield: {
 		DisplayName: Perennial Shield
 		Tooltip:
@@ -1126,9 +1136,10 @@ Projectiles: {
 	DivineExplosion.DisplayName: Divine Explosion
 	DivineSunAura.DisplayName: Divine Aura
 	DivineAxeSunAura.DisplayName: Divine Axe Sun Aura
-	ColdFlailCorePro.DisplayName: Cold Flail Core Pro
-	HotFlailCorePro.DisplayName: Hot Flail Core Pro
-	PerfectFlailCorePro.DisplayName: Perfect Flail Core Pro
+	ColdFlailCorePro.DisplayName: Cold Flail-Core
+	HotFlailCorePro.DisplayName: Hot Flail-Core
+	PerfectFlailCorePro.DisplayName: Perfect Flail-Core
+	BlackHoleFlailCorePro.DisplayName: Black Hole Flail-Core
 	TerraOrb.DisplayName: Terra Orb
 }
 
