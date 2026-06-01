@@ -867,6 +867,7 @@ Items: {
 			The Brimstone spike ball applies [cbuff:CalamityMod/BrimstoneFlames] to enemies and rarely grants the [iabuff:InfernalEclipseWeaponsDLC/HotFlailDmg] buff
 			The Blizzard spike ball applies [iabuff:Frostburn2] to enemies and rarely grants the [iabuff:InfernalEclipseWeaponsDLC/ColdFlailDefense] buff
 			'Calamitas and Permafrost always had great teamwork as student and teacher when she was still a child'
+			'These two Flails could be applying the same techniques to combine ice and fire in disasterous ways for your foes'
 			''' */
 	}
 
@@ -903,6 +904,15 @@ Items: {
 			    [i:CalamityMod/ReaverHeadTank]: Increases life shield to 70 and reduces damage taken by 10%
 			    [i:CalamityMod/ReaverHeadMobility]: 10% increased movement speed and allows the ability to ram dash
 			    [i:CalamityMod/ReaverHeadExplore]: 20% increased jump speed
+			''' */
+	}
+
+	HolyFlail: {
+		// DisplayName: Profaned Flail
+		/* Tooltip:
+			'''
+			125% basic damage
+			Attacks have a chance to create Profaned flail cores that inflict [cbuff:CalamityMod/HolyFlames] and sometimes create holy flames
 			''' */
 	}
 }
@@ -1130,6 +1140,8 @@ Projectiles: {
 	// HotFlailCorePro.DisplayName: Hot Flail Core Pro
 	// PerfectFlailCorePro.DisplayName: Perfect Flail Core Pro
 	// BlackHoleFlailCorePro.DisplayName: Black Hole Flail Core Pro
+	// HolyFlailCorePro.DisplayName: Holy Flail Core Pro
+	// HolyFlailFire.DisplayName: Holy Flail Fire
 }
 
 Buffs: {

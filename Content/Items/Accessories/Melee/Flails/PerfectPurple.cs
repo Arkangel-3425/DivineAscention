@@ -17,7 +17,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee.Flails
         {
             Item.width = 24;
             Item.height = 24;
-            Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
+            Item.value = CalamityGlobalItem.RarityPurpleBuyPrice;
             Item.rare = ModContent.RarityType<CosmicPurple>();
             Item.accessory = true;
         }

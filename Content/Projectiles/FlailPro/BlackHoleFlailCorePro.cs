@@ -40,13 +40,13 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.FlailPro
         {
             if (Projectile.timeLeft < 250)
             {
-                CalamityUtils.HomeInOnNPC(Projectile, Projectile.tileCollide, 250f, 10f, 15f);
+                CalamityUtils.HomeInOnNPC(Projectile, Projectile.tileCollide, 500f, 15f, 15f);
             }
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.ToRadians(45f);
             //Enemy sucktion code down
                 float projX = Projectile.Center.X;
                 float projY = Projectile.Center.Y;
-                float homeRange = 300f;
+                float homeRange = 500f;
                 float homingSpeed = 0.1f;
                 foreach (NPC npc in Main.ActiveNPCs)
                 {

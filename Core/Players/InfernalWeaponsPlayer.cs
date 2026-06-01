@@ -44,6 +44,8 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
         public bool doubleFlailAcc;
         public bool perfectPurple;
         public bool blackholeFlail;
+
+        public bool holyFlail;
         public bool perennialShield;
 
         public bool hideHeraldryVisual;
@@ -69,6 +71,7 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
             doubleFlailAcc = false;
             perfectPurple = false;
             blackholeFlail = false;
+            holyFlail = false;
             perennialShield = false;
 
             if (!imagiknightHeraldry && heraldyBuffFromOther <= 0f)
@@ -195,6 +198,11 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
                 {
                     SoundEngine.PlaySound(SoundID.Item1, proj.Center);
                     Projectile.NewProjectile(proj.GetSource_OnHit(target), proj.Center, vector, ModContent.ProjectileType<BlackHoleFlailCorePro>(), (int)(proj.damage * 0.5), proj.knockBack, proj.owner);
+                }
+                if (holyFlail && Utils.NextBool(Main.rand, 4))
+                {
+                    SoundEngine.PlaySound(SoundID.Item1, proj.Center);
+                    Projectile.NewProjectile(proj.GetSource_OnHit(target), proj.Center, vector, ModContent.ProjectileType<HolyFlailCorePro>(), (int)(proj.damage * 1.25), proj.knockBack, proj.owner);
                 }
             }
         }
