@@ -171,22 +171,22 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
                 if (doubleFlailAcc && Utils.NextBool(Main.rand, 6))
                 {
                     SoundEngine.PlaySound(SoundID.Item1, proj.Center);
-                    Projectile.NewProjectile(proj.GetSource_OnHit(target), proj.Center, vector, ModContent.ProjectileType<HotFlailCorePro>(), (int)(proj.damage * 0.75), proj.knockBack, proj.owner);
+                    Projectile.NewProjectile(proj.GetSource_OnHit(target), proj.Center, vector, ModContent.ProjectileType<HotFlailCorePro>(), (int)(proj.damage * 0.75f), proj.knockBack, proj.owner);
                 }
                 if (doubleFlailAcc && Utils.NextBool(Main.rand, 6))
                 {
                     SoundEngine.PlaySound(SoundID.Item1, proj.Center);
-                    Projectile.NewProjectile(proj.GetSource_OnHit(target), proj.Center, vector, ModContent.ProjectileType<ColdFlailCorePro>(), (int)(proj.damage * 0.75), proj.knockBack, proj.owner);
+                    Projectile.NewProjectile(proj.GetSource_OnHit(target), proj.Center, vector, ModContent.ProjectileType<ColdFlailCorePro>(), (int)(proj.damage * 0.75f), proj.knockBack, proj.owner);
                 }
                 if (perfectPurple && Utils.NextBool(Main.rand, 4))
                 {
                     SoundEngine.PlaySound(SoundID.Item1, proj.Center);
-                    Projectile.NewProjectile(proj.GetSource_OnHit(target), proj.Center, vector, ModContent.ProjectileType<PerfectFlailCorePro>(), (int)(proj.damage * 1.5), proj.knockBack, proj.owner);
+                    Projectile.NewProjectile(proj.GetSource_OnHit(target), proj.Center, vector, ModContent.ProjectileType<PerfectFlailCorePro>(), (int)(proj.damage * 1.5f), proj.knockBack, proj.owner);
                 }
                 if (blackholeFlail && Utils.NextBool(Main.rand, 4))
                 {
                     SoundEngine.PlaySound(SoundID.Item1, proj.Center);
-                    Projectile.NewProjectile(proj.GetSource_OnHit(target), proj.Center, vector, ModContent.ProjectileType<BlackHoleFlailCorePro>(), (int)(proj.damage * 0.5), proj.knockBack, proj.owner);
+                    Projectile.NewProjectile(proj.GetSource_OnHit(target), proj.Center, vector, ModContent.ProjectileType<BlackHoleFlailCorePro>(), (int)(proj.damage * 3f), proj.knockBack, proj.owner);
                 }
             }
         }

@@ -879,9 +879,9 @@ Items: {
 		DisplayName: Black Hole Flail-Core
 		Tooltip:
 			'''
-			75% basic damage
+			300% basic damage
 			Attacks have a chance to create blackhole flail cores which homes into enemies, pulls enemies towards itself, and rarely inflicts [cbuff:CalamityMod/WitherDebuff]
-			'This shouldn't work you know? A blackhole this size can absolutely destory the earth... I guess we shouldn't question it.'
+			'This shouldn't work you know? A blackhole this size can absolutely destory the planet... I guess we shouldn't question it.'
 			'''
 	}
 
@@ -899,7 +899,7 @@ Items: {
 
 	TerraSheath: {
 		DisplayName: Terra Sheath
-		Tooltip: 
+		Tooltip:
 			'''
 			Sword strikes release {0} terra orbs that home into nearby enemies if held and not used for {1} {^1:second;seconds}
 			These terra orbs recover 3% of you missing health upon hitting an enemy
@@ -921,17 +921,15 @@ ItemTooltip: {
 	NeonRipperLore2: In doing so he created two weapons: the first of which being a scythe that could absorb aura, much like Kami's ability.
 	PBGBardALore2: In doing so he created two weapons: the second of which being a guitar that shot colorful microwaves.
 	DoubleFlailLore: Calamitas and Permafrost always had great teamwork as student and teacher when she was still a child.
-	PerfectPurpleLore: 			
+	PerfectPurpleLore:
 		'''
 		Yet, it wasn't perfect.
 		Teamwork can only take one so far. After all, you are your own best friend.
 		Two of one, could do so much more because...
 		You are perfect with yourself.
 		'''
-
 	SearingSpearTip: 150% basic damage
 	ArcticSpearTip: 115% basic damage
-
 	VerveineItem: "'An item from the orchid's blessing...'"
 	EngineGatling:
 		'''

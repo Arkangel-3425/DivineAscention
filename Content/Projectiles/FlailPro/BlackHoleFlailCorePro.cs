@@ -45,12 +45,14 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.FlailPro
             {
                 CalamityUtils.HomeInOnNPC(Projectile, Projectile.tileCollide, 250f, 10f, 15f);
             }
+
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.ToRadians(45f);
             //Enemy sucktion code down
             float projX = Projectile.Center.X;
             float projY = Projectile.Center.Y;
             float homeRange = 300f;
             float homingSpeed = 0.1f;
+
             foreach (NPC npc in Main.ActiveNPCs)
             {
                 if (npc.CanBeChasedBy(Projectile, false) && Collision.CanHit(Projectile.Center, 1, 1, npc.Center, 1, 1) && !npc.boss)
