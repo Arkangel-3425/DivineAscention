@@ -161,13 +161,13 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
             {
                 Vector2 vector = proj.velocity * 0.5f;
 
-                //DoubleFlailCore
                 if (vector == Vector2.Zero)
                 {
                     vector = Main.MouseWorld - Player.Center;
                     vector.Normalize();
                     vector *= 6f;
                 }
+
                 if (doubleFlailAcc && Utils.NextBool(Main.rand, 6))
                 {
                     SoundEngine.PlaySound(SoundID.Item1, proj.Center);
@@ -177,14 +177,6 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
                 {
                     SoundEngine.PlaySound(SoundID.Item1, proj.Center);
                     Projectile.NewProjectile(proj.GetSource_OnHit(target), proj.Center, vector, ModContent.ProjectileType<ColdFlailCorePro>(), (int)(proj.damage * 0.75), proj.knockBack, proj.owner);
-                }
-
-                //PerfectFlailCore
-                if (vector == Vector2.Zero)
-                {
-                    vector = Main.MouseWorld - Player.Center;
-                    vector.Normalize();
-                    vector *= 6f;
                 }
                 if (perfectPurple && Utils.NextBool(Main.rand, 4))
                 {

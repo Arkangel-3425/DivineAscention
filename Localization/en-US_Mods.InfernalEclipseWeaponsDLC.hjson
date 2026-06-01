@@ -868,7 +868,7 @@ Items: {
 	}
 
 	PerfectPurple: {
-		DisplayName: Cosmic Perfection Flail Core
+		DisplayName: Cosmic Perfection Flail-Core
 		Tooltip:
 			'''
 			150% basic damage
@@ -881,13 +881,12 @@ Items: {
 	}
 
 	BlackHoleFlail: {
-		DisplayName: Black Hole Flail Core
+		DisplayName: Black Hole Flail-Core
 		Tooltip:
 			'''
 			75% basic damage
-			Attacks have a chance to create blackhole flail cores which homes into enemies and sucks enemies into itself. They also rarely inflict [cbuff:CalamityMod/WitherDebuff]
-			"This shouldn't work you know? A blackhole this size can absolutely destory the earth...
-			I guess we shouldn't question it."
+			Attacks have a chance to create blackhole flail cores which homes into enemies, pulls enemies towards itself, and rarely inflicts [cbuff:CalamityMod/WitherDebuff]
+			'This shouldn't work you know? A blackhole this size can absolutely destory the earth... I guess we shouldn't question it.'
 			'''
 	}
 
