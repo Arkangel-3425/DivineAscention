@@ -6,6 +6,7 @@ using InfernalEclipseWeaponsDLC.Core.NewFolder;
 using CalamityMod.Items;
 using CalamityMod.Rarities;
 using Terraria.ID;
+using ThoriumMod.Items.BasicAccessories;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee.Flails
 {
