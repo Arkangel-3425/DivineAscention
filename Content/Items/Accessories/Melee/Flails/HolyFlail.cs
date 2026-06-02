@@ -28,10 +28,10 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee.Flails
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient(ModContent.ItemType<DoubleFlail>())
-                .AddIngredient(ModContent.ItemType<ShadowspecBar>(), 10)
-                .AddIngredient(ModContent.ItemType<DarkPlasma>(), 15)
-                .AddTile(ModContent.TileType<DraedonsForge>())
+                .AddIngredient<IronFlailCore>(1)
+                .AddIngredient<DivineGeode>(10)
+                .AddIngredient<UnholyEssence>(15)
+                .AddTile(TileID.MythrilAnvil)
                 .Register();
         }
     }
