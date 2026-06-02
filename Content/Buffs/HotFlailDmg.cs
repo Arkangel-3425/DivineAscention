@@ -16,8 +16,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.GetDamage(DamageClass.Generic) += 0.15f;
-            player.GetCritChance(DamageClass.Generic) += 10;
+            player.GetDamage(DamageClass.Generic) += 0.10f;
+            //player.GetCritChance(DamageClass.Generic) += 10;
             //player.GetAttackSpeed(DamageClass.Generic) += 0.1f;
         }
     }

@@ -33,7 +33,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.FlailPro
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
             target.AddBuff(ModContent.BuffType<HolyFlames>(), 240, false);
-            if (Main.rand.NextFloat(1) < 0.75)
+            if (Main.rand.NextFloat(1) < 0.5)
                 Projectile.NewProjectile(Projectile.GetSource_OnHit(target), Projectile.Center, Vector2.Zero, ModContent.ProjectileType<HolyFlailFire>(), (int)(Projectile.damage * 0.5), Projectile.knockBack, Projectile.owner);
         }
     }

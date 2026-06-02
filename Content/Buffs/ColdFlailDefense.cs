@@ -16,7 +16,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.statDefense += 15;
+            //player.statDefense += 15;
             player.endurance += 0.1f;
             //player.DefenseEffectiveness *= 1.05f;
         }
