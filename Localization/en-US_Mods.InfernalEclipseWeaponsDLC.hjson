@@ -907,6 +907,7 @@ Items: {
 			Attacks have a chance to create Profaned flail cores that inflict [cbuff:CalamityMod/HolyFlames] and sometimes create holy flames
 			'''
 	}
+
 	TerraSheath: {
 		DisplayName: Terra Sheath
 		Tooltip:
@@ -1150,6 +1151,7 @@ Projectiles: {
 	BlackHoleFlailCorePro.DisplayName: Black Hole Flail Core Pro
 	HolyFlailCorePro.DisplayName: Holy Flail Core Pro
 	HolyFlailFire.DisplayName: Holy Flail Fire
+	TerraOrb.DisplayName: Terra Orb
 }
 
 Buffs: {

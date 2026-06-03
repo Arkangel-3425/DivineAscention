@@ -884,9 +884,9 @@ Items: {
 		// DisplayName: Black Hole Flail-Core
 		/* Tooltip:
 			'''
-			75% basic damage
+			300% basic damage
 			Attacks have a chance to create blackhole flail cores which homes into enemies, pulls enemies towards itself, and rarely inflicts [cbuff:CalamityMod/WitherDebuff]
-			'This shouldn't work you know? A blackhole this size can absolutely destory the earth... I guess we shouldn't question it.'
+			'This shouldn't work you know? A blackhole this size can absolutely destory the planet... I guess we shouldn't question it.'
 			''' */
 	}
 
@@ -901,6 +901,7 @@ Items: {
 			    [i:CalamityMod/ReaverHeadExplore]: 20% increased jump speed
 			''' */
 	}
+
 	HolyFlail: {
 		// DisplayName: Profaned Flail
 		/* Tooltip:
@@ -909,6 +910,7 @@ Items: {
 			Attacks have a chance to create Profaned flail cores that inflict [cbuff:CalamityMod/HolyFlames] and sometimes create holy flames
 			''' */
 	}
+
 	TerraSheath: {
 		// DisplayName: Terra Sheath
 		/* Tooltip:
@@ -1150,9 +1152,9 @@ Projectiles: {
 	// HotFlailCorePro.DisplayName: Hot Flail Core Pro
 	// PerfectFlailCorePro.DisplayName: Perfect Flail Core Pro
 	// BlackHoleFlailCorePro.DisplayName: Black Hole Flail Core Pro
-	// TerraOrb.DisplayName: Terra Orb
 	// HolyFlailCorePro.DisplayName: Holy Flail Core Pro
 	// HolyFlailFire.DisplayName: Holy Flail Fire
+	// TerraOrb.DisplayName: Terra Orb
 }
 
 Buffs: {
