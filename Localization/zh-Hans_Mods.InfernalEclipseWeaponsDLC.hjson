@@ -863,11 +863,9 @@ Items: {
 		/* Tooltip:
 			'''
 			75% basic damage
-			Gives you 2 flail cores that apply a unique buff or debuff depending on which one is spawned
+			Flail weapons on first hit and for a chance every further hit create either a brimstone or blizzard spike ball
 			The Brimstone spike ball applies [cbuff:CalamityMod/BrimstoneFlames] to enemies and rarely grants the [iabuff:InfernalEclipseWeaponsDLC/HotFlailDmg] buff
 			The Blizzard spike ball applies [iabuff:Frostburn2] to enemies and rarely grants the [iabuff:InfernalEclipseWeaponsDLC/ColdFlailDefense] buff
-			'Calamitas and Permafrost always had great teamwork as student and teacher when she was still a child'
-			'These two Flails could be applying the same techniques to combine ice and fire in disasterous ways for your foes'
 			''' */
 	}
 
@@ -875,8 +873,10 @@ Items: {
 		// DisplayName: Cosmic Perfection Flail-Core
 		/* Tooltip:
 			'''
-			150% basic damage
-			Attacks have a chance to create perfect flail cores that inflict [cbuff:CalamityMod/GodSlayerInferno] and rarely grant the [iabuff:InfernalEclipseWeaponsDLC/PerfectFlailBuff] buff
+			100% basic damage
+			Flail weapons on first hit create a perfect spike ball
+			Further flail hits have a chance to create more perfect spike balls
+			Perfect spike balls inflict [cbuff:CalamityMod/GodSlayerInferno] and rarely grant the [iabuff:InfernalEclipseWeaponsDLC/PerfectFlailBuff] buff
 			''' */
 	}
 
@@ -885,8 +885,9 @@ Items: {
 		/* Tooltip:
 			'''
 			300% basic damage
-			Attacks have a chance to create blackhole flail cores which homes into enemies, pulls enemies towards itself, and rarely inflicts [cbuff:CalamityMod/WitherDebuff]
-			'This shouldn't work you know? A blackhole this size can absolutely destory the planet... I guess we shouldn't question it.'
+			Flail weapons on first hit create a blackhole spike ball
+			Further flail hits have a chance to create blackhole spike balls which home onto enemies, pulls enemies towards itself, and rarely inflicts [cbuff:CalamityMod/WitherDebuff]
+			'This shouldn't work you know? A blackhole this size can absolutely destory the planet... I guess we shouldn't question it'
 			''' */
 	}
 
@@ -903,11 +904,13 @@ Items: {
 	}
 
 	HolyFlail: {
-		// DisplayName: Profaned Flail
+		// DisplayName: Profaned Flail-Core
 		/* Tooltip:
 			'''
-			125% basic damage
-			Attacks have a chance to create Profaned flail cores that inflict [cbuff:CalamityMod/HolyFlames] and sometimes create holy flames
+			100% basic damage
+			Flail weapons on first hit create a profaned spike ball
+			Further flail hits have a chance to create more profaned spike balls
+			Profaned spike balls inflict [cbuff:CalamityMod/HolyFlames] and sometimes start holy fires on hit
 			''' */
 	}
 
@@ -934,7 +937,11 @@ ItemTooltip: {
 	NeonRipperLore1: 在击败歌莉娅之后，埃雷利安决定重新利用它身上残留的部分装甲
 	NeonRipperLore2: 借此他打造了两件武器：第一件是一柄能够吸收灵气的镰刀，正如卡米的能力一般。
 	PBGBardALore2: 借此他打造了两件武器：第二件是一把能够射出炫彩光波的吉他。
-	// DoubleFlailLore: Calamitas and Permafrost always had great teamwork as student and teacher when she was still a child.
+	/* DoubleFlailLore:
+		'''
+		Calamitas and Permafrost always had great teamwork as student and teacher when she was still a child
+		These two Flails could be applying the same techniques to combine ice and fire in disasterous ways for your foes
+		''' */
 	/* PerfectPurpleLore:
 		'''
 		Yet, it wasn't perfect.
@@ -1186,19 +1193,19 @@ Buffs: {
 	ColdFlailDefense: {
 		// Description: You're nullified by the freezing blue
 		// DisplayName: Nullification Blue
-		// ItemTooltip: Increased defence by 15 and damage resistance by 10%
+		// ItemTooltip: Increased damage resistance by 10%
 	}
 
 	HotFlailDmg: {
 		// Description: You're amplified by the burning red
 		// DisplayName: Amplification Red
-		// ItemTooltip: Increased damage by 15% and critical strike chance increased by 10%
+		// ItemTooltip: Increased damage by 10%
 	}
 
 	PerfectFlailBuff: {
 		// DisplayName: Perfect Purple
 		// Description: You are Perfect.
-		// ItemTooltip: Increased damage by 20%, critical strike chance by 15%, defence by 20, damage resistance by 15% and movement speed by 20%
+		// ItemTooltip: Increased damage, damage resistance and movement speed by 15%
 	}
 
 	GrandThunderWhipTag: {
