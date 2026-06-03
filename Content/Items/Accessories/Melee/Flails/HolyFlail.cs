@@ -18,8 +18,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee.Flails
         {
             Item.width = 24;
             Item.height = 24;
-            Item.value = CalamityGlobalItem.RarityPurpleBuyPrice;
-            Item.rare = ItemRarityID.Purple;
+            Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
+            Item.rare = ModContent.RarityType<Turquoise>();
             Item.accessory = true;
         }
         public override void UpdateAccessory(Player player, bool hideVisual)

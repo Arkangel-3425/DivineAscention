@@ -20,7 +20,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee.Flails
         {
             Item.width = 24;
             Item.height = 24;
-            Item.value = CalamityGlobalItem.RarityPurpleBuyPrice;
+            Item.value = CalamityGlobalItem.RarityDarkBlueBuyPrice;
             Item.rare = ModContent.RarityType<CosmicPurple>();
             Item.accessory = true;
         }
@@ -40,7 +40,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee.Flails
         {
             CreateRecipe()
                 .AddIngredient(ModContent.ItemType<DoubleFlail>())
-                .AddIngredient(ModContent.ItemType<CosmiliteBar>(), 15)
+                .AddIngredient(ModContent.ItemType<CosmiliteBar>(), 10)
                 .AddTile(ModContent.TileType<CosmicAnvil>())
                 .Register();
         }
