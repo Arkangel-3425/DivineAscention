@@ -43,44 +43,43 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.FlailPro
         {
             if (Projectile.timeLeft < 250)
             {
-                CalamityUtils.HomeInOnNPC(Projectile, Projectile.tileCollide, 250f, 10f, 15f);
+                CalamityUtils.HomeInOnNPC(Projectile, Projectile.tileCollide, 500f, 15f, 15f);
             }
 
             Projectile.rotation = Projectile.velocity.ToRotation() + MathHelper.ToRadians(45f);
             //Enemy sucktion code down
-            float projX = Projectile.Center.X;
-            float projY = Projectile.Center.Y;
-            float homeRange = 300f;
-            float homingSpeed = 0.1f;
-
-            foreach (NPC npc in Main.ActiveNPCs)
-            {
-                if (npc.CanBeChasedBy(Projectile, false) && Collision.CanHit(Projectile.Center, 1, 1, npc.Center, 1, 1) && !npc.boss)
+                float projX = Projectile.Center.X;
+                float projY = Projectile.Center.Y;
+                float homeRange = 500f;
+                float homingSpeed = 0.1f;
+                foreach (NPC npc in Main.ActiveNPCs)
                 {
-                    float npcX = npc.position.X + (npc.width / 2);
-                    float npcY = npc.position.Y + (npc.height / 2);
-                    float targetDist = Math.Abs(Projectile.position.X + (Projectile.width / 2) - npcX) + Math.Abs(Projectile.position.Y + (Projectile.height / 2) - npcY);
-                    if (targetDist < homeRange)
+                    if (npc.CanBeChasedBy(Projectile, false) && Collision.CanHit(Projectile.Center, 1, 1, npc.Center, 1, 1) && !npc.boss)
                     {
-                        if (npc.position.X < projX)
+                        float npcX = npc.position.X + (npc.width / 2);
+                        float npcY = npc.position.Y + (npc.height / 2);
+                        float targetDist = Math.Abs(Projectile.position.X + (Projectile.width / 2) - npcX) + Math.Abs(Projectile.position.Y + (Projectile.height / 2) - npcY);
+                        if (targetDist < homeRange)
                         {
-                            npc.velocity.X += homingSpeed;
-                        }
-                        else
-                        {
-                            npc.velocity.X -= homingSpeed;
-                        }
-                        if (npc.position.Y < projY)
-                        {
-                            npc.velocity.Y += homingSpeed;
-                        }
-                        else
-                        {
-                            npc.velocity.Y -= homingSpeed;
+                            if (npc.position.X < projX)
+                            {
+                                npc.velocity.X += homingSpeed;
+                            }
+                            else
+                            {
+                                npc.velocity.X -= homingSpeed;
+                            }
+                            if (npc.position.Y < projY)
+                            {
+                                npc.velocity.Y += homingSpeed;
+                            }
+                            else
+                            {
+                                npc.velocity.Y -= homingSpeed;
+                            }
                         }
                     }
                 }
-            }
         }
     }
 }

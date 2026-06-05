@@ -2,14 +2,15 @@ using Terraria;
 using Terraria.ModLoader;
 using CalamityMod.Items.Materials;
 using CalamityMod.Tiles.Furniture.CraftingStations;
-using ThoriumMod.Items.BasicAccessories;
 using InfernalEclipseWeaponsDLC.Core.NewFolder;
 using CalamityMod.Items;
 using CalamityMod.Rarities;
+using Terraria.ID;
+using ThoriumMod.Items.BasicAccessories;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee.Flails
 {
-    public class BlackHoleFlail : ModItem
+    public class HolyFlail : ModItem
     {
         public override bool IsLoadingEnabled(Mod mod) => WeaponConfig.Instance.FlailCores;
 
@@ -17,23 +18,21 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee.Flails
         {
             Item.width = 24;
             Item.height = 24;
-            Item.value = CalamityGlobalItem.RarityHotPinkBuyPrice;
-            Item.rare = ModContent.RarityType<HotPink>();
+            Item.value = CalamityGlobalItem.RarityTurquoiseBuyPrice;
+            Item.rare = ModContent.RarityType<Turquoise>();
             Item.accessory = true;
         }
-
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<InfernalWeaponsPlayer>().blackholeFlail = true;
+            player.GetModPlayer<InfernalWeaponsPlayer>().holyFlail = true;
         }
-
         public override void AddRecipes()
         {
             CreateRecipe()
                 .AddIngredient<IronFlailCore>(1)
-                .AddIngredient(ModContent.ItemType<ShadowspecBar>(), 5)
-                .AddIngredient(ModContent.ItemType<DarkPlasma>(), 15)
-                .AddTile(ModContent.TileType<DraedonsForge>())
+                .AddIngredient<DivineGeode>(10)
+                .AddIngredient<UnholyEssence>(15)
+                .AddTile(TileID.MythrilAnvil)
                 .Register();
         }
     }

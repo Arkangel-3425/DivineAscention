@@ -826,6 +826,8 @@ Items: {
 			Gives you 2 flail cores that apply a unique buff or debuff depending on which one is spawned
 			The Brimstone spike ball applies [cbuff:CalamityMod/BrimstoneFlames] to enemies and rarely grants the [iabuff:InfernalEclipseWeaponsDLC/HotFlailDmg] buff
 			The Blizzard spike ball applies [iabuff:Frostburn2] to enemies and rarely grants the [iabuff:InfernalEclipseWeaponsDLC/ColdFlailDefense] buff
+			'Calamitas and Permafrost always had great teamwork as student and teacher when she was still a child'
+			'These two Flails could be applying the same techniques to combine ice and fire in disasterous ways for your foes'
 			''' */
 	}
 
@@ -842,9 +844,9 @@ Items: {
 		// DisplayName: Black Hole Flail-Core
 		/* Tooltip:
 			'''
-			75% basic damage
+			300% basic damage
 			Attacks have a chance to create blackhole flail cores which homes into enemies, pulls enemies towards itself, and rarely inflicts [cbuff:CalamityMod/WitherDebuff]
-			'This shouldn't work you know? A blackhole this size can absolutely destory the earth... I guess we shouldn't question it.'
+			'This shouldn't work you know? A blackhole this size can absolutely destory the planet... I guess we shouldn't question it.'
 			''' */
 	}
 
@@ -857,6 +859,15 @@ Items: {
 			    [i:CalamityMod/ReaverHeadTank]: Increases life shield to 70 and reduces damage taken by 10%
 			    [i:CalamityMod/ReaverHeadMobility]: 10% increased movement speed and allows the ability to ram dash
 			    [i:CalamityMod/ReaverHeadExplore]: 20% increased jump speed
+			''' */
+	}
+
+	HolyFlail: {
+		// DisplayName: Profaned Flail
+		/* Tooltip:
+			'''
+			125% basic damage
+			Attacks have a chance to create Profaned flail cores that inflict [cbuff:CalamityMod/HolyFlames] and sometimes create holy flames
 			''' */
 	}
 
@@ -1097,10 +1108,12 @@ Projectiles: {
 	// DivineExplosion.DisplayName: Divine Explosion
 	// DivineSunAura.DisplayName: Divine Aura
 	// DivineAxeSunAura.DisplayName: Divine Axe Sun Aura
-	// ColdFlailCorePro.DisplayName: Cold Flail-Core
-	// HotFlailCorePro.DisplayName: Hot Flail-Core
-	// PerfectFlailCorePro.DisplayName: Perfect Flail-Core
-	// BlackHoleFlailCorePro.DisplayName: Black Hole Flail-Core
+	// ColdFlailCorePro.DisplayName: Cold Flail Core Pro
+	// HotFlailCorePro.DisplayName: Hot Flail Core Pro
+	// PerfectFlailCorePro.DisplayName: Perfect Flail Core Pro
+	// BlackHoleFlailCorePro.DisplayName: Black Hole Flail Core Pro
+	// HolyFlailCorePro.DisplayName: Holy Flail Core Pro
+	// HolyFlailFire.DisplayName: Holy Flail Fire
 	// TerraOrb.DisplayName: Terra Orb
 }
 
