@@ -1,7 +1,6 @@
 using Terraria;
 using Terraria.ModLoader;
 using CalamityMod.Items.Materials;
-using CalamityMod.Tiles.Furniture.CraftingStations;
 using InfernalEclipseWeaponsDLC.Core.NewFolder;
 using CalamityMod.Items;
 using CalamityMod.Rarities;

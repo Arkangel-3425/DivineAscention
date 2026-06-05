@@ -26,6 +26,7 @@ using ThoriumMod.Utilities;
 using InfernalEclipseWeaponsDLC.Core.Players.Dashes;
 using ThoriumMod.Buffs;
 using CalamityMod.Buffs.DamageOverTime;
+using InfernalEclipseWeaponsDLC.Content.Buffs;
 
 #pragma warning disable IDE0130 // Namespace does not match folder structure
 namespace InfernalEclipseWeaponsDLC.Core.NewFolder
@@ -226,7 +227,7 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
                     target.AddBuff(ModContent.BuffType<HolyFlames>(), 300);
                     if (Utils.NextBool(Main.rand, 5))
                     {
-                        target.AddBuff(ModContent.BuffType<Vaporfied>(), 120);
+                        target.AddBuff(ModContent.BuffType<LimbBurn>(), 120);
                         for (int m = 0; m < 8; m++)
                         {
                             int num5 = Dust.NewDust(target.position, target.width, target.height, DustID.Firework_Red, Main.rand.Next(-3, 3), Main.rand.Next(-3, 3), 255, new Color(255, 165, 255), 1.5f);
