@@ -7,7 +7,7 @@ using InfernalEclipseWeaponsDLC.Core.NewFolder;
 using CalamityMod.Items;
 using CalamityMod.Rarities;
 
-namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee.Flails
+namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee.FlailCores
 {
     public class BlackHoleFlail : ModItem
     {

@@ -18,6 +18,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.FlailPro
         {
             Main.projFrames[Type] = 4;
         }
+
         public override void SetDefaults()
         {
             Projectile.width = 26;
@@ -32,7 +33,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.FlailPro
             Projectile.localNPCHitCooldown = 30;
         }
 
-         public override Color? GetAlpha(Color lightColor) => ProvUtils.GetProjectileColor(lightColor);
+        public override Color? GetAlpha(Color lightColor) => ProvUtils.GetProjectileColor(lightColor);
 
         public override bool PreDraw(ref Color lightColor)
         {
@@ -44,6 +45,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.FlailPro
             Main.spriteBatch.Draw(texture, Projectile.Center - Main.screenPosition + new Vector2(0f, Projectile.gfxOffY), new Microsoft.Xna.Framework.Rectangle?(new Rectangle(0, y6, texture.Width, framing)), Projectile.GetAlpha(lightColor), Projectile.rotation, new Vector2(texture.Width / 2f, framing / 2f), Projectile.scale, SpriteEffects.None, 0);
             return false;
         }
+
         public override void OnKill(int timeLeft)
         {
             Color hiColor = ProvUtils.GetProjectileColor(255, false);
@@ -66,6 +68,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.FlailPro
         {
             target.AddBuff(ModContent.BuffType<HolyFlames>(), 240, false);
         }
+
         public override void AI()
         {
             CalamityUtils.HomeInOnNPC(Projectile, Projectile.tileCollide, 1000f, 0.2f, 0.2f);

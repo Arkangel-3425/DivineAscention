@@ -21,11 +21,11 @@ using System.Collections.Generic;
 using CalamityMod.Projectiles.BaseProjectiles;
 using ThoriumMod.Projectiles;
 using InfernalEclipseWeaponsDLC.Content.Projectiles.FlailPro;
-using CalamityMod.CalPlayer.Dashes;
 using ThoriumMod;
 using ThoriumMod.Utilities;
 using InfernalEclipseWeaponsDLC.Core.Players.Dashes;
-using InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee.Flails;
+using ThoriumMod.Buffs;
+using CalamityMod.Buffs.DamageOverTime;
 
 #pragma warning disable IDE0130 // Namespace does not match folder structure
 namespace InfernalEclipseWeaponsDLC.Core.NewFolder
@@ -44,9 +44,10 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
         public bool doubleFlailAcc;
         public bool perfectPurple;
         public bool blackholeFlail;
-
         public bool holyFlail;
         public bool perennialShield;
+        public bool scourgeBag;
+        public bool scourgeBag2;
 
         public bool hideHeraldryVisual;
         public bool hasWarbanner;
@@ -217,6 +218,41 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
                     Projectile.NewProjectile(proj.GetSource_OnHit(target), proj.Center, vector, ModContent.ProjectileType<HolyFlailCorePro>(), (int)(proj.damage * 1), proj.knockBack, proj.owner);
                 }
             }
+
+            if (proj.aiStyle == ProjAIStyleID.Yoyo)
+            {
+                if (scourgeBag)
+                {
+                    target.AddBuff(ModContent.BuffType<HolyFlames>(), 300);
+                    if (Utils.NextBool(Main.rand, 5))
+                    {
+                        target.AddBuff(ModContent.BuffType<Vaporfied>(), 120);
+                        for (int m = 0; m < 8; m++)
+                        {
+                            int num5 = Dust.NewDust(target.position, target.width, target.height, DustID.Firework_Red, Main.rand.Next(-3, 3), Main.rand.Next(-3, 3), 255, new Color(255, 165, 255), 1.5f);
+                            Main.dust[num5].noGravity = true;
+                        }
+                    }
+                    if (!scourgeBag2 && !Player.HasBuff(ModContent.BuffType<SandshroudPouchDebuff>()))
+                    {
+                        scourgeBag2 = true;
+                        for (int n = 0; n < 15; n++)
+                        {
+                            int num6 = Dust.NewDust(Player.position, 20, 20, DustID.Firework_Red, 0f, 0f, 255, new Color(255, 255, 0), 1.35f);
+                            Main.dust[num6].noGravity = true;
+                            Main.dust[num6].velocity = new Vector2(0.75f, 0f);
+                            int num7 = Main.rand.Next(-50, 51);
+                            int num8 = Main.rand.Next(-50, 51);
+                            Dust dust3 = Main.dust[num6];
+                            dust3.position.X = dust3.position.X + num7;
+                            Dust dust4 = Main.dust[num6];
+                            dust4.position.Y = dust4.position.Y + num8;
+                            Main.dust[num6].velocity.X = -(float)num7 * 0.075f;
+                            Main.dust[num6].velocity.Y = -(float)num8 * 0.075f;
+                        }
+                    }
+                }
+            }
         }
 
         public override void ModifyHitNPCWithProj(Projectile proj, NPC target, ref NPC.HitModifiers modifiers)
@@ -341,6 +377,12 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
                 {
                     Player.jumpSpeedBoost += 1f;
                 }
+            }
+
+            if (scourgeBag2)
+            {
+               Player.AddBuff(ModContent.BuffType<SandshroudPouchBuff>(), 2);
+               thoriumPlayer.thoriumEndurance += 0.1f;
             }
         }
 

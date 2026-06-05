@@ -8,7 +8,7 @@ using CalamityMod.Rarities;
 using Terraria.ID;
 using ThoriumMod.Items.BasicAccessories;
 
-namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee.Flails
+namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee.FlailCores
 {
     public class HolyFlail : ModItem
     {
@@ -22,10 +22,12 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Melee.Flails
             Item.rare = ModContent.RarityType<Turquoise>();
             Item.accessory = true;
         }
+
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
             player.GetModPlayer<InfernalWeaponsPlayer>().holyFlail = true;
         }
+
         public override void AddRecipes()
         {
             CreateRecipe()

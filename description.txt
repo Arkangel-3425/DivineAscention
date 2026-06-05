@@ -14,7 +14,7 @@ It currently adds the following:
 	- 16 Healer weapons
 	- 2 Multi-class weapoons
 	- 3 armor sets
-	- 11 accessories
+	- 13 accessories
 
 It is recommended to use Recipe Browser to see how to obtain the new weapons.
 

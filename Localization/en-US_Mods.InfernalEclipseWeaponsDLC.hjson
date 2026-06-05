@@ -919,6 +919,18 @@ Items: {
 			These terra orbs recover 3% of you missing health upon hitting an enemy
 			'''
 	}
+
+	BlazeScourgeBag: {
+		DisplayName: Blaze Scourge Bag
+		Tooltip:
+			'''
+			Gives the user master yoyo skills
+			Secondary yoyos will do 50% less damage
+			Your yoyo damage inflicts [cbuff:CalamityMod/HolyFlames] and has a chance to inflict [cbuff:CalamityMod/Vaporfied] on enemies
+			Damaging an enemy with a yoyo will grant you 10% damage reduction until you take damage
+			This effect must recharge for 15 seconds after protecting you
+			'''
+	}
 }
 
 ItemTooltip: {
@@ -1152,12 +1164,12 @@ Projectiles: {
 	DivineExplosion.DisplayName: Divine Explosion
 	DivineSunAura.DisplayName: Divine Aura
 	DivineAxeSunAura.DisplayName: Divine Axe Sun Aura
-	ColdFlailCorePro.DisplayName: Cold Flail Core Pro
-	HotFlailCorePro.DisplayName: Hot Flail Core Pro
-	PerfectFlailCorePro.DisplayName: Perfect Flail Core Pro
-	BlackHoleFlailCorePro.DisplayName: Black Hole Flail Core Pro
-	HolyFlailCorePro.DisplayName: Holy Flail Core Pro
-	HolyFlailFire.DisplayName: Holy Flail Fire
+	ColdFlailCorePro.DisplayName: Cold Flail Core
+	HotFlailCorePro.DisplayName: Hot Flail Core
+	PerfectFlailCorePro.DisplayName: Perfect Flail Core
+	BlackHoleFlailCorePro.DisplayName: Black Hole Flail Core
+	HolyFlailCorePro.DisplayName: Holy Flail Core
+	HolyFlailFire.DisplayName: Holy Fire
 	TerraOrb.DisplayName: Terra Orb
 }
 
@@ -1248,6 +1260,11 @@ Configs: {
 
 		FlailCores: {
 			Label: Flail Cores
+			Tooltip: ""
+		}
+
+		YoyoPouches: {
+			Label: Yoyo Pouches
 			Tooltip: ""
 		}
 	}

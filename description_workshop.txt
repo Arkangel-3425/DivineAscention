@@ -15,7 +15,7 @@ It currently adds the following:
 	[*] 16 Healer weapons
 	[*] 2 Multi-class weapoons
 	[*] 3 armor sets
-	[*] 11 accessories
+	[*] 13 accessories
 [/list]
 
 For more information on the weapons added by this mod, check out the official [url=https://terrariamods.wiki.gg/wiki/Infernal_Eclipse_of_Ragnarok/Weapons_(Weapons_DLC)] wiki![/url]

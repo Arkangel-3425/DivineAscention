@@ -35,6 +35,11 @@ namespace InfernalEclipseWeaponsDLC
         public bool LifeShields;
 
         [DefaultValue(true)]
+        [ReloadRequired]
         public bool FlailCores;
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool YoyoPouches;
     }
 }
