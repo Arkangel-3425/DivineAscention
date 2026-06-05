@@ -370,12 +370,12 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
                 else if (calamityPlayer.reaverDefense)
                 {
                     Player.endurance += 0.1f;
-                    thoriumPlayer.MetalShieldMax += 20;
-
+                    Player.statLifeMax2 += 15;
                 }
                 else if (calamityPlayer.reaverExplore)
                 {
                     Player.jumpSpeedBoost += 1f;
+                    Player.noFallDmg = true;
                 }
             }
 

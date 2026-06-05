@@ -32,7 +32,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.LifeShields
 
         public override void UpdateAccessory(Player player, bool hideVisual)
         {
-            player.GetModPlayer<ThoriumPlayer>().MetalShieldMax += 30;
+            player.GetModPlayer<ThoriumPlayer>().MetalShieldMax += 20;
             player.GetModPlayer<SOTSCurseVoidEffects>().ancientShieldEquipped = true;
         }
 

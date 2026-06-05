@@ -812,7 +812,7 @@ Items: {
 		// DisplayName: Ancient Steel Shield
 		/* Tooltip:
 			'''
-			You constantly generate a 30 life shield
+			You constantly generate a 20 life shield
 			Attackers have a chance to be afflicted with a stacking, permanent bleed for 5 damage per second
 			This chance increases with your critical strike chance
 			''' */
@@ -857,9 +857,9 @@ Items: {
 			'''
 			You constantly generate a 50 life shield
 			Gains extra effects depending on what Reaver Armor set bonus you have
-			    [i:CalamityMod/ReaverHeadTank]: Increases life shield to 70 and reduces damage taken by 10%
+			    [i:CalamityMod/ReaverHeadTank]: Increases max life by 15 and reduces damage taken by 10%
 			    [i:CalamityMod/ReaverHeadMobility]: 10% increased movement speed and allows the ability to ram dash
-			    [i:CalamityMod/ReaverHeadExplore]: 20% increased jump speed
+			    [i:CalamityMod/ReaverHeadExplore]: 20% increased jump speed and grants fall damage immunity
 			''' */
 	}
 
