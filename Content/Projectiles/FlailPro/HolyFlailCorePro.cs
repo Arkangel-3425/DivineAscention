@@ -1,5 +1,5 @@
+using CalamityMod;
 using CalamityMod.Buffs.DamageOverTime;
-using InfernalEclipseWeaponsDLC.Content.Buffs;
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;

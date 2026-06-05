@@ -882,7 +882,8 @@ Items: {
 		Tooltip:
 			'''
 			300% basic damage
-			Flail weapon hits have a chance to create blackholes which home onto enemies, pulls enemies towards itself, and rarely inflicts [cbuff:CalamityMod/WitherDebuff]
+			Flail weapons on first hit create a blackhole spike ball
+			Further flail hits have a chance to create blackhole spike balls which home onto enemies, pulls enemies towards itself, and rarely inflicts [cbuff:CalamityMod/WitherDebuff]
 			'This shouldn't work you know? A blackhole this size can absolutely destory the planet... I guess we shouldn't question it'
 			'''
 	}
@@ -933,8 +934,8 @@ ItemTooltip: {
 	NeonRipperLore1: After the defeat of the Goliath, Erelian decided to repurpose some of the armor plating it wore.
 	NeonRipperLore2: In doing so he created two weapons: the first of which being a scythe that could absorb aura, much like Kami's ability.
 	PBGBardALore2: In doing so he created two weapons: the second of which being a guitar that shot colorful microwaves.
-	DoubleFlailLore: 
-	    '''
+	DoubleFlailLore:
+		'''
 		Calamitas and Permafrost always had great teamwork as student and teacher when she was still a child
 		These two Flails could be applying the same techniques to combine ice and fire in disasterous ways for your foes
 		'''
@@ -1201,7 +1202,7 @@ Buffs: {
 	PerfectFlailBuff: {
 		DisplayName: Perfect Purple
 		Description: You are Perfect.
-		ItemTooltip: Increased damage by 15%, damage resistance by 15% and movement speed by 15%
+		ItemTooltip: Increased damage, damage resistance and movement speed by 15%
 	}
 
 	GrandThunderWhipTag: {
