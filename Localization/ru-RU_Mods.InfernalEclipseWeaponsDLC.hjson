@@ -845,8 +845,7 @@ Items: {
 		/* Tooltip:
 			'''
 			300% basic damage
-			Flail weapons on first hit create a blackhole spike ball
-			Further flail hits have a chance to create blackhole spike balls which home onto enemies, pulls enemies towards itself, and rarely inflicts [cbuff:CalamityMod/WitherDebuff]
+			Flail weapon hits have a chance to create blackholes which home onto enemies, pulls enemies towards itself, and rarely inflicts [cbuff:CalamityMod/WitherDebuff]
 			'This shouldn't work you know? A blackhole this size can absolutely destory the planet... I guess we shouldn't question it'
 			''' */
 	}
@@ -885,7 +884,14 @@ Items: {
 
 	BlazeScourgeBag: {
 		// DisplayName: Blaze Scourge Bag
-		// Tooltip: ""
+		/* Tooltip:
+			'''
+			Gives the user master yoyo skills
+			Secondary yoyos will do 50% less damage
+			Your yoyo damage inflicts [cbuff:CalamityMod/HolyFlames] and has a chance to inflict [cbuff:CalamityMod/Vaporfied] on enemies
+			Damaging an enemy with a yoyo will grant you 10% damage reduction until you take damage
+			This effect must recharge for 15 seconds after protecting you
+			''' */
 	}
 }
 
