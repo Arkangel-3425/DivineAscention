@@ -1,6 +1,4 @@
-﻿using CalamityMod.CalPlayer.Dashes;
-using CalamityMod.CalPlayer;
-using CalamityMod.Items;
+﻿using CalamityMod.Items;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -11,6 +9,7 @@ using InfernalEclipseWeaponsDLC.Core.NewFolder;
 
 namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.LifeShields
 {
+    [AutoloadEquip(EquipType.Shield)]
     public class PerennialShield : ModItem
     {
         public override bool IsLoadingEnabled(Mod mod) => WeaponConfig.Instance.LifeShields;
