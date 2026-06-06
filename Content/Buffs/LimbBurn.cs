@@ -26,12 +26,12 @@ namespace InfernalEclipseWeaponsDLC.Content.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            player.runAcceleration *= 0.025f;
+            player.runAcceleration *= 0.975f;
         }
 
         public override void Update(NPC npc, ref int buffIndex)
         {
-            npc.velocity *= 0.075f;
+            npc.velocity *= 0.925f;
         }
     }
 }
