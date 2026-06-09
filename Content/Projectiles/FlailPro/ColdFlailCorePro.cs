@@ -1,5 +1,4 @@
-using System;
-using Microsoft.Xna.Framework;
+using InfernalEclipseWeaponsDLC.Content.Buffs;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -20,9 +19,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.FlailPro
         {
             target.AddBuff(BuffID.Frostburn2, 240, false);
             if (Main.rand.NextFloat(1) < 0.1)
-            {
-            Main.player[Projectile.owner].AddBuff(ModContent.BuffType<Buffs.ColdFlailDefense>(), 450);
-            }
+                Main.player[Projectile.owner].AddBuff(ModContent.BuffType<ColdFlailDefense>(), 450);
         }
     }
 }

@@ -25,7 +25,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.SummonerPro.WhipPro
         public SoundStyle? whipCrackSound = new SoundStyle?(SoundID.Item153);
         public Texture2D whipSegment;
         public Texture2D whipTip;
-        public List<Vector2> whipPoints = new List<Vector2>();
+        private List<Vector2> whipPoints;
         public float multihitModifier = 0.8f;
         public float segmentRotation;
         private bool runOnce = true;
@@ -55,9 +55,11 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.SummonerPro.WhipPro
         {
             if (Timer % 2 == 0)
             {
-                whipPoints.Clear();
-                Projectile.FillWhipControlPoints(Projectile, whipPoints);
+                List<Vector2> newPoints = new();
+                Projectile.FillWhipControlPoints(Projectile, newPoints);
+                whipPoints = newPoints;
             }
+
             return true;
         }
 
@@ -125,7 +127,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.SummonerPro.WhipPro
                 Projectile.damage = 1;
 
             target.AddBuff(BuffID.Electrified, 60);
-            target.AddBuff(ModContent.BuffType<DefaultSummonTag>(), 300);
+            target.AddBuff(ModContent.BuffType<GrandThunderWhipTag>(), 240);
 
             Main.player[Projectile.owner].MinionAttackTargetNPC = target.whoAmI;
 
@@ -148,9 +150,34 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.SummonerPro.WhipPro
             DrawFishingLineBetweenPoints(whipPoints, fishingLineColor);
 
             SpriteEffects effect = Projectile.spriteDirection > 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
-            Vector2 pos = whipPoints[0];
+            Vector2 pos = whipPoints[1];
 
-            for (int i = 0; i < whipPoints.Count - 1; i++)
+            //Handle
+            Texture2D handleTex = TextureAssets.Projectile[Type].Value;
+            Vector2 handleOrigin = handleTex.Size() / 2f;
+
+            Vector2 handlePos = whipPoints[0];
+            Vector2 nextPos = whipPoints[1];
+
+            Vector2 dir = nextPos - handlePos;
+            float handleRotation = dir.ToRotation() + MathHelper.PiOver2;
+
+            handleRotation -= (MathHelper.Pi / 2);
+
+            Main.EntitySpriteDraw(
+                handleTex,
+                handlePos - Main.screenPosition,
+                null,
+                Lighting.GetColor(handlePos.ToTileCoordinates()),
+                handleRotation,
+                handleOrigin,
+                1f,
+                SpriteEffects.None,
+                0f
+            );
+
+            //Segments
+            for (int i = 1; i < whipPoints.Count - 1; i++)
             {
                 Texture2D tex = whipSegment;
                 float scale = 1f;
@@ -168,7 +195,35 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.SummonerPro.WhipPro
                 Vector2 diff = whipPoints[i + 1] - whipPoints[i];
                 float rot = diff.ToRotation();
 
-                Main.EntitySpriteDraw(tex, pos - Main.screenPosition, frame, Lighting.GetColor(whipPoints[i].ToTileCoordinates()), rot, origin, scale, effect, 0f);
+                SpriteEffects drawEffect;
+
+                // Tip segment
+                if (i == whipPoints.Count - 2)
+                {
+                    drawEffect = Projectile.spriteDirection < 0
+                        ? SpriteEffects.FlipVertically
+                        : SpriteEffects.None;
+                }
+                else
+                {
+                    // Body segments
+                    drawEffect = Projectile.spriteDirection < 0
+                        ? SpriteEffects.None
+                        : SpriteEffects.None;
+                }
+
+                Main.EntitySpriteDraw(
+                    tex,
+                    pos - Main.screenPosition,
+                    frame,
+                    Lighting.GetColor(whipPoints[0].ToTileCoordinates()),
+                    rot,
+                    origin,
+                    scale,
+                    drawEffect,
+                    0f
+                );
+
                 pos += diff;
             }
 

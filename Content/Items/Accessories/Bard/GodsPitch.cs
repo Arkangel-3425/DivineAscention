@@ -79,7 +79,8 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Bard
 
             if (ModLoader.TryGetMod("ThoriumRework", out Mod helheim))
             {
-                recipe.AddIngredient(helheim.Find<ModItem>("ConcussiveInstrument").Type);
+                if (helheim.TryFind("ConcussiveInstrument", out ModItem cInstrument))
+                    recipe.AddIngredient(cInstrument.Type);
             }
 
             recipe.AddIngredient<AuricBar>(5);

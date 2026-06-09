@@ -33,10 +33,9 @@ namespace InfernalEclipseWeaponsDLC.Core.GlobalNPCs
 
         public override void PostAI(NPC npc)
         {
-            if (npc.type == NPCID.BlazingWheel && npc.active && !droppedFromWaterContact && WeaponConfig.Instance.AIGenedWeapons)
+            if (npc.type == NPCID.BlazingWheel && npc.active && !droppedFromWaterContact && WeaponConfig.Instance.GitGudWeapon)
             {
-                if (npc.wet && !npc.lavaWet && !npc.honeyWet && !npc.shimmerWet
-                    && Collision.WetCollision(npc.position, npc.width, npc.height))
+                if (Collision.WetCollision(npc.position, npc.width, npc.height))
                 {
                     droppedFromWaterContact = true;
                     if (Main.netMode != NetmodeID.MultiplayerClient)

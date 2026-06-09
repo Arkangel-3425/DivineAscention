@@ -6,15 +6,16 @@ The Infernal Arsenal Mod is a mod that aims to fill in the weak spots of progres
 
 It currently adds the following:
 [list]
-	[*] 6 Melee weapons
-	[*] 4 Ranged weapons
+	[*] 9 Melee weapons
+	[*] 5 Ranged weapons
 	[*] 7 Mage weapons
 	[*] 1 Summoner weapon
-	[*] 2 Rogue/Thrower weapons
+	[*] 2 Rogue/Thrower weapon
 	[*] 21 Bard weapons
-	[*] 14 Healer weapons
-	[*] 2 Multi-class weapons
-	[*] 3 accessories
+	[*] 16 Healer weapons
+	[*] 2 Multi-class weapoons
+	[*] 3 armor sets
+	[*] 13 accessories
 [/list]
 
 For more information on the weapons added by this mod, check out the official [url=https://terrariamods.wiki.gg/wiki/Infernal_Eclipse_of_Ragnarok/Weapons_(Weapons_DLC)] wiki![/url]

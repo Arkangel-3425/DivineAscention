@@ -6,7 +6,6 @@ using Terraria.GameContent;
 using Terraria.ModLoader;
 using Terraria;
 using ThoriumMod;
-using Terraria.ID;
 using InfernalEclipseWeaponsDLC.Utilities;
 using ThoriumMod.Buffs.Healer;
 using System.Collections.Generic;

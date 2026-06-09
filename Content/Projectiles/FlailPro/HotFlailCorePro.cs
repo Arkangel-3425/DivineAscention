@@ -1,5 +1,5 @@
-using System;
-using Microsoft.Xna.Framework;
+using CalamityMod.Buffs.DamageOverTime;
+using InfernalEclipseWeaponsDLC.Content.Buffs;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -18,11 +18,9 @@ namespace InfernalEclipseWeaponsDLC.Content.Projectiles.FlailPro
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            target.AddBuff(Terraria.ModLoader.ModContent.BuffType<CalamityMod.Buffs.DamageOverTime.BrimstoneFlames>(), 240, false);
+            target.AddBuff(ModContent.BuffType<BrimstoneFlames>(), 240, false);
             if (Main.rand.NextFloat(1) < 0.1)
-            {
-            Main.player[Projectile.owner].AddBuff(ModContent.BuffType<Buffs.HotFlailDmg>(), 450);
-            }
+                Main.player[Projectile.owner].AddBuff(ModContent.BuffType<HotFlailDmg>(), 450);
         }
     }
 }

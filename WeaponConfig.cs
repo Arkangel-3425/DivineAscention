@@ -27,5 +27,19 @@ namespace InfernalEclipseWeaponsDLC
         [DefaultValue(true)]
         [ReloadRequired]
         public bool GitGudWeapon;
+
+        [Header("SoltansCut")]
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool LifeShields;
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool FlailCores;
+
+        [DefaultValue(true)]
+        [ReloadRequired]
+        public bool YoyoPouches;
     }
 }
