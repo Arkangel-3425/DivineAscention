@@ -234,7 +234,7 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
                             Main.dust[num5].noGravity = true;
                         }
                     }
-                    if (!scourgeBag2 && !Player.HasBuff(ModContent.BuffType<SandshroudPouchDebuff>()))
+                    if (!scourgeBag2 && !Player.HasBuff(ModContent.BuffType<YoyoProtectionDebuff>()))
                     {
                         scourgeBag2 = true;
                         for (int n = 0; n < 15; n++)
@@ -382,7 +382,7 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
 
             if (scourgeBag2)
             {
-               Player.AddBuff(ModContent.BuffType<SandshroudPouchBuff>(), 2);
+               Player.AddBuff(ModContent.BuffType<YoyoProtectionBuff>(), 2);
                thoriumPlayer.thoriumEndurance += 0.1f;
             }
         }
