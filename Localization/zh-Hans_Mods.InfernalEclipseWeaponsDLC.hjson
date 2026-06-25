@@ -726,7 +726,7 @@ Items: {
 			长剑处于嵌入状态时会释放出光暗能量
 			光辉能量会追踪附近的友方，并治疗等同于额外治疗量的生命值
 			暗影能量会追踪附近的敌人，造成伤害
-			若使用者的额外治疗量大于等于5，敌人还会被施加多种削弱性减益
+			若使用者的额外治疗量大于等于5则施加[cbuff:BetsysCurse][cbuff:Ichor][cbuff:CalamityMod/ArmorCrunch][cbuff:CalamityMod/ArmorCrunch][cbuff:CalamityMod/MarkedforDeath]和[cbuff:CalamityMod/WhisperingDeath]减益
 			一次只能投掷一把长剑
 			“抱歉了小猪猪，但这是必要的牺牲”
 			'''
