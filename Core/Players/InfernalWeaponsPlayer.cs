@@ -383,7 +383,7 @@ namespace InfernalEclipseWeaponsDLC.Core.NewFolder
             if (scourgeBag2)
             {
                Player.AddBuff(ModContent.BuffType<YoyoProtectionBuff>(), 2);
-               thoriumPlayer.thoriumEndurance += 0.1f;
+               thoriumPlayer.damageResistance += 0.1f;
             }
         }
 

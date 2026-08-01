@@ -46,7 +46,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Armor.Ocram.Eclipse
             player.GetAttackSpeed((DamageClass)(object)ThoriumDamageBase<HealerTool>.Instance) += 0.05f;
             player.GetAttackSpeed(DamageClass.Magic) += 0.05f;
 
-            thoriumPlayer.thoriumEndurance += 0.15f;
+            thoriumPlayer.damageResistance += 0.15f;
             thoriumPlayer.healBonus += 3;
         }
 

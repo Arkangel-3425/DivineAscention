@@ -71,7 +71,7 @@ namespace InfernalEclipseWeaponsDLC.Content.Items.Accessories.Bard
             Recipe recipe = CreateRecipe()
                 .AddIngredient<Headset>()
                 .AddIngredient<TunePlayerDamage>()
-                .AddIngredient<TunePlayerDamageReduction>()
+                .AddIngredient<TunePlayerDamageResistance>()
                 .AddIngredient<TunePlayerLifeRegen>()
                 .AddIngredient<TunePlayerMovementSpeed>()
                 .AddTile<CosmicAnvil>()
